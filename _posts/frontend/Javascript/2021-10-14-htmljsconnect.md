@@ -65,54 +65,57 @@ dom은 프로그래밍 언어에서 html문서의 정보를 다룰 수 있게 �
 3. html코드는 DOM형태로 해석되어 CSS적용, Javascript와 상호작용이 이루어진다.
 
 ## 💡 DOM의 객체 생성
-DOM은 html 파일의 구조를 계층적으로 정리해 원하는 객체에 접근할 수 있다.
+DOM은 html 파일의 구조를 계층적으로 정리해 원하는 객체에 접근할 수 있다.(Tree 구조)
 <img src="https://user-images.githubusercontent.com/76278794/137275947-033e49df-a77b-4631-9e2c-84f7de2390b8.jpeg">
 
 
 
 ## 💡 주요객체
--document: html 문서 전체, 최상위 root객체
+-document: html 문서 전체, 최상위 root객체  
+
 -element : document 하위의 화면 요소들을 의미한다. dom에서는 계층적인 형태로 존재한다.
 
-
-
+<br><br>
 
 
 ## 💡 DOM접근함수
-원하는 DOM객체를 리턴받는 함수
--document.getElementByid(elementid):요소의 id 값(html태그의 id 속성)으로 요소를 가져온다.
+원하는 DOM객체를 리턴받는 함수  
+- document.getElementByid(elementid):요소의 id 값(html태그의 id 속성)으로 요소를 가져온다.  
 
--document.getElementsByTagName(name):요소의 태그 종류로 (html tag)요소들을 가져온다.
-태그가 여러개일 수 있으므로 배열형태로 가져온다.
+- document.getElementsByTagName(name):요소의 태그 종류로 (html tag)요소들을 가져온다.   
+태그가 여러개일 수 있으므로 배열형태로 가져온다.  
 
--document.getElementsByClassName(className):요소들의 class값으로 요소들을 가져온다.
-클래스값도 여러개일 수 있으므로 배열형태로 가져온다.
+- document.getElementsByClassName(className):요소들의 class값으로 요소들을 가져온다.  
+클래스값도 여러개일 수 있으므로 배열형태로 가져온다.  
+
+
+<br><br>
 
 ## 💡 QuerySelector
 
 document.querySelector(selector): 선택자 문법으로 문서 내의 요소들을 가져온다.
 
 
-querySelector() -> 가장 처음요소 1개만
-querySelectorAll() -> 모든요소, 배열
-querySelector는 element도 사용가능하다
+querySelector() -> 가장 처음요소 1개만  
+querySelectorAll() -> 모든요소, 배열  
+querySelector는 element도 사용가능하다  
 
 
 class 가 panels인 div 내의 li 요소를 가져온다.
 ```
 var element = document.querySelector("div.panels li");
 ```
-
+<br><br>
 
 ## 💡 DOM 객체 추가
 DOM객체를 생성해 DOM구조에 추가하면 화면에 표시된다.
 
 
 document.createElement(tagName): 새로운 DOM노드객체를 생성한다.  
-계층적으로 정리한 트리구조에서 각 네모를 노드라고 부르는데, 화면에 추가할 노드 객체를 생성할 수 있다.
+계층적으로 정리한 트리구조에서 각 점을 노드라고 부르는데, 화면에 추가할 노드 객체를 생성할 수 있다.
 
 
-(특정 element).appendChild(삽입할 DOM 노드객체): 특정 DOM객체 하위에 다른 DOM 객체를 삽입한다.  
+(DOM객체 변수).appendChild(삽입할 DOM 노드객체): 특정 DOM객체 하위에 다른 DOM 객체를 삽입한다.  
 위의 노드객체를 생성한 후, 어디에 넣어야 할 지를 결정해준다.
 
 ```
