@@ -154,8 +154,47 @@ newElement.innerText = '안뇽';
 4. 원하는 위치에 DOM객체 삽입
 SIvCob.appendChild(newElement)
 ```
-<br><br>
+<br>
 
 <img src="https://user-images.githubusercontent.com/76278794/137424639-a41d0697-5143-4537-917f-10d6701577f6.png">
+
+<br><br>
+
+## 💡 DOM 객체 수정, 제거
+DOM 접근 API를 사용해 필요한 객체를 가져와서 innerHTML이나 style 속성으로 객체를 수정할 수 있다.
+
+- element.innerHTML  
+
+요소 내부의 콘텐츠 값에 접근하거나, 값을 지정한다.
+element.innerText는 단순히 문자열을 쓰는 역할을 하지만  
+innerHTML은 html코드가 들어가서 html이 그려지게된다.
+<br>
+- element.style  
+
+요소가 가지고 있는 style을 지정할 수 있다.  
+element.style.display = 'none'  
+element.style.fontSize = '11pt'  
+css 상에서 폰트사이즈는 font-size로 지정했다.  
+하지만 DOM객체로 넘어오면서 '-'은 사라지고 다음 글자가 capital이 된다.
+
+- element.remove()
+해당 요소를 제거한다.
+
+
+
+# 이벤트
+DOM기반의 요소들은 event를 감지해서 그 이벤트가 감지되었을 때 원하는 코드가 실행되도록 할 수 있다.  
+
+
+event listener 어떤 이벤트가 발생했을떄, 특정 자바스크립트 코드가 실행되도록한다.
+
+## 종류
+많은 이벤트들이 DOM차원에서 미리 정의되어 있다.
+-click
+-mousemove
+-keypress
+-submit
+-load
+
 
 
