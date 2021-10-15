@@ -186,15 +186,26 @@ css 상에서 폰트사이즈는 font-size로 지정했다.
 DOM기반의 요소들은 event를 감지해서 그 이벤트가 감지되었을 때 원하는 코드가 실행되도록 할 수 있다.  
 
 
-event listener 어떤 이벤트가 발생했을떄, 특정 자바스크립트 코드가 실행되도록한다.
+## event listener 
+어떤 이벤트가 발생했을떄, 특정 자바스크립트 코드가 실행되도록한다.
 
 ## 종류
 많은 이벤트들이 DOM차원에서 미리 정의되어 있다.
--click
--mousemove
--keypress
--submit
--load
+-click 해당 객체 클릭 시 발생
+-mousemove 해당 객체 위에서 마우스를 이동했을 때 발생
+-keypress 해당 객체가 선택된 상태에서 키보드 입력이 있을 때 발생
+-submit form의 전송(제출, submit)버튼 눌렸을 때 발생
+-load 해당 객체가 화면에 로딩이 완료되어 화면에 표시될 때 발생
 
+## Event Listener 등록
+```
+var element = document.getElementByid("panels");
+
+element.addEventListener('click',fuction(){
+
+  alert('hello!')
+
+}); 
+```
 
 
