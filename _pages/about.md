@@ -5,8 +5,14 @@ layout: single
 sidebar_main: true
 ---
 
+# Blog
 
-# 씹고 뜯고 맛보고 즐기는 개발자
+# StudyLog
 
-21.09 Blog Open<br/>
-21.10 Sqld 취득<br/>
+21.09 깃허브 블로그 생성  
+<br>
+21.09 ~ 21.12 파이썬, html/css/js 기초 스터디(ing)  
+<br>
+21.10 SQLD 취득  
+<br>
+21.10 ~ 자료구조 공부(ing)

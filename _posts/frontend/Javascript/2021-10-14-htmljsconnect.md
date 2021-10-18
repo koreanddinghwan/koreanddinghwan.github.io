@@ -30,7 +30,7 @@ last_modified_at: 2021-10-04
 
 <br><br>
 
-## 💡 script태그를 위에 쓰지 않는 이유
+## 💡 script태그를 상단에 쓰지 않는 이유
 
 CSS파일은 html코드의 상단에서 작성해주었다.  
 하지만 JS파일은 상단에서 작성하지 않는다.  
@@ -105,6 +105,7 @@ class 가 panels인 div 내의 li 요소를 가져온다.
 ```
 var element = document.querySelector("div.panels li");
 ```
+
 <br><br>
 
 ## 💡 DOM 객체 추가
@@ -184,7 +185,7 @@ css 상에서 폰트사이즈는 font-size로 지정했다.
 - element.remove()
 해당 요소를 제거한다.
 
-
+<br><br>
 
 # 이벤트
 DOM기반의 요소들은 event를 감지해서 그 이벤트가 감지되었을 때 원하는 코드가 실행되도록 할 수 있다.  
@@ -193,13 +194,17 @@ DOM기반의 요소들은 event를 감지해서 그 이벤트가 감지되었을
 ## 💡 event listener 
 어떤 이벤트가 발생했을떄, 특정 자바스크립트 코드가 실행되도록한다.
 
+<br>
+
 ## 💡 종류
-많은 이벤트들이 DOM차원에서 미리 정의되어 있다.
--click 해당 객체 클릭 시 발생
--mousemove 해당 객체 위에서 마우스를 이동했을 때 발생
--keypress 해당 객체가 선택된 상태에서 키보드 입력이 있을 때 발생
--submit form의 전송(제출, submit)버튼 눌렸을 때 발생
--load 해당 객체가 화면에 로딩이 완료되어 화면에 표시될 때 발생
+많은 이벤트들이 DOM차원에서 미리 정의되어 있다.  
+-click:  해당 객체 클릭 시 발생  
+-mousemove:  해당 객체 위에서 마우스를 이동했을 때 발생  
+-keypress:  해당 객체가 선택된 상태에서 키보드 입력이 있을 때 발생  
+-submit:  form의 전송(제출, submit)버튼 눌렸을 때 발생  
+-load:  해당 객체가 화면에 로딩이 완료되어 화면에 표시될 때 발생  
+
+<br>
 
 ## 💡 Event Listener 등록
 
