@@ -136,6 +136,7 @@ div.appendchild(element)
 ```
 <div id ="SIvCob">~</div>
 ```
+
 이렇게 선언되어있다. 
 <br><br>
 
@@ -154,6 +155,7 @@ newElement.innerText = '안뇽';
 4. 원하는 위치에 DOM객체 삽입
 SIvCob.appendChild(newElement)
 ```
+
 <br>
 
 <img src="https://user-images.githubusercontent.com/76278794/137424639-a41d0697-5143-4537-917f-10d6701577f6.png">
@@ -168,7 +170,9 @@ DOM 접근 API를 사용해 필요한 객체를 가져와서 innerHTML이나 sty
 요소 내부의 콘텐츠 값에 접근하거나, 값을 지정한다.
 element.innerText는 단순히 문자열을 쓰는 역할을 하지만  
 innerHTML은 html코드가 들어가서 html이 그려지게된다.
+
 <br>
+
 - element.style  
 
 요소가 가지고 있는 style을 지정할 수 있다.  
@@ -186,10 +190,10 @@ css 상에서 폰트사이즈는 font-size로 지정했다.
 DOM기반의 요소들은 event를 감지해서 그 이벤트가 감지되었을 때 원하는 코드가 실행되도록 할 수 있다.  
 
 
-## event listener 
+## 💡 event listener 
 어떤 이벤트가 발생했을떄, 특정 자바스크립트 코드가 실행되도록한다.
 
-## 종류
+## 💡 종류
 많은 이벤트들이 DOM차원에서 미리 정의되어 있다.
 -click 해당 객체 클릭 시 발생
 -mousemove 해당 객체 위에서 마우스를 이동했을 때 발생
@@ -197,15 +201,36 @@ DOM기반의 요소들은 event를 감지해서 그 이벤트가 감지되었을
 -submit form의 전송(제출, submit)버튼 눌렸을 때 발생
 -load 해당 객체가 화면에 로딩이 완료되어 화면에 표시될 때 발생
 
-## Event Listener 등록
+## 💡 Event Listener 등록
+
+
+click 이벤트에 연결해 함수를 호출한다. 이벤트 리스너를 등록하면서 동시에 익명함수로 선언하거나,  
+이미 선언된 익명함수를 사용할 수 있다. 단, 익명함수의 경우, 다른 스코프에서 재사용이 불가능하다.
+
+### 익명함수
+
+익명함수: 이름을 정하지 않고 함수블록만 정의해서 사용하는 함수
+
 ```
 var element = document.getElementByid("panels");
 
 element.addEventListener('click',fuction(){
-
+ 
   alert('hello!')
 
 }); 
 ```
+
+
+### 콜백함수
+
+이벤트 리스너와 같이 특정 트리거가 발생했을 떄 완료시점에 호출받기 위한 함수(매개변수로 전달하는 함수)
+
+```
+element.addEventListener('click',preFunc);
+```
+
+
+
 
 
