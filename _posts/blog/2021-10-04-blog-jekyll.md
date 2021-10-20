@@ -48,33 +48,35 @@ _pages의 내 카테고리들 하단에는
 
 이 코드들이 들어 있다.  
 blog 카테고리에 해당하는 post들을 모아 posts에 할당하고,  각 post에 대해서 archive-single2를 적용한다.  
-archive-single2는 [식빵맘님 블로그](https://ansohxxn.github.io/blog/jekyll-directory-structure/)에서 복붙했다. 참고  
+archive-single2는 [식빵맘님 블로그](https://ansohxxn.github.io/blog/jekyll-directory-structure/)에서 복붙했다. 참고
+
 <br/><br/>
 
 ## archive-single2
 
 ```ruby
-<div class="{{ include.type | default: "list" }}__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <a href="{{ post.url | relative_url }}">{{post.title}}</a>
-            </span>
-            <small> 
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i>{{ post.date | date: " %Y.%m.%d" }}
-              {% if site.category_archive.type and post.categories[0] and site.tag_archive.type and post.tags[0] %}
-                {%- include post__taxonomy.html -%}
-              {% endif %}
-            </small>
-        </div>
-      </article>
-</div>
+  <div class="{{ include.type | default: "list" }}__item">
+      <article class="archive-item">
+          <div>
+              <span>
+                <a href="{{ post.url | relative_url }}">{{post.title}}</a>
+              </span>
+              <small> 
+                <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i>{{ post.date | date: " %Y.%m.%d" }}
+                {% if site.category_archive.type and post.categories[0] and site.tag_archive.type and post.tags[0] %}
+                  {%- include post__taxonomy.html -%}
+                {% endif %}
+              </small>
+          </div>
+        </article>
+  </div>
 ```
 
  
 ```
-<a href="{{ post.url | relative_url }}">{{post.title}}</a>
+  <a href="{{ post.url | relative_url }}">{{post.title}}</a>      
 ```
+
 각 포스트의 제목에 post.url(파일경로)와 relative_url인 블로그 이름을 붙여 링크를 생성한다.  
 <br/>
 
@@ -127,7 +129,7 @@ _pages에 category-archive라는 페이지를 만들었는데, 이 페이지는 
 <br/>
 홈페이지에서 category를 클릭하면 각 카테고리별로 글을 나열한 페이지가 나온다. 이에 대한 코드는
 
-```ruby'
+```liquid
   {% for i in (1..categories_max) reversed %}
     {% for category in site.categories %}
       {% if category[1].size == i %}
@@ -154,7 +156,7 @@ _pages에 category-archive라는 페이지를 만들었는데, 이 페이지는 
         </section>
       {% endif %}
     {% endfor %}
-  {% endfor %}'
+  {% endfor %}
 ```
 
 이렇게 저장되어있다.
