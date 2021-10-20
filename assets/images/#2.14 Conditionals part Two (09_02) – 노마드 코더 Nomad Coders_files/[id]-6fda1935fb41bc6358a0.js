@@ -1,0 +1,1 @@
+_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[32],{"2N5z":function(n,e,_){(window.__NEXT_P=window.__NEXT_P||[]).push(["/[course]/lectures/[id]",function(){return _("EQxb")}])},EQxb:function(n,e,_){"use strict";_.r(e);var t=_("q1tI"),u=_.n(t),o=_("7HXh"),w=u.a.createElement;e.default=()=>w(o.a,null)}},[["2N5z",2,1,5,10,16,0,3,4,7,9,13,14,17,19,20,22,18]]]);
