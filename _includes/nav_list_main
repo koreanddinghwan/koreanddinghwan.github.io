@@ -67,11 +67,20 @@
             </ul>
 
 
-        <span class="nav__sub-title">blog</span>
+        <span class="nav__sub-title">Blog</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "blog" %}
                         <li><a href="/lightbig/categories/blog" class="">jekyll로 만드는 github blog ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+        <span class="nav__sub-title">Etc</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "etc" %}
+                        <li><a href="/lightbig/categories/etc" class="">그때그때, 궁금한 것들({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
