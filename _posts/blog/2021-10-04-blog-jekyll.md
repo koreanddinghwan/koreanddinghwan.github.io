@@ -127,34 +127,34 @@ _pages에 category-archive라는 페이지를 만들었는데, 이 페이지는 
 <br/>
 홈페이지에서 category를 클릭하면 각 카테고리별로 글을 나열한 페이지가 나온다. 이에 대한 코드는
 
-```ruby
-{% for i in (1..categories_max) reversed %}
-  {% for category in site.categories %}
-    {% if category[1].size == i %}
-      <section id="{{ category[0] | slugify | downcase }}" class="taxonomy__section">
-        <h2 class="archive__subtitle">{{ category[0] }}</h2>
-        <div class="entries-{{ page.entries_layout | default: 'list' }}">
-          {% for post in category.last %}
-            <article class="archive-item">
-              <div>
-                  <span>
-                    <a href="{{ post.url | absolute_url }}">{{post.title}}</a>&nbsp
-                  </span>
-                  <small> 
-                    <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i>{{ post.date | date: " %Y.%m.%d" }}
-                    {% if site.category_archive.type and post.categories[0] and site.tag_archive.type and post.tags[0] %}
-                      {%- include post__taxonomy.html -%}
-                    {% endif %}
-                  </small>
-              </div>
-            </article>
-          {% endfor %}
-        </div>
-        <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
-      </section>
-    {% endif %}
-  {% endfor %}
-{% endfor %}
+```ruby'
+  {% for i in (1..categories_max) reversed %}
+    {% for category in site.categories %}
+      {% if category[1].size == i %}
+        <section id="{{ category[0] | slugify | downcase }}" class="taxonomy__section">
+          <h2 class="archive__subtitle">{{ category[0] }}</h2>
+          <div class="entries-{{ page.entries_layout | default: 'list' }}">
+            {% for post in category.last %}
+              <article class="archive-item">
+                <div>
+                    <span>
+                      <a href="{{ post.url | absolute_url }}">{{post.title}}</a>&nbsp
+                    </span>
+                    <small> 
+                      <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i>{{ post.date | date: " %Y.%m.%d" }}
+                      {% if site.category_archive.type and post.categories[0] and site.tag_archive.type and post.tags[0] %}
+                        {%- include post__taxonomy.html -%}
+                      {% endif %}
+                    </small>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+          <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+        </section>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}'
 ```
 
 이렇게 저장되어있다.
