@@ -21,7 +21,8 @@ last_modified_at: 2021-10-04
 ## 지킬이 페이지에서 포스트 목록을 생성하는 방법
 
 [지킬의 포스트목록 표시 방법 소개](https://jekyllrb-ko.github.io/docs/posts/_)
-```
+
+```ruby
 <ul>
   {% for post in site.posts %}
     <li>
@@ -30,6 +31,7 @@ last_modified_at: 2021-10-04
   {% endfor %}
 </ul>
 ```
+
 여기선 이런 코드를 소개하고있는데 어떤 역할을 하는지 내 블로그를 토대로 공부해보자.
 
 <br/>
@@ -38,17 +40,20 @@ last_modified_at: 2021-10-04
 ## _pages
 
 _pages의 내 카테고리들 하단에는 
-```
+
+```ruby
 {% assign posts = site.categories.blog %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
 ```
+
 이 코드들이 들어 있다.  
 blog 카테고리에 해당하는 post들을 모아 posts에 할당하고,  각 post에 대해서 archive-single2를 적용한다.  
 archive-single2는 [식빵맘님 블로그](https://ansohxxn.github.io/blog/jekyll-directory-structure/)에서 복붙했다. 참고  
 <br/><br/>
 
 ## archive-single2
-```
+
+```ruby
 <div class="{{ include.type | default: "list" }}__item">
     <article class="archive-item">
         <div>
@@ -95,7 +100,7 @@ post의 파일 경로가 blog/blog-references.md라면
 
 지킬 공식문서에서는 각 카테고리에 대해 포스트를 나열하는 방법에 대해 이렇게 표현한다.
 
-```
+```ruby
 {% for category in site.categories %}
   <h3>{{ category[0] }}</h3>
   <ul>
@@ -109,7 +114,7 @@ post의 파일 경로가 blog/blog-references.md라면
 ## category-archive
 _pages에 category-archive라는 페이지를 만들었는데, 이 페이지는 모든 카테고리들을 모아서 아카이브형태로 보여주는 카테고리라고 할 수 있겠다.  
 
-```md:category.md
+```md
     ---
     title: "Category"
     layout: categories
@@ -122,8 +127,7 @@ _pages에 category-archive라는 페이지를 만들었는데, 이 페이지는 
 <br/>
 홈페이지에서 category를 클릭하면 각 카테고리별로 글을 나열한 페이지가 나온다. 이에 대한 코드는
 
-
-```
+```ruby
 {% for i in (1..categories_max) reversed %}
   {% for category in site.categories %}
     {% if category[1].size == i %}
