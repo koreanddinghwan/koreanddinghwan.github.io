@@ -22,14 +22,14 @@ last_modified_at: 2021-10-04
 
 [지킬의 포스트목록 표시 방법 소개](https://jekyllrb-ko.github.io/docs/posts/_)
 
-```ruby
-<ul>
+
+```
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
-</ul>
+
 ```
 
 여기선 이런 코드를 소개하고있는데 어떤 역할을 하는지 내 블로그를 토대로 공부해보자.
