@@ -1,4 +1,4 @@
-
+---
 title:  "[jekyll & github] jekyll post에 대해"
 excerpt: "jekyll post"
 
