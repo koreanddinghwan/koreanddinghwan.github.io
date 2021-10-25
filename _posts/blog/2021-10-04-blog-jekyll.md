@@ -1,4 +1,4 @@
----
+
 title:  "[jekyll & github] jekyll post에 대해"
 excerpt: "jekyll post"
 
@@ -23,13 +23,15 @@ last_modified_at: 2021-10-04
 [지킬의 포스트목록 표시 방법 소개](https://jekyllrb-ko.github.io/docs/posts/_)
 
 
-``
-    `{% for post in site.posts %}`
-      `<li>`
-        `<a href="{{ post.url }}">{{ post.title }}</a>`
-      `</li>`
-    `{% endfor %}`
-``
+```
+{% raw %}
+    {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+    `% endfor %}
+{% endraw %}
+```
 
 여기선 이런 코드를 소개하고있는데 어떤 역할을 하는지 내 블로그를 토대로 공부해보자.
 
@@ -42,8 +44,11 @@ _pages의 내 카테고리들 하단에는
 
 ```ruby
 
-`{% assign posts = site.categories.blog %}`
-`{% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}`
+{% raw %}
+{% assign posts = site.categories.blog %}
+{% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
+{% endraw %}
+
 ```
 
 이 코드들이 들어 있다.  
@@ -55,8 +60,9 @@ archive-single2는 [식빵맘님 블로그](https://ansohxxn.github.io/blog/jeky
 ## archive-single2
 
 ```ruby
-  `<div class="{{ include.type | default: "list" }}__item">`
-      `<article class="archive-item">
+{% raw %}
+  <div class="{{ include.type | default: "list" }}__item">
+      <article class="archive-item">
           <div>
               <span>
                 <a href="{{ post.url | relative_url }}">{{post.title}}</a>
@@ -70,11 +76,15 @@ archive-single2는 [식빵맘님 블로그](https://ansohxxn.github.io/blog/jeky
           </div>
         </article>
   </div>
+{% endraw %}
+
 ```
 
  
 ```
+{% raw %}
   <a href="`{{ post.url | relative_url }}`">`{{post.title}}`</a>
+{% endraw %}
 ```
 
 각 포스트의 제목에 post.url(파일경로)와 relative_url인 블로그 이름을 붙여 링크를 생성한다.  
@@ -103,6 +113,7 @@ post의 파일 경로가 blog/blog-references.md라면
 지킬 공식문서에서는 각 카테고리에 대해 포스트를 나열하는 방법에 대해 이렇게 표현한다.
 
 ```ruby
+{% raw %}
 {% for category in site.categories %}
   <h3>{{ category[0] }}</h3>
   <ul>
@@ -111,6 +122,7 @@ post의 파일 경로가 blog/blog-references.md라면
     {% endfor %}
   </ul>
 {% endfor %}
+{% endraw %}
 ```
 
 ## category-archive
@@ -130,6 +142,8 @@ _pages에 category-archive라는 페이지를 만들었는데, 이 페이지는 
 홈페이지에서 category를 클릭하면 각 카테고리별로 글을 나열한 페이지가 나온다. 이에 대한 코드는
 
 ```liquid
+
+{% raw %}
   {% for i in (1..categories_max) reversed %}
     {% for category in site.categories %}
       {% if category[1].size == i %}
@@ -157,7 +171,9 @@ _pages에 category-archive라는 페이지를 만들었는데, 이 페이지는 
       {% endif %}
     {% endfor %}
   {% endfor %}
+{% endraw %}
 ```
 
 이렇게 저장되어있다.
+
 
