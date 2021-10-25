@@ -23,14 +23,13 @@ last_modified_at: 2021-10-04
 [지킬의 포스트목록 표시 방법 소개](https://jekyllrb-ko.github.io/docs/posts/_)
 
 
-```
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-
-```
+``
+    `{% for post in site.posts %}`
+      `<li>`
+        `<a href="{{ post.url }}">{{ post.title }}</a>`
+      `</li>`
+    `{% endfor %}`
+``
 
 여기선 이런 코드를 소개하고있는데 어떤 역할을 하는지 내 블로그를 토대로 공부해보자.
 
@@ -42,8 +41,9 @@ last_modified_at: 2021-10-04
 _pages의 내 카테고리들 하단에는 
 
 ```ruby
-{% assign posts = site.categories.blog %}
-{% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
+
+`{% assign posts = site.categories.blog %}`
+`{% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}`
 ```
 
 이 코드들이 들어 있다.  
@@ -55,8 +55,8 @@ archive-single2는 [식빵맘님 블로그](https://ansohxxn.github.io/blog/jeky
 ## archive-single2
 
 ```ruby
-  <div class="{{ include.type | default: "list" }}__item">
-      <article class="archive-item">
+  `<div class="{{ include.type | default: "list" }}__item">`
+      `<article class="archive-item">
           <div>
               <span>
                 <a href="{{ post.url | relative_url }}">{{post.title}}</a>
@@ -74,7 +74,7 @@ archive-single2는 [식빵맘님 블로그](https://ansohxxn.github.io/blog/jeky
 
  
 ```
-  <a href="{{ post.url | relative_url }}">{{post.title}}</a>      
+  <a href="`{{ post.url | relative_url }}`">`{{post.title}}`</a>
 ```
 
 각 포스트의 제목에 post.url(파일경로)와 relative_url인 블로그 이름을 붙여 링크를 생성한다.  

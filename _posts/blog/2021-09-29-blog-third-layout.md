@@ -38,7 +38,7 @@ index.html의 layout은 home.html이고, home.html의 레이아웃은 archive이
 <br/>
 우리는 가장 안쪽인 default를 먼저 보자.
 
-<hr>
+
 
 ## default.html
 
@@ -49,30 +49,12 @@ index.html의 layout은 home.html이고, home.html의 레이아웃은 archive이
 seo.html이 끝나고 다시 head.html의 나머지 코드가 실행된다. 
 밑에 보면 css파일을 불러오는 명령어도 있다. head.html 코드 불러온 후, custom.html을 불러온 다음에 default.html이 다시 이어진다.
 <br/><br/>
-이제부터 body class가 layout—로 선언되는데, 
 
-    layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
 
-이 명령어로 layout—home wide가 불러와진다. 
-home.html에 class가 wide로 선언되어 있는걸 보면 이 코드가 실행된 결과가 home wide인 것 같은데 이건 문법공부를 해야 알 것 같다.
-<br/><br/>
-이 밑에 skip-links.html, browser-upgrade.html, masthead.html이 불러와진다.
-<br/><br/>
-재미있는점은 이 코드들은 다른 include와는 다르게 include-cached로 불러와진다는 점인데, 아마 웹페이지에 처음 접속하면 지금 페이지를 무조건 1번은 거쳐야하기에 지속적으로 사용되는 html파일을 cach형태로 불러오는게 아닌가 싶다. <br/><br/><br/>
 
-skip-links.html에는 
-```html
 
-<nav class="skip-links">
-<ul>
-<li><a href="#site-nav" class="screen-reader-shortcut"></a></li>
-<li><a href="#main" class="screen-reader-shortcut"</a></li>
-<li><a href="#footer" class="screen-reader-shortcut"></a></li>
-</ul>
-</nav>
-    
-```
-가 리스트 형태로 작성되어 있는 것을 볼 수 있다. 개발자도구에서 눌러보면 딱히 누를 수 있는 버튼
+
+
 <br/>
 browser-upgrade.html에는 ie 9에서 쓰이는 코드가 있나보다. 다들 크롬쓰니까 패스.  
 <br/>
@@ -90,11 +72,11 @@ link는 -로 구분되어
    url: "b"  
 
 <br/>
-이 저장되어있는데, {{link.url | relative_url}}은 상대경로인 "/blog이름"에 "/b"를 붙이겠다는 의미이다.<br/>
+이 저장되어있는데, `{{link.url | relative_url}}`은 상대경로인 "/blog이름"에 "/b"를 붙이겠다는 의미이다.<br/>
 이렇게 navigation이 구성된다. 
 <br/><br/>
 
-<hr>
+
 
 ## Content
 
@@ -108,7 +90,7 @@ content는 기본적으로 지킬의 전역변수로서 레이아웃 파일 내,
 index.html->home.html->archive.html->default.html
 <br/>이다.
 
-default.html 의 content 부분에는 이 레이아웃을 불러온 레이아웃의 컨텐츠가 들어가게된다. 
+default.html 의 content 부분에는 이 레이아웃을 불러온 파일의 컨텐츠가 들어가게된다. 
 <br/>
 
 현재 archive.html안에있는 내용들을 모두 default레이아웃의 content안에 포장해서 넣는다는 의미이다. 
@@ -140,7 +122,6 @@ layout--name 이런 식으로 선언되어 있는 것을 볼 수 있다. <br/>
 으로 출력되는 것을 볼 수 있다.
 <br/><br/>
 
-<hr>
 
 ## Canonical url
 <br/>
@@ -153,25 +134,15 @@ canonical_url: "link"
 으로 head태그에 링크 생성이 가능하다.
 <br/><br/>
 
-<hr>
-
-## Compressed url
-<br/>
-html을 순수 liquid언어로 압축하는 지킬 레이아웃이다. <br/>
-잘 사용하지 않는다.
-<br/><br/>
-
-<hr>
 
 ## Single layout
 <br/>
 가장 많이 사용하게될 레이아웃이다.<br/>
 config.yml에서 우리는 post들의 디폴트값을
-<br/> layout:single로 두었기 때문에 <br/>
+<br/> layout:single로 두었기 때문에 
+<br/>
 모든 게시물들은 single layout을 기본으로 한다.  
 <br/><br/>
-
-<hr>
 
 ## Wide page
 <br/>
@@ -179,7 +150,6 @@ config.yml에서 우리는 post들의 디폴트값을
 <br/>
 <br/>
 
-<hr>
 
 ## 목차
 <br/>
@@ -188,7 +158,7 @@ yaml front matter에 선언한다.<br/>
 규칙적인 목차가 쓰여야 규칙적인 목차가 생성된다.<br/>
 <br/>
 
-<hr>
+
 
 ## Archive layout
 <br/>
@@ -199,7 +169,7 @@ Minimal mitakes 공식 깃허브에서 샘플 페이지를 만들어 제공하�
 <br/>
 <br/>
 
-<hr>
+
  
 ## 그리드 보기
 <br/>
@@ -216,7 +186,7 @@ pages에서 yaml front matter를 <br/>
 헤더 이미지도 추가 가능하다.
 
 <br/><br/>
-<hr>
+
 
 ## Taxonomy archives
 
@@ -238,13 +208,13 @@ layout:archive를 가진다.
 ### layout:categories
 카테고리별로 분류된 모든 게시물을 보여주는 레이아웃이다.
 <br/>
-layout:archuve를 가진다.
+layout:archive를 가진다.
 <br/><br/>
 
 ### layout:tags
 태그별로 그룹된 게시물을 보여준다. 
 <br/>
-layout:archuve를 가진다.
+layout:archive를 가진다.
 <br/><br/>
 
 ### layout:collection
@@ -297,7 +267,7 @@ _config.yml에서 paginate설정을 기반으로 페이지 매김목록을 표�
 
 <br/>
 <br/>
-<hr>
+
 
 ## Header teaser image
 <br/>
@@ -313,7 +283,7 @@ _config.yml에서 paginate설정을 기반으로 페이지 매김목록을 표�
 헤더 이미지의 경우 블로그 포스팅 시에는 자주 사용하지 않을 것 같다. <br/>
 나중에 필요하면 공식문서 참조할 것.
 <br/><br/>
-<hr>
+
 
 ## 사이드바에 표시할 것들
 
@@ -331,7 +301,10 @@ config.yml에 디폴트 설정에서 author_profile: true를 해주던가<br/>
 [식빵맘님 깃허브](https://ansohxxn.github.io/blog/category/#-%EC%84%9C%EB%A1%A0)를 참고하는 것을 추천한다.<br/>
 
 처음에 막무가내로 복붙만 할때는 어떻게 작동하는지 전혀 이해할 수 없었다.<br/>
-하지만 공식문서도 보고, 웹 페이지가 어떻게 구성되고있는지 한줄한줄 따져가며 공부하다보니 조금은 이해가 되는 것 같다. <br/>개발자도구 최고
+하지만 공식문서도 보고, 웹 페이지가 어떻게 구성되고있는지 한줄한줄 따져가며 공부하다보니 조금은 이해가 되는 것 같다. 
+
+
+<br/>개발자도구 최고
 <br/><br/>
 
 <br/>
