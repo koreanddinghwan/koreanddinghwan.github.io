@@ -1,53 +1,26 @@
-class Queue():
+class Node:
+    def __init__(self, key = None):
+        self.key = key
+        self.next = None
+
+    def __str__(self):
+        return str(self.key)
+
+    
+
+
+class SinglyLinkedList:
     def __init__(self):
-        self.items = []
-        self.front_index = 0
+        self.head = None
+        self.size = 0
 
-    def enqueue(self, value):
-        self.items.append(value)
-
-    def dequeue(self):
-        if self.front_index == len(self.items):
-            print('queue empty')
-            return None
-        else:
-            returnvalue = self.items[self.front_index]
-            self.front_index += 1
-            return returnvalue
-
-    def front(self):
-        if self.front_index == len(self.items):
-            print('queue empty')
-        else:
-            returnvalue = self.items[self.front_index]
-            return returnvalue
+    def __len__(self):
+        return self.size
 
 
-class deque():
-    def __init__(self):
-        self.items = []
-        self.front_value = 0
-
-    def push(self, value):
-        self.items.append(value)
-
-    def pushleft(self, value):
-        self.items.insert(self.front_value,value)
-
-    def pop(self):
-        if len(self.items) == self.front_value:
-            print('queue is empty')
-            return None
-        else:
-            return self.items.pop()
-
-    def popleft(self):
-        if len(self.items) == self.front_value:
-            print('queue is empty')
-            return None
-        else:
-            x = self.items[self.front_value]
-            self.front_value += 1
-            return x
-
+    def pushFront(self, key): # 2 -> 1 2
+        new_node = Node(key) # new_node = Node(1)
+        new_node.next = self.head # new_node.next = Node(2)
+        self.head = new_node # self.head = Node(1)
+        self.size += 1
 
