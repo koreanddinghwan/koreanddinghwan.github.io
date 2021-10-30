@@ -1,6 +1,18 @@
-keys = input().split()
-values = map(int, input().split())
- 
-x = dict(zip(keys, values))
-x = {key:value for key, value in x.items() if key != 'delta' and value != 30}
-print(x)
+class stack():
+    accumulatedtstack = []
+    def __init__(self,val):
+        self.items = []
+        self.value = val
+        self.items.append(val)
+        stack.accumulatedtstack.append(val)
+
+
+test1 = stack(5)
+print(stack.accumulatedtstack)
+print(test1.items)
+
+test2 = stack(0)
+print(stack.accumulatedtstack)
+print(test2.items)
+
+print(stack.__dict__)
