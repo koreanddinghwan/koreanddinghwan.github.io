@@ -154,7 +154,7 @@ print(test.items)
 ## 비공개 속성 설정
 ```python
 class stack:
-    def __init__(self, val): #클래스의 개게생성함수.
+    def __init__(self, val): #클래스의 객체생성함수.
             self.items = []
             self.__value = val
 st = stack(5)
