@@ -1,3 +1,6 @@
+
+
+
 class Node:
     def __init__(self, key):
         self.key = key
@@ -100,21 +103,28 @@ class singlylinkedlist:
                     self.size -= 1 #한개 삭제되었으므로 리스트 길이 1개 줄인다.
                     break
             
-
+    def reverse(self):
+        a, b = None, self.head
+        while b:
+            if b:
+                c = b.next #c에 b의 다음노드를 복사
+                b.next = a #b의 링크를 반대로 설정
+            a = b
+            b = c
 
             
 
-a = singlylinkedlist()
-a.pushfront(5)
-a.pushfront(4)
-a.pushfront(5)
-print(a)
-print(a.size)
 
-a.remove(4)
-print(a)
-print(a.size)
 
-# a.remove(4)
-# print(a)
-# print(a.size)
+
+test = singlylinkedlist()
+test.pushfront(5)
+test.pushfront(4)
+test.pushfront(3)
+print(test)
+
+a, b = None, test.head
+c = b.next
+b.next = a
+print(c)
+print(a)
