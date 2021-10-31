@@ -152,13 +152,14 @@ class Doublylinkedlist:
 
     def __iter__(self):
         v = self.head.next
-        while v != None:
+        while v != self.head: #양방향리스트는 연결되어있으므로 None이 출력되는순간 멈춰야함
             yield v
             v = v.next
+
         
     def __str__(self):
-        return "->".join(str(v) for v in self)
-        
+        return "->".join(str(v) for v in self if v != None)
+    
     def __len__(self):
         return self.size
 
@@ -180,32 +181,119 @@ class Doublylinkedlist:
         b.next = xn
 
     #이동연산
+    def pushfront(self, key):
+        self.insertAfter(self.head, key) #self.head는 더미노드. self.head의 다음값은 리스트의 처음 값
+   
+    def insertAfter(self, x, key): #새로운 노드를 생성해 x뒤에
+        self.moveAfter(Node(key), x) #키로 노드를 생성하면 초기에 prev,next가 자기자신이다.
+        self.size += 1
+   
     def moveAfter(self,a,x): #| ap a an | xp x xn 
         # -> |ap an| xp x a xn
         self.splice(a,a,x) #와 동일.
         
-
-    def moveBefore(self,a,x): #a를 x뒤로 붙이기
-        self.splice(a,a,x.prev) #와 동일
-
-    def insertAfter(self, x, key): #새로운 노드를 생성해 x뒤에
-        self.moveAfter(Node(key), x) #키로 노드를 생성하면 초기에 prev,next가 자기자신이다.
-        self.size += 1
+    def pushback(self, key):
+        self.insertBefore(self.head, key) #self.head는 더미노드. self.head의 이전값은 리스트의 마지막값
 
     def insertBefore(self, x, key):
         self.moveBefore(Node(key), x)
         self.size += 1
 
-    def pushfront(self, key):
-        self.insertAfter(self.head, key) #self.head는 더미노드. self.head의 다음값은 리스트의 처음 값
+    def moveBefore(self,a,x): #a를 x뒤로 붙이기
+        self.splice(a,a,x.prev) #와 동일
+
+    #search
+    def search(self,key):
+        for i in self:
+            if i.key == key:
+                return i
+        else:
+            return None
+
+    #isempty
+    def isEmpty(self):
+        if self.size != 0:
+            return False
+        else:
+            return True
+
+    #last,first
+    def first(self):
+        ch = self.head
+        return ch.next
+
+    def last(self):
+        ch = self.head
+        return ch.prev
 
 
-    def pushback(self, key):
-        self.insertBefore(self.head, key) #self.head는 더미노드. self.head의 이전값은 리스트의 마지막값
+    #삭제연산
+    def remove(self,x): #x노드를 삭제.
+        if x == None or x == self.head:
+            pass
+        else:
+            x.prev.next = x.next #노드 x의 이전 노드의 링크는 x.next
+            x.next.prev = x.prev #노드 x의 다음 노드의 prev링크는 x.prev
+            del x
+            
+    def popfront(self):
+        if self.isEmpty():
+            return None
+        else:
+            key = self.head.next.key
+            self.remove(self.head.next)
+            return key
+
+    def popback(self):
+        if self.isEmpty():
+            return None
+
+        else:
+            key = self.head.prev.key
+            self.remove(self.head.prev)
+            return key
+
+    def join(self, list):
+        if self.isEmpty():
+            self = list
+        elif list.isEmpty():
+            self = self
+        else:
+            self.head.prev.next = list.head.next #self 리스트의 마지막값의 링크는 추가하고자하는 list의 head노드 다음 값이다.
+            list.head.next.prev = self.head.prev #추가하고자하는 리스트의 첫값의 prev링크는 self리스트의 마지막값
+            list.head.prev.next = self.head #추가하고자하는 리스트의 마지막값의 다음값은 self리스트의 헤드값이되어 서로 원형 연결한다.
+            self.head.prev = list.head.prev #self.head의 prev링크는 list의 마지막값이되어야한다.
+    
 
 a = Doublylinkedlist()
 a.pushfront(5)
-a.pushfront(4)
-print(a.size)
+# insertafter(self.head, 5)
+# moveafter(Node(5),self.head)
+#splice(Node(5), Node(5), self.head)
+#def splice(self, Node(5), Node(5), self.head):
+        #경우(1) cut #| ap a .. .. b bn -> ap bn
+        # ap = Node(5).prev -> 자신
+        # bn = Node(5).next -> 자신
+
+        # ap.next = bn
+        # bn.prev = ap
+
+        # #경우(2) paste #| x xn -> x a .. .. .. b xn
+        # xn = x.next #원래 x의 다음 노드를 xn이라고 할당 
+        # x.next = a
+        # a.prev = x
+
+        # xn.prev = b
+        # b.next = xn
+
+a.pushback(4)
 print(a)
 
+print(a)
+
+b = Doublylinkedlist()
+b.pushback(10)
+b.pushback(15)
+a.join(b)
+print(a)
+print(a.head.prev.next)

@@ -41,15 +41,20 @@ class Node: #노드클래스는 리스트의 헤드노드가 Nond이라는 dummy
 
 # 양방향 연결리스트
 
+1. __init__의 경우, self.head를 next와 prev가 노드 자기자신이고, key=None인 더미노드를 생성해야한다.
+2. 제너레이터는 유의해야할 점이 양방향연결리스트는 리스트의 시작과 끝이 연결되어있다는 것이다. 따라서 v가 self.head가 아닐때까지 반복해야한다.
+3. __str__은 __init__에서 만들어진 데이터를 출력하는 역할, 변동없다. 
+4. __len__도 변동없다.
+
 ```python
 class Doublylinkedlist:
     def __init__(self):
         self.head = Node()
         self.size = 0
 
-    def __iter__(self):
-        v = self.head
-        while v != None:
+    def __iter__(self): #제너레이터
+        v = self.head.next
+        while v != self.head: #양방향리스트는 연결되어있으므로 v가 None이 되면 yield되면 안된다.
             yield v
             v = v.next
         
@@ -121,6 +126,118 @@ def pushfront(self, key):
 
 def pushback(self, key):
     self.insertBefore(self, self.head, key) #self.head는 더미노드.self.head의 이전값은 리스트의 마지막값
+```
+
+만약 특정 노드 앞이나 뒤로 insertAfter나 moveAfter 등의 메서드를 사용하고 싶다면, 노드 x를 리턴받아야한다.  
+노드를 리턴받는 메서드를 search나 first, last로 만들 수 있다.
+
+
+### search
+
+교수님 강의안에서 while문으로 돌린 search의 경우, 리스트의 길이가 1개인 경우 none-key-none으로  
+연결되어있어 while문에 return에 걸리지 않아 버그가 발생한다.  
+그래서 본인은 클래스에 self.head를 yield하지 않는 제너레이터함수가 선언되어 있으므로 for문을 사용해 key값을 찾아낸다.  
+search의 시간복잡도는 while문을 쓰면 어차피 O(N)이 되기때문에, for문을 사용해도 상관 없을 거라 예상한다.
+
+1. 키값을 매개변수로 입력받고 인스턴스 내에서 제너레이터로 각 노드를 리턴받는다.
+2. 노드의 키값이 입력받은 키값과 일치한다면 제너레이터로 리턴된 노드를 리턴한다.
+3. for ~ else문으로 for문이 끝났는데, if문에서 아무런 실행이 없다면 None을 리턴한다.
+
+
+```python
+def search(self,key):
+    for i in self:
+        if i.key == key:
+            return i
+    else:
+        return None
+```
+
+
+### isempty
+
+1. 헤드노드는 더미노드이므로 사이즈 계산에 포함되지 않는다.
+
+```python
+def isEmpty(self):
+        if self.size != 0:
+            return False
+        else:
+            return True
+```
+
+### first, last
+
+1. self.head는 리스트 상 첫 값이자 마지막값인 것을 이용한다.
+
+```python
+def first(self):
+        ch = self.head
+        return ch.next #노드리턴
+
+def last(self):
+    ch = self.head
+    return ch.prev #노드리턴
+```
+
+### remove
+
+1. 지우고자 하는 노드가 헤드노드이거나 None이면 제거하지 않는다.
+2. 노드 x의 앞뒤로 링크를 수정한다. 
+3. del 로 노드 x의 메모리를 삭제한다.
+
+```python
+def remove(self,x): #x노드를 삭제.
+    if x == None or x == self.head:
+        pass
+    else:
+        x.prev.next = x.next #노드 x의 이전 노드의 링크는 x.next
+        x.next.prev = x.prev #노드 x의 다음 노드의 prev링크는 x.prev
+        del x
+```
+
+
+
+
+### popfront,back
+
+1. popfront와 popback은 리스트가 비어있는 경우, 연산하지 않는다.
+2. remove는 메모리까지 삭제해준다.
+
+```python
+def popFront(self):
+    if self.isEmpty():
+        return None
+
+    else:
+        key = self.head.next.key #헤드 노드의 다음 키값이 pop해야할 키값이다.
+        self.remove(self.head.next) #remove는 앞선노드와 뒷노드를 매개변수를 제외하고 연결해준다.
+        return key
+```
+
+```python
+def popback(self):
+    if self.isEmpty():
+        return None
+
+    else:
+        key = self.head.prev.key
+        self.remove(self.head.prev)
+        return key
+```
+
+### join
+```python
+def join(self, list):
+        if self.isEmpty():
+            self = list
+        elif list.isEmpty():
+            self = self
+        else:
+            self.head.prev.next = list.head.next #self 리스트의 마지막값의 링크는 추가하고자하는 list의 head노드 다음 값이다.
+            list.head.next.prev = self.head.prev #추가하고자하는 리스트의 첫값의 prev링크는 self리스트의 마지막값
+            list.head.prev.next = self.head #추가하고자하는 리스트의 마지막값의 다음값은 self리스트의 헤드값이되어 서로 원형 연결한다.
+            self.head.prev = list.head.prev #self.head의 prev링크는 list의 마지막값이되어야한다.
 ```
 
 # 참고자료
