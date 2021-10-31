@@ -39,6 +39,8 @@ class Node: #노드클래스는 리스트의 헤드노드가 Nond이라는 dummy
         return str(self.key)
 ```
 
+<br><br>
+
 # 양방향 연결리스트
 
 1. __init__의 경우, self.head를 next와 prev가 노드 자기자신이고, key=None인 더미노드를 생성해야한다.
@@ -65,6 +67,7 @@ class Doublylinkedlist:
         return self.size
 ```
 
+<br><br>
 
 ## 지원연산
 
@@ -97,6 +100,7 @@ def splice(self, a, b, x):
     b.next = xn
 ```
 
+<br><br>
 
 ### 이동연산
 
@@ -131,6 +135,7 @@ def pushback(self, key):
 만약 특정 노드 앞이나 뒤로 insertAfter나 moveAfter 등의 메서드를 사용하고 싶다면, 노드 x를 리턴받아야한다.  
 노드를 리턴받는 메서드를 search나 first, last로 만들 수 있다.
 
+<br><br>
 
 ### search
 
@@ -153,6 +158,7 @@ def search(self,key):
         return None
 ```
 
+<br><br>
 
 ### isempty
 
@@ -165,6 +171,8 @@ def isEmpty(self):
         else:
             return True
 ```
+
+<br><br>
 
 ### first, last
 
@@ -179,6 +187,8 @@ def last(self):
     ch = self.head
     return ch.prev #노드리턴
 ```
+
+<br><br>
 
 ### remove
 
@@ -197,7 +207,7 @@ def remove(self,x): #x노드를 삭제.
 ```
 
 
-
+<br><br>
 
 ### popfront,back
 
@@ -226,6 +236,8 @@ def popback(self):
         return key
 ```
 
+<br><br>
+
 ### join
 ```python
 def join(self, list):
@@ -239,6 +251,8 @@ def join(self, list):
             list.head.prev.next = self.head #추가하고자하는 리스트의 마지막값의 다음값은 self리스트의 헤드값이되어 서로 원형 연결한다.
             self.head.prev = list.head.prev #self.head의 prev링크는 list의 마지막값이되어야한다.
 ```
+
+<br><br>
 
 # 참고자료
 개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.  
