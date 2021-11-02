@@ -37,16 +37,10 @@ print(sys.path)
 
 현재 python을 실행하는 파일의 상대경로로 module의 디렉터리주소를 특정하면된다.  
 
-import 파일명.파일명.. 이렇게 import가 쉽게 된다.  
-
-파이썬은 패키지로 분할된 개별적인 모듈로 구성된다.   
-기본적으로 알아야하는 것은 상대경로에 접근하기위해서는   
-`../`로 부모디렉터리에, `./`로 현재 디렉터리의 주소를 생략해서 작성할 수 있다는 것이다.   
-
 이렇게 모듈을 import하는 방법에는 여러가지가 있는데,  
 
-1. 단순히 import a.b.c로 import
-2. from a.b import c
+1. 단순히 import a.b.c로 import #import 시, 모듈단위까지 가능
+2. from a.b import c #from과 함께쓰면 함수단위까지 import가 가능하다.
 3. from a.b import * #모든 모듈 import
 4. from a.b import c as d #d라는 별칭으로 import
 
