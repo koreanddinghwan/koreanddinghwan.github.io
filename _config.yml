@@ -299,7 +299,7 @@ defaults:
   #_mylogs
   - scope:
       path: ""
-      type: mylogs
+      type: portfolio
     value:
       layout: single
       author_profile: true
