@@ -24,8 +24,8 @@ description              : "어차피 할 평생공부 하고싶은거 하자"
 url                      : "https://koreanddinghwan.github.io"
 baseurl                  : "/lightbig"
 repository               : koreanddinghwan/lightbig
-teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : /assets/images/avatar.png
+logo                     : /assets/images/avatar.png
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs            : true   #, false (default)
 words_per_minute         : 200
@@ -71,7 +71,7 @@ google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
 # SEO Related
-google_site_verification : FJVl-ChyUQSL_fnvsyB_lYrP3RbPZd2iMZDlUF72218
+google_site_verification : 
 bing_site_verification   :
 yandex_site_verification :
 naver_site_verification  :
