@@ -20,7 +20,7 @@ title                    : "LightBig"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Dding-Hwan"
-description              : "씹고 뜯고 맛보고 즐기는 블로그"
+description              : "어차피 할 평생공부 하고싶은거 하자"
 url                      : "https://koreanddinghwan.github.io"
 baseurl                  : "/lightbig"
 repository               : koreanddinghwan/lightbig
