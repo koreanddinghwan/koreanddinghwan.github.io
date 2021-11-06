@@ -296,7 +296,7 @@ defaults:
       date_format: "%Y-%m-%d"
       read_time: false
 
-  #_portfolio
+  #_mylogs
   - scope:
       path: ""
       type: mylogs

@@ -5,6 +5,8 @@ permalink: /mylogs/
 collection: mylogs
 entries_layout: grid
 classes: wide
+author_profile: true
+sidebar_main: true
 ---
 
 
