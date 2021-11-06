@@ -1,7 +1,7 @@
 ---
 title: "About me"
 permalink: /about/
-layout: single
+layout: archive
 sidebar_main: true
 ---
 
