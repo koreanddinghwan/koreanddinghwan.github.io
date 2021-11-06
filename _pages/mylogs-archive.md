@@ -1,6 +1,6 @@
 ---
 title: Mylogs
-layout: collection
+layout: archive
 permalink: /mylogs/
 collection: mylogs
 entries_layout: grid
