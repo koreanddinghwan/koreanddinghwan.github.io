@@ -14,21 +14,21 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "javascript" %}
-                        <li><a href="/lightbig/categories/javascript" class="">Javascript ({{category[1].size}})</a></li>
+                        <li><a href="/categories/javascript" class="">Javascript ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "css" %}
-                        <li><a href="/lightbig/categories/css" class="">Css({{category[1].size}})</a></li>
+                        <li><a href="/categories/css" class="">Css({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "html" %}
-                        <li><a href="/lightbig/categories/html" class="">Html ({{category[1].size}})</a></li>
+                        <li><a href="/categories/html" class="">Html ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -36,7 +36,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "boj" %}
-                        <li><a href="/lightbig/categories/boj" class="">Python 백준 문제풀이 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/boj" class="">Python 백준 문제풀이 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -45,14 +45,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "datastructurepy" %}
-                        <li><a href="/lightbig/categories/datastructurepy" class="">파이썬 자료구조 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "algorithm" %}
-                        <li><a href="/lightbig/categories/algorithm" class="">알고리즘 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/algorithm" class="">알고리즘 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -61,7 +61,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "pythonsyntax" %}
-                        <li><a href="/lightbig/categories/pythonsyntax" class="">파이썬 문법공부 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/pythonsyntax" class="">파이썬 문법공부 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -71,7 +71,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "blog" %}
-                        <li><a href="/lightbig/categories/blog" class="">jekyll로 만드는 github blog ({{category[1].size}})</a></li>
+                        <li><a href="/categories/blog" class="">jekyll로 만드는 github blog ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -80,14 +80,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "etc" %}
-                        <li><a href="/lightbig/categories/etc" class="">그때그때, 궁금한 것들({{category[1].size}})</a></li>
+                        <li><a href="/categories/etc" class="">그때그때, 궁금한 것들({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
       </li>
       <li>	
             <br>      
-            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkoreanddinghwan.github.io%2Flightbig%2F&count_bg=%233D5EC8&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false">
+            <!-- <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkoreanddinghwan.github.io%2Flightbig%2F&count_bg=%233D5EC8&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"> -->
       </li>
   </ul>
 </nav>

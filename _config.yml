@@ -22,8 +22,8 @@ subtitle                 : # site tagline that appears below site title in masth
 name                     : "Dding-Hwan"
 description              : "어차피 할 평생공부 하고싶은거 하자"
 url                      : "https://koreanddinghwan.github.io"
-baseurl                  : "/lightbig"
-repository               : koreanddinghwan/lightbig
+baseurl                  : ""
+repository               : koreanddinghwan/koreanddinghwan.github.io
 teaser                   : /assets/images/avatar.png
 logo                     : /assets/images/avatar.png
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -32,7 +32,7 @@ words_per_minute         : 200
 comments:
   provider               : "disqus" #"utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "giscus", "custom"
   disqus:
-    shortname            : "https-koreanddinghwan-github-io-lightbig" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "https-koreanddinghwan-github-io" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -112,7 +112,7 @@ author:
       # url: "myunghwan0421@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://koreanddinghwan.github.io/lightbig/"
+      # url: "https://koreanddinghwan.github.io//"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
