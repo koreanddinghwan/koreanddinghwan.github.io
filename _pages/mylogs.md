@@ -1,6 +1,6 @@
 ---
 title: "My Log"
-layout: collection
+layout: archive
 permalink: mylogs/
 author_profile: true
 sidebar_main: true
