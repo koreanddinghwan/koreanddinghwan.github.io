@@ -273,7 +273,7 @@ compress_html:
   ignore:
     envs: development
 
-collections:
+collection:
   mylogs:
     output: true
     permalink: /:collection/:path/
@@ -307,3 +307,4 @@ defaults:
       date_format: "%Y-%m-%d"
       read_time: false
       comments: true
+      show_date: true
