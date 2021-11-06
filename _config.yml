@@ -274,7 +274,7 @@ compress_html:
     envs: development
 
 collections:
-  ㅡmylogs:
+  mylogs:
     output: true
     permalink: /:collection/:path/
 
