@@ -273,12 +273,10 @@ compress_html:
   ignore:
     envs: development
 
-#/:의 의미가 뭘까?
 collections:
-  mylogs:
+  ㅡmylogs:
     output: true
     permalink: /:collection/:path/
-
 
 # Defaults
 defaults:
@@ -297,11 +295,12 @@ defaults:
       date_format: "%Y-%m-%d"
       read_time: false
 
-  # _mylogs #각 폴더별 디폴트값 설정
   - scope:
       path: ""
       type: mylogs
     values:
       layout: single
-      author_profile: true
-      share: true
+      read_time: false
+      author_profile: false
+      share: false
+      comments: false
