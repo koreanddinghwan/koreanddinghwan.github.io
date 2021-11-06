@@ -273,7 +273,7 @@ compress_html:
   ignore:
     envs: development
 
-collection:
+collections:
   mylogs:
     output: true
     permalink: /:collection/:path/
