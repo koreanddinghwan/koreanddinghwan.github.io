@@ -1,13 +1,9 @@
 ---
-title: mylogs
-layout: collection
+title: "My Logs"
+layout: archive
 permalink: /mylogs/
-collection: mylogs
 entries_layout: grid
 classes: wide
-author_profile: true
-sidebar_main: true
 ---
 
-
-<!-- 공백이 포함되어 있는 카테고리 이름의 경우 site.categories['a b c'] 이런식으로! -->
+<!-- mylogs의 블로그 글들 보관할 페이지. -->
