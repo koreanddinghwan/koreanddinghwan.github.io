@@ -274,7 +274,7 @@ compress_html:
     envs: development
 
 collections:
-  portfolio:
+  mylogs:
     output: true
     permalink: /:collection/:path/
 
@@ -299,9 +299,11 @@ defaults:
   #_portfolio
   - scope:
       path: ""
-      type: portfolio
+      type: mylogs
     value:
       layout: single
       author_profile: true
       share: false
-      
+      date_format: "%Y-%m-%d"
+      read_time: false
+      comments: true
