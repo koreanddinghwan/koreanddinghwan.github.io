@@ -2,6 +2,9 @@
 title:  "첫 글"
 excerpt: "첫 블로그 글"
 
+categories:
+- mylogs
+
 toc: true
 toc_sticky: true
  
