@@ -1,6 +1,6 @@
 ---
 title: "My Log"
-layout: posts
+layout: splash
 permalink: mylogs/
 author_profile: true
 sidebar_main: true
