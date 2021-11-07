@@ -1,0 +1,89 @@
+I"m<h1 id="자료구조와-알고리즘">자료구조와 알고리즘</h1>
+<p>자료: data<br />
+구조: 저장공간(memory) + 연산(읽기,쓰기,삽입,삭제,탐색)<br />
+<br />
+알고리즘: 입력된 data를 기준으로 유한한 횟수의 연산을 반복해서 정답을 출력하는 것</p>
+
+<h1 id="자료구조">자료구조</h1>
+
+<h2 id="자료구조의-예시">자료구조의 예시</h2>
+<h3 id="1-변수variable">1. 변수(variable)</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```
+a = 3 (쓰기연산)
+print(a) (읽기연산)
+```
+3이 a에 담기는 것이 아닌,  
+3이 들어있는 &lt;u&gt;객체의 주소&lt;/u&gt;가 a에 담기는 것이다. ### 2. 배열(array)
+```
+a = [1,2,3,4]
+
+접근: 각 원소의 index(0부터시작)
+a[0] = 1
+
+
+읽기, 쓰기: index값을 이용해 접근하고, 읽기쓰기가능.
+print(a[0]) = 1
+a[0] = 3 
+-&gt; a = [3,2,3,4]
+
+삽입
+a.append(9) 
+-&gt; a = [3,2,3,4,9] 
+a.insert
+
+삭제
+a.pop()
+-&gt;리스트의 마지막 원소 삭제하고 리턴한다.
+a.pop(2)
+-&gt;리스트의 인덱스2를 가진 원소를 삭제하고 리턴한다.
+```
+리스트도 변수와 동일하게 
+각 원소는 각 원소 객체의 주소가 리스트의 인덱스에 담기는 것이다.
+</code></pre></div></div>
+
+<h1 id="알고리즘">알고리즘</h1>
+
+<h2 id="알고리즘의-예시">알고리즘의 예시</h2>
+<p><br /></p>
+
+<p>최대공약수(gcd)
+gcd(8,12) = max{1,2,4} = 4
+한쪽이 0이 될때까지 큰수에서 작은수를 빼자</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gcd_sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">-</span><span class="n">b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">-</span><span class="n">a</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</code></pre></div></div>
+
+<p>만약 gcd(2,100) 이라면 50번의 while문을 반복해야한다.<br />
+<br /><br /><br />
+이런 불필요함을 해결하기위해, 우리는 새로운 함수를 만들어야한다.<br />
+작은 수를 큰 수로 나눈 나머지로 표현을 한다면,</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gcd_mod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">a</span><span class="err">!</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+<p>1번만에
+gcd(2,100) -&gt; gcd(2,0)이 된다.
+<br /><br /><br />
+또 다른 방법으로는 재귀함수를 만드는 방법이 있다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">gcd_rec</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">gcd_rec</span><span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gcd_rec</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="참고자료">참고자료</h1>
+<p>개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.<br />
+자세한 강의 내용은 신천수 교수님 강의를 참고하시면 좋을 것 같습니다.<br />
+<a href="https://www.youtube.com/c/ChanSuShin/featured">신천수 교수님 자료구조 강의</a></p>
+:ET

@@ -1,0 +1,83 @@
+I"<h1 id="ajax">AJAX</h1>
+
+<p>Asynchronous Javascript And Xml<br />
+자바스크립트에 내장된 xmlhttprequest 객체를 이용해서<br />
+페이지를 새로고침하지 않고도 필요한 데이터를 비동기적으로 불러오는 기법을 의미한다.<br />
+데이터양을 줄이기위해 html그 자체를 불러오는게 아니라,<br />
+XML형식으로 백엔드의 데이터를 불러오는데 현재는 JSON 형식을 사용한다.</p>
+
+<p><br /></p>
+
+<h2 id="-ajax-작동과정">💡 AJAX 작동과정</h2>
+<ol>
+  <li>화면에 렌더링이 끝난 시점이다.</li>
+  <li>사용자가 화면에서 어떤 버튼을 눌러 데이터를 추가요청한다.
+(이벤트 발생)</li>
+  <li>이때, 추가 데이터를 가진 새로운 페이지를 요청하는것이 아닌, 데이터만 요청된다.
+(AJAX기법으로 JSON 데이터 불러옴)</li>
+  <li>DOM API로 JSON 데이터의 내용을 HTML로 추가한다.</li>
+</ol>
+
+<p><br /><br /></p>
+
+<h2 id="-json">💡 JSON</h2>
+<p>Javascript Object Notation<br />
+자바스크립트 객체를 표현하는 데이터 형식. <br />
+객체타입의 리터럴 선언과 비슷하다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"인프런"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"born"</span><span class="p">:</span><span class="mi">2017</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"classes"</span><span class="p">:[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p><br /><br /></p>
+
+<h2 id="-httprequest-객체의-프로퍼티">💡 httpRequest 객체의 프로퍼티</h2>
+<p><a href="http://tcpschool.com/ajax/ajax_server_response">참고TCPSCHOOL</a></p>
+
+<p><br /></p>
+
+<h3 id="️-readystate">✏️ readyState</h3>
+
+<p>XMLHttpRequest 객체의 현재 상태를 의미한다.<br />
+객체의 현재 상태에 따라 5단계로 바뀌는데,</p>
+<ul>
+  <li>0: unset, XMLHttpRequest 객체가 생성된 상태.</li>
+  <li>1: opened, open() 메서드가 실행됨</li>
+  <li>2: headers_received, 모든 요청에 대한 응답이 도착</li>
+  <li>3: loading, 요청한 데이터 처리중</li>
+  <li>4: done, 요청한 데이터의 처리가 완료되어 응답할 준비가 완료됨
+<br /></li>
+</ul>
+
+<h3 id="️-status">✏️ status</h3>
+
+<p>서버의 문서 상태</p>
+<ul>
+  <li>200: 서버에 문서가 존재한다.</li>
+  <li>404: 서버에 문서가 존재하지 않다.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="️-onreadystatechange">✏️ onreadystatechange</h3>
+<p>XMLHttpRequest 객체의 readyState 프로퍼티 값이 변할 때마다 자동으로 호출되는 함수를 설정한다.<br />
+이 함수는 서버에서 응답이 도착할 때까지 readyState 프로퍼티 값의 변화에 따라 총 5번 호출된다.<br />
+이 프로퍼티를 이용하면 서버에 요청한 데이터가 존재하고 응답이 도착하는 순간을 특정할 수 있다</p>
+
+<p><br /><br /></p>
+
+<h2 id="-ajax-예제">💡 AJAX 예제</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">httpRequest</span> <span class="o">=</span> <span class="nx">newXMLHttpRequest</span><span class="p">();</span> <span class="c1">//httprequest에 웹표준에서 제공하는 객체 지정</span>
+
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>    <span class="c1">//onreadystatechange는 AJAX상태 변화시 이벤트 감지,</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyStatus</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">){</span> <span class="c1">//readystatus가 4고, status가 200이라면</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementByid</span><span class="p">(</span><span class="dl">"</span><span class="s2">panels</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span> <span class="c1">//응답문자열을innerhtml로 삽입</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">/getJson</span><span class="dl">"</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span> <span class="c1">//요청방식</span>
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span> <span class="c1">//전송</span>
+</code></pre></div></div>
+
+:ET

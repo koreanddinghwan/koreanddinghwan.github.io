@@ -1,0 +1,168 @@
+I"&<h1 id="자료구조와-알고리즘의-성능">자료구조와 알고리즘의 성능</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>자료구조와 알고리즘을 설계 → 코드 → 컴퓨터에서 실행  
+문제점 1. Hw/Sw에 따라 다른 성능  
+문제점 2. 다양한 크기의 입력
+</code></pre></div></div>
+
+<p>따라서 소프트웨어와 하드웨어환경과 독립적인<br />
+<strong><u>1가상컴퓨터(virtual machine)</u></strong>에 알고리즘을 기술할 <br />
+<strong><u>2가상언어(pseudo language)</u></strong>로<br />
+<strong><u>3가상코드(psuedo code)</u></strong>를 작성한다.</p>
+
+<p><br />
+우리가 이 3가지를 약속하면 하드웨어와 소프트웨어 환경에 독립적인 상황에서 객관적으로 알고리즘을 비교할 수 있다.
+<br />
+<br />
+<br /></p>
+
+<h2 id="가상컴퓨터">가상컴퓨터</h2>
+<p><br /></p>
+
+<h3 id="역사">역사</h3>
+<p>원조는 튜링 머신인데, 후에 폰 노이만이 현재 컴퓨터에 가장 가까운 형태를 제시한다.<br />
+<br /></p>
+
+<h3 id="random-access-machine모델"><strong>R</strong>andom <strong>A</strong>ccess <strong>M</strong>achine모델</h3>
+<p>RAM모델 = CPU(연산) + Memory(데이터저장) + 기본연산<br />
+<br /></p>
+
+<h3 id="기본연산">기본연산</h3>
+<p>1 단위시간에 수행되는 연산의 모음이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-배정,대입,복사연산  
+ ex) a=b, b를 읽어 a를 쓰기  
+
+-산술연산 
+ ex) +,-,*,/   
+ 주의) %,올림,내림,반올림은 포함x
+
+-비교연산 
+ ex) &gt;,&gt;=,&lt;,&lt;=,==,!= 
+ a&gt;b는 a-b&lt; 0 을 판별하는 것과 같다. 이 또한 기본연산에서 1시간으로 가정한다. 
+
+-논리연산 
+ ex) and, or, not
+
+-비트연산
+ ex)bit-and, or, not &lt;br/&gt; &lt;br/&gt; &lt;br/&gt;
+</code></pre></div></div>
+
+<h2 id="가상언어">가상언어</h2>
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기본연산  
+조건문   
+반복문    
+함수정의, 호출, 리턴
+</code></pre></div></div>
+<p>을 제공하는 언어이다.
+<br />
+<br />
+<br /></p>
+
+<h2 id="가상코드">가상코드</h2>
+<p><br /></p>
+
+<h3 id="기본연산-예시">기본연산 예시</h3>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/136416229-86bf1157-557a-4184-b5f6-e2e1469eb58f.jpeg" alt="virtualcode" /><br />
+<br /></p>
+
+<h3 id="평균내기">평균내기</h3>
+
+<p>모든 입력에 대해 기본연산횟수를 더한 후, 평균을 내는 방법<br />
+하지만 이 방법은 현실적으로 불가능하다.<br />
+<br />
+<br /></p>
+
+<h2 id="worst-case-time-complexity"><u>**Worst case time complexity**</u></h2>
+<p>연산이 가장 많이 필요한 입력에 대한 기본연산 횟수를 측정한다.<br />
+이 방법이 일반적으로 알고리즘분야에서 시간복잡도를 정의하는 방법이다.<br />
+단점: 정확도 ▽<br />
+장점: 어떤 입력에 대해서도 wtc보다 수행시간이 크지 않다.
+&lt;/br&gt;
+<br /></p>
+
+<h3 id="wtc의-적용">WTC의 적용</h3>
+<p>위 예시에 WTC를 적용해보자.<br />
+A가 오름차순정렬되어있을때, if문이 true가되어 대입연산이 한번 더 실행되므로<br />
+기본연산 횟수가 가장 많다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A=[0,1,2,5,9]
+1.cur_max에 A[0] 대입 
+2.cur_max와 A[1] 비교, if문 true
+3.if문 실행, cur_max = A[1]
+4.cur_max와 A[2] 비교, if문 true
+5.if문 실행, cur_max = A[2]
+6.cur_max와 A[3] 비교, if문 true
+7.if문 실행, cur_max = A[3]
+8.cur_max와 A[4] 비교, if문 true
+9.if문 실행, cur_max = A[4]
+
+
+맨 처음 대입연산 1번
++
+for문의 if 비교,대입연산 2번 * for문 싸이클(n-1)번
+
+T(n) = 1 + 2(n-1) = 
+2n - 1(번)
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<h3 id="wtc-예시">WTC 예시</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wtc일 경우, 모든 A의 요소가 짝수일때 가정.
+1.sum 대입연산 ▷ 1번
+2.if A[i] % 2 == 0: 에서 산술연산 %와 비교연산 ==  ▷ 2번
+3.sum = sum + A[i] 에서 대입연산 =과 산술연산 +    ▷ 2번
+
+맨처음 대입연산 1번
++
+for 문 내의 기본연산 4번 * for문 싸이클 n번
+T(n) = 1 + 4n
+</code></pre></div></div>
+<p><br />
+<br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">sum2</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="nb">sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.sum 대입연산 ▷ 1번
+2.바깥 for문 n번
+3.안쪽 for문 내에서 대입연산, 산술연산 2번 ▷ 3번
+4.안쪽 for문은
+i=0, j는 n번
+i=1, j는 n-1번
+.
+.
+.
+i=n-1, j는 1번
+
+j를 모두 합하면 j for문이 몇 번 수행되는지 알 수 있는데,  
+n(n+1)/2 번 수행된다.
+
+
+T(n) = 1 + 3*(n(n+1)/2)
+</code></pre></div></div>
+<p>sum1과 sum2를 비교하면, sum2는 n이 제곱되어있으므로<br />
+입력값이 늘어남에따라 wtc가 sum1에 비해 더 크게 증가함을 알 수 있다.</p>
+
+<h1 id="참고자료">참고자료</h1>
+<p>개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.<br />
+자세한 강의 내용은 신천수 교수님 강의를 참고하시면 좋을 것 같습니다.<br />
+<a href="https://www.youtube.com/c/ChanSuShin/featured">신천수 교수님 자료구조 강의</a></p>
+:ET

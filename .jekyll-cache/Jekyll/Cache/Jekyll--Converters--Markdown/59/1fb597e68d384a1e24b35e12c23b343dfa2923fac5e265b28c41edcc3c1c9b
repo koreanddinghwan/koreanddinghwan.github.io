@@ -1,0 +1,36 @@
+I"+<!-- 공백이 포함되어 있는 카테고리 이름의 경우 site.categories['a b c'] 이런식으로! -->
+
+<hr />
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/html/html/">[Frontend] html기초</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.28
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#html" class="page__taxonomy-item-category" rel="tag">html</a>
+                    
+                    
+                    <a href="/tags/#frontend" class="page__taxonomy-item-tag" rel="tag">frontend</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#html" class="page__taxonomy-item-tag" rel="tag">html</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9" class="page__taxonomy-item-tag" rel="tag">생활코딩</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+:ET

@@ -1,0 +1,68 @@
+I"�<h1 id="문자열">문자열</h1>
+
+<p>문자열은 튜플과 같이 직접적인 변환이 불가능하다.</p>
+
+<h2 id="문자열-바꾸기">문자열 바꾸기</h2>
+<p>따라서 문자열을 바꾸기 위해서는</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="s">'hello world'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"world"</span><span class="p">,</span> <span class="s">"python"</span><span class="p">)</span>
+<span class="n">과같이</span> <span class="n">다른</span> <span class="n">변수에</span> <span class="n">변경되는</span> <span class="n">결과를</span> <span class="n">할당해줘야한다</span><span class="p">.</span>
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<h2 id="문자-치환하기">문자 치환하기</h2>
+<p>str.maketrans(‘바꿀문자’,’새문자’)로 변환 테이블을 만들어 해당하는 문자들을 한 번에 바꿀수도 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table</span> <span class="o">=</span> <span class="nb">str</span><span class="p">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s">'aeiou'</span><span class="p">,</span><span class="s">'12345'</span><span class="p">)</span>
+<span class="s">'apple'</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="s">"1ppl2"</span>
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<h2 id="서식-지정자">서식 지정자</h2>
+<p>서식지정자는 %이다. 뒤에 자료형을 뜻하는 문자가 붙는다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'%s' % '문자열'
+</code></pre></div></div>
+<p>문자열 위치에 변수도 입력이 가능하다.
+<br />
+<br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'%d' % 정수
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'%f' % 실수
+</code></pre></div></div>
+<p>%.2f로 표현하면 소수점아래 2번째자리수가지 표현한다는 의미이다.
+<br />
+<br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'%10s' % 'python'
+</code></pre></div></div>
+<p>문자열 10자리만들어 오른쪽 정렬한다.
+왼쪽정렬은<br />
+‘%010s’로 가능하다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="format-메서드">Format 메서드</h2>
+
+<p>문자열 포매팅은 서식 지정자 방식보다 더 간단하다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'{0:&lt;10}'.format('python')
+&gt;&gt;&gt;'python    '
+</code></pre></div></div>
+<p>해당 인덱스 값에 대해서 부등호로 좌우정렬을,  뒤의 숫자로 길이를 지정할 수 있다.</p>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'{0:0&lt;10}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">'python'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="s">'python0000'</span>
+</code></pre></div></div>
+<p>:뒤에 붙은 숫자는 정렬 후 나머지 칸을 어떻게 채울 것인가에 대한 정보를 담는다.</p>
+
+:ET

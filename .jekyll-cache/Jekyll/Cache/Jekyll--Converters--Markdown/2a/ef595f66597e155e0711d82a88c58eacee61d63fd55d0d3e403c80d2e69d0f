@@ -1,0 +1,152 @@
+I"�<!-- 공백이 포함되어 있는 카테고리 이름의 경우 site.categories['a b c'] 이런식으로! -->
+
+<hr />
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/blog/blog-jekyll/">[jekyll &amp; github] jekyll post에 대해</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.04
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#blog" class="page__taxonomy-item-category" rel="tag">blog</a>
+                    
+                    
+                    <a href="/tags/#blog" class="page__taxonomy-item-tag" rel="tag">blog</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#github" class="page__taxonomy-item-tag" rel="tag">github</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#git" class="page__taxonomy-item-tag" rel="tag">git</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#jekyll" class="page__taxonomy-item-tag" rel="tag">jekyll</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#liquid" class="page__taxonomy-item-tag" rel="tag">liquid</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/blog/blog-references/">[jekyll &amp; github] 공식문서 공부</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.29
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#blog" class="page__taxonomy-item-category" rel="tag">blog</a>
+                    
+                    
+                    <a href="/tags/#blog" class="page__taxonomy-item-tag" rel="tag">blog</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#github" class="page__taxonomy-item-tag" rel="tag">github</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#git" class="page__taxonomy-item-tag" rel="tag">git</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#jekyll" class="page__taxonomy-item-tag" rel="tag">jekyll</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/blog/blog-third-layout/">[jekyll &amp; github] layout에 대한 개념</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.29
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#blog" class="page__taxonomy-item-category" rel="tag">blog</a>
+                    
+                    
+                    <a href="/tags/#blog" class="page__taxonomy-item-tag" rel="tag">blog</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#github" class="page__taxonomy-item-tag" rel="tag">github</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#git" class="page__taxonomy-item-tag" rel="tag">git</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#jekyll" class="page__taxonomy-item-tag" rel="tag">jekyll</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/blog/blog-first/">[jekyll &amp; github] my_own_blog</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.28
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#blog" class="page__taxonomy-item-category" rel="tag">blog</a>
+                    
+                    
+                    <a href="/tags/#blog" class="page__taxonomy-item-tag" rel="tag">blog</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#github" class="page__taxonomy-item-tag" rel="tag">github</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#git" class="page__taxonomy-item-tag" rel="tag">git</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#jekyll" class="page__taxonomy-item-tag" rel="tag">jekyll</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+:ET
