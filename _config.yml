@@ -24,7 +24,7 @@ description              : "어차피 할 평생공부 하고싶은거 하자"
 url                      : "https://koreanddinghwan.github.io"
 baseurl                  : ""
 repository               : koreanddinghwan/koreanddinghwan.github.io
-teaser                   : /assets/images/avatar.png
+teaser                   : # /assets/images/avatar.png
 logo                     : /assets/images/avatar.png
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs            : true   #, false (default)
