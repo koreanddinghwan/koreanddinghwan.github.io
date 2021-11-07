@@ -1,0 +1,71 @@
+I"�
+<h1 id="비교연산자">비교연산자</h1>
+<p><br />
+결과를 boolean(true/false) 으로 반환한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="o">==</span> <span class="nx">값이</span> <span class="nx">같다</span><span class="p">.</span>
+    <span class="o">!=</span> <span class="nx">값이</span> <span class="nx">다르다</span><span class="p">.</span>
+    <span class="o">===</span> <span class="nx">값이</span> <span class="nx">같고</span><span class="p">,</span> <span class="nx">데이터타입도</span> <span class="nx">일치한다</span><span class="p">.</span>
+    <span class="o">&lt;</span>
+    <span class="o">&gt;</span>
+    <span class="o">&lt;=</span>
+    <span class="o">&gt;=</span>
+
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="논리연산자">논리연산자</h1>
+<p><br />
+boolean을 연산할 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &amp;&amp; and와 같음
+    || or와 같음
+    !  not과 같음
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h1 id="연산자의-우선순위">연산자의 우선순위</h1>
+
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>괄호 → 증감 연산자 → 산술 연산자 → 비교 연산자 
+→ 논리 연산자 → 대입 연산자  
+</code></pre></div></div>
+
+<p><br />
+<img src="https://user-images.githubusercontent.com/76278794/137260249-6fe736cc-bc57-44a7-a7fd-9b1747c620be.jpeg" width="600" /></p>
+
+<p><br /><br /></p>
+
+<h1 id="삼항-연산자">삼항 연산자</h1>
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>condition ? value if true : value if false
+</code></pre></div></div>
+<dl>
+  <dt>condition-&gt; 우리가 판단하고자 하는 것  <br /><br /></dt>
+  <dt>?와 : 사이의 코드는 condition이 참이면 실행된다.<br /></dt>
+  <dd>뒤의 코드는 condition이 거짓이면 실행된다.<br /></dd>
+</dl>
+
+<p><br /><br /></p>
+
+<h1 id="단항-연산자">단항 연산자</h1>
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete:객체를 삭제하는 단항연산자이다.
+
+typeof():변수의 타입을 반환하는 함수이다.
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h1 id="비트-연산자">비트 연산자</h1>
+<p><br /></p>
+
+<p>이진수 연산시 사용하는 연산자이다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;,|,^,~,&gt;&gt;,&lt;&lt;,&gt;&gt;&gt;
+</code></pre></div></div>
+
+<p><br /><br /></p>
+:ET

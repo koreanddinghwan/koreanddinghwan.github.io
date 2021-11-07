@@ -1,0 +1,121 @@
+I"�<h1 id="javascript란">javascript란</h1>
+<p>객체기반의 스크립트 언어.<br />
+웹 문서에서 사용자와 다양한 상호작용 위한 언어이다.<br />
+백엔드 프로그램인 node.js등을 통해 다양한 프로그래밍에 응용되고있다.</p>
+
+<p>javascript와 ecmascript는 동일한 말이라고 생각하면된다.<br />
+ajax는 웹사이트 접속했을떄 새로운 데이터를 보여주는 효과를 의미한다.<br />
+<br /></p>
+
+<h2 id="원리">원리</h2>
+<p>서버에서 작성한 html과 css를 유저가 이를 요청하게된다. 
+보내준 이 정보를 사용자의 웹 브라우저가 읽으면서 사용자에게 이 정보를 보여주게된다.<br />
+이 과정에서 브라우저 내에 인터프리터가 자바스크립트를 해석해서 보여준다.<br />
+html과 css는 단순히 보여주는 역할만을 하지만<br />
+자바스크립트는 로직을 갖고 있기 때문에 프로그래밍언어라고 할 수 있다.
+<br />
+<br /></p>
+
+<h1 id="자바스크립트의-데이터-유형">자바스크립트의 데이터 유형</h1>
+
+<p><br /></p>
+
+<ol>
+  <li>원시형태 : number, string, boolean(t/f), undefined, null</li>
+  <li>객체형태 : 시간, 배열, 객체 등
+<br />
+<br />
+    <h2 id="데이터-선언literal">데이터 선언(literal)</h2>
+    <p>코드 상에서 값을 줄때 자료형에따라 문법이 다르다.<br />
+‘1000’ vs 1000 은 다르다.
+<br />
+<br /></p>
+  </li>
+</ol>
+
+<h2 id="원시-자료형">원시 자료형</h2>
+
+<h3 id="number">number</h3>
+<p>정수, 실수, 모두포함
+<br /></p>
+
+<h3 id="string">string</h3>
+<p>문자형은 단순히 문자들의 나열을 의미.
+<br /></p>
+
+<h3 id="boolean">boolean</h3>
+<p>true or false
+<br /></p>
+
+<h3 id="undefined">undefined</h3>
+<p>값이 정해지지 않음 의미
+<br /></p>
+
+<h3 id="null">null</h3>
+<p>값이 없음. 자료형이기도하지만 값 그 자체를 의미하기도한다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="변수">변수</h2>
+<p>프로그램은 값을 입력받아 정해진 동작을 수행한다.<br />
+우리는 이 변수들을 함수에 담아 리턴값을 사용한다.<br />
+우리는 이 함수에도 이름을 붙여서 사용할 수 있다.<br />
+<br /></p>
+
+<h3 id="선언방법">선언방법</h3>
+<p>variable의 약어인 var 뒤에 변수의 이름을 선언한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var x;
+</code></pre></div></div>
+<p>이러면 변수 x가 선언되게된다.</p>
+
+<p>그리고 이에 값을 할당하기 위해서</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = 5;
+x = "명환";
+</code></pre></div></div>
+<p>이렇게 할당이 가능하고,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var x = 5;
+</code></pre></div></div>
+<p>처럼 선언과 동시에 할당도 가능하다.</p>
+
+<p>파이썬은 선언과 동시에 할당하는 방법을 먼저 배우고, 함수에 대해 배운다.<br />
+원리는 동일.</p>
+
+<p>undefined의 경우, 값이나 함수가 정의되지 않은 상태에서는 이 값이나 함수가 undefined가 된다.<br />
+<br /></p>
+
+<h3 id="변수-이름-규칙">변수 이름 규칙</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-'-'사용불가  
+-첫 글자로 숫자 불가  
+-띄어쓰기 불가  
+-js프로그래밍언어의 자체 명령어 사용불가  
+</code></pre></div></div>
+<p>파이썬과 비슷하다</p>
+
+<h1 id="자바스크립트의-산술연산">자바스크립트의 산술연산</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>덧셈 +
+뺄셈 - 
+곱셈 * 
+나눗셈 /
+나머지 %
+파이썬과 동일하다.
+</code></pre></div></div>
+
+<p>자바스크립트를 사용하는 방법은<br />
+html 파일 내에서</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
+&lt;script/&gt;
+</code></pre></div></div>
+<p>로 html파일이 실행되면 내부의 자바스크립트 파일도 실행된다.<br />
+이를 확인하자.</p>
+
+<h2 id="데이터-형변환">데이터 형변환</h2>
+<p>파이썬은 다른 데이터타입간 연산시 오류가 발생한다.<br />
+하지만 자바스크립트에서 데이터 산술연산 시, 암시적 형변화가 생길 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>더하기(+) 연산자는 문자형과 숫자형이 만나면 문자형으로 연산된다.
+80 + '점' = '80점'
+</code></pre></div></div>
+:ET

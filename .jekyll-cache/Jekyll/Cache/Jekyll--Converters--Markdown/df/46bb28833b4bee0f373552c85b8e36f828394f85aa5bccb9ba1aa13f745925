@@ -1,0 +1,199 @@
+I"=%<h1 id="big-o표기법">Big-O표기법</h1>
+
+<h2 id="의미">의미</h2>
+
+<p>입력의 크기 n이 커질 때, 수행시간이 증가하는 정도,<br />
+즉 <strong>n</strong>의 차수가 가장 중요하다.<br />
+n에 의한 영향을 가장 많이 받는, n의 최고차항의 계수를 삭제한 형태로 표현</p>
+
+<h2 id="방법">방법</h2>
+<ol>
+  <li>n에 대한 최고차항만을 남기고 다른 항은 삭제.</li>
+  <li>n의 최고차항의 계수도 삭제한다.</li>
+  <li>남은 항을 O()에 넣는다.</li>
+</ol>
+
+<p>n의 차수가 크면 클수록 수행시간 T(n)이 길어진다.<br />
+차수가 높은 Big(O)일수록 집합적으로 크다고 표현할 수 있다.<br />
+<img src="https://user-images.githubusercontent.com/76278794/136644074-0ff657ae-8df6-4333-80d4-efa0a193d6bb.png" alt="bigo" /></p>
+
+<h1 id="시간복잡도">시간복잡도</h1>
+
+<h2 id="o1">O(1)</h2>
+<p>선형알고리즘, 입력에 상관없이 상수번만 실행된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">printing</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="olog-n">O(log n)</h2>
+<p>로그함수의 형태를 띄는 알고리즘이다.<br />
+입력이 크기가 커질수록 기본연산의 횟수는 선에 가까운 형태가 된다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">num_bits</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span><span class="mi">2</span>
+        <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div></div>
+<p>만약 n을 2진수로 만드는 알고리즘을 만든다고 할때, 실행되는 연산의 수가 이런 형태를 띈다. 
+<br /><br /></p>
+
+<h2 id="osqrtn">O(sqrt(n))</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factors</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">k</span><span class="o">*</span><span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#약수인경우
+</span>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">#약수가 아닌경우
+</span>            <span class="k">continue</span>
+
+    <span class="k">if</span> <span class="n">k</span> <span class="o">*</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span> <span class="c1">#제곱수인경우 리턴값
+</span>        <span class="k">return</span> <span class="n">count</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+        
+    <span class="k">return</span> <span class="n">count</span> <span class="o">*</span> <span class="mi">2</span> <span class="c1">#제곱수가 아닌경우 리턴값
+</span></code></pre></div></div>
+<p>우리가 n의 약수를 찾는 알고리즘을 만든다고 하자<br />
+그렇다면 n의 약수를 찾기위해서는 n^(1/2)보다 작은 수들 중에서 n의 약수의 개수를 찾아 *2를 하면 약수의 개수를 알 수 있다.<br />
+왜냐하면 n^(1/2)보다 작은 수들 중에서 n의 약수는 곱해서 n이 만들어지는 각각의 짝이 있기 때문이다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if n = 8-&gt;
+1,2 &lt; 8^(1/2) 
+1 * 8, 2 * 4 = 8
+</code></pre></div></div>
+
+<p>물론 제곱수(1,4,9…)들에 대해서는 *2값에 +1을 해주면된다.</p>
+
+<p><br /><br /></p>
+
+<h2 id="on">O(n)</h2>
+<p>일반적인 단일 for loop문이 여기에 속한다.</p>
+
+<p><br /><br /></p>
+
+<h2 id="on2">O(n^2)</h2>
+<p>이중 for loop문이 여기에 속한다.</p>
+
+<p><br />
+<br /></p>
+
+<p><a href="https://www.bigocheatsheet.com/">Bigo의 시간복잡도에 대한 내용</a> 
+은 여기를 참고하면 좋다. 
+<br />
+<br />
+<br /></p>
+
+<h1 id="알고리즘퍼즐1-독이-든-와인">알고리즘퍼즐1 독이 든 와인</h1>
+
+<h2 id="문제">문제</h2>
+
+<p>```:독이 든 와인
+왕이 마실 와인 8 병중 한 병에 독이 담겨있다.<br />
+검사 장비는 1시간이 걸리고, 우리는 1시간 이내에 독이 담긴 와인을 찾아야한다.<br />
+필요한 최소 검사 장비 수는 몇 대일까?</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+## 문제 정의
+검사 장비가 7대 있으면 편하겠지만, 문제의 목표는 최소장비의 갯수를 찾는 것이다.  
+
+각 와인에 이진검색 알고리즘을 써도 1시간 이내에 찾아내기는 불가능이다.  
+각 검사 장비가 1시간동안 동시에 와인을 검사해야하므로 와인 병의 조합으로 찾아야한다.  
+
+## 풀이
+</code></pre></div></div>
+<p>각 와인 병의 번호를 2진수로 변환한다.
+1 :   0 0 1
+2 :   0 1 0
+3 :   0 1 1
+4 :   1 0 0
+5 :   1 0 1
+6 :   1 1 0
+7 :   1 1 1
+8 :(1)0 0 0</p>
+
+<p>검사장비 ABC를 한 줄로 놓고,
+A에는 이진수 첫째자리에 1을 가진 병들만,
+B에는 둘째자리에 1을 가진 병들만, 
+C에는 셋째자리에 1을 가진 병들만 섞어서 검사한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+<p>검사 후에,
+독을 발견한 검사장비를 1, 발견하지 않은 검사장비를 0으로 치환한다면
+우리는 어떤 병에 독이 있었는지 알 수 있다.</p>
+
+<p>만약 치환한 숫자가 0 1 1 이라면, 3번 병에 독이 들어있었던 것이 된다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;br&gt;
+&lt;br&gt;
+
+# 알고리즘 퍼즐2 빠른 말 찾기
+
+## 문제
+</code></pre></div></div>
+<p>구글 면접 문제이다.
+25마리의 말이 있는데 가장 빠른 3마리의 말을 찾아야한다.<br />
+경기장에는 5마리의 말이 들어가 경주를 할 수 있고, 순위만 알 수 있다.
+최소경기수를 구하라.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;br&gt;&lt;br&gt;
+
+## 문제 정의
+5마리씩 조를 나눠 경기를 한 후, 1등끼리 경기를 해 3마리의 말을 찾으면 된다고 생각할 수 있으나, 2등말이 다른 조의 1등말보다 빠를 수도 있다.   
+상대적인 빠름의 정도만 알 수 있다.  
+3마리의 말을 찾아야한다는 것과 상대적인 말의 속도만을 알 수 있다는 것을 기억하자.
+
+&lt;br&gt;&lt;br&gt;
+
+## 풀이
+</code></pre></div></div>
+<ol>
+  <li>
+    <p>5조로 나누어 총 5번 경기를 치뤄 각 조 내에서 말들의 순위를 기록한다.
+ 1 2 3 4 5
+ 1 2 3 4 5
+ 1 2 3 4 5
+ 1 2 3 4 5</p>
+  </li>
+  <li>
+    <p>각 조의 4,5등말은 해당 조가 가장 빠른 말들이 모여있다고 한들, 3등 내에 드는 것은 불가능하므로 제외한다.
+ 1 2 3
+ 1 2 3
+ 1 2 3
+ 1 2 3
+ 1 2 3</p>
+  </li>
+  <li>
+    <p>1등끼리 조를 이루어 1 경기를 치룬다.</p>
+  </li>
+  <li>
+    <p>1등끼리 한 경기에서 4,5등말이 속한 조는 전체 3등내에 들 수 없으므로 제외한다.
+ 1 2 3
+ 1 2 3
+ 1 2 3</p>
+  </li>
+  <li>
+    <p>1등끼리 한 경기에서 3등말이 속한 조의 2,3등 말은 전체 3등내에 들 수 없으므로 제외한다.
+ 1 2 3
+ 1 2 3
+ 1</p>
+  </li>
+  <li>
+    <p>2등 조에서 3등한 말은 전체 3등 내에 들 수 없으므로 제외한다.
+ 1 2 3
+ 1 2 
+ 1</p>
+  </li>
+  <li>
+    <p>1등 조의 2,3등말, 2등조, 3등조의 말들로 1 경기를 치뤄 2등까지 뽑는다.
+1등 조의 1등말은 전체 말들 중 가장 빠른 말이므로 
+3마리의 말을 뽑을 수 있다.
+```</p>
+  </li>
+</ol>
+
+<h1 id="참고자료">참고자료</h1>
+<p>개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.<br />
+자세한 강의 내용은 신천수 교수님 강의를 참고하시면 좋을 것 같습니다.<br />
+<a href="https://www.youtube.com/c/ChanSuShin/featured">신천수 교수님 자료구조 강의</a></p>
+:ET

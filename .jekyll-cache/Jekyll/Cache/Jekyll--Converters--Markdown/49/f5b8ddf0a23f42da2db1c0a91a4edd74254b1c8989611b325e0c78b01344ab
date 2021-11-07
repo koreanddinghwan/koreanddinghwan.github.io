@@ -1,0 +1,32 @@
+I"v<!-- 공백이 포함되어 있는 카테고리 이름의 경우 site.categories['a b c'] 이런식으로! -->
+
+<hr />
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/etc/hash/">[Hash] 해쉬함수에 대해</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.20
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#etc" class="page__taxonomy-item-category" rel="tag">etc</a>
+                    
+                    
+                    <a href="/tags/#hash" class="page__taxonomy-item-tag" rel="tag">HASH</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98" class="page__taxonomy-item-tag" rel="tag">해시함수</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+:ET

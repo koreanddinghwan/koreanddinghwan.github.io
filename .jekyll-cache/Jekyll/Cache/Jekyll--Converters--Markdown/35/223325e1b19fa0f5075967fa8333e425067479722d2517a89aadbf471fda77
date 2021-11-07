@@ -1,0 +1,56 @@
+I"4<h1 id="내-코드">내 코드</h1>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
+
+<span class="n">cycle</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">d</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">cycle</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">cycle</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+            
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">cycle</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="n">cycle</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="문제-정의">문제 정의</h1>
+<p>양의 정수 x의 각 자리가 등차수열을 이루는 것을 한수라고 한다.<br />
+n이 주어졌을때 1보다 크거나 같고 n보다 작은 한수의 개수를 출력하는 프로그램을 만들어야한다. <br />
+<br />
+한수를 검증하는 함수를 만들고,
+입력받은 n을 range로 만들어 범위 내의 한수를 찾을 때마다 cycle을 1씩 높여 개수를 구하자.</p>
+
+<p><br /></p>
+
+<h1 id="함수-정의">함수 정의</h1>
+<p>한수는 각 자리 숫자의 차이가 일정한 숫자를 의미한다.<br />
+cycle을 global선언 후, 한수에 해당하면 cycle이 1씩 증가한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">d</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">cycle</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">cycle</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="cycle-계산">cycle 계산</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">cycle</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+<p>1부터 n까지의 숫자에 대해서 한수검증을 한다.<br />
+100미만의 모든 양수는 한수이기때문에 만약 i가 100보다 작다면<br />
+cycle을 1씩 증가시킨다.<br />
+<br />
+100미만이 아닐 경우에는 함수로 한수를 검증해 cycle을 증가시킨다.</p>
+:ET

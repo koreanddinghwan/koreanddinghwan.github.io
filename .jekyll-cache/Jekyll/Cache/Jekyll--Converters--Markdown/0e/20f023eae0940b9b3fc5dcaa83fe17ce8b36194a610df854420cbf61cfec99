@@ -1,0 +1,89 @@
+I"�<h1 id="배열형태의-자료구조">배열형태의 자료구조</h1>
+
+<h2 id="의미">의미</h2>
+<p>연속적인 메모리 공간에 저장된 곳의 주소에 접근하는 자료구조.</p>
+
+<h1 id="c언어에서-배열형태">c언어에서 배열형태</h1>
+
+<h2 id="특징">특징</h2>
+<p><u>배열의 시작주소  
+자료형태  
+찾고자 하는 자료의 인덱스</u><br />
+이 세가지 정보만 알 수 있다면 저장된 곳의 주소를 계산할 수 있다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="err">의</span> <span class="err">주소를</span> <span class="err">찾고자</span> <span class="err">한다면</span><span class="p">,</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="err">의</span> <span class="err">시작</span> <span class="err">주소</span> <span class="o">+</span> <span class="err">자료형태에</span> <span class="err">따른</span> <span class="n">byte</span> <span class="o">*</span> <span class="err">인덱스번호</span> <span class="err">로</span> <span class="err">찾을</span> <span class="err">수</span> <span class="err">있다</span><span class="p">.</span>
+</code></pre></div></div>
+
+<p>C의 배열은 읽기와 쓰기형태만 제공한다.</p>
+
+<p><br /></p>
+
+<h2 id="자료형별-byte-참고">자료형별 byte 참고</h2>
+<p><img width="703" alt="byte" src="https://user-images.githubusercontent.com/76278794/136650560-f67b81e9-5cc9-43fb-8a65-68adc76e8221.png" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<p><br /></p>
+
+<h1 id="파이썬의-list">파이썬의 List</h1>
+
+<h2 id="특징-1">특징</h2>
+
+<p>파이썬의 리스트는 각 원소의 셀이 데이터가 저장된 곳의 주소를 저장한다는 것이다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">각</span> <span class="n">셀은</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="n">라는</span> <span class="n">객체가</span> <span class="n">저장되어있는</span> <span class="n">주소를</span> <span class="n">가진다</span><span class="p">.</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="동적배열">동적배열</h2>
+
+<p>파이썬의 리스트는 셀의 개수가 필요에 따라 자동으로 증가하고, 감소한다.<br />
+<br />
+만약 insert,append 연산위한 공간이 부족하다면, 크기가 더 큰 리스트를 만들고, 이전 리스트를 모두 이동한다.<br />
+만약 remove, pop 연산하고 공간이 남는다면, 크기가 더 작은 리스트를 만들고 이전 리스트를 모두 이동한다.</p>
+
+<p>파이썬의 리스트는 항상 리스트 내부 크기와 가진 값의 개수를 항상 연산해야하므로, 빈 리스트도 메모리가 0byte보다 크다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/136655983-b4e327a6-0aa5-4890-87af-81b5c82ea5b4.jpeg" alt="python구조" /></p>
+
+<p><br /></p>
+
+<h2 id="수행시간">수행시간</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. A[i] = A[j] + 1
+   쓰기, 대입, 읽기, 산술 연산을 하므로 O(1)
+
+2. A.append(5)
+   평균적으로 O(1) 시간
+
+3. A.pop()
+   평균적으로 O(1) 시간
+
+4. A.pop(3)
+   3번 인덱스의 값을 삭제하고 리턴하는데, 4부터 (len(A) - 1)까지의 값이 모두 왼쪽으로 밀려야하므로 O(N) 시간이 걸린다. 
+
+5. A.insert(0,10)
+   0번 인덱스에 10을 넣는다면, 오른쪽 1번인덱스부터 len(A)-1번째 인덱스까지 모두 오른쪽으로 밀려야하므로 O(N)시간
+
+6. A.remove(9)
+   처음으로 등장하는 9라는 값을 제거한다. 최악의 경우 리스트의 모든 요소를 모두 탐색해야하므로 O(N)시간.
+
+7. A.index(9), A.count(9)
+   remove와 같은 이치로 O(N)시간이 소요된다.
+</code></pre></div></div>
+<p>추가적으로 다른 연산자들의 시간복잡도에 대해서는 아래 페이지에 정리되어있다.<br />
+<a href="https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt">complexity of python operations</a></p>
+
+<p><br /><br /><br /></p>
+
+<h1 id="참고자료">참고자료</h1>
+<p>개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.<br />
+자세한 강의 내용은 신천수 교수님 강의를 참고하시면 좋을 것 같습니다.<br />
+<a href="https://www.youtube.com/c/ChanSuShin/featured">신천수 교수님 자료구조 강의</a></p>
+:ET

@@ -1,0 +1,257 @@
+I"J<h1 id="infix-postfix">Infix, postfix</h1>
+
+<h2 id="-의미">💡 의미</h2>
+<ol>
+  <li>Infix 수식은 일반적인 수식 작성법이다.<br />
+연산자가 수식 가운데에 존재하는 수식</li>
+  <li>Postfix 수식은 수식 내의 연산자가 뒤에 오도록 작성한다.</li>
+</ol>
+
+<p><br />
+<br /></p>
+
+<h2 id="-사용법">💡 사용법</h2>
+<ol>
+  <li>연산자 우선순위에 따라 괄호를 삽입한다.</li>
+  <li>괄호 내의 연산자를 해당 괄호 오른쪽으로 이동시키는 것을 반복한다.</li>
+  <li>괄호를 모두 지운다.</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/137138009-645764b6-162c-4b70-9e5c-b771fb9993db.jpeg" width="400" /></p>
+
+<p>prefix는 이동방향만 다르다.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<h1 id="infixpostfixcalculation-함수-만들기">Infix►Postfix►Calculation 함수 만들기</h1>
+
+<h2 id="-문제-정의">💡 문제 정의</h2>
+<p>3가지 문제로 나뉜다.</p>
+<ol>
+  <li>어떻게 입력을 연산자와 피연산자로 나눌 것인가.</li>
+  <li>어떻게 Postfix로 변환할 것인가.</li>
+  <li>어떻게 Postfix수식을  계산할 것인가</li>
+</ol>
+
+<p><br />
+<br /></p>
+
+<h3 id="1-️-연산자와-피-연산자로-나누기">1. ✏️ 연산자와 피 연산자로 나누기</h3>
+<p>연산자와 피 연산자로 나눌때의 주의점은<br />
+❗️<br />
+-공백이 있을수도, 없을수도 있다.<br />
+-어떻게 문자열로 들어온 숫자를 정수형(실수형) 데이터로 변환할 것인가.</p>
+
+<p><br /></p>
+
+<p>예시</p>
+
+<p>만약 “123a 456” 이 입력된다면,<br />
+토큰리스트는 [123,”a”,456] 이 되어야한다.</p>
+
+<p>만약 “ a123b456 ccc”가 입력되면,<br />
+토큰리스트는 [“a”,123,”b”,456,”c”,”c”,”c”] 가 되어야한다.
+<br /><br /></p>
+
+<p>이 문제들의 공통점은</p>
+<ol>
+  <li>공백은 무시한다.</li>
+  <li>문자열이 들어오면 그대로 토큰리스트에 추가한다.</li>
+  <li>숫자가 들어오면 토큰리스트에 추가하지않고, 다음 문자열을 검사한다.</li>
+  <li>만약 다음 문자열이 문자라면, 이전까지 검사한 숫자들을 모두 더한다.</li>
+</ol>
+
+<p>그래서 코드에는</p>
+<ol>
+  <li>공백은 무시한다.</li>
+  <li>숫자문자가 들어오면 이를 저장해 연산할 변수가 필요하다</li>
+  <li>현재 문자열 검사 중에, 전에 숫자형을 검사했었는지, 안했었는지 체킹해야한다.<br />
+가 반영되어야한다.</li>
+</ol>
+
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">splittokens</span><span class="p">(</span><span class="n">expressions</span><span class="p">):</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>             <span class="c1">#토큰 담을 리스트                      
+</span>    
+    <span class="n">valProcessing</span> <span class="o">=</span> <span class="bp">False</span>   <span class="c1">#현재 for문의 char가 숫자를 다루고 있는가 판별
+</span>    
+    <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span>                 <span class="c1">#숫자를 다루고 있을때, 계산할 변수
+</span>    
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">expressions</span><span class="p">:</span>
+        
+        <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s">" "</span><span class="p">:</span>     <span class="c1">#공백을 다룬다면 continue로 for문의 다음 char로
+</span>            <span class="k">continue</span>
+        
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="s">'0123456789'</span><span class="p">:</span>  <span class="c1">#char가 숫자라면
+</span>            <span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>   <span class="c1">#숫자를 다루고 있다는 것을 알리고, # 원래 val의 자리수를 10 올리고 char을 정수형으로 더한다.
+</span>            <span class="n">valProcessing</span> <span class="o">=</span> <span class="bp">True</span>
+            
+            
+        <span class="k">else</span><span class="p">:</span>  <span class="c1">#char가 숫자가 아닐때,
+</span>            
+            <span class="k">if</span> <span class="n">valProcessing</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span> <span class="c1">#전에 숫자 계산중었다면,
+</span>                
+                <span class="n">tokens</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>   <span class="c1">#tokens에 val 추가하고
+</span>                <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span>              <span class="c1">#val 초기화
+</span>                
+            <span class="n">valProcessing</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1">#현재 숫자 계산중이 아니므로 false
+</span>            <span class="n">tokens</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="c1">#문자열을 token에 더한다.
+</span>            
+    <span class="k">if</span> <span class="n">valProcessing</span><span class="p">:</span>
+        <span class="n">tokens</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        
+    <span class="k">return</span> <span class="n">tokens</span>
+</code></pre></div></div>
+<p><br />
+<br /></p>
+
+<h3 id="2️-postfix-계산하기">2.✏️ Postfix 계산하기</h3>
+<p>주의점<br />
+❗️<br />
+1.입력된 수식은 왼쪽부터 읽어온다.<br />
+2.수식은 연산자의 우선순위에 따라 계산된다.<br />
+3.괄호 안의 수식이 먼저 계산되어야하고, 곱셉과 나눗셈이 덧셈,뺄셈보다 먼저 계산되어야한다.</p>
+
+<p>예시1</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Infix = 6+(3-2)*4 
+1.3-2
+2.1*4
+3.6+4 
+Postfix = 632-4*4+
+</code></pre></div></div>
+
+<p>예시2</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Infix = 3*(2+5)*4
+1.(2+5)
+2.3*7
+3.21*4
+Outfix = 325+*4*
+</code></pre></div></div>
+
+<p>문제상황을 정리하면</p>
+<ol>
+  <li>피연산자의 출력 순서는 동일하다.</li>
+  <li>당장 연산되지 않는 연산자를 저장할 곳이 필요하다(opstack이라 가정.)</li>
+  <li>’(‘연산자는 출력값(outstack이라가정)에 표현되지 않는다.</li>
+  <li>’)’연산자는 ‘(‘가 나올때까지 있는 연산자를 출력하게끔한다.</li>
+  <li>”+-*/”연산자는 opstack에 아무런 연산자가 없는 경우, opstack에 추가되어 기다린다.</li>
+  <li>opstack에 연산자가 존재한다면, 자기자신보다 같거나 높은 우선순위의 연산자들을 차례로 outstack에 추가한후, 자기자신을 opstack에 추가한다.</li>
+  <li>연산이 종료된 뒤, opstack에 연산자가 남아있다면, outstack에 추가한다.</li>
+</ol>
+
+<p>좀 어려울수도 있다.<br />
+이를 코드로 나타내 이해해보자.
+<br /><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">infix_postfix</span><span class="p">(</span><span class="n">token_list</span><span class="p">):</span>
+    <span class="n">prio</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">"*"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s">"/"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s">"+"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">"-"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">"("</span> <span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+
+    <span class="n">opstack</span> <span class="o">=</span> <span class="n">stack</span><span class="p">()</span>
+    <span class="n">outstack_rs</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>    <span class="c1">#만약 정수라면 outstack에 추가.
+</span>            <span class="n">outstack_rs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s">"("</span><span class="p">:</span>        <span class="c1">#만약 (라면 opstack에 추가한다.
+</span>            <span class="n">opstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s">')'</span><span class="p">:</span>        <span class="c1">#만약 )라면 
+</span>            <span class="k">while</span> <span class="n">opstack</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">!=</span> <span class="s">'('</span><span class="p">:</span> <span class="c1">#(가 나올때까지 outstack_rs에 opstack을 추가한다.
+</span>                <span class="n">outstack_rs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">opstack</span><span class="p">.</span><span class="n">pop</span><span class="p">())</span>
+            <span class="n">opstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1">#연산자라면
+</span>            
+            <span class="k">if</span> <span class="n">opstack</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">():</span> <span class="c1"># opstack이 비어있을때는 push
+</span>                <span class="n">opstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+                
+            <span class="k">else</span><span class="p">:</span>  <span class="c1">#opstack이 비어있지 않다면
+</span>                
+                <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">opstack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#opstack이 있을 경우에만 반복한다.
+</span>                    
+                    <span class="k">if</span> <span class="n">prio</span><span class="p">[</span><span class="n">opstack</span><span class="p">.</span><span class="n">top</span><span class="p">()]</span> <span class="o">&gt;=</span> <span class="n">prio</span><span class="p">[</span><span class="n">token</span><span class="p">]:</span> <span class="c1">#opstack의 top이 token의 우선순위보다 높거나 같을때만
+</span>                        <span class="n">outstack_rs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">opstack</span><span class="p">.</span><span class="n">pop</span><span class="p">())</span>  <span class="c1">#opstack을 꺼내서 outstack_rs에 추가한다.
+</span>                        
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">break</span>
+                
+                <span class="n">opstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="c1">#우선순위가 같거나 높은 연산자들을 빼낸 후에는 현재 token을 추가한다.
+</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">opstack</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">():</span> <span class="c1">#opstack이 남아있다면, 나머지 처리.
+</span>        <span class="n">outstack_rs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">opstack</span><span class="p">.</span><span class="n">pop</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">outstack_rs</span>
+
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h3 id="3️-calculation">3.✏️ Calculation</h3>
+<p>Postfix 를 계산해 값을 도출해내야 한다.</p>
+
+<p>예시</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3+3 = 33+
+3*3+3 = 33*3+
+3*(2+5)*4 = 325+*4*
+6+(3-2)*4 = 632-4*4+
+</code></pre></div></div>
+
+<p>문제상황</p>
+<ol>
+  <li>연산자가 나타나면 앞의 두 피연산자를 연산한다.</li>
+  <li>연산값은 다시 스택에 넣어 다음 연산도 바로 할 수 있어야한다.
+<br /><br />
+이를 코드로 나타내면</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="n">token_list</span><span class="p">):</span>
+    
+    <span class="n">intstack</span> <span class="o">=</span> <span class="n">stack</span><span class="p">()</span> <span class="c1">#연산자를 넣고, 연산값을 계산해 넣을 스택
+</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_list</span><span class="p">:</span>  
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span> <span class="c1">#만약 정수라면 스택 push
+</span>            <span class="n">intstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s">'*'</span><span class="p">:</span> <span class="c1">#각 연산자에 맞게 분기하고, 스택의 마지막 2개 값을 pop해 연산후 스택에 push
+</span>            <span class="n">intstack_n2</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack_n1</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">intstack_n1</span> <span class="o">*</span> <span class="n">intstack_n2</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s">'/'</span><span class="p">:</span>
+            <span class="n">intstack_n2</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack_n1</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">intstack_n1</span> <span class="o">/</span> <span class="n">intstack_n2</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s">'+'</span><span class="p">:</span>
+            <span class="n">intstack_n2</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack_n1</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">intstack_n1</span> <span class="o">+</span> <span class="n">intstack_n2</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">token</span> <span class="o">==</span> <span class="s">'-'</span><span class="p">:</span>
+            <span class="n">intstack_n2</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack_n1</span> <span class="o">=</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">intstack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">intstack_n1</span> <span class="o">-</span> <span class="n">intstack_n2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">intstack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<h1 id="참고자료">참고자료</h1>
+<p>개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.<br />
+자세한 강의 내용은 신천수 교수님 강의를 참고하시면 좋을 것 같습니다.<br />
+😇 <a href="https://www.youtube.com/c/ChanSuShin/featured">신천수 교수님 자료구조 강의</a></p>
+
+<p><br />
+infix-postfix 코드는 이분 코드를 참고했습니다.</p>
+
+<p>😇 <a href="https://yeahajeong.tistory.com/189">yeahajeong님 블로그, 스택의 응용</a></p>
+:ET

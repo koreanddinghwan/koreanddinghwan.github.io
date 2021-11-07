@@ -1,0 +1,240 @@
+I"y"<!-- 공백이 포함되어 있는 카테고리 이름의 경우 site.categories['a b c'] 이런식으로! -->
+
+<hr />
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/closure/">[javascript] 클로져의 개념</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.18
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#closure" class="page__taxonomy-item-tag" rel="tag">closure</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/ajax/">[javascript] AJAX</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.18
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#ajax" class="page__taxonomy-item-tag" rel="tag">ajax</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#json" class="page__taxonomy-item-tag" rel="tag">json</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/htmljsconnect/">[javascript] html코드에 javascript 가져오기</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.04
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/javascript-function/">[javascript] 함수,스코프</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.04
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/javascript4/">[javascript] 배열형, 객체</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.04
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/javascript-if/">[javascript] 조건문과 반복문</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.03
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/javascript-second/">[javascript] 연산자</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.02
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/javascript/javascript-first/">[javascript] 기초</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.10.01
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#javascript" class="page__taxonomy-item-category" rel="tag">javascript</a>
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">javascript</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#js" class="page__taxonomy-item-tag" rel="tag">js</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+:ET
