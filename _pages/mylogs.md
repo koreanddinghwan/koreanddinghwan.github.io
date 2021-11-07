@@ -6,7 +6,7 @@ collection: mylogs
 entries_layout: grid
 classes: wide
 header:
-    image: assets/images/mylogs.JPG
+    image: assets/images/mylogs.jpeg
 ---
 
 지극히 개인적인 글들을 보관하는 장소입니다.  
