@@ -52,12 +52,11 @@ defaults:
     values:
       layout: single
       read_time: false
-      author_profile: false
       share: false
       comments: false
 ```
 mylogs의 게시물들에 대해서 디폴틀값을 설정한다.  
-깔끔하게 내 일상글들만 보이게 하고 싶어서 프로필, read_time 등을 false를 주었다. 
+깔끔하게 내 일상글들만 보이게 하고 싶어서 read_time 등을 false를 주었다. 
 
 <br><br>
 
