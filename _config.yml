@@ -301,6 +301,5 @@ defaults:
     values:
       layout: single
       read_time: false
-      author_profile: false
       share: false
       comments: false
