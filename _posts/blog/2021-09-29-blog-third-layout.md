@@ -208,7 +208,7 @@ layout:archive를 가진다.
 ### layout:categories
 카테고리별로 분류된 모든 게시물을 보여주는 레이아웃이다.
 <br/>
-layout:archive를 가진다.
+layout:archive를 가진다.
 <br/><br/>
 
 ### layout:tags
