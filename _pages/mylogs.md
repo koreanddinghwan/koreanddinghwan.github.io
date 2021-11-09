@@ -4,7 +4,6 @@ layout: collection
 permalink: /mylogs/
 collection: mylogs
 entries_layout: grid
-classes: wide
 header:
     image: assets/images/mylogs.jpeg
 ---
