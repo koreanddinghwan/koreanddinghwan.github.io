@@ -4,6 +4,8 @@ layout: collection
 permalink: /mylogs/
 collection: mylogs
 entries_layout: grid
+author_profile: true
+sidebar_main: true
 header:
     image: assets/images/mylogs.jpeg
 ---
