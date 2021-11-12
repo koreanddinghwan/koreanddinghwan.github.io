@@ -20,12 +20,13 @@ title                    : "LightBig"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Dding-Hwan"
-description              : "어차피 할 평생공부 하고싶은거 하자"
+description              : "띵동콜링"
 url                      : "https://koreanddinghwan.github.io"
 baseurl                  : ""
+asset_url                : /assets
 repository               : koreanddinghwan/koreanddinghwan.github.io
 teaser                   : # /assets/images/avatar.png
-logo                     : /assets/images/avatar.png
+logo                     : /assets/images/ddinghwan.jpg
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs            : true   #, false (default)
 words_per_minute         : 200
