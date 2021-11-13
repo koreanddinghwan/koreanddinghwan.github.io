@@ -26,7 +26,7 @@ baseurl                  : ""
 asset_url                : /assets
 repository               : koreanddinghwan/koreanddinghwan.github.io
 teaser                   : # /assets/images/avatar.png
-logo                     : /assets/images/ddinghwan.jpg
+logo                     : /assets/images/avatar.png
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs            : true   #, false (default)
 words_per_minute         : 200
