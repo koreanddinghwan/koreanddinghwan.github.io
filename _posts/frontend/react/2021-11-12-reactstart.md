@@ -1,5 +1,5 @@
 ---
-title:  "[React Native]"
+title:  "[React Native][생활코딩]"
 excerpt: "리액트 설치, 리액트 샘플 웹앱 파일구조"
 
 categories:
