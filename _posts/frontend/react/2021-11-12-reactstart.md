@@ -1,6 +1,6 @@
 ---
-title:  "[React Native][생활코딩]"
-excerpt: "리액트 설치, 리액트 샘플 웹앱 파일구조"
+title:  "[React Native][생활코딩]리액트 설치 ~ 배포"
+excerpt: "1강 ~ 9강"
 
 categories:
   - React
@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2021-11-12
-last_modified_at: 2021-11-12
+last_modified_at: 2021-11-16
 ---
 
 
@@ -173,15 +173,54 @@ App.css에서 body 태그에 css를 적용할수도 있다.
 
 # 배포
 
+
+## build하는 이유
 새로고침버튼을 오른쪽 클릭하면 Empty Cashe and Hard Reload를 할 수 있다.  
 이 버튼을 누르면 캐시를 모두 삭제할 수 있다.  
 
 리액트는 개발의 편의성을 위해 여러가지 기능을 추가하므로, create-react-app은 파일의 무게가 상당히 무겁다.  
 
-따라서 배포모드의 어플리케이션을 `빌드`하기 위해서는 
+사용자 친화적으로 앱을 운영하기 위해서 사용하는 것이 `build`이다.
+
+## build하는 법
+
+따라서 유저들이 사용하기 용이한 배포모드의 어플리케이션을 `build`하기 위해서는 
 
 ```bash
 npm run build
 ```
 를 해준다.  
+
+![빌드폴더]](https://user-images.githubusercontent.com/76278794/141817402-17007134-e8a9-4bdd-b270-ca37a24278d7.png)
+
+새로운 빌드 build라는 폴더가 생긴다.  
+
+<br>
+
+
+## build의 사용법
+
+여기서 index.html을 보면 띄어쓰기, 줄바꿈없이 작성되어 있는 것을 볼 수 있는데,  
+유저가 요청하는 데이터를 빠르게 전달하기 위해 불필요한 정보를 삭제하고 보낸 것이라고 생각하면 된다.  
+<br>
+그리고 src폴더의 파일들도 모두 처리해서 넣어준다.   
+
+<br>
+실제로 서비스하기 위해서는 build 안의 파일을 사용하면 되고,  
+웹서버가 문서를 찾는 최상위 디렉터리에 build 폴더 안의 파일을 위치시키면 된다.  
+
+```bash
+npm install -g serve
+```
+이 컴퓨터 어디에서든 serve로 웹서버 설치
+
+```bash
+npx serve
+```
+웹서버를 다운해 1번만 실행
+
+```bash
+npx serve -s build
+```
+웹서버를 다운해 실행시킬때, build라는 document root로 하여 생성한다.  
 
