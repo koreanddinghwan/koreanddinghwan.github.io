@@ -70,11 +70,12 @@ c-universal 해시함수는 서로 다른 임의의 두 키값의 해시함수�
 
 <br>
 
+## 💡현실에서 자주쓰이는 해시 함수
+
 ### Division hash func
 키값을 소수로나눈 나머지를 해시테이블의 길이로나눈 나머지
 
     f(k) = (key%prime_num) % magnitude
-
 
 
 
