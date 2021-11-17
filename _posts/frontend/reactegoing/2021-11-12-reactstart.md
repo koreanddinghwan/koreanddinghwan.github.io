@@ -3,7 +3,7 @@ title:  "[React Native][생활코딩]리액트 설치 ~ 배포"
 excerpt: "1강 ~ 9강"
 
 categories:
-  - React
+  - Reactegoing
 tags:
   - [React Native, 생활코딩]
 
