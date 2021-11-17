@@ -1,17 +1,28 @@
-import sys
+'''빌트인 함수'''
 
-d = {}
-for i in range(85):
-    d.setdefault(str(i),str(i))
-print(d)
-print(sys.getsizeof(d))
+#절대값 abs()
 
-'''
-빈 딕셔너리: 64
-1개: 232
-6개: 360
-11개: 640
-22개: 1176
-43개: 2272
-86개: 4696
-'''
+
+# all: iterable 요소 안에 모두 true라면 true
+
+
+
+# any: iterable 요소 안에 하나라도 true라면 true
+
+
+# chr 아스키->문자
+
+# ord 문자 -> 아스키
+
+for i in range(65,123):
+    print(chr(i))
+
+print(list(map(chr, range(65,87))))
+
+#enumerate : 인덱스 + iterable 객체
+
+for i, name in enumerate(list(map(chr, range(65,91)))):
+    print(i,name)
+
+
+#filter 반복 가능한 객체에서 지정 함수 조건에 맞는 값을 추출
