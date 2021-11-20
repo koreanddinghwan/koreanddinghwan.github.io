@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2021-11-17
-last_modified_at: 2021-11-17
+last_modified_at: 2021-11-21
 ---
 
 # state,props,render
@@ -134,7 +134,9 @@ defaultPrevented를 true로 바꿔줘야한다.
 
 <Br><br>
 
-## setState()
+## 함수를 통해 state를 변경할때 주의사항
+
+<br><br>
 
 
     `e.preventDefault()` 아래에 `this.state.mode = 'welcome'`을 넣어서 바꿀 수 없다.  
@@ -161,6 +163,84 @@ defaultPrevented를 true로 바꿔줘야한다.
 
 ```js:App.js
 <header> 
+  <h2>
+      <a href="/" onClick={ function(e) {
+          e.preventDefault();
+          this.setState({
+            mode:'welcome'
+          })
+        }.bind(this)}>
+        {this.state.subject.title}
+      </a>
+  </h2>
+  {this.state.subject.sub}
+</header>
+
+```
+이 문제들에 대해 좀 더 자세히 알아보자
+<br><Br>
+
+
+### bind 함수 이해하기
+
+<br>
+
+bind함수는 함수와 객체를 묶어주는 역할을 한다.  
+  
+bind함수의 괄호 안에 객체를 넣으면 `이 객체를 this로 하는 새로운 함수가 복제`되어 만들어진다.  
+
+```js
+<a href="/" onClick={ function(e) {
+        e.preventDefault();
+        this.setState({
+          mode:'welcome'
+        })
+        }.bind(this)}>
+        {this.state.subject.title}
+  </a>
+```
+
+따라서 위 스크립트에서 this는 App이라는 컴포넌트를 의미하므로  
+this.setState로 App 컴포넌트의 state에 접근할 수 있게된다.  
+
+<br><br>
+
+### setState함수 이해하기
+
+
+```javascript
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mode:'welcome',
+      subject: {title:'WEB', sub:'World wide web!'},
+      welcome:{title:'Welcome', desc:'Hello, React!!'},
+      contents: [
+        {id:1, title:'REACT', desc:'HTML is a programming laguage ^^'},
+        {id:2, title: 'Vue', desc:'vue is vue'},
+        {id:3, title: 'angular', desc:'hello angular'}
+      ]
+    }
+  }
+
+
+  render() {
+    let _title, _desc = null; 
+    if (this.state.mode === 'welcome') {
+      _title = this.state.welcome.title;
+      _desc = this.state.welcome.desc;
+    } else if (this.state.mode === 'read'){
+      _title = this.state.contents[0].title;
+      _desc = this.state.contents[0].desc
+    }
+
+
+    return (
+      <div className='App'>
+
+        <header> 
           <h2>
             <a href="/" onClick={ function(e) {
               e.preventDefault();
@@ -168,18 +248,170 @@ defaultPrevented를 true로 바꿔줘야한다.
                 mode:'welcome'
               })
             }.bind(this)}>
+
             {this.state.subject.title}
             </a>
           </h2>
           {this.state.subject.sub}
         </header>
+        
+        <Toc data = {this.state.contents}/>
+        
+        <Content 
+        title={_title} 
+        desc={_desc}/>
+      </div>
+    );
+  }
+}
 
+export default App;
 ```
-이 문제들에 대해 좀 더 자세히 알아보자
+
+
+App컴포넌트는 크게 3부분으로 나눌 수 있다.  
+
+1. 생성자(constructor)
+
+2. render
+
+3. render함수 내에 return
+
+<br>
+
+생성자는 컴포넌트가 생성될 때, 기본적으로 생성된다.  
+그리고 render함수를 통해 컴포넌트에 그릴 내용을 결정한다.  
+render함수에서 기초적인 연산을 통해 현재 mode가 welcome인지 read인지에 따라 보여줄 내용을 state로부터 받아  
+변수에 저장하고,  
+이 저장된 변수를 이용해 return 함수에서 컴포넌트를 그린다.  
+
+이 과정은 사용자가 웹 사이트를 접속해 화면을 볼 수 있으면 끝난 것이다.  
+
 <br><Br>
 
-### bind() 함수 이해하기
+이 시점에서 state.mode를 변경하는 링크를 클릭하면
 
-`this`는 `render()`라는 함수 '안'에서만 해당 컴포넌트 자체를 가리킨다.
+``` 
+this.state.mode = 'welcome'
+```
+이 명령어는 객체의 프로퍼티값을 바꿀 수는 있지만, 리액트가 이 변경된 값을 기준으로 리렌더링을 하지 않는다.  
+<br>
+
+```
+this.setState({mode:'welcome'})
+```
+이렇게 명령해야 리액트가 state값이 변경된 것을 인식할 수 있다.  
+
+setState()가 중요한 이유는 리렌더링할 시점을 개발자가 정할 수 있다는 것이다.  
+return 부분에서 변경해야할 값들을 this.state로 변경해 유지하고, setState를 통해  
+`특정 시점`에 리렌더링을 할 수 있다.  
+
+
+
+
+# 컴포넌트 이벤트 만들기
+
+## 자식 컴포넌트에서 부모컴포넌트의 state를 변경하기
+
+자식컴포넌트의 이벤트로 부모컴포넌트의 state를 변경하기위해선  
+부모컴포넌트에서 state를 변경하는 이벤트를 정의하고,  
+자식 컴포넌트가 이를 props로 전달받아 실행할 수 있게 해야한다.
+
+
+```js
+<Subject 
+        title={this.state.subject.title} 
+        sub={this.state.subject.sub}
+        onChangePage = {function(){
+          this.setState({
+            mode:'welcome'
+          })
+        }.bind(this)}/>
+```
+
+부모컴포넌트 App에서 state를 변경하는 이벤트onChangePage를 정의해 자식컴포넌트 Subject에 props의 형태로 전달한다.
+
+
+```js
+class Subject extends Component {
+    render() {
+      return (
+        <header>
+          <h1>
+            <a href="/" onClick={function(e){
+              e.preventDefault();
+              this.props.onChangePage();
+              
+            }.bind(this)}>{this.props.title}</a>
+            
+            <div/>
+
+            {this.props.sub}
+          </h1>
+        </header>
+      )
+    }
+  }
+export default Subject;
+```
+자식 컴포넌트 Subject에서 태그의 이벤트 함수에 `bind(this)`로 함수와 자식컴포넌트객체를 연결하고,  
+props로 전달받은 이벤트 onChangePage를 실행할 수 있다.  
+
+
+
+<br><br>
+
+지금까지 홈페이지로만 이동하는 이벤트를 정의했는데, 
+Toc 컴포넌트의 li 요소의 a태그들도 각각 누르면 mode가 read로 변경되어야한다.  
+
+```js
+<Toc 
+        data = {this.state.contents}
+        onChangePage = {function(){
+          this.setState({
+            mode:'read'
+          })
+        }.bind(this)}/>
+```
+
+```js
+import React, { Component } from 'react';
+
+class Subject extends Component {
+    render() {
+      return (
+        <header>
+          <h1>
+            <a href="/" onClick={function(e){
+              e.preventDefault();
+              this.props.onChangePage();
+            }.bind(this)}>
+              {this.props.title}
+            </a>
+            <div>
+            {this.props.sub}
+            </div>
+          </h1>
+        </header>
+      )
+    }
+  }
+
+export default Subject;
+```
+
+
+## 자식컴포넌트로부터 부모컴포넌트에게 값 전달하기
+
+
+클릭된 Toc 컴포넌트의 li 요소에 따라 Content컴포넌트의 내용이 변경되어야한다.  
+
+사용자가 li요소의 링크를 클릭
+mode가 read로 변경되며 
+누른 링크의 id값을 부모 컴포넌트의 state에 저장.(setState로 변경)
+
+
+
+
 
 
