@@ -1,0 +1,470 @@
+I"�<p><a href="https://ko.reactjs.org/tutorial/tutorial.html">출처 리액트 공식문서</a></p>
+
+<h1 id="개요">개요</h1>
+
+<h2 id="리액트란">리액트란</h2>
+<p>사용자 UI를 구축하기위한 효율적이고 유연한 Javascript 라이브러리이다.<br />
+특히, component라는 코드의 파편을 이용해 복잡한 UI구성을 돕는다.</p>
+
+<h2 id="리액트-컴포넌트">리액트 컴포넌트</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">ShoppingList</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">shopping-list</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Shopping</span> <span class="nx">List</span> <span class="k">for</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">Instagram</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">WhatsApp</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">Oculus</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드는 <code class="language-plaintext highlighter-rouge">JSX방식</code>으로 작성되었는데, JSX 내부의 중괄호 안에 javascript 표현식을 작성함으로써 
+<code class="language-plaintext highlighter-rouge">React Element</code>로 자바스크립트 객체를 만든다.</p>
+
+<p>여기서 ShoppingList는 <code class="language-plaintext highlighter-rouge">React Component class</code> 또는 <code class="language-plaintext highlighter-rouge">React Component Type</code>이라고 불린다.<br />
+<code class="language-plaintext highlighter-rouge">props</code>라는 매개변수를 불러와 <code class="language-plaintext highlighter-rouge">render()</code> 함수를 통해 표시할 html 태그들을 반환해준다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ShoppingList</code> 라는 <code class="language-plaintext highlighter-rouge">react Component</code>는 div, li 태그를 가진 DOM component를 렌더링하는데,<br />
+<code class="language-plaintext highlighter-rouge">&lt;ShoppingList /&gt;</code>로 해당 <code class="language-plaintext highlighter-rouge">react Component</code>의 모든 요소를 참조할 수 있다.<br />
+이러한 <code class="language-plaintext highlighter-rouge">react Component</code>들은 독립적으로, 다른 파일에서도 쓰일 수 있기에<br />
+문제를 작게 쪼개 단순한 component들을 만들고, 조합해 복잡한 UI를 만들 수 있다!!</p>
+
+<p><br /><br /></p>
+
+<h3 id="render함수-작동원리">Render()함수 작동원리</h3>
+
+<p>render함수는 return 뒤의 내용을 반환한다.<br />
+이 때, 반환하는 방식은 렌더링할 내용을 경량화한 React Element 형식으로 반환하는데,<br />
+많은 개발자들이 JSX라는 특수한 문법을 사용해 React의 구조를 쉽게 작성한다고 한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*#__PURE__*/</span>
+<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">className</span><span class="p">:</span> <span class="dl">"</span><span class="s2">shopping-list</span><span class="dl">"</span><span class="p">},</span> 
+
+<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h1</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Shopping List for </span><span class="dl">"</span><span class="p">,</span> <span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">),</span>
+
+<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Instagram</span><span class="dl">"</span><span class="p">),</span> 
+<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">WhatsApp</span><span class="dl">"</span><span class="p">),</span> 
+<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Oculus</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>React.createElement('태그', {클래스 또는 아이디}, 컨텐츠)
+</code></pre></div></div>
+
+<p>2번째 매개변수에 null이 선언된다면 클래스 또는 아이디가 없다는 것을 의미한다.<br />
+3번째, 컨텐츠 매개변수에 다른 React Element를 배치함으로써 children 요소를 받을 수 있다.</p>
+
+<p><br /><br /></p>
+
+<h2 id="props로-데이터-전달하기">Props로 데이터 전달하기</h2>
+
+<h3 id="square">Square</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">square</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>버튼을 리턴한다.
+여기서 <code class="language-plaintext highlighter-rouge">{this.props.value}</code>의 props는 임의의 입력이다.<br />
+위를 예시로 들면, Square라는 리액트 컴포넌트를 생성할때,<br />
+매개변수가 들어올 자리라고 생각하면 된다. 자세한 내용은 Board 컴포넌트까지 이해해야한다.</p>
+
+<h3 id="board">Board</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">class</span> <span class="nx">Board</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span><span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Next player: X</span><span class="dl">'</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">status</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">board-row</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">0</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">1</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">board-row</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">3</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">4</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">board-row</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">6</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">7</span><span class="p">)}</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderSquare</span><span class="p">(</span><span class="mi">8</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Board 컴포넌트는 <code class="language-plaintext highlighter-rouge">renderSquare</code>와 <code class="language-plaintext highlighter-rouge">render</code>함수로 이루어져있다.<br />
+쉽게 이해하기 위해서는 밑의 render부터 봐야하는데,</p>
+
+<p>render()함수에서 <code class="language-plaintext highlighter-rouge">{this.renderSquare(0)}</code>로 <code class="language-plaintext highlighter-rouge">Board</code> 컴포넌트에서 <code class="language-plaintext highlighter-rouge">renderSquare</code>라는 함수를 호출해 board를 그리고 있다.</p>
+
+<p>그리고 호출된 renderSquare(i)는 매개변수로 값을 입력받아 <code class="language-plaintext highlighter-rouge">&lt;Square value={i} /&gt;</code>형식으로<br />
+<code class="language-plaintext highlighter-rouge">Square</code> 컴포넌트를 매개변수 i를 넣어 리턴해준다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{this.props.value}
+</code></pre></div></div>
+
+<p>다시 Square에서 this.props.value를 보자. props.value는 이 컴포넌트가 호출될때 입력된 매개변수 중<br />
+value의 매개변수 값을 가져온다는 의미이다.</p>
+
+<p>이렇게 Board와 Square컴포넌트의 흐름을 봤는데, Board 컴포넌트를 부모 컴포넌트,<br />
+Square컴포넌트를 자식 컴포넌트라고 부른다.<br />
+부모컴포넌트부터 자식컴포넌트까지 props를 전달하면서 react 앱이 어떻게 작동하는지 조금은 감이 온다.</p>
+
+<h2 id="사용자와-상호작용">사용자와 상호작용</h2>
+
+<p>리액트 컴포넌트는 생성자에 this.state를 설정함으로써 state라는 변수를 가질 수 있다.<br />
+9개의 사각형이 각각 인스턴스화되어 다른 객체를 이루어야하고,<br />
+인스턴스 프포퍼티로 사용되는게 props와 state이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">value</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>사용자와 상호작용하기 위해서는 버튼에 이벤트리스너를 달아주어야한다.<br />
+  <code class="language-plaintext highlighter-rouge">{() =&gt; 함수}</code>에서 =&gt;를 자주 까먹는다. 잊지말자.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">button</span>
+      <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">square</span><span class="dl">"</span> 
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span><span class="p">})}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>정리하면, Square 컴포넌트가 호출되면 생성자가 초기화되면서 빈 사각형의 버튼이 리턴된다.</p>
+
+<h1 id="게임-완성하기">게임 완성하기</h1>
+
+<h2 id="state를-부모-컴포넌트로-끌어올리기">State를 부모 컴포넌트로 끌어올리기</h2>
+
+<p>이제 각 Square 컴포넌트가 각각 state를 유지하고있다.<br />
+이제, 승자를 확인하기 위해서 각 Square 컴포넌트의 value를 한 곳에 유지해야한다.</p>
+
+<p><br /></p>
+
+<p>Board 컴포넌트가 각 square의 state를 요청해도 되지만, 코드를 이해하기가 어렵고 버그에 취약하며 리팩토링이 어렵기때문에 선호되는 방식은 아니다.</p>
+
+<p>그래서 각 Square가 아닌 부모 컴포넌트인 Board 컴포넌트에 게임의 상태를 저장하는 것이 가장 좋은 방법이다.</p>
+
+<p>Board 컴포넌트는 각 Square에게 prop을 전달해 무엇을 표시할 지 알려준다.</p>
+
+<p>자식 컴포넌트(Square)로부터 데이터를 모으거나, 두개의 자식 컴포넌트가 서로 연결되려면 부모 컴포넌트(Board)가 공유 state를 정의해야한다.</p>
+
+<p>그러기 위해 부모 컴포넌트 Board에 prop을 사용해 자식 컴포넌트 square에게 state를 전달한다.</p>
+
+<p>이를 통해 자식컴포넌트간 혹은, 자식 컴포넌트와 부모 컴포넌트가 동기화 할 수 있다.</p>
+
+<h3 id="board-수정">Board 수정</h3>
+
+<p>부모컴포넌트인 Board가 자식 컴포넌트에게 state를 전달하기 위해서는 Board가 생성자를 가져야한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">class</span> <span class="nx">Board</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span><span class="p">}</span>
+</code></pre></div></div>
+<p>이제 Board의 state에서 squares가 배열의 형태로 9개 칸의 정보를 담는다.<br />
+이제 Board 컴포넌트에서 Square 자식 컴포넌트에게 정보를 전달해야한다.</p>
+
+<p>현재 renderSquare()함수는 그 자체가 매개변수로 i를 입력받아 Square 컴포넌트를 i를 그린 값으로 그리고 클릭되면 setState로 Square의 state를 ‘X’로 변경하면서<br />
+X사각형으로 그려진다.</p>
+
+<p>이제는 부모컴포넌트가 array의 형태로 Square 컴포넌트 버튼 안의 정보를 가지고 있기 때문에,<br />
+Square 자식 컴포넌트에게 Board state의 정보를 전달하기 위해 i를 배열의 인덱스로 삼아</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span> <span class="sr">/&gt;</span><span class="err">;
+</span><span class="p">}</span>
+</code></pre></div></div>
+<p>바꿔준다.</p>
+
+<h3 id="중간정리">중간정리</h3>
+
+<ol>
+  <li>Board가 생성되며 null 값을 가진 array의 형태로 this.state.squares 생성.</li>
+  <li>Board는 return으로 리액트 컴포넌트를 리턴하는데, 각 박스가 renderSquare(i)호출</li>
+  <li>각 renderSquare는 Square 컴포넌트를 value값이 this.state.squares[i]인 상태로 리턴한다.</li>
+  <li>renderSquare로 리턴된 Square컴포넌트는 클릭되면 square.state에 따라 onclick으로 ‘x’로 변경한다.</li>
+</ol>
+
+<p>이제 각 사각형이 클릭되면 발생하는 변화를 Board에서 정의한다.<br />
+각 renderSquare가 클릭되면, 변화를 만드는 함수를 호출되게하도록 변경한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Square</span>
+      <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span>
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">)}</span>
+      <span class="sr">/</span><span class="err">&gt;
+</span>  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="square가-board로부터-props-전달받는-법">Square가 Board로부터 props 전달받는 법</h3>
+
+<p>이제 각 Square에서 생기는 변화는 Board의 renderSquare함수에서 props의 형태로 전달되고, 관리된다.<br />
+따라서</p>
+<ol>
+  <li>Square 컴포넌트는 state를 유지할 필요가 없으므로 생성자 제거</li>
+  <li>Sqaure 컴포넌트의 state가 제거되고, value는 props로 받으므로 this.state.value를 this.props.value로 변경</li>
+  <li>this.setState()가 변경을 관리했으나, square 컴포넌트의 state가 삭제되었으므로 this.props.onClick()으로 변경</li>
+</ol>
+
+<p>이제 부모컴포넌트로부터 자식컴포넌트에게 state가 전달된다.<br />
+이 과정을 짧게 요약하면</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>부모컴포넌트에서 생성자로 state 생성 =&gt;
+부모컴포넌트가 props의 형태로 자식 컴포넌트에게 state를 전달
+</code></pre></div></div>
+
+<p>이런 방식으로 전달되는 것을 알 수 있다.</p>
+
+<h3 id="handleclick">handleClick</h3>
+
+<p>지금 handleClick(i)함수가 정의되지않아 박스를 클릭하면 파일이 깨지는데,<br />
+변화를 만드는 handleClick()함수를 Board 컴포넌트에 추가한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">squares</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">.</span><span class="nx">slice</span><span class="p">();</span>
+  <span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ol>
+  <li>Square의 button 에서 Onclick()을 감지하면 Onclick 이벤트 핸들러가 this.props.onClick() 호출</li>
+  <li>Square의 props는 renderSquare함수에서 정의되었다.</li>
+  <li>Board에서 Square로 onClick={() =&gt; this.handleClick()}을 전달했으므로 Board의 handleClick() 호출</li>
+  <li>이때, 현재 squares를 this.state.squares.slice()로 복사해<br />
+배열의 인덱스 i를 ‘X’로 변경하고</li>
+  <li>setState로 this.state.squares에 변경된 squares를 저장한다.</li>
+</ol>
+
+<h2 id="불변성이-중요한-이유">불변성이 중요한 이유</h2>
+
+<p><code class="language-plaintext highlighter-rouge">handleClick(i)</code> 코드를 보면</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">squares</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">.</span><span class="nx">slice</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>로 새로운 const변수(이름만 같은 새로운 변수)에 board의 state squares를 복사해 할당했다.<br />
+그리고 이를</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span><span class="p">});</span>
+</code></pre></div></div>
+
+<p>board 컴포넌트의 state를 업데이트하는데, 앞의 squares는 state를,<br />
+뒤의 squares는 위에 새로운 변수를 의미하므로 헷갈리지 말자.</p>
+
+<p>직접적으로 squares를 변경하는 것이 아닌,<br />
+새로운 변수를 만들어 기존 변수를 변경하지않는 방법을 사용하는데,<br />
+그 장점은</p>
+
+<h3 id="1복잡한-특징을-단순하게">1.복잡한 특징을 단순하게</h3>
+
+<p>현재 튜토리얼 웹앱의 핵심 기능은 시간여행 기능을 구현하는 것이다.<br />
+이 기능은 기 웹앱에서만 필요한 것이 아닌, 모든 어플리케이션이 기본적으로 갖고 있는 기능인데,<br />
+데이터를 직접적으로 변환하지 않는 것은 이전의 데이터를 재사용할 수 있게 만든다.</p>
+
+<h3 id="2-변화감지">2. 변화감지</h3>
+
+<p>직접적으로 수정된 객체에서 변화를 감지하는 것은 어렵다.<br />
+직접적으로 수정된 객체에서 변화를 감지하기 위해서는 이전 객체의 복사본과 현재 수정된 객체를 비교하고<br />
+전체 객체 트리를 돌아야 한다.</p>
+
+<p>하지만 const로 선언된 복사객체에서 변화를 감지하는 것은 쉽다.<br />
+현재 const로 선언된 squares객체와 현재 this.state.squares를 비교해 다르면<br />
+객체는 변한 것이다.</p>
+
+<h3 id="3-react에서-다시-렌더링하는-시기를-결정">3. React에서 다시 렌더링하는 시기를 결정</h3>
+
+<p>리액트에서 순수 컴포넌트를 만드는 데 도움을 준다.<br />
+변하지 않는 데이터는 변경이 이루어졌는지 쉽게 판단할 수 있고, 이를 바탕으로<br />
+컴포넌트가 다시 렌더링할지를 결정할 수 있다.</p>
+
+<h2 id="함수-컴포넌트">함수 컴포넌트</h2>
+
+<p>Square를 함수 컴포넌트로 바꿔보자</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Square</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">'</span><span class="s1">square</span><span class="dl">'</span> <span class="nx">onClick</span><span class="o">=</span>
+    <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>함수 컴포넌트는 더 간단하게 컴포넌트를 작성하는 방법이다.<br />
+state 없이 render 함수만을 가진다.<br />
+render함수만을 가진다는 의미는, React.component를 확장하는 클래스를 정의하는 대신,<br />
+매개변수 props를 입력받아 렌더링할 대상(태그)를 반환을 함수를 작성한다.</p>
+
+<p>클래스로 작성하는 것보다 빠르게 작성할 수 있고, 많은 컴포넌트를 함수 컴포넌트로 표현할 수 있다.</p>
+
+<h2 id="순서-만들기">순서 만들기</h2>
+
+<p>게임판에서 O를 표시하기 위해서 첫 번째 차례를 ‘X’로 시작한다.<br />
+Board 생성자의 초기 state를 수정하는 것으로 기본값을 설정할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Board</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Components</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+      <span class="na">xIsNext</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>플레이어가 수를 둘 때마다 xIsNext가 false, true로 바뀌면서 다음 플레이어를 정의한다.<br />
+그리고 게임의 state가 저장될 것이다.</p>
+
+<p>플레이어가 수를 두는 것을 담당하는 함수는 handleClick(i) 이므로 이를 수정한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">squares</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">.</span><span class="nx">slice</span><span class="p">();</span>
+  <span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">O</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+    <span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span><span class="p">,</span>
+    <span class="na">xIsNext</span><span class="p">:</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span><span class="p">,</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Board 컴포넌트의 status로 다음 플레이어를 입력받아야한다. 현재 다음 플레이어에 대한 정보는<br />
+state의 xIsNext에 저장되어있으므로</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Next player: </span><span class="dl">'</span> <span class="o">+</span>
+  <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">O</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="승자-결정하기">승자 결정하기</h2>
+
+<p>이제 승자를 확인해야한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">calculateWinner</span><span class="p">(</span><span class="nx">squares</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="kd">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">b</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">c</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>승자가 발생하는 모든 경우의 수를 만들어 놓고, 각각의 경우에 대해 현재 squares에 입력되어 있는 값들을 비교해 모두 같다면 true가 되며, 승자를 리턴한다.<br />
+하지만, 없다면 for문을 빠져나오며 null을 리턴할 것이다.</p>
+
+<p>그리고</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">winner</span> <span class="o">=</span> 
+  <span class="nx">calculateWinner</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">status</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">winner</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">status</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Winner: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">winner</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">status</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Next player: </span><span class="dl">'</span> <span class="o">+</span>
+      <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">O</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>winner변수에 calculateWinner를 저장하는데, 이는 ‘X’,’O’,’null’ 중 하나이다.</p>
+
+<p>if문에서 winner가 ‘X’ 나 ‘O’ 중 하나라면 true로 인식되며 코드가 실행되고,<br />
+status에 winner를 출력한다.</p>
+
+<p>아직 승자가 나오지 않았거나, 실행이 끝났는데도 승자가 없다면 winner가 null로 false가 될 것 이므로, 다음 플레이어가 출력된다.</p>
+
+<p>누군가 승리하거나, Square가 다 채워지면 게임이 지속되면 안되므로<br />
+handleClick 함수가 무시되도록 변경한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">squares</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">.</span><span class="nx">slice</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">calculateWinner</span><span class="p">(</span><span class="nx">squares</span><span class="p">)</span> <span class="o">||</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">O</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+    <span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span><span class="p">,</span>
+    <span class="na">xIsNext</span><span class="p">:</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span><span class="p">,</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="game">Game</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Game</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">game</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">game-board</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Board</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">game-info</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="cm">/* status */</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">ol</span><span class="o">&gt;</span><span class="p">{</span><span class="cm">/* TODO */</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/ol</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+:ET

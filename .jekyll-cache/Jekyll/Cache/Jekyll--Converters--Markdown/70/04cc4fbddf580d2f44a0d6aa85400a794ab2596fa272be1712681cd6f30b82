@@ -1,0 +1,199 @@
+I"8<h1 id="클래스-상속">클래스 상속</h1>
+
+<p>클래스 상속이란 파생클래스가 기반클래스의 기능을 상속한다는 의미이다.<br />
+클래스 상속을 사용하면 클래스간 중복되는 코드를 작성하지 않아도 되어<br />
+코드의 재사용성이 높다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기반클래스 = 부모클래스 = 슈퍼클래스  
+파생클래스 = 자식클래스 = 서브클래스  
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">superclass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">supergreeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'hello im superclass'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">subclass</span><span class="p">(</span><span class="n">superclass</span><span class="p">):</span> <span class="c1">#파생클래스가 기반클래스를 상속
+</span>    <span class="k">def</span> <span class="nf">subgreeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'im subclass'</span><span class="p">)</span>
+
+<span class="n">sub</span> <span class="o">=</span> <span class="n">subclass</span><span class="p">()</span>
+</code></pre></div></div>
+<p>위 코드에서 sub.supergreeting()을 실행하면 기반클래스의<br />
+print(‘hello im superclass’) 가 실행된다.<br />
+<br /></p>
+
+<h2 id="상속관계">상속관계</h2>
+
+<p>클래스의 상속관계를 확인하기 위해서는</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>issubclass(subclass,superclass)
+</code></pre></div></div>
+
+<p>함수를 이용해 파악한다.<br />
+상속관계는 is-a 관계라고 부르기도 한다.</p>
+
+<h2 id="포함관계">포함관계</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">PersonList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">person_list</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># 리스트 속성에 Person 인스턴스를 넣어서 관리
+</span> 
+    <span class="k">def</span> <span class="nf">append_person</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>    <span class="c1"># 리스트 속성에 Person 인스턴스를 추가하는 함수
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">person_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span> <span class="c1">#a라는 사람 인스턴스 선언
+</span><span class="n">lst</span> <span class="o">=</span> <span class="n">PersonList</span><span class="p">()</span> <span class="c1">#lst라는 인스턴스 선언.
+</span><span class="n">lst</span><span class="p">.</span><span class="n">append_person</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">#lst 인스턴스에 a라는 사람인스턴스를 추가
+</span><span class="n">lst</span><span class="p">.</span><span class="n">person_list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">greeting</span><span class="p">()</span> <span class="c1">#lst인스턴스에서 접근가능
+</span></code></pre></div></div>
+
+<p>여기선 PersonList의 인스턴스 속성인
+self.person_list에 매개변수로 다른 클래스의 인스턴스를 만들어 넣는 것이기 때문에 포함관계이다.<br />
+포함관계는 has-a관계라고 부르기도한다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="super">super()</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Person __init__'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">hello</span> <span class="o">=</span> <span class="s">'안녕하세요.'</span>
+ 
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Student __init__'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">school</span> <span class="o">=</span> <span class="s">'파이썬 코딩 도장'</span>
+
+<span class="n">james</span> <span class="o">=</span> <span class="n">Student</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>james는 Person 클래스를 상속한 student의 인스턴스이다.<br />
+따라서 student클래스의 self.school은 호출이 가능하다.<br />
+<br />
+하지만 student클래스가 상속한 Person클래스의 속성 self.hello는 사용이 불가능하다.</p>
+
+<p>그 이유는 james 인스턴스가 만들어지면서 자동으로 __init__메서드가 실행되면서<br />
+self.school의 명령어가 실행됐지만, person클래스의 __init__메서드는 실행되지 않아<br />
+self.hello명령어가 실행되지 않았기 때문이다.</p>
+
+<p>상속한 클래스의 __init__메서드를 호출하기 위해서는<br />
+파생클래스에서</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>super().__init__() 을 실행해줘야한다.   super()는 기반클래스를 의미한다.  
+</code></pre></div></div>
+
+<p><br />
+단 파생 클래스에 __init__메서드가 존재하지 않는다면<br />
+파이썬은 자동으로 기반클래스에서 __init__메서드를 호출하기 때문에 
+super()를 사용할 필요가 없다.</p>
+
+<p><br />
+<br /></p>
+
+<h1 id="메서드-오버라이딩">메서드 오버라이딩</h1>
+
+<p>메서드 오버라이딩은 기반클래스의 함수명을 유지하면서 파생클래스에 함수를 덮어쓰기를 하는 것을 의미한다.</p>
+
+<p>메서드 오버라이딩을 하는 이유로는 함수명을 일관적으로 유지함으로써 유지보수를 용이하게하기 위함이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. 저는 파이썬 코딩 도장 학생입니다.'</span><span class="p">)</span>
+ 
+<span class="n">james</span> <span class="o">=</span> <span class="n">Student</span><span class="p">()</span>
+<span class="n">james</span><span class="p">.</span><span class="n">greeting</span><span class="p">()</span>
+</code></pre></div></div>
+<p>위 코드에서는 파생클래스의 greeting이 실행된다.</p>
+
+<p><br /><br /></p>
+
+<h1 id="다중상속">다중상속</h1>
+
+<p>말 그대로 파생클래스를 만들 때, 여러개의 기반클래스를 상속하는 개념이다.</p>
+
+<p>파생클래스의 매개변수로 기반클래스를 넣어주면된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. A입니다.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. B입니다.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. C입니다.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">pass</span>
+ 
+<span class="n">x</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+<span class="n">x</span><span class="p">.</span><span class="n">greeting</span><span class="p">()</span>    <span class="c1"># 안녕하세요. B입니다
+</span></code></pre></div></div>
+
+<p>다중 상속의 문제점은 파생클래스와 기반클래스간 관계가 다이아몬드 형태로 이루어질때이다.</p>
+
+<p>greeting이라는 메서드를 호출해야하는데, 어느 클래스에서 greeting 메서드를
+호출해야할까?</p>
+
+<p><br /></p>
+
+<p>파이썬에서는 이럴 때 mro(Method Resolution Order)
+를 따른다.<br />
+D.mro()를 실행해보면</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;class '__main__.D'&gt;, &lt;class '__main__.B'&gt;,
+&lt;class '__main__.C'&gt;, &lt;class '__main__.A'&gt;, &lt;class 'object'&gt;]
+</code></pre></div></div>
+
+<p>이렇게 출력되는 것을 볼 수 있다.</p>
+
+<p>메서드를 찾는 순서는 자기자신 D, 그리고 클래스 선언 시 괄호의 왼쪽부터
+B,C 그리고 이들의 기반클래스 A이다.</p>
+
+<p>여기서 object클래스란 파이썬의 모든 클래스의 조상인데, 파이썬 3에서는 모든 클래스가 object 클래스를 기본적으로 상속받기에 object를 생략한다.<br />
+그래서 우리가 클래스를 만들때 괄호없이 만들 수가 있었던 것이다.</p>
+
+<p><br /><br /></p>
+
+<h1 id="추상-클래스">추상 클래스</h1>
+
+<p>추상 클래스는 파생 클래스가 반드시 만들어야하는 메서드를 강제한다.<br />
+추상클래스는 말그대로 ‘추상’이기때문에 인스턴스를 만들지 못한다.<br />
+따라서 인스턴스 메서드를 호출할 일도 없기 때문에 메서드는 빈 상태로 둔다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="o">*</span>
+ 
+<span class="k">class</span> <span class="nc">StudentBase</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">study</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+ 
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">go_to_school</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+ 
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">StudentBase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">study</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공부하기'</span><span class="p">)</span>
+ 
+<span class="n">james</span> <span class="o">=</span> <span class="n">Student</span><span class="p">()</span>
+<span class="n">james</span><span class="p">.</span><span class="n">study</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>이 코드에서 james = Student()는 오류가 발생한다.<br />
+파생클래스인 Student클래스가 상속하는 StudentBase가 추상클래스로 선언되어 있는데,<br />
+추상클래스에서 강제된 메서드 중, go_to_school 이란 메서드를<br />
+파생 클래스인 Student클래스에서 구현하지 않았기 때문이다.</p>
+:ET
