@@ -135,7 +135,7 @@ footer:
     #   # url:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://facebook.com/dding.h.k"
+      # url: "https://facebook.com/dding.h.k"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/koreanddinghwan/"
@@ -147,7 +147,7 @@ footer:
     #   # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/ddingddililiddingdong/"
+      # url: "https://www.instagram.com/ddingddililiddingdong/"
 
 
 # Reading Files

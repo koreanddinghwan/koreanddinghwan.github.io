@@ -1,5 +1,5 @@
 ---
-title:  "[React Native][생활코딩]이벤트 state props ~ "
+title:  "[React Native][생활코딩]이벤트 state props ~ 컴포넌트 이벤트 만들기"
 excerpt: "19강 ~ 26강"
 
 categories:
@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2021-11-17
-last_modified_at: 2021-11-21
+last_modified_at: 2021-11-22
 ---
 
 # state,props,render
@@ -21,7 +21,7 @@ Content 컴포넌트가 현재 웹페이지가 어느 사이트인지에 따라 
 
 <br>
 
-## state 수정
+## 💡state 수정
 
 
 링크를 클릭하면 해당 동작에 따라 웹페이지가 변경되게해야한다.  
@@ -54,7 +54,7 @@ class App extends Component {
 
 <br>
 
-## render함수 수정
+## 💡render함수 수정
 
 ```js:App.js
 render() {
@@ -107,7 +107,7 @@ defaultPrevented를 true로 바꿔줘야한다.
 
 <br><br>
 
-## 이벤트를 통해 state 변경하기
+## 💡이벤트를 통해 state 변경하기
 
 ```js:App.js
 // <Subject/> 컴포넌트 잠시 생략
@@ -134,7 +134,7 @@ defaultPrevented를 true로 바꿔줘야한다.
 
 <Br><br>
 
-## 함수를 통해 state를 변경할때 주의사항
+## 💡함수를 통해 state를 변경할때 주의사항
 
 <br><br>
 
@@ -181,7 +181,7 @@ defaultPrevented를 true로 바꿔줘야한다.
 <br><Br>
 
 
-### bind 함수 이해하기
+### ✏️ bind 함수 이해하기
 
 <br>
 
@@ -205,7 +205,7 @@ this.setState로 App 컴포넌트의 state에 접근할 수 있게된다.
 
 <br><br>
 
-### setState함수 이해하기
+### ✏️ setState함수 이해하기
 
 
 ```javascript
@@ -279,11 +279,11 @@ App컴포넌트는 크게 3부분으로 나눌 수 있다.
 
 <br>
 
-생성자는 컴포넌트가 생성될 때, 기본적으로 생성된다.  
-그리고 render함수를 통해 컴포넌트에 그릴 내용을 결정한다.  
-render함수에서 기초적인 연산을 통해 현재 mode가 welcome인지 read인지에 따라 보여줄 내용을 state로부터 받아  
-변수에 저장하고,  
-이 저장된 변수를 이용해 return 함수에서 컴포넌트를 그린다.  
+❗️생성자는 컴포넌트가 생성될 때, 기본적으로 생성된다.  
+
+❗️그리고 render함수를 통해 컴포넌트에 그릴 내용을 결정한다.  
+
+❗️render함수에서 if문을 통해 현재 mode가 welcome인지 read인지에 따라 보여줄 내용을 state로부터 받아 변수에 저장하고, 이 저장된 변수를 이용해 return 함수에서 컴포넌트를 그린다.  
 
 이 과정은 사용자가 웹 사이트를 접속해 화면을 볼 수 있으면 끝난 것이다.  
 
@@ -307,11 +307,13 @@ return 부분에서 변경해야할 값들을 this.state로 변경해 유지하�
 `특정 시점`에 리렌더링을 할 수 있다.  
 
 
-
+<br><Br>
 
 # 컴포넌트 이벤트 만들기
 
-## 자식 컴포넌트에서 부모컴포넌트의 state를 변경하기
+<br><br>
+
+## 💡자식 컴포넌트에서 부모컴포넌트의 state를 변경하기
 
 자식컴포넌트의 이벤트로 부모컴포넌트의 state를 변경하기위해선  
 부모컴포넌트에서 state를 변경하는 이벤트를 정의하고,  
@@ -400,18 +402,111 @@ class Subject extends Component {
 export default Subject;
 ```
 
+<br><br>
 
 ## 자식컴포넌트로부터 부모컴포넌트에게 값 전달하기
 
-
+<br><br>
 클릭된 Toc 컴포넌트의 li 요소에 따라 Content컴포넌트의 내용이 변경되어야한다.  
 
-사용자가 li요소의 링크를 클릭
-mode가 read로 변경되며 
-누른 링크의 id값을 부모 컴포넌트의 state에 저장.(setState로 변경)
+현재 렌더링할 컨텐츠의 id를 부모컴포넌트에 state로 넣어준다.  
+
+```js
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mode:'welcome',
+      subject: {title:'WEB', sub:'World wide web!'},
+      welcome:{title:'Welcome', desc:'Hello, React!!'},
+      contents: [
+        {id:1, title:'REACT', desc:'HTML is a programming laguage ^^'},
+        {id:2, title: 'Vue', desc:'vue is vue'},
+        {id:3, title: 'angular', desc:'hello angular'}
+      ],
+      selectedcontentid: null
+    }
+  }
+```
+
+<br><Br>
+
+### ✏️ target의 dataset으로 전달하기
+
+<br><Br>
 
 
+```js
+class Toc extends Component {
+    render() {
+      var lst = [];
+      var data = this.props.data
+      let i = 0;
+      while(i < data.length) {
+        lst.push(<li key={data[i].id}>
+          <a
+            data-id = {data[i].id}
+            href="/" 
+            onClick={function(e) {
+              e.preventDefault();
+              this.props.onChangePage(e.target.dataset.id);
+              }.bind(this)}>{data[i].title}</a>
+          </li>)
+        i += 1;
+      }
+      return (
+        <nav>
+          <ul>
+            {lst}
+          </ul>
+        </nav>
+      )
+    }
+  }
+```
+
+```js
+-App.js-
+<Toc 
+        data = {this.state.contents}
+        onChangePage = {function(id){
+          this.setState({
+            mode:'read',
+            selectedcontentid:parseInt(id)
+          })
+        }.bind(this)}
+        />
+```
 
 
+부모컴포넌트의 state를 변경하기 위해서는 자식컴포넌트에서 부모컴포넌트에게로 현재 사용자가 클릭한 버튼의 데이터를 넘겨주어야한다.  
 
+부모컴포넌트와 자식컴포넌트를 props `onChangePage`로 연결했기 때문에 자식 컴포넌트 기준에서, 이 함수를 호출할때  
 
+매개변수로 이 정보를 넘겨주고, 부모컴포넌트가 정의한 이 함수는 이 정보로 state를 변경할 수 있다.
+
+`data-`를 접두사로 태그에 속성을 부여하면 이벤트가 발생한 태그의 이벤트 객체 `e`에서 `target`이라는 프로퍼티에서 `dataset`이라는 프로퍼티로 접근이 가능하다.  
+
+<br><br>
+
+### ✏️ bind 함수 이용
+
+또는 bind함수를 이용할 수도 있다.  
+bind함수는 함수 뒤에 붙어 이 함수가 함수 바깥 객체를 인식하게끔 해준다.  
+bind(this)다음 인자로 함수 바깥의 객체를 넘겨주게되면,  
+해당 함수는 이 인자를 매개변수로 사용할 수 있게 된다. (전역변수->지역변수)  
+
+함수의 매개변수의 첫번째 인자 자리에 밀어넣으면 된다.  
+```js
+while(i < data.length) {
+        lst.push(<li key={data[i].id}>
+          <a
+            href="/" 
+            onClick={function(id,e) {
+              e.preventDefault();
+              this.props.onChangePage(id);
+              }.bind(this,data[i].id)}>{data[i].title}</a>
+          </li>)
+        i += 1;
+      }
+```

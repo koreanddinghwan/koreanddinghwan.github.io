@@ -27,6 +27,7 @@ npm install -g create-react-app
 터미널에서 설치하고자하는 폴더로 들어가서 (`cd 파일명`)  
 `npm create-react-app` 실행
 
+<br><br>
 
 ### 새로운 폴더에서 npm create-react-app 안되는 경우
 
@@ -40,6 +41,8 @@ $ create-react-app my-app
 
 위 명령어를 작성하면 새로운 폴더에 리액트 개발환경 설정이 가능하다.
 
+<br><br>
+
 # VS Code에서 샘플 웹앱 실행
 
 vs code 상에서 설정->명령 팔레트 에서 `터미널:새 터미널 만들기` 검색 후,  
@@ -48,6 +51,8 @@ vs code 상에서 설정->명령 팔레트 에서 `터미널:새 터미널 만�
 
     실행 : `npm run start`
     실행 종료 : `control + c`
+
+<br><br>
 
 # 샘플 웹앱
 
@@ -77,6 +82,8 @@ vs code 상에서 설정->명령 팔레트 에서 `터미널:새 터미널 만�
 실질적인 코드들은 src안의 파일들로 작성된다.  
 
 index.js에서 src의 파일들을 import해 index.html에 해당 파일들을 React의 문법으로 삽입한다.  
+
+<br><br>
 
 ## index.js
 
@@ -119,6 +126,7 @@ ReactDOM.render(
 이 App이란 녀석은 `import App from './App';` 여기서 import되었고, 사용자 정의태그이다.  
 App.js에서 App이라는 함수,모듈,변수 등을 넣으라는 것이다.  
 
+<br><br>
 
 ## App.js
 
@@ -145,6 +153,7 @@ export default App;
 그리고 밑의 class는 리액트 컴포넌트를 class 형식으로 표현한다.  
 return은 최소한 하나의 태그가 있어야한다.  
 
+<br><br>
 
 ## index.css
 
@@ -170,6 +179,7 @@ App.css에서 body 태그에 css를 적용할수도 있다.
 
 컴포넌트별로 각각 css파일을 import하여 개별적으로 css를 관리할 수 있어 유지보수에 용이하다.  
 
+<br><br>
 
 # 배포
 
@@ -181,6 +191,8 @@ App.css에서 body 태그에 css를 적용할수도 있다.
 리액트는 개발의 편의성을 위해 여러가지 기능을 추가하므로, create-react-app은 파일의 무게가 상당히 무겁다.  
 
 사용자 친화적으로 앱을 운영하기 위해서 사용하는 것이 `build`이다.
+
+<br><br>
 
 ## build하는 법
 
@@ -195,7 +207,7 @@ npm run build
 
 새로운 빌드 build라는 폴더가 생긴다.  
 
-<br>
+<br><br>
 
 
 ## build의 사용법
@@ -224,3 +236,4 @@ npx serve -s build
 ```
 웹서버를 다운해 실행시킬때, build라는 document root로 하여 생성한다.  
 
+<br><br>
