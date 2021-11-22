@@ -472,6 +472,14 @@ push로 배열을 추가하게되면 `원본데이터`를 바꾼다.
 
 <code>shouldComponentUpdate(nextProps, nextState)</code>
 
+state 변화 -> setState호출 -> 리렌더링   
+이 시점에서 이 메서드가 호출된다.  
+
+따로 설정하지 않는다면, 기본동작은 True를 반환하는 것.  
+
+성능 최적화를 위해 설정하고 싶다면, this.props와 nextprops를 비교하는 명령문을 작성해 변화가 없다면(===) false를 리턴해 불필요한 렌더링을 방지할 수 있다.  
+
+
 
 
 
