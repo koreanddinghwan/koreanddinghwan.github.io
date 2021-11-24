@@ -377,32 +377,6 @@ Toc 컴포넌트의 li 요소의 a태그들도 각각 누르면 mode가 read로 
         }.bind(this)}/>
 ```
 
-```js
-import React, { Component } from 'react';
-
-class Subject extends Component {
-    render() {
-      return (
-        <header>
-          <h1>
-            <a href="/" onClick={function(e){
-              e.preventDefault();
-              this.props.onChangePage();
-            }.bind(this)}>
-              {this.props.title}
-            </a>
-            <div>
-            {this.props.sub}
-            </div>
-          </h1>
-        </header>
-      )
-    }
-  }
-
-export default Subject;
-```
-
 <br><br>
 
 ## 자식컴포넌트로부터 부모컴포넌트에게 값 전달하기
