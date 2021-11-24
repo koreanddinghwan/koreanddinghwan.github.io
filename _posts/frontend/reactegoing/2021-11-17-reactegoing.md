@@ -30,7 +30,7 @@ Content 컴포넌트가 현재 웹페이지가 어느 사이트인지에 따라 
 mode의 state를 welcome과 read로 구분해 `첫 페이지`인지 `컨텐츠 페이지`인지를 알려준다.  
 
 
-```js:App.js
+```js
 class App extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +56,7 @@ class App extends Component {
 
 ## 💡render함수 수정
 
-```js:App.js
+```js
 render() {
   var _title, _desc = null; //초기값은 null
   if (this.state.mode === 'welcome') {
@@ -74,7 +74,7 @@ render() {
 
 그리고 return의 Content부분이 현재 mode에 따라 다른 title과 desc를 props로 가지도록 수정한다.  
 
-```js:App.js
+```js
 <Content title={_title} desc={_desc}>
 ```
 
@@ -86,7 +86,7 @@ html에서 a태그는 기본적으로 태그를 클릭하면 웹페이지가 초
 이것을 막기 위해서는 onClick 속성의 함수가 기본적으로 생성하는 매개변수인 e 프로퍼티 중에서  
 defaultPrevented를 true로 바꿔줘야한다. 
 
-```js:App.js
+```js
 // <Subject/> 컴포넌트 잠시 생략
 <header>
   <h2>
@@ -109,7 +109,7 @@ defaultPrevented를 true로 바꿔줘야한다.
 
 ## 💡이벤트를 통해 state 변경하기
 
-```js:App.js
+```js
 // <Subject/> 컴포넌트 잠시 생략
 <header>
   <h2>
@@ -154,14 +154,15 @@ defaultPrevented를 true로 바꿔줘야한다.
 
 ```
 이전 절에서 설명했듯이 모든 컴포넌트가 자신의 이벤트 핸들러에서  
-`setState()`를 호출할 때까지 React는 리렌더링을 하지 않고 내부적으로 “기다리고 있습니다”. 이를 통해 불필요한 렌더링을 방지하면서 성능을 향상시킵니다.  
+`setState()`를 호출할 때까지 React는 리렌더링을 하지 않고 내부적으로 “기다리고 있습니다”.  
+이를 통해 불필요한 렌더링을 방지하면서 성능을 향상시킵니다.  
 ```
 
 따라서 현재 state.mode를 'welcome'으로 바꾸더라도, 리액트는 setState()함수가 호출될때까지 변경된 값을 유지하고 기다린다.  
 그리고 `setState()`함수가 호출되면 리렌더링한다.  이를 통해 불필요한 렌더링을 방지하며 성능을 향상시킨다.  
 
 
-```js:App.js
+```js
 <header> 
   <h2>
       <a href="/" onClick={ function(e) {
