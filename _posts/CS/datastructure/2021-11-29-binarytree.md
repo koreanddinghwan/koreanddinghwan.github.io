@@ -39,18 +39,6 @@ last_modified_at: 2021-11-29
 
 또한, 이 노드에 다른 정보를 담고싶다면 key값 이외에 다른 값을 묶어서 넣을수도 있다.  
 
-```python
-class Node: #초기값은 None
-    def __init__(self,key=None,parent=None,left=None,right=None):
-        self.key = key
-        self.parent = parent
-        self.left = left
-        self.right = right
-
-        #print시 출력할 것
-    def __str__(self):
-        return str(self.key)
-```
 
 
 <img src= "https://user-images.githubusercontent.com/76278794/143864582-bfdf16c6-08ad-43b3-9157-cd0bc3842adb.jpeg" width="200">   
@@ -65,6 +53,23 @@ class Node: #초기값은 None
 
 
 Binary 클래스가 각 노드들에 대해 insert, find, delete 등의 연산을 해야하기 때문에 Node클래스는 Binary 클래스의 하위 클래스가 되어야한다.  
+
+<br><br>
+
+## 노드클래스 정의
+
+```python
+class Node: #초기값은 None
+    def __init__(self,key=None,parent=None,left=None,right=None):
+        self.key = key
+        self.parent = parent
+        self.left = left
+        self.right = right
+
+        #print시 출력할 것
+    def __str__(self):
+        return str(self.key)
+```
 
 <br><br>
 
@@ -85,6 +90,7 @@ Binary tree에서 각 노드들에 방문하는 일정한 규칙을 `순회(trav
 이 방식은 각 노드들에서 `재귀적`으로 적용한다.  
 
 
+
 preorder방식
 <img src="https://user-images.githubusercontent.com/76278794/143872059-1d1bd055-56b0-431d-b92d-60e365378e17.jpeg" width="300">
 
@@ -99,7 +105,22 @@ postorder방식
 <img src="https://user-images.githubusercontent.com/76278794/143870344-329974b9-ddfa-43d8-b05d-326812d881ea.jpeg" width="300">
 
 
+## preorder 메서드 구현
 
+```python
+def preorder(self):
+    if self != None:
+        print(self.key) #M
+
+        if self.left: #L
+            self.left.preorder()
+
+        if self.right: #R
+            self.right.preorder()
+```
+
+재귀적으로 preorder 메서드를 호출한다.  
+print문의 위치에 따라 MLR인지, LMR인지, LRM인지로 나뉜다.  
 
 
 
