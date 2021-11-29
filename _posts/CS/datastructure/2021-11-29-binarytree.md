@@ -123,6 +123,110 @@ def preorder(self):
 print문의 위치에 따라 MLR인지, LMR인지, LRM인지로 나뉜다.  
 
 
++) 만약에 이 세가지 순회 중에서 2가지 순회가 주어진다면 이진 트리를 복원할 수 있다.
+
+
+<br><BR>
+
+# 이진탐색트리
+
+이진트리에서 search를 효율적으로 하기위한 자료구조이다.  
+영어로 `Binary Search Tree`, `BST`라고 부른다
+
+이진탐색트리를 만들기 위해서는
+    
+    1. 각 노드의 왼쪽 subtree의 키값은 부모노드의 key값보다 작거나 같아야한다. 
+    2. 오른쪽 subtree의 키값은 노드의 key값보다커야한다. 
+
+위 조건이 갖춰져야한다.  
+
+이 조건을 만족하게되면, 각 부모노드를 기준으로 작은 값들이 왼쪽subtree에, 큰 값들이 오른쪽subtree에 저장된다.  
+
+이렇게 저장되면 찾고싶은 값을 찾기위한 시간복잡도가 `트리의 높이`에 따라 달라진다.
+
+<img src="https://user-images.githubusercontent.com/76278794/143902580-24a18dea-6c7b-498c-b981-b31a0c342afb.jpeg">
+
+    search(19)
+    15 -> 19는 15보다 크므로 오른쪽 subtree로
+    20 -> 19는 20보다 작으므로 왼쪽 subtree로
+    17 -> 19는 17보다 크므로 오른쪽 subtree로
+    19 -> search complete
+
+    search(5)
+    15 -> 5는 15보다 작으므로 왼쪽 subtree로
+    4 -> 5는 4보다 크므로 오른쪽 subtree로
+    오른쪽 subtree None -> 찾고자하는 값 없음
+
+
+## BST클래스 정의 코드
+
+BST 클래스를 선언해 BST클래스의 메서드를 선언해야한다.  
+BST 클래스는 root와 size정보, 이터레이터를 정의하자.
+
+```python
+class BST:
+    def __init__(self):
+        self.root = None
+        self.size = 0
+    
+    def __len__(self):
+        return self.size
+
+    def __iter__(self):
+        return self.root.__iter___() 
+```
+
+<br><Br>
+
+## find_loc함수 구현
+
+
+search를 하기위해서는 현재 찾고자하는 키값이 어디있는지 찾아야한다. 이를 `find_loc()`함수로 구현한다.  
+
+
+만약 key값 노드가 있다면 해당 노드를 리턴하고,  
+없다면 그 노드가 삽입되어야하는 부모노드를 리턴한다.  
+
+`find_loc()`은 search연산에서는 리턴값이 search값과 같다면 그 노드가 있는 것이고, 리턴값이 부모노드라서 search값과 다른 경우에는 그 노드가 없는 것이다.  
+
+insert연산에서는 리턴값이 insert값과 같다면 이미 있는 값이고, 다르다면 부모노드가 리턴된 것이므로 해당 부모노드의 자식노드로 insert값을 삽입한다. 
+
+
+```python
+def find_loc(self,key):
+    #트리 크기가 0일때
+    if self.size == 0:
+        return None
+
+    # 부모노드부터 find시작
+    p = None
+    v = self.root
+
+    while v: #v에 값이 있어야함
+        #v의 key값이 찾고자하는 key값과 같으면 해당노드리턴
+        if v.key == key:
+            return v
+
+        #다르면 p에는 현재노드를, v에는 key값과 비교해 left or right 부여
+        elif v.key < key:
+            p = v
+            v = v.right
+        else:
+            p = v
+            v = v.left
+    
+    #while문에서 return되지 않으면 p에 leaf(트리의 끝부분)이 저장되어있다.
+    return p 
+```
+
+
+
+
+
+## insert연산 
+
+
+
 
 
 
