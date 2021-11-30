@@ -14,7 +14,7 @@
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
 
-  @include breakpoint($x-large) {
+  @include breakpoint($xx-large) {
     max-width: $max-width;
   }
 }
@@ -536,7 +536,7 @@ body {
 
 .page__related-title {
   margin-bottom: 10px;
-  font-size: $type-size-6;
+  font-size: $type-size-7;
   text-transform: uppercase;
 }
 
