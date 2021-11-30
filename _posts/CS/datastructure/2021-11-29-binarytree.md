@@ -20,6 +20,7 @@ last_modified_at: 2021-11-29
 # 이진트리
 
 ## 정의
+
 이진트리는 트리인데, 각 노드의 자식노드가 2개 이하인 트리이다.  
 일반적으로 자식노드가 많으면 유용한데, 삽입,삭제연산이 복잡해지기때문에 이진트리를 가장 많이 사용한다.  
 <br>
@@ -138,7 +139,7 @@ print문의 위치에 따라 MLR인지, LMR인지, LRM인지로 나뉜다.
     1. 각 노드의 왼쪽 subtree의 키값은 부모노드의 key값보다 작거나 같아야한다. 
     2. 오른쪽 subtree의 키값은 노드의 key값보다커야한다. 
 
-위 조건이 갖춰져야한다.  
+(중요!) 위 조건이 `모든 노드들에 대해` 갖춰져야한다.  
 
 이 조건을 만족하게되면, 각 부모노드를 기준으로 작은 값들이 왼쪽subtree에, 큰 값들이 오른쪽subtree에 저장된다.  
 
@@ -431,11 +432,9 @@ def deleteByCoping(self,key):
 
         #m이 존재할때, m의 right subtree는 없는 것이 보장되나, left subtree는 있을수도있다.
         if m.left:
-            #m의 parent와 비교해 연결한다.
-            if m.parent.key < m.left:
-                m.parent.right = m.left
-            else:
-                #m.parent.left에서 m.left가 들어갈 적당한 자리를 찾는다.
+            #m의 parent와 연결한다.
+            m.left.parent = m.parent.right
+            m.parent.right = m.left
 
 
     #삭제한 x가 root인경우
@@ -472,11 +471,9 @@ delete연산 또한 m을 찾기위해 최악의 경우 h만큼 비교하기 때�
 
 트리의 높이 h는 최악의 경우 right subtree로만 연결되기때문에 n-1까지 가능하므로  
 모든 연산시간은 O(n) 만큼 걸린다.  
-따라서 지금까지 공부한 이진탐색트리는 탐색에 결고 최적화되어있지 않다.  
 
-트리의 높이를 최적화해야 탐색 수행시간이 줄어든다.  
+따라서 트리의 높이를 최적화해야 탐색 수행시간이 줄어든다.  
 이를 위해 `균형이진탐색트리`가 존재한다.  
 
-위에서 deleteByCopying 함수를 구현할때, m의 left와 m의 parent를 연결하는 과정에서 어려움이 있던게 m.left가 m.parent보다 작을때는 어떻게 최적화해서 연결할 것인가에 대한 생각을 해야하기 때문인데, 균형이진탐색트리를 공부하면 알 수 있다.  
 
 
