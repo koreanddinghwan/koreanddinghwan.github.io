@@ -51,7 +51,7 @@
   -ms-flex-item-align: center;
   align-self: center;
   font-weight: bold;
-  font-size: 45px;
+  font-size: $type-size-5;
   // z-index: 20;
 }
 
@@ -87,7 +87,7 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
-  font-size: 30px;
+  font-size: $type-size-5;
 
   &--lg {
     padding-right: 2em;
