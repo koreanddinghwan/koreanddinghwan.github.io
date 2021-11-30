@@ -1,0 +1,1289 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Datastructure] 트리구조, 힙 - LightBig</title>
+<meta name="description" content="파이썬 자료구조">
+
+
+  <meta name="author" content="엘비">
+  
+  <meta property="article:author" content="엘비">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="LightBig">
+<meta property="og:title" content="[Datastructure] 트리구조, 힙">
+<meta property="og:url" content="http://localhost:4000/datastructurepy/tree$heap/">
+
+
+  <meta property="og:description" content="파이썬 자료구조">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-11-27T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-11-27T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/datastructurepy/tree$heap/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dding-Hwan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="LightBig Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/avatar.png" alt="LightBig"></a>
+        
+        <a class="site-title" href="/">
+          LightBig
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/mylogs/">My Logs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">카테고리 목록</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#datastructurepy" itemprop="item"><span itemprop="name">Datastructurepy</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[Datastructure] 트리구조, 힙</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/avatar.png" alt="엘비" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">엘비</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>밝고 큰</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Korea, South</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/koreanddinghwan/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:myunghwan0421@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="myunghwan0421@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">카테고리 목록</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <li>
+            📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span style="font-family:'-apple-system;">53</style> <span style="font-family:'-apple-system;">개</style> 
+      </li>
+      <li>
+        
+
+        <span class="nav__sub-title">Frontend</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/javascript" class="">Javascript (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/css" class="">Css(2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/html" class="">Html (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Reactegoing" class="">React[생활코딩] (5)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Coding test</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">Python 백준 문제풀이 (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Computer Science</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">알고리즘 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Python</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/pythonsyntax" class="">파이썬 문법공부 (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+
+        <span class="nav__sub-title">Blog</span>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/blog" class="">jekyll로 만드는 github blog (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Etc</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/etc" class="">그때그때, 궁금한 것들(1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>	
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkoreanddinghwan.github.io&count_bg=%23000000&title_bg=%237A87A4&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/>
+      </li>
+  </ul>
+</nav>
+
+  
+
+  </div>
+
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Datastructure] 트리구조, 힙">
+    <meta itemprop="description" content="파이썬 자료구조">
+    <meta itemprop="datePublished" content="2021-11-27T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-11-27T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/datastructurepy/tree$heap/" class="u-url" itemprop="url">[Datastructure] 트리구조, 힙
+</a>
+          </h1>
+          <div class="page__meta">
+            
+            
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-11-27">November 27, 2021</time></p>
+
+            
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#computer-science" class="page__taxonomy-item p-category" rel="tag">computer science</a><span class="sep">, </span>
+    
+      <a href="/tags/#data-structure" class="page__taxonomy-item p-category" rel="tag">data structure</a><span class="sep">, </span>
+    
+      <a href="/tags/#heap" class="page__taxonomy-item p-category" rel="tag">heap</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#tree" class="page__taxonomy-item p-category" rel="tag">tree</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#datastructurepy" class="page__taxonomy-item p-category" rel="tag">datastructurepy</a>
+    
+    </span>
+  </p>
+
+
+          </div>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 공부한 내용 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#참고-자료">참고 자료</a></li><li><a href="#-트리구조">💡 트리구조</a><ul><li><a href="#️-구조">✏️ 구조</a></li><li><a href="#️-용어">✏️ 용어</a></li></ul></li><li><a href="#-이진트리">💡 이진트리</a><ul><li><a href="#️-표현법">✏️ 표현법</a><ul><li><a href="#️-리스트를-중복해서-표현">❗️ 리스트를 중복해서 표현</a></li><li><a href="#️--연결-리스트로-표현">❗️  연결 리스트로 표현</a></li><li><a href="#️-하나의-리스트로-표현">❗️ 하나의 리스트로 표현</a></li></ul></li></ul></li><li><a href="#-힙heap">💡 힙(heap)</a><ul><li><a href="#️-heap-클래스">✏️ heap 클래스</a></li><li><a href="#️-maekheap함수">✏️ maekheap함수</a></li><li><a href="#️-heapify_down함수">✏️ heapify_down함수</a><ul><li><a href="#️-make_heap함수의-수행시간">❗️ make_heap함수의 수행시간</a></li></ul></li><li><a href="#️-heapifyup-insert함수">✏️ heapifyup, insert함수</a></li><li><a href="#️-delete_max">✏️ delete_max</a></li><li><a href="#️-heap_sort">✏️ heap_sort</a></li></ul></li><li><a href="#-연산시간-정리n개의-값을-저장한-리스트와-힙에-대해">💡 연산시간 정리(n개의 값을 저장한 리스트와 힙에 대해)</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="참고-자료">참고 자료</h1>
+<p>😇 <a href="https://www.youtube.com/c/ChanSuShin/featured">신찬수 교수님 자료구조 강의</a></p>
+
+<p><br /><br /></p>
+
+<h1 id="-트리구조">💡 트리구조</h1>
+
+<p>연결리스트는 각 노드들이 한 줄로 연결된 선형적인 자료구조이다.</p>
+
+<p>하지만 트리는 부모-자식 관계를 계측정으로 표현한 일반적인 자료구조라고 할 수 있다.</p>
+
+<p>트리 구조 중에 자식 노드가 1개인 것을 트리구조의 특별한 경우라고 말할 수 있다.</p>
+
+<p><br /></p>
+
+<h2 id="️-구조">✏️ 구조</h2>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/143669228-997c2a0f-4ba0-4354-baaf-77376e0c8d70.png" alt="tree-terms" />
+출처<a href="https://gmlwjd9405.github.io/2018/08/12/data-structure-tree.html">권희정님 github</a></p>
+
+<p><br /></p>
+
+<h2 id="️-용어">✏️ 용어</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>부모/자식 노드 : A는 B의 부모노드, B는 A의 자식노드 (1레벨)  
+
+조상/자손 노드 : A는 D의 조상노드, D는 A의 자손노드 (N레벨)  
+
+루트 노드 : 모든 노드의 조상노드, (A)  
+
+리프 노드 : 자식이 없는 노드, 트리의 끝 노드(H,I,J,F,G)  
+
+레벨 : 루트노드의 레벨을 0으로 시작한다. 한 세대씩 내려가면서 1씩 증가  
+
+깊이 : 루트노드에서 다른 노드를 연결하는 에지(선)의 개수 (노드 H의 깊이 = 3)  
+
+경로 : 두 노드 사이를 연결하는 에지의 시퀀스 
+
+    C와 H 사이의 경로 = H -&gt; D -&gt; B -&gt; A -&gt; C
+    경로의 길이는 에지의 수, 위의 경우 경로의 길이는 4
+
+높이 : 노드의 높이는 자식 노드까지의 가장 큰 깊이
+
+    A노드의 높이 -&gt; H,I가 가장 깊은 곳에 있으므로 3
+
+트리 높이 : 루트 노드의 높이가 트리 높이, 여기서는 A노드가 루트노드이므로 트리 높이는 3
+
+분지수 : 가지의 개수
+        노드의 분지수 = 자신의 자식 수(B노드의 분지수는 2)
+        트리의 분지수 = 트리에서 가장 큰 분지수(위의 경우 2)
+
+부트리 : 어떤 노드와 그 노드의 자손노드들로 구성된 부분 트리
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h1 id="-이진트리">💡 이진트리</h1>
+
+<p>이진트리 : 트리 중, <code class="language-plaintext highlighter-rouge">모든 노드의 자식이 2개를 넘지 않는 트리</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">실제 자료구조에서 사용되는 트리는 이진트리가 대부분이다.</code></p>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/143669671-1b64534b-5ae6-4791-9f05-f9f5b7de8a49.png" alt="An-example-of-a-binary-tree" /></p>
+
+<p><br /><br /></p>
+
+<h2 id="️-표현법">✏️ 표현법</h2>
+
+<h3 id="️-리스트를-중복해서-표현">❗️ 리스트를 중복해서 표현</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`[15, [11, [8, [6, [], []], [9, [], []]], [12, [], [14, [], []]] ],  
+[26,[20, [], []],[30, [], [35, [], []]] ]]`
+</code></pre></div></div>
+
+<p>[루트, [루트의 왼쪽 부트리], [루트의 오른쪽 부트리]] 형식으로 재귀적으로 정의한다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="️--연결-리스트로-표현">❗️  연결 리스트로 표현</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>부모 노드를 제외한 각 노드가
+key, parent, left, right에 대한 정보를 가진다.  
+</code></pre></div></div>
+
+<p>부모노드는 부모노드가 없으므로 key, left, right에 대한 정보를 가진다.<br />
+각 노드는 parent, left, right 노드로 접근할 수 있는 메서드를 가진다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="️-하나의-리스트로-표현">❗️ 하나의 리스트로 표현</h3>
+
+<p><code class="language-plaintext highlighter-rouge">H = [15, 11,26  8,12,20,30, 6,9,None,14,None,None,None,35]</code></p>
+
+<p>레벨 0부터 차례대로, 왼쪽에서 오른쪽 순서로 작성한다.<br />
+자식노드가 없는 경우는 None으로 작성한다.<br />
+<br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">장점</code><br />
+이렇게 <code class="language-plaintext highlighter-rouge">상수시간의 연산</code>으로 자식노드와 부모노드를 찾을 수 있다.</p>
+
+<p>왜냐하면 현재 노드의 인덱스번호를 알고 있다면, 자식노드와 부모노드의 인덱스번호를 계산할 수 있기 때문이다.</p>
+
+<p>자식노드 : H[인덱스N * 2 + 1] or H[인덱스N * 2 + 2]<br />
+부모노드 : H[(인덱스N - 1) // 2]</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>부모노드의 인덱스 N이 3일때 (노드8)
+
+(노드8)의 왼쪽 자식노드는 H[3 * 2 + 1] (노드6)
+오른쪽 자식노드는 H[3 * 2 + 2] (노드 9)
+
+노드8의 부모노드는 H[(3-1)//2]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">단점</code><br />
+불필요한 <code class="language-plaintext highlighter-rouge">메모리 낭비</code>가 발생한다.</p>
+
+<p>위의 예시와 같이, 노드가 없는 공간을 None으로 표시하는데, 리스트에 길이가 쓸데없이 늘어나며 메모리가 증가하게된다.<code class="language-plaintext highlighter-rouge">(None도 메모리공간을 차지한다)</code></p>
+
+<p>이런 불필요한 공간낭비를 줄이려면 None으로 표현되는 것을 모두 채워야한다.</p>
+
+<p><br /><br /></p>
+
+<h1 id="-힙heap">💡 힙(heap)</h1>
+
+<p><br /></p>
+
+<p>모양 성질과 힙 성질을 만족하는 리스트에 저장된 값의 시퀀스</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>모양 성질: 
+        1. 마지막 레벨을 제외한 각 레벨의 노드가 모두 채워져 있어야 한다.
+        2. 마지막 레벨에선 노드들이 왼쪽부터 채워져야한다.
+
+힙 성질:
+        1. 루트 노드를 제외한 모든 노드에 저장된 값(key)은 자신의 부모노드의 값보다 크면 안된다.
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">보통 리스트의 데이터는 힙성질, 모양성질을 갖춘 데이터가 주어지지 않는다.</code><br />
+따라서 힙 성질을 갖춘 데이터가 되도록 리스트의 데이터들을 재정렬해주어야하는데, 이를<br />
+makeheap()함수라고 한다.</p>
+
+<p><br /></p>
+
+<h2 id="️-heap-클래스">✏️ heap 클래스</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Heap</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span> <span class="c1">#L은 리스트
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">L</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">make_heap</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="️-maekheap함수">✏️ maekheap함수</h2>
+
+<p>makeheap는 불규칙하게 주어진 데이터를 heap성질을 만족하게 하는 함수는 <code class="language-plaintext highlighter-rouge">heapify_down()</code>이라는 함수를 반복하면서 이루어진다.</p>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">H</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">makeheap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> 
+    <span class="c1">#데이터의 각 요소에 대해서, 마지막 요소부터 heapify_down함수를 실행
+</span>    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">heapify_down</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="c1">#매개변수로 대상 노드의 인덱스와 전체 데이터의 길이가 주어진다.
+</span>
+</code></pre></div></div>
+
+<h2 id="️-heapify_down함수">✏️ heapify_down함수</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">heapify_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1">#두 자식노드의 값이 자기자신보다 작을거나 리프노드에 도달할때까지 반복
+</span>    <span class="k">while</span> <span class="mi">2</span><span class="o">*</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="c1">#왼쪽 자식노드와 오른쪽 자식노드의 인덱스번호 계산
+</span>        <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="c1"># 부모노드와 자식노드들 중 가장 큰 값의 인덱스 찾기
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">L</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">k</span>
+
+        <span class="k">if</span> <span class="n">R</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">]:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">R</span>
+        
+        <span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="n">k</span><span class="p">:</span> <span class="c1">#현재 k가 heap 성질 위배하는 경우
+</span>            <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">m</span> <span class="c1">#k에 m값을 줌으로써 m인덱스를 부모노드로하는 heap성질 검증 실행한다.
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span> <span class="c1">#현재 노드가 heap 성질을 만족한다면 break건다. 왜냐하면 makeheap()에 의해 k가 작아지면서 윗 노드에서 heap성질을 위반하면 아래 노드들에 대해 알아서 검증해주기 때문이다.
+</span></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="️-make_heap함수의-수행시간">❗️ make_heap함수의 수행시간</h3>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/143675025-85d59cce-c09e-4919-a9c4-80e76df1ac93.jpeg" alt="IMG_107D4746390B-1" /></p>
+
+<p>최악의 경우, <code class="language-plaintext highlighter-rouge">heapify_down()</code>연산은 가장 아래의 노드가 가장 위로 올라와야하는 경우이다.<br />
+이때, 연산의 시간복잡도는 <code class="language-plaintext highlighter-rouge">O(logN)</code>이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">makeheap()</code>연산에서 각 노드들에 대해서 <code class="language-plaintext highlighter-rouge">O(N)번</code> <code class="language-plaintext highlighter-rouge">O(logN)</code>의 연산을 하므로<br />
+<code class="language-plaintext highlighter-rouge">makeheap()</code>연산의 전체 시간 복잡도는 <code class="language-plaintext highlighter-rouge">O(NlogN)</code>이다.</p>
+
+<p><br /></p>
+
+<h2 id="️-heapifyup-insert함수">✏️ heapifyup, insert함수</h2>
+
+<p>heapifyup함수는 insert연산을 위한 함수이다.<br />
+insert연산은 힙 리스트의 마지막에 값을 추가하고, 이 값이 힙 성질을 가지도록<br />
+부모노드들을 타고 올라가면서 정렬을해야한다.<br />
+따라서 시간복잡도는 <code class="language-plaintext highlighter-rouge">O(logN)</code>이다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">heapify_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1">#k가 양수이고, 현재노드의 부모노드의 값 &lt; 현재노드일때 실행
+</span>    <span class="k">while</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+        <span class="c1">#부모노드와 현재노드의 위치를 바꾸고
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="c1">#k에 부모노드의 인덱스번호를 주고 while문 반복
+</span>        <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    
+<span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="c1">#힙 리스트의 마지막에 값을 추가한다.
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="c1">#현재 리스트가 4개 -&gt; len(A) = 4, indexnum = 3 이므로 -1해준다.
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">heapify_up</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="️-delete_max">✏️ delete_max</h2>
+
+<p>현재 힙 리스트의 값 중 가장 큰 값을 삭제하고 리턴한다.<br />
+삭제하고 리턴 -&gt; pop연산을 해야하므로<br />
+A[0]을 A[n-1]의 값으로 대체하고 pop, 
+이후 0번 인덱스 노드부터 재배치한다-&gt; heapify_down(0, len(A))</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">delete_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="c1">#리턴할 max값 저장
+</span>    <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1">#대체
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1">#삭제
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span> 
+    <span class="bp">self</span><span class="p">.</span><span class="n">heapify_down</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">key</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="️-heap_sort">✏️ heap_sort</h2>
+
+<p>정렬알고리즘이다.<br />
+주어진 데이터를 make_heap으로 힙 정렬을 한다.<br />
+heap정렬의 특징은 가장 큰 값이 root노드가 된다는 것이므로,<br />
+<code class="language-plaintext highlighter-rouge">힙 리스트의 첫값을 마지막값과 대체, 그리고 마지막 값을 제외한 리스트에 대해 heapify_down으로 정렬</code> 을 반복한다.</p>
+
+<p>make_heap =&gt; O(N)<br />
+heapify_down =&gt; O(logN)<br />
+따라서  <br />
+heap_sort =&gt; O(NlogN)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">heap_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span>
+    <span class="c1">#현재 리스트의 길이의 인덱스번호를 큰값부터 -1부여
+</span>    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1">#대체
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="bp">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1">#뒤로 대체된 값을 제외한 값들에 대해 heap정렬
+</span>        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">heapify_down</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h1 id="-연산시간-정리n개의-값을-저장한-리스트와-힙에-대해">💡 연산시간 정리(n개의 값을 저장한 리스트와 힙에 대해)</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make_heap : O(NlogN) or O(N) &lt;N개 데이터에 heapify_down, 분석상 N에 가까움&gt;
+heapify_down, up : O(logN)
+insert : O(logN) &lt;추가되는 각 값에대한 heapify_up&gt;
+delete_max : O(logN) &lt;처음값과 마지막 값 대체 후, 새로운 root에 대해 heapify_down&gt;
+find_max : O(1) &lt;처음값 리턴&gt;
+heap_sort : O(NlogN) &lt;make_heap하고, delete_max N번 실행&gt;
+</code></pre></div></div>
+
+<p>이처럼 힙 자료구조는 insert, find-max, delete-max 를 많이하는 어플리케이션에<br />
+최적화되어있다.(min연산은 파이썬의 heapq모듈을 사용하도록하자)</p>
+
+<p>반면 <code class="language-plaintext highlighter-rouge">search연산은 O(N)</code>의 시간복잡도가 걸리므로 힙 자료구조를 통해 특정 값을<br />
+search하기 위해서는 O(N^2)의 비효율적인 시간복잡도가 걸리게 된다.</p>
+
+
+        
+      </section>
+
+
+      
+
+      
+
+
+  
+
+  
+
+  
+  	
+  	
+  	
+  	
+  	
+
+
+  <nav class="pagination_prev_next">
+    
+      <a href="/datastructurepy/hashtable/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[Datastructure] 해시테이블</a>
+    
+    
+      <a href="/datastructurepy/binarytree/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[Datastructure] 이진트리</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/binarytree/" rel="permalink">[Datastructure] 이진트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-29T00:00:00+09:00">November 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/pythonsyntax/filewr/" rel="permalink">[Python 문법공부] 파일 사용하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-24T00:00:00+09:00">November 24, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파일 읽고 쓰기
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/reactegoing/reactegoingupdate/" rel="permalink">[React Native][생활코딩] Update
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-23T00:00:00+09:00">November 23, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">36강 ~ 40강
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Dding-Hwan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/datastructurepy/tree$heap/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/datastructurepy/tree$heap"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-koreanddinghwan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

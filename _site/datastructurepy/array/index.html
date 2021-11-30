@@ -1,0 +1,1095 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Datastructure] 배열, 리스트 - LightBig</title>
+<meta name="description" content="파이썬 자료구조">
+
+
+  <meta name="author" content="엘비">
+  
+  <meta property="article:author" content="엘비">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="LightBig">
+<meta property="og:title" content="[Datastructure] 배열, 리스트">
+<meta property="og:url" content="http://localhost:4000/datastructurepy/array/">
+
+
+  <meta property="og:description" content="파이썬 자료구조">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-09T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-09T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/datastructurepy/array/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dding-Hwan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="LightBig Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/avatar.png" alt="LightBig"></a>
+        
+        <a class="site-title" href="/">
+          LightBig
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/mylogs/">My Logs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">카테고리 목록</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#datastructurepy" itemprop="item"><span itemprop="name">Datastructurepy</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[Datastructure] 배열, 리스트</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/avatar.png" alt="엘비" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">엘비</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>밝고 큰</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Korea, South</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/koreanddinghwan/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:myunghwan0421@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="myunghwan0421@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">카테고리 목록</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <li>
+            📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span style="font-family:'-apple-system;">53</style> <span style="font-family:'-apple-system;">개</style> 
+      </li>
+      <li>
+        
+
+        <span class="nav__sub-title">Frontend</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/javascript" class="">Javascript (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/css" class="">Css(2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/html" class="">Html (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Reactegoing" class="">React[생활코딩] (5)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Coding test</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">Python 백준 문제풀이 (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Computer Science</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">알고리즘 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Python</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/pythonsyntax" class="">파이썬 문법공부 (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+
+        <span class="nav__sub-title">Blog</span>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/blog" class="">jekyll로 만드는 github blog (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Etc</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/etc" class="">그때그때, 궁금한 것들(1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>	
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkoreanddinghwan.github.io&count_bg=%23000000&title_bg=%237A87A4&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/>
+      </li>
+  </ul>
+</nav>
+
+  
+
+  </div>
+
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Datastructure] 배열, 리스트">
+    <meta itemprop="description" content="파이썬 자료구조">
+    <meta itemprop="datePublished" content="2021-10-09T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-09T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/datastructurepy/array/" class="u-url" itemprop="url">[Datastructure] 배열, 리스트
+</a>
+          </h1>
+          <div class="page__meta">
+            
+            
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-09">October 9, 2021</time></p>
+
+            
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#computer-science" class="page__taxonomy-item p-category" rel="tag">computer science</a><span class="sep">, </span>
+    
+      <a href="/tags/#data-structure" class="page__taxonomy-item p-category" rel="tag">data structure</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#time-complexity" class="page__taxonomy-item p-category" rel="tag">time complexity</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#datastructurepy" class="page__taxonomy-item p-category" rel="tag">datastructurepy</a>
+    
+    </span>
+  </p>
+
+
+          </div>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 공부한 내용 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#배열형태의-자료구조">배열형태의 자료구조</a><ul><li><a href="#의미">의미</a></li></ul></li><li><a href="#c언어에서-배열형태">c언어에서 배열형태</a><ul><li><a href="#특징">특징</a></li><li><a href="#자료형별-byte-참고">자료형별 byte 참고</a></li></ul></li><li><a href="#파이썬의-list">파이썬의 List</a><ul><li><a href="#특징-1">특징</a></li><li><a href="#동적배열">동적배열</a></li><li><a href="#수행시간">수행시간</a></li></ul></li><li><a href="#참고자료">참고자료</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="배열형태의-자료구조">배열형태의 자료구조</h1>
+
+<h2 id="의미">의미</h2>
+<p>연속적인 메모리 공간에 저장된 곳의 주소에 접근하는 자료구조.</p>
+
+<h1 id="c언어에서-배열형태">c언어에서 배열형태</h1>
+
+<h2 id="특징">특징</h2>
+<p><u>배열의 시작주소  
+자료형태  
+찾고자 하는 자료의 인덱스</u><br />
+이 세가지 정보만 알 수 있다면 저장된 곳의 주소를 계산할 수 있다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="err">의</span> <span class="err">주소를</span> <span class="err">찾고자</span> <span class="err">한다면</span><span class="p">,</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="err">의</span> <span class="err">시작</span> <span class="err">주소</span> <span class="o">+</span> <span class="err">자료형태에</span> <span class="err">따른</span> <span class="n">byte</span> <span class="o">*</span> <span class="err">인덱스번호</span> <span class="err">로</span> <span class="err">찾을</span> <span class="err">수</span> <span class="err">있다</span><span class="p">.</span>
+</code></pre></div></div>
+
+<p>C의 배열은 읽기와 쓰기형태만 제공한다.</p>
+
+<p><br /></p>
+
+<h2 id="자료형별-byte-참고">자료형별 byte 참고</h2>
+<p><img width="703" alt="byte" src="https://user-images.githubusercontent.com/76278794/136650560-f67b81e9-5cc9-43fb-8a65-68adc76e8221.png" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<p><br /></p>
+
+<h1 id="파이썬의-list">파이썬의 List</h1>
+
+<h2 id="특징-1">특징</h2>
+
+<p>파이썬의 리스트는 각 원소의 셀이 데이터가 저장된 곳의 주소를 저장한다는 것이다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">각</span> <span class="n">셀은</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="n">라는</span> <span class="n">객체가</span> <span class="n">저장되어있는</span> <span class="n">주소를</span> <span class="n">가진다</span><span class="p">.</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="동적배열">동적배열</h2>
+
+<p>파이썬의 리스트는 셀의 개수가 필요에 따라 자동으로 증가하고, 감소한다.<br />
+<br />
+만약 insert,append 연산위한 공간이 부족하다면, 크기가 더 큰 리스트를 만들고, 이전 리스트를 모두 이동한다.<br />
+만약 remove, pop 연산하고 공간이 남는다면, 크기가 더 작은 리스트를 만들고 이전 리스트를 모두 이동한다.</p>
+
+<p>파이썬의 리스트는 항상 리스트 내부 크기와 가진 값의 개수를 항상 연산해야하므로, 빈 리스트도 메모리가 0byte보다 크다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/136655983-b4e327a6-0aa5-4890-87af-81b5c82ea5b4.jpeg" alt="python구조" /></p>
+
+<p><br /></p>
+
+<h2 id="수행시간">수행시간</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. A[i] = A[j] + 1
+   쓰기, 대입, 읽기, 산술 연산을 하므로 O(1)
+
+2. A.append(5)
+   평균적으로 O(1) 시간
+
+3. A.pop()
+   평균적으로 O(1) 시간
+
+4. A.pop(3)
+   3번 인덱스의 값을 삭제하고 리턴하는데, 4부터 (len(A) - 1)까지의 값이 모두 왼쪽으로 밀려야하므로 O(N) 시간이 걸린다. 
+
+5. A.insert(0,10)
+   0번 인덱스에 10을 넣는다면, 오른쪽 1번인덱스부터 len(A)-1번째 인덱스까지 모두 오른쪽으로 밀려야하므로 O(N)시간
+
+6. A.remove(9)
+   처음으로 등장하는 9라는 값을 제거한다. 최악의 경우 리스트의 모든 요소를 모두 탐색해야하므로 O(N)시간.
+
+7. A.index(9), A.count(9)
+   remove와 같은 이치로 O(N)시간이 소요된다.
+</code></pre></div></div>
+<p>추가적으로 다른 연산자들의 시간복잡도에 대해서는 아래 페이지에 정리되어있다.<br />
+<a href="https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt">complexity of python operations</a></p>
+
+<p><br /><br /><br /></p>
+
+<h1 id="참고자료">참고자료</h1>
+<p>개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.<br />
+자세한 강의 내용은 신천수 교수님 강의를 참고하시면 좋을 것 같습니다.<br />
+<a href="https://www.youtube.com/c/ChanSuShin/featured">신천수 교수님 자료구조 강의</a></p>
+
+        
+      </section>
+
+
+      
+
+      
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  	
+  	
+  	
+  	
+  	
+
+
+  <nav class="pagination_prev_next">
+    
+      <a href="/datastructurepy/timecomplexity2/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[Datastructure] Big-O</a>
+    
+    
+      <a href="/datastructurepy/stack/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[Datastructure] 스택과 활용(1)</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/binarytree/" rel="permalink">[Datastructure] 이진트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-29T00:00:00+09:00">November 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/tree$heap/" rel="permalink">[Datastructure] 트리구조, 힙
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-27T00:00:00+09:00">November 27, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/pythonsyntax/filewr/" rel="permalink">[Python 문법공부] 파일 사용하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-24T00:00:00+09:00">November 24, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파일 읽고 쓰기
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Dding-Hwan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/datastructurepy/array/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/datastructurepy/array"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-koreanddinghwan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

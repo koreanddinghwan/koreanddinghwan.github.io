@@ -1,0 +1,1265 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Datastructure] 한방향 연결리스트 - LightBig</title>
+<meta name="description" content="파이썬 자료구조">
+
+
+  <meta name="author" content="엘비">
+  
+  <meta property="article:author" content="엘비">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="LightBig">
+<meta property="og:title" content="[Datastructure] 한방향 연결리스트">
+<meta property="og:url" content="http://localhost:4000/datastructurepy/list/">
+
+
+  <meta property="og:description" content="파이썬 자료구조">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-29T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-29T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/datastructurepy/list/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dding-Hwan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="LightBig Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/avatar.png" alt="LightBig"></a>
+        
+        <a class="site-title" href="/">
+          LightBig
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/mylogs/">My Logs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">카테고리 목록</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#datastructurepy" itemprop="item"><span itemprop="name">Datastructurepy</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[Datastructure] 한방향 연결리스트</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/avatar.png" alt="엘비" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">엘비</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>밝고 큰</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Korea, South</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/koreanddinghwan/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:myunghwan0421@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="myunghwan0421@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">카테고리 목록</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <li>
+            📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span style="font-family:'-apple-system;">53</style> <span style="font-family:'-apple-system;">개</style> 
+      </li>
+      <li>
+        
+
+        <span class="nav__sub-title">Frontend</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/javascript" class="">Javascript (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/css" class="">Css(2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/html" class="">Html (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Reactegoing" class="">React[생활코딩] (5)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Coding test</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">Python 백준 문제풀이 (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Computer Science</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">알고리즘 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Python</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/pythonsyntax" class="">파이썬 문법공부 (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+
+        <span class="nav__sub-title">Blog</span>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/blog" class="">jekyll로 만드는 github blog (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Etc</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/etc" class="">그때그때, 궁금한 것들(1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>	
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkoreanddinghwan.github.io&count_bg=%23000000&title_bg=%237A87A4&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/>
+      </li>
+  </ul>
+</nav>
+
+  
+
+  </div>
+
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Datastructure] 한방향 연결리스트">
+    <meta itemprop="description" content="파이썬 자료구조">
+    <meta itemprop="datePublished" content="2021-10-29T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-29T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/datastructurepy/list/" class="u-url" itemprop="url">[Datastructure] 한방향 연결리스트
+</a>
+          </h1>
+          <div class="page__meta">
+            
+            
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-29">October 29, 2021</time></p>
+
+            
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#computer-science" class="page__taxonomy-item p-category" rel="tag">computer science</a><span class="sep">, </span>
+    
+      <a href="/tags/#data-structure" class="page__taxonomy-item p-category" rel="tag">data structure</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#singly-linked-list" class="page__taxonomy-item p-category" rel="tag">singly linked list</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#datastructurepy" class="page__taxonomy-item p-category" rel="tag">datastructurepy</a>
+    
+    </span>
+  </p>
+
+
+          </div>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 공부한 내용 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#연결리스트란">연결리스트란</a><ul><li><a href="#특징">특징</a><ul><li><a href="#단점">단점</a></li><li><a href="#장점">장점</a></li></ul></li></ul></li><li><a href="#한방향-연결리스트">한방향 연결리스트</a><ul><li><a href="#지원연산">지원연산</a><ul><li><a href="#pushfront">pushfront</a></li><li><a href="#pushback">pushback</a></li><li><a href="#popfront">popfront</a></li><li><a href="#popback">popback</a></li><li><a href="#search">search</a></li><li><a href="#remove">remove</a></li><li><a href="#reverse">reverse</a></li></ul></li><li><a href="#iter에-대해서">iter에 대해서</a></li></ul></li><li><a href="#참고자료">참고자료</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="연결리스트란">연결리스트란</h1>
+
+<p>연결리스트는 파이썬의 리스트와는 다르게 key값과 link값으로 이루어져있다.</p>
+
+<p>리스트는 각 인덱스가 메모리가 할당되어 각 원소의 주소값을 가지게된다. 그래서 상수시간 O(1) 내에 연산이 가능하다.<br />
+<br />
+하지만 연결리스트는 각 메모리가 원소의 주소(key값) + 다음값이 저장된 주소(link값) 이 저장되어 있다. <br />
+key값과 link값이 함께 저장되어 있는 것을 Node라고 부른다.<br />
+<br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span> 
+        <span class="bp">self</span><span class="p">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span> <span class="c1">#노드의 키값
+</span>        <span class="bp">self</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1">#노드의 링크값, 별도로 설정하지 않는다면 초기값은 none
+</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">key</span><span class="p">)</span> <span class="c1">#키값 호출 시, print(self.key) 대신에 print(self) 로 바로 키값출력이 가능하도록 하는 메서드
+</span></code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h2 id="특징">특징</h2>
+
+<h3 id="단점">단점</h3>
+<p>연결리스트는 배열처럼 인덱스로 접근이 불가능하다.<br />
+따라서 우리가 만약에 연결리스트의 3번 인덱스 값을 찾고싶다면, head노드(노드의 맨 첫번째 값)의 링크부터 따라서 들어가야하므로
+head-&gt;1-&gt;2-&gt;3으로 총 3번의 계산이 필요하다.<br />
+만약 100번 인덱스 값을 찾고 싶다면, 100번의 계산이 필요하므로 연결리스트의 시간복잡도는 O(N)이 된다.</p>
+
+<h3 id="장점">장점</h3>
+<p>연결리스트의 장점도 있다.<br />
+일반적인 리스트가 insert를 하게되면 새로운 값을 맨 앞에 넣는다는 가정하에, 뒤의 모든 값을 밀어내야하므로 시간복잡도는 O(N)인데 반해,<br />
+연결리스트는 head node를 새로 만들어 link값을 이전 head node의 주소를 가리키면 되므로 시간 복잡도는 O(1)이다.</p>
+
+<p><br /><br /></p>
+
+<h1 id="한방향-연결리스트">한방향 연결리스트</h1>
+
+<ol>
+  <li>노드들이 self.next 링크를 따라 한방향으로 연결된 리스트이다.</li>
+  <li>맨 앞의 노드를 head.node라 하고, head node를 알면 그 뒤의 모든 노드들을 찾을 수 있기때문에 연결리스트를 대표하는 노드이다.</li>
+  <li>맨 마지막 노드는 self.next가 none을 저장한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SinglyLinkedList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">#리스트 생성시 자동호출메서드
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1">#초기 head값은 none
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#리스트의 노드의 개수
+</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">#이터레이터 호출시 자동호출함수()
+</span>        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#v에 head node 키값설정
+</span>        <span class="k">while</span> <span class="n">v</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#head node가 none이 아닐때(빈 리스트가 아닐때)
+</span>            <span class="k">yield</span> <span class="n">v</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="nb">next</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">#str호출시 자동호출함수
+</span>        <span class="k">return</span> <span class="s">"-&gt;"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">)</span> <span class="c1">#인스턴스 내의 
+</span>
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="c1">#인스턴스의 노드개수 리턴
+</span></code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h2 id="지원연산">지원연산</h2>
+
+<h3 id="pushfront">pushfront</h3>
+
+<ol>
+  <li>현재 head node 앞에 새로운 node을 삽입해야하므로, 새로운 노드가 head node가 된다.</li>
+  <li>새로운 node의 next값은 이전의 head node가 된다.</li>
+  <li>연결리스트의 전체 사이즈가 1 커진다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pushfront</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="c1">#key값 가진 새로운 노드 생성
+</span>    <span class="n">new_node</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#새로운 노드의 next는 원래 head값인 self.head임
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span> <span class="c1">#self.head 는 새로운 노등니 new_node가 된다.
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></div>
+<p><br /><br /></p>
+
+<h3 id="pushback">pushback</h3>
+<ol>
+  <li>빈 리스트에 pushback은 새로운 노드는 head node가 된다.</li>
+  <li>.next가 none인 노드가 tail node가 된다. tail node 다음 값으로 주어진 node를 생성해 넣어야한다.</li>
+  <li>이를 찾기 위해서는 head node로 먼저 접근해 .next가 none인 노드를 찾는 과정이 필요하다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pushback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#현재 연결리스트가 비어있는 경우
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">new_node</span> <span class="c1">#연결리스트의 head node는 new_node가 된다.
+</span>    
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#tail node찾기 위해 tail에 self.head를 지정
+</span>        <span class="k">while</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#tail.next 가 none이 아니라면
+</span>            <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span> <span class="c1">#tail에 tail.next(self.head.next)를 지정하고 다시 while문 반복
+</span>        <span class="n">tail</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">new_node</span> <span class="c1">#while문 끝나면 tail에 연결리스트의 마지막값이 들어와있으므로 다음값에 새로운 노드 new_node 연결
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h3 id="popfront">popfront</h3>
+
+<ol>
+  <li>빈 리스트의 경우, popfront 불가능</li>
+  <li>popfront 이후 self.head는 self.head.next가 되어야한다.</li>
+  <li>popfront는 원래 self.head를 리턴해야한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">popfront</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#|node(4)를 x 변수에 복사
+</span>            <span class="n">key</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">key</span><span class="c1">#|key 는 node(4)의 key인 4
+</span>            <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="nb">next</span> <span class="c1">#|node(4).next = node(5)이므로 self.head 는 node(5)가 된다.
+</span>            <span class="k">del</span> <span class="n">x</span> <span class="c1">#|node(4) 객체 자체를 메모리에서 제거
+</span>            <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">key</span>
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h3 id="popback">popback</h3>
+<ol>
+  <li>popback은 맨 뒤 tail의 key값을 리턴해야한다.</li>
+  <li>tail의 이전값을 prev값으로 설정하는데, prev.next는 None이된다(.next가 none이라는건 리스트의 마지막 노드라는 의미)</li>
+  <li>리스트의 노드가 없을때, 1개일때, 2개 이상일때로 나뉜다.</li>
+  <li>노드가 없을때는 연산을 실행하지 않는다.</li>
+  <li>노드가 1개일때, self.head이자 tail의 key값을 리턴하면된다, 그리고 리스트가 비워질 것이므로
+self.head를 none으로 설정한다.</li>
+  <li>노드가 2개 이상이라면, tail은 삭제될 것이므로 prev.next = none이 되어야한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">popback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#노드가 0개인 경우
+</span>        <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">prev</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#prev에 tail을 지정해나가면서 tail.next가 none인걸 찾는다.
+</span>        <span class="k">while</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#노드가 1개인 경우
+</span>            <span class="n">prev</span> <span class="o">=</span> <span class="n">tail</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span>
+
+        <span class="k">if</span> <span class="n">prev</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>  <span class="c1">#while 연산이 끝났는데, prev가 none인건 노드가 1개일때밖에 없다.
+</span>            <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">==</span> <span class="bp">None</span> <span class="c1">#pop하면 리스트가 비워지므로 self.head를 None으로 만들어 
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prev</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1">#노드가 2개이상인 경우, prev 노드가 마지막노드가 되므로 prev의 next(링크)를 지운다.
+</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">tail</span><span class="p">.</span><span class="n">key</span>
+        <span class="k">del</span> <span class="n">tail</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">key</span>
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h3 id="search">search</h3>
+
+<ol>
+  <li>찾고자하는 key값을 가진 node를 리턴해야한다. 없으면 none을 리턴한다.</li>
+  <li>1가지 방법은 while루프를 부르는 방법이있고,</li>
+  <li>다른 방법은 for 루프를 돌리는거다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#연결리스트의 헤드노드를 x에 할당
+</span>    <span class="k">while</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#x가 none 아닌동안, 즉 연결리스트의 헤드부터 끝까지 
+</span>        <span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">:</span> <span class="c1">#만약 x의 키값이 찾고자하는 키값이라면
+</span>            <span class="k">return</span> <span class="n">x</span> <span class="c1">#x 노드를 리턴한다.
+</span>        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="nb">next</span> <span class="c1">#찾고자하는 키값이 아니라면 x에 다음 노드를 할당한다.
+</span>    <span class="k">return</span> <span class="n">x</span> <span class="p">(</span><span class="ow">or</span> <span class="bp">None</span><span class="p">)</span><span class="c1">#x가 none이되면 즉, 연결리스트의 끝값 +1이되면 x는 none이되는데, (x.next가 none이므로) none을 리턴하게된다.
+</span></code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h3 id="remove">remove</h3>
+
+<p>delete의 경우 3가지로 나뉜다</p>
+<ol>
+  <li>연결리스트의 길이가 0인 경우</li>
+  <li>지우고자하는 값이 headnode인 경우-&gt;popfront</li>
+  <li>연결리스트의 길이가 0이 아니면서 지우고자하는 값이 headnode가 아니라면 연결리스트에서 중간, 뒤에 있는 값을 의미한다.</li>
+  <li>3의 경우, popback처럼 prev찾아야하며, prev.next를 tail.next에 연결하면 지우고자하는 키값을 가진 노드는 연결리스트에서 배제된다.</li>
+  <li>배제된 노드는 삭제하고(tail), popfront와 달리 리스트의 사이즈를 줄이는 명령이 없으므로 별도로 self..size -= 1을 실행해줘야한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#연결리스트 길이 0인 경우
+</span>            <span class="k">return</span> <span class="bp">None</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span> <span class="c1">#리스트의 헤드노드와 찾고자하는 노드의 키가 같은경우
+</span>            <span class="bp">self</span><span class="p">.</span><span class="n">popfront</span><span class="p">()</span> <span class="c1">#popfront로 다음 노드를 헤드노드로 변경, 본래 헤드노드삭제
+</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prev</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#초기값설정
+</span>            <span class="k">while</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#tail.next가 none이 아닌동안
+</span>                <span class="n">prev</span> <span class="o">=</span> <span class="n">tail</span> <span class="c1">#prev와 tail을 한칸씩 옮겨가기
+</span>                <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span>
+                <span class="k">if</span> <span class="n">tail</span><span class="p">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span> <span class="c1">#만약 tail.key와 찾고자하는 키가 같다면
+</span>                    <span class="n">prev</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">tail</span><span class="p">.</span><span class="nb">next</span> <span class="c1">#remove할 node의 링크를 지워버리면된다.
+</span>                    <span class="k">del</span> <span class="n">tail</span> <span class="c1">#tail node를 리스트 상에서 삭제
+</span>                    <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1">#한개 삭제되었으므로 리스트 길이 1개 줄인다.
+</span>                    <span class="k">break</span>
+
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h3 id="reverse">reverse</h3>
+<ol>
+  <li>각 노드의 .next를 이전노드로 설정해야한다.</li>
+  <li>prev, tail로 작서앟자.</li>
+  <li>while문 탈출하고나선 리스트의 head노드를 변경해주자.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+
+    <span class="k">while</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="nb">next</span> <span class="c1">#c에 b의 다음노드를 복사
+</span>            <span class="n">b</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">a</span> <span class="c1">#b의 링크를 반대로 설정
+</span>        <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+</code></pre></div></div>
+
+<h2 id="iter에-대해서">iter에 대해서</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">#
+</span>        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="c1">#
+</span>        <span class="k">while</span> <span class="n">v</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#
+</span>            <span class="k">yield</span> <span class="n">v</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="nb">next</span>
+</code></pre></div></div>
+<p>위 함수를 genarator라고 하는데, 연결리스트의 인스턴스에게 for문을 사용할 수 있게 해준다.<br />
+원래 연결리스트클래스의 인스턴스는 iterator가 없다면</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for i in linkedlist:
+    print(i)
+</code></pre></div></div>
+<p>를 할 경우, 에러가 나게 된다. 연결리스트에서는 일반적인 배열처럼 iter를 할 원소가 없기 때문이다.<br />
+이를 가능하게 해주는게 스페셜메서드로 <code class="language-plaintext highlighter-rouge">__iter__(self)</code>이다.<br />
+그리고 이 메서드처럼 yield가 있는 함수를 generator라고 부른다.</p>
+
+<p><br />
+<br /></p>
+
+<ol>
+  <li>파이썬에서 인스턴스에 for문을 돌린다고 인지를 하게되면</li>
+  <li>인스턴스에 선언된 클래스에서 <code class="language-plaintext highlighter-rouge">__iter__(self)</code>를 자동으로 호출한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">__iter__</code>는 yeild로 v를 리턴한다.</li>
+  <li>while 문에서 v는 자동으로 다음 값이 할당된다.</li>
+  <li>yeild된 값은 for문의 원소로 리턴이 가능하게된다.</li>
+  <li>다시 for문이 호출되고, 다음 v가 리턴되게된다.</li>
+  <li>만약 while문이 종료되고 <code class="language-plaintext highlighter-rouge">__iter__(self)</code>에서 yeild가 명령되지 않으면 자동으로 
+StopIterator Errormessage가 출력되면서 for문이 종료된다.</li>
+</ol>
+
+<h1 id="참고자료">참고자료</h1>
+<p>개인적인 공부를 위한 글이며, 모든 저작권은 신천수 교수님께 있습니다.<br />
+자세한 강의 내용은 신천수 교수님 강의를 참고하시면 좋을 것 같습니다.<br />
+😇 <a href="https://www.youtube.com/c/ChanSuShin/featured">신천수 교수님 자료구조 강의</a></p>
+
+
+        
+      </section>
+
+
+      
+
+      
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  	
+  	
+  	
+  	
+  	
+
+
+  <nav class="pagination_prev_next">
+    
+      <a href="/datastructurepy/queue/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[Datastructure] 큐, Queue</a>
+    
+    
+      <a href="/datastructurepy/doublylinkedlist/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[Datastructure] 양방향 연결리스트</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/binarytree/" rel="permalink">[Datastructure] 이진트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-29T00:00:00+09:00">November 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/tree$heap/" rel="permalink">[Datastructure] 트리구조, 힙
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-27T00:00:00+09:00">November 27, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/pythonsyntax/filewr/" rel="permalink">[Python 문법공부] 파일 사용하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-24T00:00:00+09:00">November 24, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파일 읽고 쓰기
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Dding-Hwan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/datastructurepy/list/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/datastructurepy/list"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-koreanddinghwan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

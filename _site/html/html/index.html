@@ -1,0 +1,1278 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Frontend] html기초 - LightBig</title>
+<meta name="description" content="생활코딩으로 html을 배워보자">
+
+
+  <meta name="author" content="엘비">
+  
+  <meta property="article:author" content="엘비">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="LightBig">
+<meta property="og:title" content="[Frontend] html기초">
+<meta property="og:url" content="http://localhost:4000/html/html/">
+
+
+  <meta property="og:description" content="생활코딩으로 html을 배워보자">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-28T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-09-28T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/html/html/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dding-Hwan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="LightBig Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/avatar.png" alt="LightBig"></a>
+        
+        <a class="site-title" href="/">
+          LightBig
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/mylogs/">My Logs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">카테고리 목록</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#html" itemprop="item"><span itemprop="name">Html</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[Frontend] html기초</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/avatar.png" alt="엘비" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">엘비</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>밝고 큰</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Korea, South</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/koreanddinghwan/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:myunghwan0421@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="myunghwan0421@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">카테고리 목록</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <li>
+            📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span style="font-family:'-apple-system;">53</style> <span style="font-family:'-apple-system;">개</style> 
+      </li>
+      <li>
+        
+
+        <span class="nav__sub-title">Frontend</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/javascript" class="">Javascript (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/css" class="">Css(2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/html" class="">Html (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Reactegoing" class="">React[생활코딩] (5)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Coding test</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">Python 백준 문제풀이 (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Computer Science</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">알고리즘 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Python</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/pythonsyntax" class="">파이썬 문법공부 (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+
+        <span class="nav__sub-title">Blog</span>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/blog" class="">jekyll로 만드는 github blog (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Etc</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/etc" class="">그때그때, 궁금한 것들(1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>	
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkoreanddinghwan.github.io&count_bg=%23000000&title_bg=%237A87A4&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/>
+      </li>
+  </ul>
+</nav>
+
+  
+
+  </div>
+
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Frontend] html기초">
+    <meta itemprop="description" content="생활코딩으로 html을 배워보자">
+    <meta itemprop="datePublished" content="2021-09-28T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-28T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/html/html/" class="u-url" itemprop="url">[Frontend] html기초
+</a>
+          </h1>
+          <div class="page__meta">
+            
+            
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-28">September 28, 2021</time></p>
+
+            
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#frontend" class="page__taxonomy-item p-category" rel="tag">frontend</a><span class="sep">, </span>
+    
+      <a href="/tags/#html" class="page__taxonomy-item p-category" rel="tag">html</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9" class="page__taxonomy-item p-category" rel="tag">생활코딩</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#html" class="page__taxonomy-item p-category" rel="tag">html</a>
+    
+    </span>
+  </p>
+
+
+          </div>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 공부한 내용 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#html">HTML</a><ul><li><a href="#코딩과-html">코딩과 HTML</a></li><li><a href="#html-코딩-실습-환경-준비">HTML 코딩 실습 환경 준비</a></li><li><a href="#creating-web-pages">Creating web pages</a></li><li><a href="#혁명적인-변화">혁명적인 변화</a></li><li><a href="#통계에-기반한-학습">통계에 기반한 학습</a></li><li><a href="#줄바꿈">줄바꿈</a></li><li><a href="#html이-중요한-이유">HTML이 중요한 이유</a></li><li><a href="#최후의-문법-속성과-img">최후의 문법 속성과 img</a></li><li><a href="#부모-자식과-목록">부모 자식과 목록</a></li><li><a href="#html-태그의-제왕">HTML 태그의 제왕</a></li><li><a href="#원시웹">원시웹</a></li><li><a href="#인터넷을-여는-열쇠--서버와-클라이언트">인터넷을 여는 열쇠 : 서버와 클라이언트</a></li><li><a href="#웹호스팅-github-pages">웹호스팅 (github pages)</a></li><li><a href="#수업을-마치며">수업을 마치며</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>이 글은 개인적인 공부를 목적을 위한 글이며,<br />
+모든 내용은 생활코딩님의 html수업에서 학습한 내용을 적은 것입니다.</p>
+
+<h1 id="html">HTML</h1>
+
+<h2 id="코딩과-html">코딩과 HTML</h2>
+
+<p>applitcation, app, program, webpage, website</p>
+
+<p>이것들은 바라보는 관점에 따라 이름만 달라진다.</p>
+
+<p>code, source, language로 만든 결과물을 의미한다.</p>
+
+<p>html은 이 중에서 가장 쉬우면서 중요하다.</p>
+
+<h2 id="html-코딩-실습-환경-준비">HTML 코딩 실습 환경 준비</h2>
+
+<p>웹브라우저와 에디터가 필요하다.</p>
+
+<p>window→메모장</p>
+
+<p><a href="http://atom.io">atom.io</a> 에서 에디터를 다운로드.</p>
+
+<p>기본 문법 - 태그</p>
+
+<p>태그<br />
+<br /></p>
+
+<h2 id="creating-web-pages">Creating web pages</h2>
+
+<p>물질을 기반으로 만들었기때문에</p>
+
+<p>사람들이 쉽게 이해하기위해서는 비유와 은유가 필요하다…그런 의미에서 시와 비슷하다.<br />
+<br /></p>
+
+<h2 id="혁명적인-변화">혁명적인 변화</h2>
+
+<p>어려운 것이 중요하고 쉬운 것이 안 중요한게 아니다.</p>
+
+<p>처음 배우는 것들은 가장 쉽지만, 가장 중요하다</p>
+
+<p>Html과 css, js를 이해하고, 공부하는 것은 프로그래밍 공부를 함에 있어서 가장 쉽지만 가장 중요한 것이다.<br />
+<br /></p>
+
+<h2 id="통계에-기반한-학습">통계에 기반한 학습</h2>
+
+<p>25~30개 정도의 태그가 평균적으로 쓰인다.</p>
+
+<p>항상 통계에 기반해서 공부하자…</p>
+
+<p>html 태그 정리</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+</code></pre></div></div>
+
+<p>마크업 언어용 DTD태그, HTML5는 맨 위에 작성.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;html&gt; 
+</code></pre></div></div>
+
+<p>위 DTD 제외한 전체를 이 태그로 둘러싼다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;head&gt;
+</code></pre></div></div>
+
+<p>html문서의 속성을 지정하기 위한 태그, 문제 제목과 같은 보충정보</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;body&gt;
+</code></pre></div></div>
+
+<p>html 문서의 본 모양을 나타내기 위한 태그, 웹 문서의 본문</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;title&gt; 
+</code></pre></div></div>
+
+<p>html의 제목을 선언하는 태그, 브라우저의 윗부분인 제목을 설정하는 것</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;meta&gt;
+</code></pre></div></div>
+
+<p>html의 부가정보를 선언하는 태그,charset 속성을 쓰면 인코딩을 선언할 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link&gt;
+</code></pre></div></div>
+
+<p>별도의 css선언파일이나 파비콘 등을 연결하는 태그</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;
+</code></pre></div></div>
+
+<p>단락구분태그</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;br&gt;
+</code></pre></div></div>
+
+<p>p와 달리 줄바꿈이라는 시작적 의미만 갖고 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a&gt;
+</code></pre></div></div>
+
+<p>anchor, href=”“를 붙여서 링크를 걸 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img&gt;
+
+&lt;img src="이름"&gt; 으로 그림넣는다
+
+
+
+&lt;ul&gt;
+&lt;/ul&gt; unordered list
+
+&lt;ol&gt;
+&lt;/ol&gt; ordered list &lt;br/&gt; &lt;br/&gt;
+</code></pre></div></div>
+
+<h2 id="줄바꿈">줄바꿈</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;br&gt; 
+</code></pre></div></div>
+
+<p>단순 줄바꿈</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;&lt;/p&gt; 
+</code></pre></div></div>
+
+<p>단락 구분태그. 단락구분태그가 중요한 이유는</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p style="margin-top:40px;"&gt; 로 css를 적용할 수 있기때문에 의미적으로 더 중요함. &lt;br/&gt; &lt;br/&gt;
+</code></pre></div></div>
+
+<h2 id="html이-중요한-이유">HTML이 중요한 이유</h2>
+
+<p>기초가 중요한 이유</p>
+
+<p>우리가 그동안 블로그에 글을 쓸때 쓴 편집기는 html을 사용했던 것이다.</p>
+
+<p>들어간 정보에 알맞는 태그를 사용해야한다.</p>
+
+<p>나중에 편집할때도 알맞는 태그를 사용해 잘 정리된 웹이</p>
+
+<p>수정하기에 용이하다.</p>
+
+<p>-정보를 탄탄히 하자-</p>
+
+<p>웹은 모든 운영체제에서 동작, 공공재이며 누구나 사용할 수 있다. 웹의 개방성을</p>
+
+<p>Accessibility라고 의미한다.</p>
+
+<p>시각장애인분들은 웹페이지를 script reader로 읽게되는데, 모두 이미지로 웹을 구성하면 못 읽는다.</p>
+
+<p>웹의 적절한 태그사용은 비지니스적, 휴머니즘적으로 중요하다.
+<br />
+<br /></p>
+
+<h2 id="최후의-문법-속성과-img">최후의 문법 속성과 img</h2>
+
+<p>태그의 이름만으로는 정보가 부족할때가 있는데, 이로인해 새로운 문법이 나오게된다.</p>
+
+<p>이미지 삽입방법</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="이미지 주소" width="크기"&gt; &lt;br/&gt; &lt;br/&gt;
+</code></pre></div></div>
+
+<h2 id="부모-자식과-목록">부모 자식과 목록</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;parent&gt;
+
+&lt;child&gt;&lt;/child&gt;
+
+&lt;/parent&gt;
+</code></pre></div></div>
+
+<p>이런 형태를 가진 태그가</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt; 과 
+
+&lt;li&gt; 태그이다.
+
+&lt;ul&gt;
+
+&lt;li&gt;내용&lt;/li&gt;
+
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<p>여기서 ul을 ol로 바꿔준다면 리스트에 숫자가 붙게 된다.</p>
+
+<p>ordered_list→ol</p>
+
+<p>unordered_list→ul</p>
+
+<p>문서의 구조와 슈퍼스타들</p>
+
+<p>기본적인 문서의 구조</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!doctype html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+&lt;title&gt;이름&lt;/title&gt;
+
+&lt;meta charset="utf-8"&gt;utf-8로 문서를 읽어라
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+본문
+
+&lt;/body&gt;
+
+&lt;/html&gt; &lt;br/&gt; &lt;br/&gt;
+</code></pre></div></div>
+
+<h2 id="html-태그의-제왕">HTML 태그의 제왕</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a href="주소"&gt;~&lt;a&gt;
+</code></pre></div></div>
+
+<p>만약 새 탭이 열리게하고싶다면</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a href="주소" target="_blank"&gt;
+</code></pre></div></div>
+
+<p>마우스 대면 정보나오게하려면</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a href="주소" target="_blank" title="about_me"&gt;
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<h2 id="원시웹">원시웹</h2>
+
+<p>60년대 통신시스템은 핵공격으로 인해 모든 통신이 마비되는데 이때 고안된것이 인터넷이다. 각각의 통신장치들이 일종의 전화국 역할을 한다. 구글, 페이스북 등 정보기업들을 소리도 없이 지탱하는 거대한 인프라가 인터넷이다.<br />
+30년이란 시간동안 확산되면서 사람들은 인터넷이 있는지 잘 몰랐다. 군대,대학 등 거대기관에서만 사용하던 시스템이기 때문.</p>
+
+<p>하지만 90년대 웹이 출현하면서 새로운 출발을 한다.</p>
+
+<p>웹은 스위스에서 처음으로 시작한다. 여기서 처음으로 웹이 발명된다. 인터넷이 발달하면서 웹은 폭발적으로 증가했다. 우리가 지금까지 만든 것은 원시웹이다. 이제 전세계 누구나 볼 수 있도록 해야한다. 
+<br />
+<br /></p>
+
+<h2 id="인터넷을-여는-열쇠--서버와-클라이언트">인터넷을 여는 열쇠 : 서버와 클라이언트</h2>
+<p>인터넷이 만들어지기 위해서는 최소 2대의 컴퓨터가 필요하다. 하나는 정보를 요청하는 클라이언트, 하나는 정보를 전송하는 서버.</p>
+
+<p>클라이언트(웹브라우저)가 정보를 요청하면, 서버는 해당 정보를 전송한다.</p>
+
+<p>전송하는 정보가 html파일이다.</p>
+
+<p>그렇게 클라이언트의 서버에 정보가 출력된다.</p>
+
+<p>이렇게 서버를 구축하는 방법은 웹서버를 제공해주는 업체를 이용하는 웹호스팅과 직접 구축하는 웹서버 방법이 있다. 
+<br />
+<br /></p>
+
+<h2 id="웹호스팅-github-pages">웹호스팅 (github pages)</h2>
+
+<p>수많은 웹호스팅 업체 중 github(<a href="https://github.com/">https://github.com</a>)의 pages 기능을 사용할것이다.</p>
+
+<p>수많은 오픈소스들이 github에서 만들어지는데, 나중에 공부할것.</p>
+
+<p>웹 호스팅과 웹 서버는 전역한 후 공부할것.</p>
+
+<p>index.html이 반드시 main branch 에 존재해야하며</p>
+
+<p>index.html이 담긴 폴더명이 rapository의 이름이 되어야 한다.
+<br />
+<br /></p>
+
+<h2 id="수업을-마치며">수업을 마치며</h2>
+
+<p>본질과 혁신, 교양과 직업</p>
+
+<p>본질은 교양과 혁신은 직업과 맞다.</p>
+
+<p>시간이 지날수록 난이도는 높아지며 중요도는 낮아진다.</p>
+
+<p>난이도와 중요도가 만나는 점을 기준으로,</p>
+
+<p>앞이 본질, 교양이고 뒤가 혁신이며 직업이다.</p>
+
+<p>이를 능력과 노력의 관점에서 보면 시간이 지날수록 증가하는 능력은 체감한다.</p>
+
+<p>웹을 꾸미기위해선 CSS를,</p>
+
+<p>상호작용하는 웹을 위해선 JavaScript를 공부해야한다. 이 기술로 웹 프론트엔드, 웹 인터렉티브 디자이너가 발전.</p>
+
+<p>백엔드 기술을 배우면 파일 하나를 변경하면 연결된 모든 웹페이지가 한번에 수정된다.</p>
+
+<p>PHP,JSP,NODEJS,DJANGO,RUBYONRAILS,ASP.NET</p>
+
+<p>이중에 하나를 배우면된다.</p>
+
+<p>광고를 달고싶다→web2 광고수업</p>
+
+<p>나만의 컨텐츠, 나만의 프로젝트를 시작하자.</p>
+
+
+        
+      </section>
+
+
+      
+
+      
+
+
+  
+  	
+  	
+  	
+  	
+  	
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/binarytree/" rel="permalink">[Datastructure] 이진트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-29T00:00:00+09:00">November 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/tree$heap/" rel="permalink">[Datastructure] 트리구조, 힙
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-27T00:00:00+09:00">November 27, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/pythonsyntax/filewr/" rel="permalink">[Python 문법공부] 파일 사용하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-24T00:00:00+09:00">November 24, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파일 읽고 쓰기
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Dding-Hwan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/html/html/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/html/html"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-koreanddinghwan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

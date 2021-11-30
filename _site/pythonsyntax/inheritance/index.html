@@ -1,0 +1,1189 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Python 문법공부] 클래스 상속 - LightBig</title>
+<meta name="description" content="클래스 상속과 추상 클래스">
+
+
+  <meta name="author" content="엘비">
+  
+  <meta property="article:author" content="엘비">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="LightBig">
+<meta property="og:title" content="[Python 문법공부] 클래스 상속">
+<meta property="og:url" content="http://localhost:4000/pythonsyntax/inheritance/">
+
+
+  <meta property="og:description" content="클래스 상속과 추상 클래스">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-11-07T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-11-07T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/pythonsyntax/inheritance/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dding-Hwan",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="LightBig Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/avatar.png" alt="LightBig"></a>
+        
+        <a class="site-title" href="/">
+          LightBig
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/mylogs/">My Logs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">카테고리 목록</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#pythonsyntax" itemprop="item"><span itemprop="name">Pythonsyntax</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">[Python 문법공부] 클래스 상속</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/avatar.png" alt="엘비" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">엘비</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>밝고 큰</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Korea, South</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/koreanddinghwan/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:myunghwan0421@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="myunghwan0421@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+    
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">카테고리 목록</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <li>
+            📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span style="font-family:'-apple-system;">53</style> <span style="font-family:'-apple-system;">개</style> 
+      </li>
+      <li>
+        
+
+        <span class="nav__sub-title">Frontend</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/javascript" class="">Javascript (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/css" class="">Css(2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/html" class="">Html (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/Reactegoing" class="">React[생활코딩] (5)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">Coding test</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/boj" class="">Python 백준 문제풀이 (8)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Computer Science</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/algorithm" class="">알고리즘 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Python</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/pythonsyntax" class="">파이썬 문법공부 (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+
+        <span class="nav__sub-title">Blog</span>
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/blog" class="">jekyll로 만드는 github blog (5)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">Etc</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/etc" class="">그때그때, 궁금한 것들(1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>	
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkoreanddinghwan.github.io&count_bg=%23000000&title_bg=%237A87A4&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/>
+      </li>
+  </ul>
+</nav>
+
+  
+
+  </div>
+
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Python 문법공부] 클래스 상속">
+    <meta itemprop="description" content="클래스 상속과 추상 클래스">
+    <meta itemprop="datePublished" content="2021-11-07T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-11-07T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/pythonsyntax/inheritance/" class="u-url" itemprop="url">[Python 문법공부] 클래스 상속
+</a>
+          </h1>
+          <div class="page__meta">
+            
+            
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-11-07">November 7, 2021</time></p>
+
+            
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#class" class="page__taxonomy-item p-category" rel="tag">class</a><span class="sep">, </span>
+    
+      <a href="/tags/#inheritance" class="page__taxonomy-item p-category" rel="tag">inheritance</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#syntax" class="page__taxonomy-item p-category" rel="tag">syntax</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#pythonsyntax" class="page__taxonomy-item p-category" rel="tag">pythonsyntax</a>
+    
+    </span>
+  </p>
+
+
+          </div>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 공부한 내용 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#클래스-상속">클래스 상속</a><ul><li><a href="#상속관계">상속관계</a></li><li><a href="#포함관계">포함관계</a></li><li><a href="#super">super()</a></li></ul></li><li><a href="#메서드-오버라이딩">메서드 오버라이딩</a></li><li><a href="#다중상속">다중상속</a></li><li><a href="#추상-클래스">추상 클래스</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="클래스-상속">클래스 상속</h1>
+
+<p>클래스 상속이란 파생클래스가 기반클래스의 기능을 상속한다는 의미이다.<br />
+클래스 상속을 사용하면 클래스간 중복되는 코드를 작성하지 않아도 되어<br />
+코드의 재사용성이 높다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기반클래스 = 부모클래스 = 슈퍼클래스  
+파생클래스 = 자식클래스 = 서브클래스  
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">superclass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">supergreeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'hello im superclass'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">subclass</span><span class="p">(</span><span class="n">superclass</span><span class="p">):</span> <span class="c1">#파생클래스가 기반클래스를 상속
+</span>    <span class="k">def</span> <span class="nf">subgreeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'im subclass'</span><span class="p">)</span>
+
+<span class="n">sub</span> <span class="o">=</span> <span class="n">subclass</span><span class="p">()</span>
+</code></pre></div></div>
+<p>위 코드에서 sub.supergreeting()을 실행하면 기반클래스의<br />
+print(‘hello im superclass’) 가 실행된다.<br />
+<br /></p>
+
+<h2 id="상속관계">상속관계</h2>
+
+<p>클래스의 상속관계를 확인하기 위해서는</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>issubclass(subclass,superclass)
+</code></pre></div></div>
+
+<p>함수를 이용해 파악한다.<br />
+상속관계는 is-a 관계라고 부르기도 한다.</p>
+
+<h2 id="포함관계">포함관계</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">PersonList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">person_list</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># 리스트 속성에 Person 인스턴스를 넣어서 관리
+</span> 
+    <span class="k">def</span> <span class="nf">append_person</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>    <span class="c1"># 리스트 속성에 Person 인스턴스를 추가하는 함수
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">person_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span> <span class="c1">#a라는 사람 인스턴스 선언
+</span><span class="n">lst</span> <span class="o">=</span> <span class="n">PersonList</span><span class="p">()</span> <span class="c1">#lst라는 인스턴스 선언.
+</span><span class="n">lst</span><span class="p">.</span><span class="n">append_person</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">#lst 인스턴스에 a라는 사람인스턴스를 추가
+</span><span class="n">lst</span><span class="p">.</span><span class="n">person_list</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">greeting</span><span class="p">()</span> <span class="c1">#lst인스턴스에서 접근가능
+</span></code></pre></div></div>
+
+<p>여기선 PersonList의 인스턴스 속성인
+self.person_list에 매개변수로 다른 클래스의 인스턴스를 만들어 넣는 것이기 때문에 포함관계이다.<br />
+포함관계는 has-a관계라고 부르기도한다.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="super">super()</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Person __init__'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">hello</span> <span class="o">=</span> <span class="s">'안녕하세요.'</span>
+ 
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Student __init__'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">school</span> <span class="o">=</span> <span class="s">'파이썬 코딩 도장'</span>
+
+<span class="n">james</span> <span class="o">=</span> <span class="n">Student</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>james는 Person 클래스를 상속한 student의 인스턴스이다.<br />
+따라서 student클래스의 self.school은 호출이 가능하다.<br />
+<br />
+하지만 student클래스가 상속한 Person클래스의 속성 self.hello는 사용이 불가능하다.</p>
+
+<p>그 이유는 james 인스턴스가 만들어지면서 자동으로 __init__메서드가 실행되면서<br />
+self.school의 명령어가 실행됐지만, person클래스의 __init__메서드는 실행되지 않아<br />
+self.hello명령어가 실행되지 않았기 때문이다.</p>
+
+<p>상속한 클래스의 __init__메서드를 호출하기 위해서는<br />
+파생클래스에서</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>super().__init__() 을 실행해줘야한다.   super()는 기반클래스를 의미한다.  
+</code></pre></div></div>
+
+<p><br />
+단 파생 클래스에 __init__메서드가 존재하지 않는다면<br />
+파이썬은 자동으로 기반클래스에서 __init__메서드를 호출하기 때문에 
+super()를 사용할 필요가 없다.</p>
+
+<p><br />
+<br /></p>
+
+<h1 id="메서드-오버라이딩">메서드 오버라이딩</h1>
+
+<p>메서드 오버라이딩은 기반클래스의 함수명을 유지하면서 파생클래스에 함수를 덮어쓰기를 하는 것을 의미한다.</p>
+
+<p>메서드 오버라이딩을 하는 이유로는 함수명을 일관적으로 유지함으로써 유지보수를 용이하게하기 위함이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. 저는 파이썬 코딩 도장 학생입니다.'</span><span class="p">)</span>
+ 
+<span class="n">james</span> <span class="o">=</span> <span class="n">Student</span><span class="p">()</span>
+<span class="n">james</span><span class="p">.</span><span class="n">greeting</span><span class="p">()</span>
+</code></pre></div></div>
+<p>위 코드에서는 파생클래스의 greeting이 실행된다.</p>
+
+<p><br /><br /></p>
+
+<h1 id="다중상속">다중상속</h1>
+
+<p>말 그대로 파생클래스를 만들 때, 여러개의 기반클래스를 상속하는 개념이다.</p>
+
+<p>파생클래스의 매개변수로 기반클래스를 넣어주면된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. A입니다.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. B입니다.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'안녕하세요. C입니다.'</span><span class="p">)</span>
+ 
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">pass</span>
+ 
+<span class="n">x</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+<span class="n">x</span><span class="p">.</span><span class="n">greeting</span><span class="p">()</span>    <span class="c1"># 안녕하세요. B입니다
+</span></code></pre></div></div>
+
+<p>다중 상속의 문제점은 파생클래스와 기반클래스간 관계가 다이아몬드 형태로 이루어질때이다.</p>
+
+<p>greeting이라는 메서드를 호출해야하는데, 어느 클래스에서 greeting 메서드를
+호출해야할까?</p>
+
+<p><br /></p>
+
+<p>파이썬에서는 이럴 때 mro(Method Resolution Order)
+를 따른다.<br />
+D.mro()를 실행해보면</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;class '__main__.D'&gt;, &lt;class '__main__.B'&gt;,
+&lt;class '__main__.C'&gt;, &lt;class '__main__.A'&gt;, &lt;class 'object'&gt;]
+</code></pre></div></div>
+
+<p>이렇게 출력되는 것을 볼 수 있다.</p>
+
+<p>메서드를 찾는 순서는 자기자신 D, 그리고 클래스 선언 시 괄호의 왼쪽부터
+B,C 그리고 이들의 기반클래스 A이다.</p>
+
+<p>여기서 object클래스란 파이썬의 모든 클래스의 조상인데, 파이썬 3에서는 모든 클래스가 object 클래스를 기본적으로 상속받기에 object를 생략한다.<br />
+그래서 우리가 클래스를 만들때 괄호없이 만들 수가 있었던 것이다.</p>
+
+<p><br /><br /></p>
+
+<h1 id="추상-클래스">추상 클래스</h1>
+
+<p>추상 클래스는 파생 클래스가 반드시 만들어야하는 메서드를 강제한다.<br />
+추상클래스는 말그대로 ‘추상’이기때문에 인스턴스를 만들지 못한다.<br />
+따라서 인스턴스 메서드를 호출할 일도 없기 때문에 메서드는 빈 상태로 둔다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="o">*</span>
+ 
+<span class="k">class</span> <span class="nc">StudentBase</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">study</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+ 
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">go_to_school</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+ 
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">StudentBase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">study</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'공부하기'</span><span class="p">)</span>
+ 
+<span class="n">james</span> <span class="o">=</span> <span class="n">Student</span><span class="p">()</span>
+<span class="n">james</span><span class="p">.</span><span class="n">study</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>이 코드에서 james = Student()는 오류가 발생한다.<br />
+파생클래스인 Student클래스가 상속하는 StudentBase가 추상클래스로 선언되어 있는데,<br />
+추상클래스에서 강제된 메서드 중, go_to_school 이란 메서드를<br />
+파생 클래스인 Student클래스에서 구현하지 않았기 때문이다.</p>
+
+        
+      </section>
+
+
+      
+
+      
+
+
+  
+
+  
+  	
+  	
+  	
+  	
+  	
+
+
+  <nav class="pagination_prev_next">
+    
+      <a href="/pythonsyntax/modulepackage/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[Python 문법공부] 모듈, 패키지</a>
+    
+    
+      <a href="/pythonsyntax/filewr/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[Python 문법공부] 파일 사용하기</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/binarytree/" rel="permalink">[Datastructure] 이진트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-29T00:00:00+09:00">November 29, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/tree$heap/" rel="permalink">[Datastructure] 트리구조, 힙
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-27T00:00:00+09:00">November 27, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/pythonsyntax/filewr/" rel="permalink">[Python 문법공부] 파일 사용하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-24T00:00:00+09:00">November 24, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파일 읽고 쓰기
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Dding-Hwan. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/pythonsyntax/inheritance/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/pythonsyntax/inheritance"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-koreanddinghwan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

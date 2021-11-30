@@ -1,11 +1,12 @@
 ---
 title: My logs
 layout: collection
+classes: wide
 permalink: /mylogs/
 collection: mylogs
 entries_layout: grid
-author_profile: true
-sidebar_main: true
+# author_profile: false
+# sidebar_main: true
 header:
     image: assets/images/mylogs.jpeg
 ---

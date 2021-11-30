@@ -18,7 +18,7 @@
   }
 }
 .archive-item-title {
-  font-size: 30px;
+  font-size: $type-size-6;
 }
 .archive__item {
   position: relative;
@@ -36,7 +36,7 @@
 .archive__subtitle {
   margin: 1.414em 0 0.5em;
   padding-bottom: 0.5em;
-  font-size: $type-size-1;
+  font-size: $type-size-6;
   color: $muted-text-color;
   border-bottom: 1px solid $border-color;
 
@@ -76,7 +76,7 @@
 
 .archive__item-excerpt {
   margin-top: 0;
-  font-size: 20px;
+  font-size: $type-size-7;
 
   & + p {
     text-indent: 0;
@@ -129,7 +129,7 @@
 .list__item {
   .page__meta {
     margin: 0 0 4px;
-    font-size: 20px;
+    font-size: $type-size-7;
   }
   .a {
     font-size: 25px;
