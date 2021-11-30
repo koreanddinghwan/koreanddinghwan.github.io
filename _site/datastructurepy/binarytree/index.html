@@ -943,7 +943,9 @@ BST 클래스는 root와 size정보, 이터레이터를 정의하자.</p>
 <h2 id="insert연산">insert연산</h2>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-    <span class="c1">#search와 동일
+    <span class="c1">#p에는 
+</span>    <span class="c1">#find_loc으로 찾았다면 해당키의 현재 노드가,
+</span>    <span class="c1">#찾지 못했다면 해당키가 들어가야하는 부모노드가 할당
 </span>    <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">find_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
     <span class="c1">#p가 None이라면 BST가 비어있는 경우라서 추가해야만하는 경우
@@ -969,6 +971,7 @@ BST 클래스는 root와 size정보, 이터레이터를 정의하자.</p>
         
         <span class="c1">#insert 성공시, BST의 크기 1 증가
 </span>        <span class="bp">self</span><span class="p">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">v</span>
 
     <span class="c1"># BST가 비어있지 않으면서 p.key와 key가 같다면
 </span>    <span class="c1"># BST에 이미 insert하고자하는 key값이 존재하는 것

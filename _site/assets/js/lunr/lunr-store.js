@@ -318,7 +318,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Datastructure] 균형이진탐색트리",
-        "excerpt":"참고 자료 😇 신찬수 교수님 자료구조 강의 균형이진탐색트리 개요 앞에서 이진탐색트리를 공부할때, 각 노드마다 left subtree의 키값들이 right subtree의 키값보다 작다는게 보장되었다. 이진탐색트리에서 연산은 find_loc 함수를 이용하기때문에 O(h) 시간복잡도를 가진다. 따라서 탐색을 효율적으로 하기위해서는 트리의 높이 h를 최소화해야한다는 결론이 나온다. 트리의 높이를 최소화하기 위해서는 앞서 공부했던 heap의 모양성질을 만족해야한다는 결론이...","categories": ["datastructurepy"],
+        "excerpt":"참고 자료 😇 신찬수 교수님 자료구조 강의 8iggy님 블로그 geeksforgeeks 균형이진탐색트리 균형이진탐색트리를 사용하는 이유 앞에서 이진탐색트리를 공부할때, 각 노드마다 left subtree의 키값들이 right subtree의 키값보다 작다는게 보장되었다. 이진탐색트리에서 대부분의 연산은 find_loc 함수를 이용하기때문에 O(h) 시간복잡도를 가진다. 따라서 탐색을 효율적으로 하기위해서는 트리의 높이 h를 최소화해야한다는 결론이 나온다. 트리의 높이를 최소화하기 위해서는...","categories": ["datastructurepy"],
         "tags": ["computer science","data structure","python","BST"],
         "url": "/datastructurepy/balancedBST/",
         "teaser": null

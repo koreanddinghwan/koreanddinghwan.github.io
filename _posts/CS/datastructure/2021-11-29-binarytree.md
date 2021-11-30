@@ -252,7 +252,9 @@ def search(self,key):
 
 ```python
 def insert(self,key):
-    #search와 동일
+    #p에는 
+    #find_loc으로 찾았다면 해당키의 현재 노드가,
+    #찾지 못했다면 해당키가 들어가야하는 부모노드가 할당
     p = self.find_loc(key)
 
     #p가 None이라면 BST가 비어있는 경우라서 추가해야만하는 경우
@@ -278,6 +280,7 @@ def insert(self,key):
         
         #insert 성공시, BST의 크기 1 증가
         self.size += 1
+        return v
 
     # BST가 비어있지 않으면서 p.key와 key가 같다면
     # BST에 이미 insert하고자하는 key값이 존재하는 것
