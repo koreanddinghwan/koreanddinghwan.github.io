@@ -326,23 +326,24 @@ x의 부모노드에 left subtree를 연결한다. 그리고 left subtree에서 
 
 만약 left subtree가 None이라면 right subtree가 x의 부모노드에 직접 연결된다.
 
+<br><br>
 
+psuedo 코드  
 
-코드  
+코드로 구현할때 고려사항으로 `left subtree의 존재유무`와 `삭제한 노드 x가 root인지 아닌지` 로 나뉜다.
 ```python
 def deleteByMerging(self, x):
     a = x.left
     b = x.right
     pt = x.parent
     #c =  #x 자리를 대체할 노드
-    #s =  #Left에서 가장 큰 노드
+    #m =  #Left에서 가장 큰 노드
 
     #left subtree가 None일때
     if a == None:
         #x자리에 right subtree b를 직접 넣는다.
         c = b
-        #
-        s = pt
+        
 
     #left subtree가 None이 아닐때
     else:
@@ -358,12 +359,124 @@ def deleteByMerging(self, x):
             # b와 m을 연결
             b.parent = m
             m.right = b
-        
-        s = m
 
+    
+    #삭제한 x노드의 부모가 None인경우
+    if pt == None:
+        #x가 root노드였으므로, c를 root로 업데이트
+        if c:
+            c.parent = None
+        self.root = c
+
+    #x노드의 부모가 None이 아닌경우
+    else:
+        # x자리를 대체할 노드 c에 pt를 연결한다.
+        if c:
+            c.parent = pt
+
+        # pt와 c의 key값을 비교해 연결한다.
+        if pt.key > c.key:
+            pt.left = c
+        else:
+            pt.right = c
+
+    self.size -= 1
+
+    return s?
+```
+
+<br><br>
+
+### deletbycopying
+
+<br>
+
+`merging`과는 다르게 `copying`은 left subtree에서 가장 큰값 m을 찾아 삭제된 노드 x의 자리에 대체한다.  
+
+m이 left subtree에서 가장 큰 값이므로 m의 right subtree는 없다는 것이 보장되므로,  
+`m의 right subtree로 x의 right subtree를 연결한다.`  
+
+m의 원래 left subtree와 m의 부모노드가 끊긴 상태이므로, 이 둘을 연결한다.  
+m이 x의 위치로 올라갔으므로 m과 left subtree의 최상단 노드를 연결한다.  
+
+<img src = "https://user-images.githubusercontent.com/76278794/143980727-a4b538e8-6026-4664-ae5b-9d843201411c.jpeg">
+
+<br><br>
+
+psuedo 코드
+
+```python
+def deleteByCoping(self,key):
+    a = x.left
+    b = x.right
+    pt = x.parent
+    #c =  #x 자리를 대체할 노드
+    #m =  #Left에서 가장 큰 노드
+
+    if a == None:
+        #a가 None이면 m이 없으므로 x의 right subtree를 직접대체해야한다.
+        c = b
+    else:
+        #a가 None이 아니라면 m 이 존재한다.
+        m = a
+        while m.right:
+            m = m.right
+        #m이 x의 자리를 대체한다.
+        c = m
+
+        #만약 x의 right subtree가 존재한다면 둘을 연결
+        if b:
+            m.right = b
+            b.parent = m
+
+        #m이 존재할때, m의 right subtree는 없는 것이 보장되나, left subtree는 있을수도있다.
+        if m.left:
+            #m의 parent와 비교해 연결한다.
+            if m.parent.key < m.left:
+                m.parent.right = m.left
+            else:
+                #m.parent.left에서 m.left가 들어갈 적당한 자리를 찾는다.
+
+
+    #삭제한 x가 root인경우
+    if pt == None:
+        if c:
+            c.parent = None
+        self.root = c
+
+
+    #x가 root가 아닌경우
+    else:
+        # x자리를 대체할 노드 c에 pt를 연결한다.
+        if c:
+            c.parent = pt
+
+        # pt와 c의 key값을 비교해 연결한다.
+        if pt.key > c.key:
+            pt.left = c
+        else:
+            pt.right = c
 
 
 ```
 
+<br><br>
+
+## 수행시간
+
+search 연산은 최악의 경우, 노드의 가장 깊은 곳까지 비교해야하므로 트리의 높이에 비례하는 수행시간을 가진다. ->O(h)  
+
+insert 연산또한 search연산을 이용하므로 O(h)가 걸린다.  
+
+delete연산 또한 m을 찾기위해 최악의 경우 h만큼 비교하기 때문에 O(h) 시간이 걸린다.  
+
+트리의 높이 h는 최악의 경우 right subtree로만 연결되기때문에 n-1까지 가능하므로  
+모든 연산시간은 O(n) 만큼 걸린다.  
+따라서 지금까지 공부한 이진탐색트리는 탐색에 결고 최적화되어있지 않다.  
+
+트리의 높이를 최적화해야 탐색 수행시간이 줄어든다.  
+이를 위해 `균형이진탐색트리`가 존재한다.  
+
+위에서 deleteByCopying 함수를 구현할때, m의 left와 m의 parent를 연결하는 과정에서 어려움이 있던게 m.left가 m.parent보다 작을때는 어떻게 최적화해서 연결할 것인가에 대한 생각을 해야하기 때문인데, 균형이진탐색트리를 공부하면 알 수 있다.  
 
 
