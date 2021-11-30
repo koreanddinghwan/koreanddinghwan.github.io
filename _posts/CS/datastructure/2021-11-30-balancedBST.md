@@ -96,9 +96,42 @@ rotationLeft도 동일하게 구현한다.
 
 # AVL 트리
 
-모든 노드에 대해서 노드의 왼족 부르티와 오른쪽 부트리의 높이차가 1 이하인 BST를 의미한다.  
+ 모든 노드에 대해서 노드의 왼족 부트리와 오른쪽 부트리의 높이차가 1 이하인 BST를 의미한다.  
+
+<img src = "https://user-images.githubusercontent.com/76278794/143999515-05d2e9f3-c424-472b-960a-c94b49bbb5c5.png">
+
+<br><br>
+
+## AVL트리의 높이 증명
+
+Nh를 높이가 h인 AVL 트리 중, 최소 노드의 개수로 정의한다.  
+
+<img src="https://user-images.githubusercontent.com/76278794/144005404-1b52758b-ecdb-45c4-b747-6a63967e58f9.jpeg">
+
+규칙성을 찾을 수 있는데, 피보나치 수열과 비슷하다.  
+1,2,4로 시작하는 피보나치 수열이다.
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/76278794/144005500-f80194d3-d9bb-484c-b599-56dc3d28c55f.jpeg">
+부등식의 성질을 이용해 O(h) <= O(logN) 임이 증명된다. 
+
+<br><br>
+
+## AVL트리 클래스
+
+Node 클래스에서 각 노드의 높이 정보가 저장되어야한다.  
+
+AVL클래스는 BST클래스를 부모클래스로 상속받아 사용하는데, 
 
 
+<br><br>
+
+## AVL트리 삽입연산
+
+<br><br>
+
+## AVL트리 삭제연산
 
 <br><br>
 
@@ -113,3 +146,4 @@ rotationLeft도 동일하게 구현한다.
 # Splay 트리
 
 
+  
