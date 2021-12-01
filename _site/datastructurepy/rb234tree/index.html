@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Python 문법공부] 리스트 표현식 - LightBig</title>
-<meta name="description" content="리스트 표현식에 대해">
+<!-- begin _includes/seo.html --><title>[Datastructure] 균형이진탐색트리 - LightBig</title>
+<meta name="description" content="파이썬 자료구조">
 
 
   <meta name="author" content="엘비">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="LightBig">
-<meta property="og:title" content="[Python 문법공부] 리스트 표현식">
-<meta property="og:url" content="http://localhost:4000/pythonsyntax/listcomprehension/">
+<meta property="og:title" content="[Datastructure] 균형이진탐색트리">
+<meta property="og:url" content="http://localhost:4000/datastructurepy/rb234tree/">
 
 
-  <meta property="og:description" content="리스트 표현식에 대해">
-
-
-
+  <meta property="og:description" content="파이썬 자료구조">
 
 
 
 
-  <meta property="article:published_time" content="2021-10-09T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-10-09T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-11-30T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-11-30T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/pythonsyntax/listcomprehension/">
+
+<link rel="canonical" href="http://localhost:4000/datastructurepy/rb234tree/">
 
 
 
@@ -175,7 +175,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#pythonsyntax" itemprop="item"><span itemprop="name">Pythonsyntax</span></a>
+          <a href="/categories/#datastructurepy" itemprop="item"><span itemprop="name">Datastructurepy</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">[Python 문법공부] 리스트 표현식</li>
+        <li class="current">[Datastructure] 균형이진탐색트리</li>
       
     
   </ol>
@@ -650,23 +650,23 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Python 문법공부] 리스트 표현식">
-    <meta itemprop="description" content="리스트 표현식에 대해">
-    <meta itemprop="datePublished" content="2021-10-09T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-10-09T00:00:00+09:00">
+    <meta itemprop="headline" content="[Datastructure] 균형이진탐색트리">
+    <meta itemprop="description" content="파이썬 자료구조">
+    <meta itemprop="datePublished" content="2021-11-30T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-11-30T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/pythonsyntax/listcomprehension/" class="u-url" itemprop="url">[Python 문법공부] 리스트 표현식
+            <a href="http://localhost:4000/datastructurepy/rb234tree/" class="u-url" itemprop="url">[Datastructure] 균형이진탐색트리
 </a>
           </h1>
           <div class="page__meta">
             
             
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-09">October 9, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-11-30">November 30, 2021</time></p>
 
             
   
@@ -678,11 +678,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#list-comprehension" class="page__taxonomy-item p-category" rel="tag">list-comprehension</a><span class="sep">, </span>
+      <a href="/tags/#bst" class="page__taxonomy-item p-category" rel="tag">BST</a><span class="sep">, </span>
     
-      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+      <a href="/tags/#computer-science" class="page__taxonomy-item p-category" rel="tag">computer science</a><span class="sep">, </span>
     
-      <a href="/tags/#syntax" class="page__taxonomy-item p-category" rel="tag">syntax</a>
+      <a href="/tags/#data-structure" class="page__taxonomy-item p-category" rel="tag">data structure</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a>
     
     </span>
   </p>
@@ -699,7 +701,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#pythonsyntax" class="page__taxonomy-item p-category" rel="tag">pythonsyntax</a>
+      <a href="/categories/#datastructurepy" class="page__taxonomy-item p-category" rel="tag">datastructurepy</a>
     
     </span>
   </p>
@@ -714,85 +716,198 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 공부한 내용 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#리스트-표현식">리스트 표현식</a><ul><li><a href="#표현-방법">표현 방법</a></li><li><a href="#--리스트-표현식에서-조건문-사용">[ ] 리스트 표현식에서 조건문 사용</a></li></ul></li><li><a href="#list와--의-차이점">list()와 [ ]의 차이점</a></li></ul>
+              <ul class="toc__menu"><li><a href="#참고-자료">참고 자료</a></li><li><a href="#red-black-트리">Red-Black 트리</a><ul><li><a href="#개요">개요</a><ul><li><a href="#높이증명">높이증명</a></li></ul></li><li><a href="#삽입연산">삽입연산</a><ul><li><a href="#recoloring">Recoloring</a></li><li><a href="#로직">로직</a></li></ul></li><li><a href="#삭제연산">삭제연산</a><ul><li><a href="#double-black">double black</a></li><li><a href="#로직-1">로직</a></li><li><a href="#double-black해결">double black해결</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="리스트-표현식">리스트 표현식</h1>
+        <h1 id="참고-자료">참고 자료</h1>
+<p>😇 <a href="https://www.youtube.com/c/ChanSuShin/featured">신찬수 교수님 자료구조 강의</a><br />
+<a href="https://www.geeksforgeeks.org/avl-tree-set-1-insertion/">geeksforgeeks</a></p>
 
-<h2 id="표현-방법">표현 방법</h2>
+<h1 id="red-black-트리">Red-Black 트리</h1>
 
-<p>2가지 방식이 있다.</p>
+<h2 id="개요">개요</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">식</span> <span class="k">for</span> <span class="n">변수</span> <span class="ow">in</span> <span class="n">리스트</span><span class="p">]</span>
-<span class="nb">list</span><span class="p">(</span><span class="n">식</span> <span class="k">for</span> <span class="n">변수</span> <span class="ow">in</span> <span class="n">리스트</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>      
+<p>search, insert, delete를 O(log n) 시간 내에 처리할 수 있다.</p>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
-<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<p>AVL트리와 Red-Black트리에 비해 더 균형있지만, insert, delete과정에서 많은 rotation을 호출한다.<br />
+만약 insertion과 deletion이 많은 작업이라면, Red-Black트리를 적용하는 것이 더 선호된다.</p>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>    
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
-<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</code></pre></div></div>
-<p><br />
-<br /></p>
-
-<h2 id="--리스트-표현식에서-조건문-사용">[ ] 리스트 표현식에서 조건문 사용</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
-<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
-</code></pre></div></div>
-
-<p><br />
-<br /></p>
-
-<p>조건식을 여러번 사용할 수도 있다.
-단, 처리순서는 가장 먼저 실행되는 for문이 먼저이다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> 
-          <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span>
-<span class="o">&gt;&gt;&gt;</span><span class="n">a</span>
-<span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">10.</span><span class="p">..]</span>
-</code></pre></div></div>
+<p>만약 insertion과 deletion보다 search가 더 많이 호출되는 작업이면 AVL트리를 적용하는것이 더 낫다.</p>
 
 <p><br /></p>
 
-<p>리스트 원소들에 연산을 할 수 있다.</p>
+<p>전제조건)</p>
+<ol>
+  <li>None을 leaf노드로 표현한다, 내부노드는 None노드를 제외한 노드이다.</li>
+  <li>모든 노드는 색을 가져야하고, red-black순이다.</li>
+  <li>root노드는 black이다.</li>
+  <li>None 노드는 black이다.</li>
+  <li>red노드의 자식노드는 black이다.(black의 자식은 black일수도있다.)</li>
+  <li>
+    <중요>각 노드에서 leaf(None)노드로 가는 경로 중에 만난 black노드의 개수가 항상 같아야한다. 
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
-<span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>
+</중요>
+  </li>
+</ol>
+<p><br /><br /></p>
 
+<h3 id="높이증명">높이증명</h3>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/144176065-9b898590-b31b-4df3-b439-7bc599b1c95f.jpeg" alt="IMG_4D4E43ACF212-1" />
+<img src="https://user-images.githubusercontent.com/76278794/144176080-202ae237-06c9-49cd-882a-d72f37f4b379.jpeg" alt="IMG_D05D78CF03A0-1" /></p>
+
+<p>전제조건 6이 중요한 이유는 이 6번으로 인해 전체 트리의 균형이 맞기 때문이다.</p>
+
+<p><br /><br /></p>
+
+<h2 id="삽입연산">삽입연산</h2>
+
+<p>red-black 트리에서는 rebalancing을 위해</p>
+<ol>
+  <li>Recoloring</li>
+  <li>Rotation
+을 한다.</li>
+</ol>
+
+<p>삽입할 노드를 x, x의 부모노드를 p, p의 부모노드를 g, g의 p가 아닌 자식노드를 u라고하자.</p>
+
+<p><br /><br /></p>
+
+<h3 id="recoloring">Recoloring</h3>
+
+<p>red 노드를 black으로 바꾸거나, black노드를 red 노드로 바꾸는 것을 <code class="language-plaintext highlighter-rouge">Recolouring</code>이라고한다.<br />
+단, None 노드는 항상 black으로 유지되어야한다.</p>
+
+<p>항상 recolouring을 먼저 시도하고, 만약 recolouring이 작동하지 않는다면 rotation을 한다는 것이다.</p>
+
+<p>알고리즘 로직은 크게 2가지가 있는데, u의 색이 red인경우, recolour를 한다.<br />
+u의 색이 black인 경우, rotation과 recolour를 동시에 하거나 둘 중 하나를 해야한다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="로직">로직</h3>
+
+<ol>
+  <li>새로운 노드x를 만들어 BST insert에 따라 삽입을 한다.</li>
+  <li>그리고 이 노드에 red를 부여한다.</li>
+  <li>
+    <p>만약 이 노드가 root노드라면 black으로 색칠한다.</p>
+  </li>
+  <li>root노드가 아니라면 부모노드p의 색을 확인한다.</li>
+  <li>부모노드p의 색이 black이라면 새 노드의 색을 바꿀필요가 없지만, red라면 바꿔야한다.</li>
+  <li>
+    <p>부모노드p의 색이 red일때, u의 색을 확인해야한다.</p>
+
+    <p>a). u의 색이 red라면 p의 색과 u의 색을 black으로 바꾸고, g노드를 red로 바꿔야한다.<br />
+ b). g노드의 색이 바뀌었기 때문에, g의 부모노드들에 대해서도 색이 모두 바뀌어야한다. <br />
+ c). x에 g노드를 할당하고, 이 노드에 대해 색을 다시 검증한다.</p>
+  </li>
+  <li>
+    <p>u의 색이 black이라면 4가지의 경우가 생긴다.</p>
+
+    <p>a)left-left
+ <img width="600" alt="output244" src="https://user-images.githubusercontent.com/76278794/144187680-a8a59bd6-0b44-4fa7-9187-6ef4e3a700be.png" />
+ g를 기준으로 right 회전 후 G와 P의 색을 바꾼다.</p>
+
+    <p>b)left-right
+ <img width="600" alt="output245" src="https://user-images.githubusercontent.com/76278794/144187768-1b8ae0a3-1e09-41fd-afa3-506aa235090a.png" />
+ p를 기준으로 left 로테이션하면 left-left케이스가 되므로 left-left(a)를 적용한다.</p>
+
+    <p>c)right-right
+ <img width="524" alt="output246" src="https://user-images.githubusercontent.com/76278794/144187838-9d7a3f76-9c5c-40be-b4cf-cc13b1894cb2.png" />
+ g를 기준으로 left 로테이션하고 g와 p의 색을 바꾼다.</p>
+
+    <p>d)right-left
+ <img width="484" alt="output247" src="https://user-images.githubusercontent.com/76278794/144187842-7a9c23b2-87c0-4cb3-b3d4-4e8a7c92eb05.png" />
+ p를 기준으로 right 로테이션하면 right-right케이스가 되므로 right-right(c)를 적용한다.</p>
+  </li>
+</ol>
+
+<p><br /><br /></p>
+
+<h2 id="삭제연산">삭제연산</h2>
+
+<p>삽입연산과같이 recoloring과 rotation으로 전제조건을 유지한다.</p>
+
+<p>삽입연산과 다른점은, 삽입연산에서 case를 구별하기위해 u의 색에 따라 경우가 나뉘었지만,<br />
+삭제연산에서는 x의 형제노드 s로 경우를 구분한다는 것이다.</p>
+
+<p>insertion이후 발생하는 전제조건 위반은 주로 2개의 연속적인 red node가 발생하는 것이었다.<br />
+deletion에서는 black노드를 삭제함에따라 root로부터 leaf까지의 한 경로중에서 black height의 높이가 하나 줄어드는 경로가 발생한다는 것이다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="double-black">double black</h3>
+
+<p>delete는 insert보다 복잡한 연산이라서 개념 하나가 추가된다. <code class="language-plaintext highlighter-rouge">double black</code>이라는 개념이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">double black</code>은 black 노드x가 삭제되었을때, 그 자리가 x의 black 자식노드로 교체되었을때, 그 자식노드를 <code class="language-plaintext highlighter-rouge">double black</code>이라고 말한다.<br />
+black자식노드의 왼쪽 subtree들은 모두 black 노드를 하나 잃어버리게 되어 Red-Black트리의 조건을 만족하지 못하게 된다.</p>
+
+<p>delete연산의 핵심은 이 <code class="language-plaintext highlighter-rouge">double black</code>노드를 어떻게 single black으로 바꾸는가이다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="로직-1">로직</h3>
+
+<p>1) BST트리의 delete를 수행한다. 
+2) delete된 노드의 자리를 대체하는 방법은 총 3가지이다</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a) delete된 노드가 leaf노드인경우  
+b) delete된 노드가 한쪽 자식만 가지는 경우  
+c) delete된 노드가 양쪽 자식을 모두 가지는 경우  
 </code></pre></div></div>
 
-<p><br />
-<br />
-<br /></p>
+<p>c)의 경우, 대체할 노드를 왼쪽서브트리의 최대값이나, 오른쪽 서브트리의 최솟값을 찾아 지우고자하는 노드의 위치로 옮기고, 복사해온 노드를 지운다.<br />
+이때, 이 노드는 반드시 2개보다 적은 non-leaf 자식을 가지고 있다.</p>
 
-<h1 id="list와--의-차이점">list()와 [ ]의 차이점</h1>
+<p>왜냐하면, 왼쪽 subtree에서 최대값을 찾든, 오른쪽 subtree에서 최솟값을 찾든, 대체할 노드를 찾았는데 만약 자식이 2개라면 반드시 자기보다 작거나 큰노드가 존재하므로, 그 노드는 대체할 노드가 아니다. (delete할때 원칙을 지키면 반드시 하나 또는 0개의 자식을 가진 노드로 대체한다.)</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<p>3) v를 삭제된 노드, u를 v를 대체할 노드라고 가정한다.</p>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<p>4) 단순경우: u또는 v가 red인경우 대체되는 노드 u를 black으로 칠한다.
+<img src="https://user-images.githubusercontent.com/76278794/144210249-56d7e1c4-d518-4ad5-a36e-edc555c6a52e.png" alt="rbdelete11" /></p>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span>
-<span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)]</span>
-</code></pre></div></div>
+<p>5) u와 v가 모두 red일수는 없다.</p>
 
-<p>list()함수는 tuple내의 원소들을 강제로 리스트 원소로 할당한다.<br />
-<br />
-하지만 대괄호 [ ]은 새로운 리스트 메모리에 각 원소 객체의 주소를 가리키는 방식을 사용한다.<br />
-리스트표현식을 사용할 때는 대괄호를 이용한다.<br />
-<br /><br /></p>
+<p>6) u와 v가 모두 black인 경우
+u는 <code class="language-plaintext highlighter-rouge">double black</code>이 된다. 이제 이 double black을 single black으로 바꿔야한다.
+v가 leaf였으면 u는 None 노드가되기때문에 이 또한 <code class="language-plaintext highlighter-rouge">double black</code>이다.</p>
 
-<p><br />
-<br />
-<br /></p>
+<p><br /><br /></p>
+
+<h3 id="double-black해결">double black해결</h3>
+
+<p>double black이된 sibling 형제노드를 s라고두자. 
+p는 u와 s의 부모이다.</p>
+
+<p><br /></p>
+
+<p>a) s가 black 노드이고, s의 자식 중 적어도 하나가 red인경우, 이 자식을 r이라고 둔다. 
+p와 s, s와 r의 위치에 따라 해야하는 작업이 다르다.</p>
+
+<p>a-1) left-left case는 right-right케이스와 대칭하다.
+<img src="https://user-images.githubusercontent.com/76278794/144210533-6168e942-bddd-4508-9aed-e0b468550aac.png" alt="rbdelete13New" />
+right-right: p기준 left rotation<br />
+left-left: p기준 right rotation</p>
+
+<p>a-2) right-left case는 left-right케이스와 대칭하다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/144210927-fe2e9d03-9e99-4bc5-b967-3c5dbd375fdd.png" alt="rbdelete14" /></p>
+
+<p>right-left: s기준 right rotation 후 p기준 left rotation<br />
+left-right: s기준 left rotation 후 p기준 right rotation</p>
+
+<p><br /></p>
+
+<p>b)</p>
+
+<p><br /></p>
+
+<p>c)</p>
 
         
       </section>
@@ -804,18 +919,6 @@
 
 
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
   	
   	
   	
@@ -825,10 +928,10 @@
 
   <nav class="pagination_prev_next">
     
-      <a href="#" class="pagination_prev_next--pager disabled">첫 번째 글입니다</a>
+      <a href="/datastructurepy/balancedBST/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[Datastructure] 균형이진탐색트리</a>
     
     
-      <a href="/pythonsyntax/string/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[Python 문법공부] 문자열</a>
+      <a href="#" class="pagination_prev_next--pager disabled">가장 최근 글입니다</a>
     
   </nav>
 
@@ -842,43 +945,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/datastructurepy/rb234tree/" rel="permalink">[Datastructure] 균형이진탐색트리
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
-</p>
-  </article>
-</div>
-
         
           
 
@@ -991,6 +1057,43 @@
 </div>
 
         
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/pythonsyntax/filewr/" rel="permalink">[Python 문법공부] 파일 사용하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-24T00:00:00+09:00">November 24, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파일 읽고 쓰기
+</p>
+  </article>
+</div>
+
+        
       </div>
     </div>
   
@@ -1050,8 +1153,8 @@
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/pythonsyntax/listcomprehension/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/pythonsyntax/listcomprehension"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "http://localhost:4000/datastructurepy/rb234tree/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/datastructurepy/rb234tree"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');

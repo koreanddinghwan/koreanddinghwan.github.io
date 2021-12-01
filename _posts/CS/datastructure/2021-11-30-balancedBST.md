@@ -473,58 +473,15 @@ class TreeNode(object):
 		self.right = None
 		self.height = 1
 
-# AVL tree class which supports insertion,
-# deletion operations
+
 class AVL_Tree(object):
 
-	def insert(self, root, key):
-		
-		# Step 1 - Perform normal BST
-		if not root:
-			return TreeNode(key)
-		elif key < root.val:
-			root.left = self.insert(root.left, key)
-		else:
-			root.right = self.insert(root.right, key)
-
-		# Step 2 - Update the height of the
-		# ancestor node
-		root.height = 1 + max(self.getHeight(root.left),
-						self.getHeight(root.right))
-
-		# Step 3 - Get the balance factor
-		balance = self.getBalance(root)
-
-		# Step 4 - If the node is unbalanced,
-		# then try out the 4 cases
-		# Case 1 - Left Left
-		if balance > 1 and key < root.left.val:
-			return self.rightRotate(root)
-
-		# Case 2 - Right Right
-		if balance < -1 and key > root.right.val:
-			return self.leftRotate(root)
-
-		# Case 3 - Left Right
-		if balance > 1 and key > root.left.val:
-			root.left = self.leftRotate(root.left)
-			return self.rightRotate(root)
-
-		# Case 4 - Right Left
-		if balance < -1 and key < root.right.val:
-			root.right = self.rightRotate(root.right)
-			return self.leftRotate(root)
-
-		return root
-
-	# Recursive function to delete a node with
-	# given key from subtree with given root.
-	# It returns root of the modified subtree.
+	# 재귀함수사용
 	def delete(self, root, key):
 
-		# Step 1 - Perform standard BST delete
+		# Step 1 - BST의 삭제연산
 		if not root:
-			return root
+			return root 
 
 		elif key < root.val:
 			root.left = self.delete(root.left, key)
@@ -548,21 +505,18 @@ class AVL_Tree(object):
 			root.right = self.delete(root.right,
 									temp.val)
 
-		# If the tree has only one node,
-		# simply return it
+		# 트리가 1개노드만 가지면 그 노드를 리턴
 		if root is None:
 			return root
 
-		# Step 2 - Update the height of the
-		# ancestor node
+		# Step 2 - 재귀함수로 호출해낸 노드들의 높이 하나씩 증가
 		root.height = 1 + max(self.getHeight(root.left),
 							self.getHeight(root.right))
 
-		# Step 3 - Get the balance factor
+		# Step 3 - 균형인수
 		balance = self.getBalance(root)
 
-		# Step 4 - If the node is unbalanced,
-		# then try out the 4 cases
+		# Step 4 - 노드불균형시, 로테이션 실행
 		# Case 1 - Left Left
 		if balance > 1 and self.getBalance(root.left) >= 0:
 			return self.rightRotate(root)
@@ -648,15 +602,4 @@ class AVL_Tree(object):
 
 ```
 
-# Red-Black 트리
 
-<br><br>
-
-# 2,3,4 트리
-
-<br><br>
-
-# Splay 트리
-
-
-  

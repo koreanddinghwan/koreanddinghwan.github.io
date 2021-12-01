@@ -1,4 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T02:45:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">LightBig</title><subtitle>띵동콜링</subtitle><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><entry><title type="html">[Datastructure] 균형이진탐색트리</title><link href="http://localhost:4000/datastructurepy/balancedBST/" rel="alternate" type="text/html" title="[Datastructure] 균형이진탐색트리" /><published>2021-11-30T00:00:00+09:00</published><updated>2021-11-30T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/balancedBST</id><content type="html" xml:base="http://localhost:4000/datastructurepy/balancedBST/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T18:48:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">LightBig</title><subtitle>띵동콜링</subtitle><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><entry><title type="html">[Datastructure] 균형이진탐색트리</title><link href="http://localhost:4000/datastructurepy/rb234tree/" rel="alternate" type="text/html" title="[Datastructure] 균형이진탐색트리" /><published>2021-11-30T00:00:00+09:00</published><updated>2021-11-30T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/rb234tree</id><content type="html" xml:base="http://localhost:4000/datastructurepy/rb234tree/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
+&lt;p&gt;😇 &lt;a href=&quot;https://www.youtube.com/c/ChanSuShin/featured&quot;&gt;신찬수 교수님 자료구조 강의&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.geeksforgeeks.org/avl-tree-set-1-insertion/&quot;&gt;geeksforgeeks&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;red-black-트리&quot;&gt;Red-Black 트리&lt;/h1&gt;
+
+&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+
+&lt;p&gt;search, insert, delete를 O(log n) 시간 내에 처리할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;AVL트리와 Red-Black트리에 비해 더 균형있지만, insert, delete과정에서 많은 rotation을 호출한다.&lt;br /&gt;
+만약 insertion과 deletion이 많은 작업이라면, Red-Black트리를 적용하는 것이 더 선호된다.&lt;/p&gt;
+
+&lt;p&gt;만약 insertion과 deletion보다 search가 더 많이 호출되는 작업이면 AVL트리를 적용하는것이 더 낫다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;전제조건)&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;None을 leaf노드로 표현한다, 내부노드는 None노드를 제외한 노드이다.&lt;/li&gt;
+  &lt;li&gt;모든 노드는 색을 가져야하고, red-black순이다.&lt;/li&gt;
+  &lt;li&gt;root노드는 black이다.&lt;/li&gt;
+  &lt;li&gt;None 노드는 black이다.&lt;/li&gt;
+  &lt;li&gt;red노드의 자식노드는 black이다.(black의 자식은 black일수도있다.)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;중요&gt;각 노드에서 leaf(None)노드로 가는 경로 중에 만난 black노드의 개수가 항상 같아야한다. 
+
+
+&lt;/중요&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;높이증명&quot;&gt;높이증명&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144176065-9b898590-b31b-4df3-b439-7bc599b1c95f.jpeg&quot; alt=&quot;IMG_4D4E43ACF212-1&quot; /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144176080-202ae237-06c9-49cd-882a-d72f37f4b379.jpeg&quot; alt=&quot;IMG_D05D78CF03A0-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;전제조건 6이 중요한 이유는 이 6번으로 인해 전체 트리의 균형이 맞기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;삽입연산&quot;&gt;삽입연산&lt;/h2&gt;
+
+&lt;p&gt;red-black 트리에서는 rebalancing을 위해&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Recoloring&lt;/li&gt;
+  &lt;li&gt;Rotation
+을 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;삽입할 노드를 x, x의 부모노드를 p, p의 부모노드를 g, g의 p가 아닌 자식노드를 u라고하자.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;recoloring&quot;&gt;Recoloring&lt;/h3&gt;
+
+&lt;p&gt;red 노드를 black으로 바꾸거나, black노드를 red 노드로 바꾸는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Recolouring&lt;/code&gt;이라고한다.&lt;br /&gt;
+단, None 노드는 항상 black으로 유지되어야한다.&lt;/p&gt;
+
+&lt;p&gt;항상 recolouring을 먼저 시도하고, 만약 recolouring이 작동하지 않는다면 rotation을 한다는 것이다.&lt;/p&gt;
+
+&lt;p&gt;알고리즘 로직은 크게 2가지가 있는데, u의 색이 red인경우, recolour를 한다.&lt;br /&gt;
+u의 색이 black인 경우, rotation과 recolour를 동시에 하거나 둘 중 하나를 해야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;로직&quot;&gt;로직&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;새로운 노드x를 만들어 BST insert에 따라 삽입을 한다.&lt;/li&gt;
+  &lt;li&gt;그리고 이 노드에 red를 부여한다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;만약 이 노드가 root노드라면 black으로 색칠한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;root노드가 아니라면 부모노드p의 색을 확인한다.&lt;/li&gt;
+  &lt;li&gt;부모노드p의 색이 black이라면 새 노드의 색을 바꿀필요가 없지만, red라면 바꿔야한다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;부모노드p의 색이 red일때, u의 색을 확인해야한다.&lt;/p&gt;
+
+    &lt;p&gt;a). u의 색이 red라면 p의 색과 u의 색을 black으로 바꾸고, g노드를 red로 바꿔야한다.&lt;br /&gt;
+ b). g노드의 색이 바뀌었기 때문에, g의 부모노드들에 대해서도 색이 모두 바뀌어야한다. &lt;br /&gt;
+ c). x에 g노드를 할당하고, 이 노드에 대해 색을 다시 검증한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;u의 색이 black이라면 4가지의 경우가 생긴다.&lt;/p&gt;
+
+    &lt;p&gt;a)left-left
+ &lt;img width=&quot;600&quot; alt=&quot;output244&quot; src=&quot;https://user-images.githubusercontent.com/76278794/144187680-a8a59bd6-0b44-4fa7-9187-6ef4e3a700be.png&quot; /&gt;
+ g를 기준으로 right 회전 후 G와 P의 색을 바꾼다.&lt;/p&gt;
+
+    &lt;p&gt;b)left-right
+ &lt;img width=&quot;600&quot; alt=&quot;output245&quot; src=&quot;https://user-images.githubusercontent.com/76278794/144187768-1b8ae0a3-1e09-41fd-afa3-506aa235090a.png&quot; /&gt;
+ p를 기준으로 left 로테이션하면 left-left케이스가 되므로 left-left(a)를 적용한다.&lt;/p&gt;
+
+    &lt;p&gt;c)right-right
+ &lt;img width=&quot;524&quot; alt=&quot;output246&quot; src=&quot;https://user-images.githubusercontent.com/76278794/144187838-9d7a3f76-9c5c-40be-b4cf-cc13b1894cb2.png&quot; /&gt;
+ g를 기준으로 left 로테이션하고 g와 p의 색을 바꾼다.&lt;/p&gt;
+
+    &lt;p&gt;d)right-left
+ &lt;img width=&quot;484&quot; alt=&quot;output247&quot; src=&quot;https://user-images.githubusercontent.com/76278794/144187842-7a9c23b2-87c0-4cb3-b3d4-4e8a7c92eb05.png&quot; /&gt;
+ p를 기준으로 right 로테이션하면 right-right케이스가 되므로 right-right(c)를 적용한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;삭제연산&quot;&gt;삭제연산&lt;/h2&gt;
+
+&lt;p&gt;삽입연산과같이 recoloring과 rotation으로 전제조건을 유지한다.&lt;/p&gt;
+
+&lt;p&gt;삽입연산과 다른점은, 삽입연산에서 case를 구별하기위해 u의 색에 따라 경우가 나뉘었지만,&lt;br /&gt;
+삭제연산에서는 x의 형제노드 s로 경우를 구분한다는 것이다.&lt;/p&gt;
+
+&lt;p&gt;insertion이후 발생하는 전제조건 위반은 주로 2개의 연속적인 red node가 발생하는 것이었다.&lt;br /&gt;
+deletion에서는 black노드를 삭제함에따라 root로부터 leaf까지의 한 경로중에서 black height의 높이가 하나 줄어드는 경로가 발생한다는 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;double-black&quot;&gt;double black&lt;/h3&gt;
+
+&lt;p&gt;delete는 insert보다 복잡한 연산이라서 개념 하나가 추가된다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double black&lt;/code&gt;이라는 개념이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double black&lt;/code&gt;은 black 노드x가 삭제되었을때, 그 자리가 x의 black 자식노드로 교체되었을때, 그 자식노드를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double black&lt;/code&gt;이라고 말한다.&lt;br /&gt;
+black자식노드의 왼쪽 subtree들은 모두 black 노드를 하나 잃어버리게 되어 Red-Black트리의 조건을 만족하지 못하게 된다.&lt;/p&gt;
+
+&lt;p&gt;delete연산의 핵심은 이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double black&lt;/code&gt;노드를 어떻게 single black으로 바꾸는가이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;로직-1&quot;&gt;로직&lt;/h3&gt;
+
+&lt;p&gt;1) BST트리의 delete를 수행한다. 
+2) delete된 노드의 자리를 대체하는 방법은 총 3가지이다&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a) delete된 노드가 leaf노드인경우  
+b) delete된 노드가 한쪽 자식만 가지는 경우  
+c) delete된 노드가 양쪽 자식을 모두 가지는 경우  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;c)의 경우, 대체할 노드를 왼쪽서브트리의 최대값이나, 오른쪽 서브트리의 최솟값을 찾아 지우고자하는 노드의 위치로 옮기고, 복사해온 노드를 지운다.&lt;br /&gt;
+이때, 이 노드는 반드시 2개보다 적은 non-leaf 자식을 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;왜냐하면, 왼쪽 subtree에서 최대값을 찾든, 오른쪽 subtree에서 최솟값을 찾든, 대체할 노드를 찾았는데 만약 자식이 2개라면 반드시 자기보다 작거나 큰노드가 존재하므로, 그 노드는 대체할 노드가 아니다. (delete할때 원칙을 지키면 반드시 하나 또는 0개의 자식을 가진 노드로 대체한다.)&lt;/p&gt;
+
+&lt;p&gt;3) v를 삭제된 노드, u를 v를 대체할 노드라고 가정한다.&lt;/p&gt;
+
+&lt;p&gt;4) 단순경우: u또는 v가 red인경우 대체되는 노드 u를 black으로 칠한다.
+&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144210249-56d7e1c4-d518-4ad5-a36e-edc555c6a52e.png&quot; alt=&quot;rbdelete11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5) u와 v가 모두 red일수는 없다.&lt;/p&gt;
+
+&lt;p&gt;6) u와 v가 모두 black인 경우
+u는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double black&lt;/code&gt;이 된다. 이제 이 double black을 single black으로 바꿔야한다.
+v가 leaf였으면 u는 None 노드가되기때문에 이 또한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double black&lt;/code&gt;이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;double-black해결&quot;&gt;double black해결&lt;/h3&gt;
+
+&lt;p&gt;double black이된 sibling 형제노드를 s라고두자. 
+p는 u와 s의 부모이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;a) s가 black 노드이고, s의 자식 중 적어도 하나가 red인경우, 이 자식을 r이라고 둔다. 
+p와 s, s와 r의 위치에 따라 해야하는 작업이 다르다.&lt;/p&gt;
+
+&lt;p&gt;a-1) left-left case는 right-right케이스와 대칭하다.
+&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144210533-6168e942-bddd-4508-9aed-e0b468550aac.png&quot; alt=&quot;rbdelete13New&quot; /&gt;
+right-right: p기준 left rotation&lt;br /&gt;
+left-left: p기준 right rotation&lt;/p&gt;
+
+&lt;p&gt;a-2) right-left case는 left-right케이스와 대칭하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144210927-fe2e9d03-9e99-4bc5-b967-3c5dbd375fdd.png&quot; alt=&quot;rbdelete14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;right-left: s기준 right rotation 후 p기준 left rotation&lt;br /&gt;
+left-right: s기준 left rotation 후 p기준 right rotation&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;b)&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;c)&lt;/p&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="datastructurepy" /><category term="computer science" /><category term="data structure" /><category term="python" /><category term="BST" /><summary type="html">파이썬 자료구조</summary></entry><entry><title type="html">[Datastructure] 균형이진탐색트리</title><link href="http://localhost:4000/datastructurepy/balancedBST/" rel="alternate" type="text/html" title="[Datastructure] 균형이진탐색트리" /><published>2021-11-30T00:00:00+09:00</published><updated>2021-11-30T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/balancedBST</id><content type="html" xml:base="http://localhost:4000/datastructurepy/balancedBST/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
 &lt;p&gt;😇 &lt;a href=&quot;https://www.youtube.com/c/ChanSuShin/featured&quot;&gt;신찬수 교수님 자료구조 강의&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://8iggy.tistory.com/111&quot;&gt;8iggy님 블로그&lt;/a&gt;
 &lt;a href=&quot;https://www.geeksforgeeks.org/avl-tree-set-1-insertion/&quot;&gt;geeksforgeeks&lt;/a&gt;&lt;/p&gt;
@@ -444,58 +630,15 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 		&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
 		&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# AVL tree class which supports insertion,
-# deletion operations
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AVL_Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
-	&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-		
-		&lt;span class=&quot;c1&quot;&gt;# Step 1 - Perform normal BST
-&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TreeNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AVL_Tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
-		&lt;span class=&quot;c1&quot;&gt;# Step 2 - Update the height of the
-&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# ancestor node
-&lt;/span&gt;		&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-						&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-		&lt;span class=&quot;c1&quot;&gt;# Step 3 - Get the balance factor
-&lt;/span&gt;		&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getBalance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-		&lt;span class=&quot;c1&quot;&gt;# Step 4 - If the node is unbalanced,
-&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# then try out the 4 cases
-&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# Case 1 - Left Left
-&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rightRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-		&lt;span class=&quot;c1&quot;&gt;# Case 2 - Right Right
-&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;leftRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-		&lt;span class=&quot;c1&quot;&gt;# Case 3 - Left Right
-&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;leftRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rightRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-		&lt;span class=&quot;c1&quot;&gt;# Case 4 - Right Left
-&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rightRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;leftRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;# Recursive function to delete a node with
-&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;# given key from subtree with given root.
-&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;# It returns root of the modified subtree.
+	&lt;span class=&quot;c1&quot;&gt;# 재귀함수사용
 &lt;/span&gt;	&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
-		&lt;span class=&quot;c1&quot;&gt;# Step 1 - Perform standard BST delete
+		&lt;span class=&quot;c1&quot;&gt;# Step 1 - BST의 삭제연산
 &lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; 
 
 		&lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
 			&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -519,21 +662,18 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 			&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
 									&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-		&lt;span class=&quot;c1&quot;&gt;# If the tree has only one node,
-&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# simply return it
+		&lt;span class=&quot;c1&quot;&gt;# 트리가 1개노드만 가지면 그 노드를 리턴
 &lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
 			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;
 
-		&lt;span class=&quot;c1&quot;&gt;# Step 2 - Update the height of the
-&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# ancestor node
+		&lt;span class=&quot;c1&quot;&gt;# Step 2 - 재귀함수로 호출해낸 노드들의 높이 하나씩 증가
 &lt;/span&gt;		&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
 							&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
-		&lt;span class=&quot;c1&quot;&gt;# Step 3 - Get the balance factor
+		&lt;span class=&quot;c1&quot;&gt;# Step 3 - 균형인수
 &lt;/span&gt;		&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getBalance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-		&lt;span class=&quot;c1&quot;&gt;# Step 4 - If the node is unbalanced,
-&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# then try out the 4 cases
+		&lt;span class=&quot;c1&quot;&gt;# Step 4 - 노드불균형시, 로테이션 실행
 &lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;# Case 1 - Left Left
 &lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getBalance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
 			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rightRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -617,17 +757,7 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 		&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preOrder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 		&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preOrder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;red-black-트리&quot;&gt;Red-Black 트리&lt;/h1&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;234-트리&quot;&gt;2,3,4 트리&lt;/h1&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;splay-트리&quot;&gt;Splay 트리&lt;/h1&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="datastructurepy" /><category term="computer science" /><category term="data structure" /><category term="python" /><category term="BST" /><summary type="html">파이썬 자료구조</summary></entry><entry><title type="html">[Datastructure] 이진트리</title><link href="http://localhost:4000/datastructurepy/binarytree/" rel="alternate" type="text/html" title="[Datastructure] 이진트리" /><published>2021-11-29T00:00:00+09:00</published><updated>2021-11-29T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/binarytree</id><content type="html" xml:base="http://localhost:4000/datastructurepy/binarytree/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="datastructurepy" /><category term="computer science" /><category term="data structure" /><category term="python" /><category term="BST" /><summary type="html">파이썬 자료구조</summary></entry><entry><title type="html">[Datastructure] 이진트리</title><link href="http://localhost:4000/datastructurepy/binarytree/" rel="alternate" type="text/html" title="[Datastructure] 이진트리" /><published>2021-11-29T00:00:00+09:00</published><updated>2021-11-29T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/binarytree</id><content type="html" xml:base="http://localhost:4000/datastructurepy/binarytree/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
 &lt;p&gt;😇 &lt;a href=&quot;https://www.youtube.com/c/ChanSuShin/featured&quot;&gt;신찬수 교수님 자료구조 강의&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;이진트리&quot;&gt;이진트리&lt;/h1&gt;
@@ -3296,210 +3426,4 @@ __init__메서드가 있음으로서 클래스에 따른 각각 다른 인스턴
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/li&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;여기서 id를 key로 바꿔주자.&lt;/p&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="Reactegoing" /><category term="React Native" /><category term="생활코딩" /><summary type="html">10강 ~ 18강</summary></entry><entry><title type="html">[React Native][생활코딩]리액트 설치 ~ 배포</title><link href="http://localhost:4000/reactegoing/reactstart/" rel="alternate" type="text/html" title="[React Native][생활코딩]리액트 설치 ~ 배포" /><published>2021-11-12T00:00:00+09:00</published><updated>2021-11-16T00:00:00+09:00</updated><id>http://localhost:4000/reactegoing/reactstart</id><content type="html" xml:base="http://localhost:4000/reactegoing/reactstart/">&lt;h1 id=&quot;설치&quot;&gt;설치&lt;/h1&gt;
-
-&lt;h2 id=&quot;npm-다운로드-이후&quot;&gt;npm 다운로드 이후&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; create-react-app
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이렇게 전역공간에 npm을 설치한다.&lt;/p&gt;
-
-&lt;p&gt;터미널에서 설치하고자하는 폴더로 들어가서 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd 파일명&lt;/code&gt;)&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm create-react-app&lt;/code&gt; 실행&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;새로운-폴더에서-npm-create-react-app-안되는-경우&quot;&gt;새로운 폴더에서 npm create-react-app 안되는 경우&lt;/h3&gt;
-
-&lt;p&gt;새로운 폴더에서 안되는 경우도 있다. 이때는 전역공간에 create-react-app이 만들어지지 않았기때문이다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm config set prefix /usr/local
-$ sudo npm install -g create-react-app
-$ create-react-app my-app
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;위 명령어를 작성하면 새로운 폴더에 리액트 개발환경 설정이 가능하다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;vs-code에서-샘플-웹앱-실행&quot;&gt;VS Code에서 샘플 웹앱 실행&lt;/h1&gt;
-
-&lt;p&gt;vs code 상에서 설정-&amp;gt;명령 팔레트 에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;터미널:새 터미널 만들기&lt;/code&gt; 검색 후,&lt;br /&gt;
-터미널로 해당 폴더에 접근&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm run start&lt;/code&gt;로 react 웹앱이 실행되고, 코드를 실시간으로 수정할 수 있다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;실행 : `npm run start`
-실행 종료 : `control + c`
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;샘플-웹앱&quot;&gt;샘플 웹앱&lt;/h1&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── node_modules
-├── public
-│   ├── index.html
-│   └── manifest.json
-│   
-├── src
-│   ├── App.css
-│   ├── App.js
-│   ├── index.css
-│   ├── index.js
-│   ├── setupTests.js
-│   └── reportWebVitals.js
-├── package.json
-└── package-lock.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;파비콘, 로고 등을 삭제한 현재 폴더의 모습.&lt;/p&gt;
-
-&lt;p&gt;지킬 블로그나, 예전에 프론트 조금 끄적거렸을때도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt;로 웹 페이지를 처음 구동하곤 했었다.&lt;/p&gt;
-
-&lt;p&gt;리액트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt;은 src의 정보를 담는 그릇으로만 사용된다.&lt;br /&gt;
-실질적인 코드들은 src안의 파일들로 작성된다.&lt;/p&gt;
-
-&lt;p&gt;index.js에서 src의 파일들을 import해 index.html에 해당 파일들을 React의 문법으로 삽입한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;indexjs&quot;&gt;index.js&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-js:index.js&quot;&gt;import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
-  &amp;lt;React.StrictMode&amp;gt;
-    &amp;lt;App /&amp;gt;
-  &amp;lt;/React.StrictMode&amp;gt;,
-  document.getElementById('root')
-);
-reportWebVitals();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;blablabal…&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-그런데 익숙한 명령어 하나가 있다.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이 명령어는 html에서 root id를 가진 dom객체를 가져온다.&lt;br /&gt;
-그러면&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ReactDOM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;StrictMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/React.StrictMode&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,
-&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이 명렁어의 대략적 의미는, React 문법을 통해 &lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root라는 id를 가진 dom 객체에 &amp;lt;App /&amp;gt;을 넣는다&lt;/code&gt; 정도 일 것이다.&lt;br /&gt;
-이 App이란 녀석은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import App from './App';&lt;/code&gt; 여기서 import되었고, 사용자 정의태그이다.&lt;br /&gt;
-App.js에서 App이라는 함수,모듈,변수 등을 넣으라는 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;appjs&quot;&gt;App.js&lt;/h2&gt;
-
-&lt;p&gt;App은 클래스 형식으로 표현된 리액트 컴포넌트로 만들어졌다.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-js:App.js&quot;&gt;import React, { Component } from 'react';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      &amp;lt;div className='App'&amp;gt;
-        Hello, React!
-      &amp;lt;/div&amp;gt;
-    );
-  }
-}
-
-export default App;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;리액트로부터 React와 Component를 import 했다.&lt;br /&gt;
-그리고 밑의 class는 리액트 컴포넌트를 class 형식으로 표현한다.&lt;br /&gt;
-return은 최소한 하나의 태그가 있어야한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;indexcss&quot;&gt;index.css&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-css:index.css&quot;&gt;body {
-  background-color: aqua;
-}
-
-div .App {
-  text-align: center;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-css:App.css&quot;&gt;.App {
-  font-size: 35px;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;css를 구성하는 파일들이다.&lt;br /&gt;
-index.css에서 body 태그에 css를 적용할수도, 혹은&lt;br /&gt;
-App.css에서 body 태그에 css를 적용할수도 있다.&lt;/p&gt;
-
-&lt;p&gt;컴포넌트별로 각각 css파일을 import하여 개별적으로 css를 관리할 수 있어 유지보수에 용이하다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;배포&quot;&gt;배포&lt;/h1&gt;
-
-&lt;h2 id=&quot;build하는-이유&quot;&gt;build하는 이유&lt;/h2&gt;
-&lt;p&gt;새로고침버튼을 오른쪽 클릭하면 Empty Cashe and Hard Reload를 할 수 있다.&lt;br /&gt;
-이 버튼을 누르면 캐시를 모두 삭제할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;리액트는 개발의 편의성을 위해 여러가지 기능을 추가하므로, create-react-app은 파일의 무게가 상당히 무겁다.&lt;/p&gt;
-
-&lt;p&gt;사용자 친화적으로 앱을 운영하기 위해서 사용하는 것이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt;이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;build하는-법&quot;&gt;build하는 법&lt;/h2&gt;
-
-&lt;p&gt;따라서 유저들이 사용하기 용이한 배포모드의 어플리케이션을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt;하기 위해서는&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm run build
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;를 해준다.&lt;/p&gt;
-
-&lt;p&gt;![빌드폴더]](https://user-images.githubusercontent.com/76278794/141817402-17007134-e8a9-4bdd-b270-ca37a24278d7.png)&lt;/p&gt;
-
-&lt;p&gt;새로운 빌드 build라는 폴더가 생긴다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;build의-사용법&quot;&gt;build의 사용법&lt;/h2&gt;
-
-&lt;p&gt;여기서 index.html을 보면 띄어쓰기, 줄바꿈없이 작성되어 있는 것을 볼 수 있는데,&lt;br /&gt;
-유저가 요청하는 데이터를 빠르게 전달하기 위해 불필요한 정보를 삭제하고 보낸 것이라고 생각하면 된다.&lt;br /&gt;
-&lt;br /&gt;
-그리고 src폴더의 파일들도 모두 처리해서 넣어준다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-실제로 서비스하기 위해서는 build 안의 파일을 사용하면 되고,&lt;br /&gt;
-웹서버가 문서를 찾는 최상위 디렉터리에 build 폴더 안의 파일을 위치시키면 된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이 컴퓨터 어디에서든 serve로 웹서버 설치&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;웹서버를 다운해 1번만 실행&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx serve &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; build
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;웹서버를 다운해 실행시킬때, build라는 document root로 하여 생성한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="Reactegoing" /><category term="React Native" /><category term="생활코딩" /><summary type="html">1강 ~ 9강</summary></entry></feed>
+&lt;p&gt;여기서 id를 key로 바꿔주자.&lt;/p&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="Reactegoing" /><category term="React Native" /><category term="생활코딩" /><summary type="html">10강 ~ 18강</summary></entry></feed>

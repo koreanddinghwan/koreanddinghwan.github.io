@@ -322,7 +322,7 @@
   <label for="ac-toc">카테고리 목록</label>
   <ul class="nav__items" id="category_tag_menu">
       <li>
-            📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span style="font-family:'-apple-system;">53</style> <span style="font-family:'-apple-system;">개</style> 
+            📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span style="font-family:'-apple-system;">54</style> <span style="font-family:'-apple-system;">개</style> 
       </li>
       <li>
         
@@ -506,7 +506,7 @@
                     
                 
                     
-                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 (13)</a></li>
+                        <li><a href="/categories/datastructurepy" class="">파이썬 자료구조 (14)</a></li>
                     
                 
                     
@@ -716,7 +716,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 공부한 내용 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#참고-자료">참고 자료</a></li><li><a href="#균형이진탐색트리">균형이진탐색트리</a><ul><li><a href="#균형이진탐색트리를-사용하는-이유">균형이진탐색트리를 사용하는 이유</a></li><li><a href="#rotation">Rotation</a><ul><li><a href="#rotation-함수-구현">rotation 함수 구현</a></li></ul></li></ul></li><li><a href="#avl-트리">AVL 트리</a><ul><li><a href="#avl트리의-높이-증명">AVL트리의 높이 증명</a></li><li><a href="#avl트리-클래스">AVL트리 클래스</a></li><li><a href="#avl트리-삽입연산">AVL트리 삽입연산</a><ul><li><a href="#bst의-insert메서드의-균형문제">BST의 insert메서드의 균형문제</a></li><li><a href="#rebalance">Rebalance</a></li><li><a href="#rotation-순서">rotation 순서</a></li><li><a href="#codegeeksforgeeks">code(geeksforgeeks)</a></li></ul></li><li><a href="#avl트리-삭제연산">AVL트리 삭제연산</a><ul><li><a href="#insert의-rotation과-다른점">insert의 rotation과 다른점</a></li><li><a href="#code">code</a></li></ul></li></ul></li><li><a href="#red-black-트리">Red-Black 트리</a></li><li><a href="#234-트리">2,3,4 트리</a></li><li><a href="#splay-트리">Splay 트리</a></li></ul>
+              <ul class="toc__menu"><li><a href="#참고-자료">참고 자료</a></li><li><a href="#균형이진탐색트리">균형이진탐색트리</a><ul><li><a href="#균형이진탐색트리를-사용하는-이유">균형이진탐색트리를 사용하는 이유</a></li><li><a href="#rotation">Rotation</a><ul><li><a href="#rotation-함수-구현">rotation 함수 구현</a></li></ul></li></ul></li><li><a href="#avl-트리">AVL 트리</a><ul><li><a href="#avl트리의-높이-증명">AVL트리의 높이 증명</a></li><li><a href="#avl트리-클래스">AVL트리 클래스</a></li><li><a href="#avl트리-삽입연산">AVL트리 삽입연산</a><ul><li><a href="#bst의-insert메서드의-균형문제">BST의 insert메서드의 균형문제</a></li><li><a href="#rebalance">Rebalance</a></li><li><a href="#rotation-순서">rotation 순서</a></li><li><a href="#codegeeksforgeeks">code(geeksforgeeks)</a></li></ul></li><li><a href="#avl트리-삭제연산">AVL트리 삭제연산</a><ul><li><a href="#insert의-rotation과-다른점">insert의 rotation과 다른점</a></li><li><a href="#code">code</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -1167,58 +1167,15 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 		<span class="bp">self</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">None</span>
 		<span class="bp">self</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1"># AVL tree class which supports insertion,
-# deletion operations
-</span><span class="k">class</span> <span class="nc">AVL_Tree</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-	<span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-		
-		<span class="c1"># Step 1 - Perform normal BST
-</span>		<span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
-			<span class="k">return</span> <span class="n">TreeNode</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-		<span class="k">elif</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">root</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
-			<span class="n">root</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-		<span class="k">else</span><span class="p">:</span>
-			<span class="n">root</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AVL_Tree</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-		<span class="c1"># Step 2 - Update the height of the
-</span>		<span class="c1"># ancestor node
-</span>		<span class="n">root</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">getHeight</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">),</span>
-						<span class="bp">self</span><span class="p">.</span><span class="n">getHeight</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">))</span>
-
-		<span class="c1"># Step 3 - Get the balance factor
-</span>		<span class="n">balance</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getBalance</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-
-		<span class="c1"># Step 4 - If the node is unbalanced,
-</span>		<span class="c1"># then try out the 4 cases
-</span>		<span class="c1"># Case 1 - Left Left
-</span>		<span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
-			<span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">rightRotate</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-
-		<span class="c1"># Case 2 - Right Right
-</span>		<span class="k">if</span> <span class="n">balance</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">&gt;</span> <span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
-			<span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">leftRotate</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-
-		<span class="c1"># Case 3 - Left Right
-</span>		<span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">&gt;</span> <span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
-			<span class="n">root</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">leftRotate</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">)</span>
-			<span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">rightRotate</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-
-		<span class="c1"># Case 4 - Right Left
-</span>		<span class="k">if</span> <span class="n">balance</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
-			<span class="n">root</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">rightRotate</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">)</span>
-			<span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">leftRotate</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-
-		<span class="k">return</span> <span class="n">root</span>
-
-	<span class="c1"># Recursive function to delete a node with
-</span>	<span class="c1"># given key from subtree with given root.
-</span>	<span class="c1"># It returns root of the modified subtree.
+	<span class="c1"># 재귀함수사용
 </span>	<span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 
-		<span class="c1"># Step 1 - Perform standard BST delete
+		<span class="c1"># Step 1 - BST의 삭제연산
 </span>		<span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
-			<span class="k">return</span> <span class="n">root</span>
+			<span class="k">return</span> <span class="n">root</span> 
 
 		<span class="k">elif</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">root</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
 			<span class="n">root</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
@@ -1242,21 +1199,18 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 			<span class="n">root</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">,</span>
 									<span class="n">temp</span><span class="p">.</span><span class="n">val</span><span class="p">)</span>
 
-		<span class="c1"># If the tree has only one node,
-</span>		<span class="c1"># simply return it
+		<span class="c1"># 트리가 1개노드만 가지면 그 노드를 리턴
 </span>		<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
 			<span class="k">return</span> <span class="n">root</span>
 
-		<span class="c1"># Step 2 - Update the height of the
-</span>		<span class="c1"># ancestor node
+		<span class="c1"># Step 2 - 재귀함수로 호출해낸 노드들의 높이 하나씩 증가
 </span>		<span class="n">root</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">getHeight</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">),</span>
 							<span class="bp">self</span><span class="p">.</span><span class="n">getHeight</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">))</span>
 
-		<span class="c1"># Step 3 - Get the balance factor
+		<span class="c1"># Step 3 - 균형인수
 </span>		<span class="n">balance</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getBalance</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
 
-		<span class="c1"># Step 4 - If the node is unbalanced,
-</span>		<span class="c1"># then try out the 4 cases
+		<span class="c1"># Step 4 - 노드불균형시, 로테이션 실행
 </span>		<span class="c1"># Case 1 - Left Left
 </span>		<span class="k">if</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">getBalance</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
 			<span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">rightRotate</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
@@ -1342,16 +1296,6 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 
 </code></pre></div></div>
 
-<h1 id="red-black-트리">Red-Black 트리</h1>
-
-<p><br /><br /></p>
-
-<h1 id="234-트리">2,3,4 트리</h1>
-
-<p><br /><br /></p>
-
-<h1 id="splay-트리">Splay 트리</h1>
-
 
         
       </section>
@@ -1361,6 +1305,8 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 
       
 
+
+  
 
   
   	
@@ -1375,7 +1321,7 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
       <a href="/datastructurepy/binarytree/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[Datastructure] 이진트리</a>
     
     
-      <a href="#" class="pagination_prev_next--pager disabled">가장 최근 글입니다</a>
+      <a href="/datastructurepy/rb234tree/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[Datastructure] 균형이진탐색트리</a>
     
   </nav>
 
@@ -1389,6 +1335,43 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/datastructurepy/rb234tree/" rel="permalink">[Datastructure] 균형이진탐색트리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1496,43 +1479,6 @@ insert에서는 insert된 노드를 갖는 tree들의 높이가 1 높아지기 �
 
 
     <p class="archive__item-excerpt" itemprop="description">파일 읽고 쓰기
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/reactegoing/reactegoingupdate/" rel="permalink">[React Native][생활코딩] Update
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2021-11-23T00:00:00+09:00">November 23, 2021</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">36강 ~ 40강
 </p>
   </article>
 </div>
