@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T18:48:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">LightBig</title><subtitle>띵동콜링</subtitle><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><entry><title type="html">[Datastructure] 균형이진탐색트리</title><link href="http://localhost:4000/datastructurepy/rb234tree/" rel="alternate" type="text/html" title="[Datastructure] 균형이진탐색트리" /><published>2021-11-30T00:00:00+09:00</published><updated>2021-11-30T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/rb234tree</id><content type="html" xml:base="http://localhost:4000/datastructurepy/rb234tree/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-01T23:05:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">LightBig</title><subtitle>띵동콜링</subtitle><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><entry><title type="html">[Datastructure] Red-black 트리</title><link href="http://localhost:4000/datastructurepy/rb234tree/" rel="alternate" type="text/html" title="[Datastructure] Red-black 트리" /><published>2021-12-01T00:00:00+09:00</published><updated>2021-12-01T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/rb234tree</id><content type="html" xml:base="http://localhost:4000/datastructurepy/rb234tree/">&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
 &lt;p&gt;😇 &lt;a href=&quot;https://www.youtube.com/c/ChanSuShin/featured&quot;&gt;신찬수 교수님 자료구조 강의&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://www.geeksforgeeks.org/avl-tree-set-1-insertion/&quot;&gt;geeksforgeeks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;red-black-트리&quot;&gt;Red-Black 트리&lt;/h1&gt;
 
@@ -138,8 +142,8 @@ b) delete된 노드가 한쪽 자식만 가지는 경우
 c) delete된 노드가 양쪽 자식을 모두 가지는 경우  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;c)의 경우, 대체할 노드를 왼쪽서브트리의 최대값이나, 오른쪽 서브트리의 최솟값을 찾아 지우고자하는 노드의 위치로 옮기고, 복사해온 노드를 지운다.&lt;br /&gt;
-이때, 이 노드는 반드시 2개보다 적은 non-leaf 자식을 가지고 있다.&lt;/p&gt;
+&lt;p&gt;c)의 경우, 대체할 노드를 삭제된 노드의 왼쪽서브트리의 최대값이나, 오른쪽 서브트리의 최솟값을 찾아 지우고자하는 노드의 위치로 옮기고, 복사해온 노드를 지운다.&lt;br /&gt;
+이때, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;대체될 이 노드는 반드시 2개보다 적은 non-leaf 자식&lt;/code&gt;을 가지고 있다.&lt;/p&gt;
 
 &lt;p&gt;왜냐하면, 왼쪽 subtree에서 최대값을 찾든, 오른쪽 subtree에서 최솟값을 찾든, 대체할 노드를 찾았는데 만약 자식이 2개라면 반드시 자기보다 작거나 큰노드가 존재하므로, 그 노드는 대체할 노드가 아니다. (delete할때 원칙을 지키면 반드시 하나 또는 0개의 자식을 가진 노드로 대체한다.)&lt;/p&gt;
 
@@ -178,13 +182,41 @@ left-left: p기준 right rotation&lt;/p&gt;
 &lt;p&gt;right-left: s기준 right rotation 후 p기준 left rotation&lt;br /&gt;
 left-right: s기준 left rotation 후 p기준 right rotation&lt;/p&gt;
 
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;b) s가 black노드일때 s의 자식노드가 모두 black일 경우.&lt;/p&gt;
+
+&lt;p&gt;b-1) s의 부모노드 p가 black일 경우 s를 검은색으로 칠하면된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144238963-f8354aca-c3a7-4265-aa5a-b6fa4dd347fd.jpeg&quot; alt=&quot;IMG_96F166E3E3E1-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 결과, p를 지나는 모든 경로들은 black을 하나씩 더 적게 가지기때문에 p를 기준으로 rebalancing을 해야한다.&lt;/p&gt;
+
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;b)&lt;/p&gt;
+&lt;p&gt;b-2) p가 red인경우, p와 s의 색을 바꾼다.&lt;br /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144240257-c3774c58-8381-4d5e-a5bc-66e53a72a1e2.jpeg&quot; alt=&quot;IMG_83BC1FFF9BD0-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 경우와는 다르게 p를 지나는 노드들이 가지는 black이 일정하게 유지된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;c) s가 red인경우, p는 당연히 검은색이다. s를 위로 올리고, s와 p의 색을 다시 칠한다.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;c)&lt;/p&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="datastructurepy" /><category term="computer science" /><category term="data structure" /><category term="python" /><category term="BST" /><summary type="html">파이썬 자료구조</summary></entry><entry><title type="html">[Datastructure] 균형이진탐색트리</title><link href="http://localhost:4000/datastructurepy/balancedBST/" rel="alternate" type="text/html" title="[Datastructure] 균형이진탐색트리" /><published>2021-11-30T00:00:00+09:00</published><updated>2021-11-30T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/balancedBST</id><content type="html" xml:base="http://localhost:4000/datastructurepy/balancedBST/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
+&lt;p&gt;c-1) s가 p의 right child일때
+&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144246482-903d2d4a-6691-42a2-912d-569242945622.jpeg&quot; alt=&quot;IMG_FD4C13B79B8A-1&quot; /&gt;
+p와 s의 색을 바꾸고, p를 기준으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;left&lt;/code&gt; rotation하면, 새로운 s가 생긴다.&lt;br /&gt;
+이 새로운 s와 관계에 의해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b-2)&lt;/code&gt;를 적용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;c-2) s가 p의 left child일때
+&lt;img src=&quot;https://user-images.githubusercontent.com/76278794/144246433-eaf840da-1f05-40a6-a9cc-69301700c266.jpeg&quot; alt=&quot;IMG_0D33F7E7857B-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;p와 s의 색을 바꾸고, p를 기준으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right&lt;/code&gt; rotation하면, 새로운 s가 생긴다.&lt;br /&gt;
+이 새로운 s와 관계에 의해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b-2)&lt;/code&gt;를 적용한다.&lt;/p&gt;</content><author><name>엘비</name><email>myunghwan0421@gmail.com</email></author><category term="datastructurepy" /><category term="computer science" /><category term="data structure" /><category term="python" /><category term="red-black-tree" /><summary type="html">파이썬 자료구조</summary></entry><entry><title type="html">[Datastructure] 균형이진탐색트리</title><link href="http://localhost:4000/datastructurepy/balancedBST/" rel="alternate" type="text/html" title="[Datastructure] 균형이진탐색트리" /><published>2021-11-30T00:00:00+09:00</published><updated>2021-11-30T00:00:00+09:00</updated><id>http://localhost:4000/datastructurepy/balancedBST</id><content type="html" xml:base="http://localhost:4000/datastructurepy/balancedBST/">&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
 &lt;p&gt;😇 &lt;a href=&quot;https://www.youtube.com/c/ChanSuShin/featured&quot;&gt;신찬수 교수님 자료구조 강의&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://8iggy.tistory.com/111&quot;&gt;8iggy님 블로그&lt;/a&gt;
 &lt;a href=&quot;https://www.geeksforgeeks.org/avl-tree-set-1-insertion/&quot;&gt;geeksforgeeks&lt;/a&gt;&lt;/p&gt;
@@ -2394,8 +2426,8 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
 &lt;p&gt;form태그의 submit버튼의 기본동작을 막기위해 e.preventDefault를 달아줬는데,&lt;br /&gt;
 이때 e를 console.log로 출력해보면 target이&lt;/p&gt;
 
-&lt;p&gt;&lt;img width=&quot;200&quot; src=&quot;https://user-images.githubusercontent.com/76278794/142763659-c03c9bb4-de47-4151-8b8c-0ef06d12301d.png&quot; /&gt;
-&lt;img width=&quot;200&quot; src=&quot;https://user-images.githubusercontent.com/76278794/142763661-bf70834b-750f-420d-8a72-993152196cd7.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width=&quot;600&quot; src=&quot;https://user-images.githubusercontent.com/76278794/142763659-c03c9bb4-de47-4151-8b8c-0ef06d12301d.png&quot; /&gt;
+&lt;img width=&quot;600&quot; src=&quot;https://user-images.githubusercontent.com/76278794/142763661-bf70834b-750f-420d-8a72-993152196cd7.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;form태그 안의 input들에 입력된 value값들을 저장하고 있는 것을 알 수 있다.&lt;/p&gt;
 

@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Datastructure] 균형이진탐색트리 - LightBig</title>
+<!-- begin _includes/seo.html --><title>[Datastructure] Red-black 트리 - LightBig</title>
 <meta name="description" content="파이썬 자료구조">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="LightBig">
-<meta property="og:title" content="[Datastructure] 균형이진탐색트리">
+<meta property="og:title" content="[Datastructure] Red-black 트리">
 <meta property="og:url" content="http://localhost:4000/datastructurepy/rb234tree/">
 
 
@@ -34,11 +34,11 @@
 
 
 
-  <meta property="article:published_time" content="2021-11-30T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-12-01T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-11-30T00:00:00+09:00">
+  <meta property="article:modified_time" content="2021-12-01T00:00:00+09:00">
 
 
 
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">[Datastructure] 균형이진탐색트리</li>
+        <li class="current">[Datastructure] Red-black 트리</li>
       
     
   </ol>
@@ -650,23 +650,23 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Datastructure] 균형이진탐색트리">
+    <meta itemprop="headline" content="[Datastructure] Red-black 트리">
     <meta itemprop="description" content="파이썬 자료구조">
-    <meta itemprop="datePublished" content="2021-11-30T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-11-30T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2021-12-01T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-12-01T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/datastructurepy/rb234tree/" class="u-url" itemprop="url">[Datastructure] 균형이진탐색트리
+            <a href="http://localhost:4000/datastructurepy/rb234tree/" class="u-url" itemprop="url">[Datastructure] Red-black 트리
 </a>
           </h1>
           <div class="page__meta">
             
             
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-11-30">November 30, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-12-01">December 1, 2021</time></p>
 
             
   
@@ -678,13 +678,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#bst" class="page__taxonomy-item p-category" rel="tag">BST</a><span class="sep">, </span>
-    
       <a href="/tags/#computer-science" class="page__taxonomy-item p-category" rel="tag">computer science</a><span class="sep">, </span>
     
       <a href="/tags/#data-structure" class="page__taxonomy-item p-category" rel="tag">data structure</a><span class="sep">, </span>
     
-      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a>
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#red-black-tree" class="page__taxonomy-item p-category" rel="tag">red-black-tree</a>
     
     </span>
   </p>
@@ -721,9 +721,13 @@
             </nav>
           </aside>
         
-        <h1 id="참고-자료">참고 자료</h1>
+        <p><br /><br /></p>
+
+<h1 id="참고-자료">참고 자료</h1>
 <p>😇 <a href="https://www.youtube.com/c/ChanSuShin/featured">신찬수 교수님 자료구조 강의</a><br />
 <a href="https://www.geeksforgeeks.org/avl-tree-set-1-insertion/">geeksforgeeks</a></p>
+
+<p><br /><br /></p>
 
 <h1 id="red-black-트리">Red-Black 트리</h1>
 
@@ -861,8 +865,8 @@ b) delete된 노드가 한쪽 자식만 가지는 경우
 c) delete된 노드가 양쪽 자식을 모두 가지는 경우  
 </code></pre></div></div>
 
-<p>c)의 경우, 대체할 노드를 왼쪽서브트리의 최대값이나, 오른쪽 서브트리의 최솟값을 찾아 지우고자하는 노드의 위치로 옮기고, 복사해온 노드를 지운다.<br />
-이때, 이 노드는 반드시 2개보다 적은 non-leaf 자식을 가지고 있다.</p>
+<p>c)의 경우, 대체할 노드를 삭제된 노드의 왼쪽서브트리의 최대값이나, 오른쪽 서브트리의 최솟값을 찾아 지우고자하는 노드의 위치로 옮기고, 복사해온 노드를 지운다.<br />
+이때, <code class="language-plaintext highlighter-rouge">대체될 이 노드는 반드시 2개보다 적은 non-leaf 자식</code>을 가지고 있다.</p>
 
 <p>왜냐하면, 왼쪽 subtree에서 최대값을 찾든, 오른쪽 subtree에서 최솟값을 찾든, 대체할 노드를 찾았는데 만약 자식이 2개라면 반드시 자기보다 작거나 큰노드가 존재하므로, 그 노드는 대체할 노드가 아니다. (delete할때 원칙을 지키면 반드시 하나 또는 0개의 자식을 가진 노드로 대체한다.)</p>
 
@@ -901,13 +905,42 @@ left-left: p기준 right rotation</p>
 <p>right-left: s기준 right rotation 후 p기준 left rotation<br />
 left-right: s기준 left rotation 후 p기준 right rotation</p>
 
+<p><br /><br /></p>
+
+<p>b) s가 black노드일때 s의 자식노드가 모두 black일 경우.</p>
+
+<p>b-1) s의 부모노드 p가 black일 경우 s를 검은색으로 칠하면된다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/76278794/144238963-f8354aca-c3a7-4265-aa5a-b6fa4dd347fd.jpeg" alt="IMG_96F166E3E3E1-1" /></p>
+
+<p>그 결과, p를 지나는 모든 경로들은 black을 하나씩 더 적게 가지기때문에 p를 기준으로 rebalancing을 해야한다.</p>
+
 <p><br /></p>
 
-<p>b)</p>
+<p>b-2) p가 red인경우, p와 s의 색을 바꾼다.<br />
+<img src="https://user-images.githubusercontent.com/76278794/144240257-c3774c58-8381-4d5e-a5bc-66e53a72a1e2.jpeg" alt="IMG_83BC1FFF9BD0-1" /></p>
+
+<p>위의 경우와는 다르게 p를 지나는 노드들이 가지는 black이 일정하게 유지된다.</p>
+
+<p><br /><br /></p>
+
+<p>c) s가 red인경우, p는 당연히 검은색이다. s를 위로 올리고, s와 p의 색을 다시 칠한다.</p>
 
 <p><br /></p>
 
-<p>c)</p>
+<p>c-1) s가 p의 right child일때
+<img src="https://user-images.githubusercontent.com/76278794/144246482-903d2d4a-6691-42a2-912d-569242945622.jpeg" alt="IMG_FD4C13B79B8A-1" />
+p와 s의 색을 바꾸고, p를 기준으로 <code class="language-plaintext highlighter-rouge">left</code> rotation하면, 새로운 s가 생긴다.<br />
+이 새로운 s와 관계에 의해 <code class="language-plaintext highlighter-rouge">b-2)</code>를 적용한다.</p>
+
+<p><br /></p>
+
+<p>c-2) s가 p의 left child일때
+<img src="https://user-images.githubusercontent.com/76278794/144246433-eaf840da-1f05-40a6-a9cc-69301700c266.jpeg" alt="IMG_0D33F7E7857B-1" /></p>
+
+<p>p와 s의 색을 바꾸고, p를 기준으로 <code class="language-plaintext highlighter-rouge">right</code> rotation하면, 새로운 s가 생긴다.<br />
+이 새로운 s와 관계에 의해 <code class="language-plaintext highlighter-rouge">b-2)</code>를 적용한다.</p>
+
 
         
       </section>

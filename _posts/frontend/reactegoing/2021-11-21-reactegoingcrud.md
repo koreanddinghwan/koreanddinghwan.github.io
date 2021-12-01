@@ -336,8 +336,8 @@ form태그의 제출 버튼이 눌리면 title과 desc의 정보가 부모컴포
 form태그의 submit버튼의 기본동작을 막기위해 e.preventDefault를 달아줬는데,  
 이때 e를 console.log로 출력해보면 target이
 
-<img width="200" src="https://user-images.githubusercontent.com/76278794/142763659-c03c9bb4-de47-4151-8b8c-0ef06d12301d.png">
-<img width="200" src="https://user-images.githubusercontent.com/76278794/142763661-bf70834b-750f-420d-8a72-993152196cd7.png">
+<img width="600" src="https://user-images.githubusercontent.com/76278794/142763659-c03c9bb4-de47-4151-8b8c-0ef06d12301d.png">
+<img width="600" src="https://user-images.githubusercontent.com/76278794/142763661-bf70834b-750f-420d-8a72-993152196cd7.png">
 
 form태그 안의 input들에 입력된 value값들을 저장하고 있는 것을 알 수 있다.  
 

@@ -323,9 +323,9 @@ var store = [{
         "url": "/datastructurepy/balancedBST/",
         "teaser": null
       },{
-        "title": "[Datastructure] 균형이진탐색트리",
+        "title": "[Datastructure] Red-black 트리",
         "excerpt":"참고 자료 😇 신찬수 교수님 자료구조 강의 geeksforgeeks Red-Black 트리 개요 search, insert, delete를 O(log n) 시간 내에 처리할 수 있다. AVL트리와 Red-Black트리에 비해 더 균형있지만, insert, delete과정에서 많은 rotation을 호출한다. 만약 insertion과 deletion이 많은 작업이라면, Red-Black트리를 적용하는 것이 더 선호된다. 만약 insertion과 deletion보다 search가 더 많이 호출되는 작업이면 AVL트리를...","categories": ["datastructurepy"],
-        "tags": ["computer science","data structure","python","BST"],
+        "tags": ["computer science","data structure","python","red-black-tree"],
         "url": "/datastructurepy/rb234tree/",
         "teaser": null
       }]
