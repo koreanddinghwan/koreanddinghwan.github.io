@@ -328,4 +328,16 @@ var store = [{
         "tags": ["computer science","data structure","python","red-black-tree"],
         "url": "/datastructurepy/rb234tree/",
         "teaser": null
+      },{
+        "title": "[Git]",
+        "excerpt":" ","categories": ["git"],
+        "tags": ["git","github"],
+        "url": "/git/intro/",
+        "teaser": null
+      },{
+        "title": "[jekyll & github] 블로그 화면 넓히기",
+        "excerpt":"블로그 화면이 좁아요 jekyll mmistakes로 블로그를 만들었는데, post를 조회했을때, 내용이 너무 좁아서 답답해보이는 느낌이 있다. _sass 폴더의 _variables.scss를 확인해보면 scss상에서 사용하는 변수들이 $변수명: 값이렇게 선언되어 있는 것을 볼 수 있는데, 화면의 max-width값을 선언하고 있는 부분이 small: 600px !default; $medium: 768px !default; $medium-wide: 900px !default; $large: 1024px !default; $x-large: 1280px !default;...","categories": ["blog"],
+        "tags": ["blog","jekyll","github","git","liquid"],
+        "url": "/blog/screenwidth/",
+        "teaser": null
       }]
