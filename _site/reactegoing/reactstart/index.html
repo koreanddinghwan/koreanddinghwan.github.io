@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[React Native][생활코딩]리액트 설치 ~ 배포 - LightBig</title>
+<!-- begin _includes/seo.html --><title>[React][생활코딩]리액트 설치 ~ 배포 - LightBig</title>
 <meta name="description" content="1강 ~ 9강">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="LightBig">
-<meta property="og:title" content="[React Native][생활코딩]리액트 설치 ~ 배포">
+<meta property="og:title" content="[React][생활코딩]리액트 설치 ~ 배포">
 <meta property="og:url" content="http://localhost:4000/reactegoing/reactstart/">
 
 
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">[React Native][생활코딩]리액트 설치 ~ 배포</li>
+        <li class="current">[React][생활코딩]리액트 설치 ~ 배포</li>
       
     
   </ol>
@@ -323,7 +323,7 @@
     <ul class="nav__items" id="category_tag_menu">
         <li>
             📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span
-                    style="font-family:'-apple-system;">56</style> <span style="font-family:'-apple-system;">개
+                    style="font-family:'-apple-system;">57</style> <span style="font-family:'-apple-system;">개
                         </style>
         </li>
         <li>
@@ -438,7 +438,7 @@
                 
                 
                 
-                <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                <li><a href="/categories/React" class="">React 공식문서(2)</a></li>
                 
                 
                 
@@ -704,7 +704,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[React Native][생활코딩]리액트 설치 ~ 배포">
+    <meta itemprop="headline" content="[React][생활코딩]리액트 설치 ~ 배포">
     <meta itemprop="description" content="1강 ~ 9강">
     <meta itemprop="datePublished" content="2021-11-12T00:00:00+09:00">
     <meta itemprop="dateModified" content="2021-11-16T00:00:00+09:00">
@@ -713,7 +713,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/reactegoing/reactstart/" class="u-url" itemprop="url">[React Native][생활코딩]리액트 설치 ~ 배포
+            <a href="http://localhost:4000/reactegoing/reactstart/" class="u-url" itemprop="url">[React][생활코딩]리액트 설치 ~ 배포
 </a>
           </h1>
           <div class="page__meta">
@@ -732,9 +732,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#react-native" class="page__taxonomy-item p-category" rel="tag">React Native</a><span class="sep">, </span>
-    
-      <a href="/tags/#%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9" class="page__taxonomy-item p-category" rel="tag">생활코딩</a>
+      <a href="/tags/#react-%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9" class="page__taxonomy-item p-category" rel="tag">React 생활코딩</a>
     
     </span>
   </p>
@@ -777,6 +775,7 @@
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> create-react-app
 </code></pre></div></div>
+
 <p>이렇게 전역공간에 npm을 설치한다.</p>
 
 <p>터미널에서 설치하고자하는 폴더로 들어가서 (<code class="language-plaintext highlighter-rouge">cd 파일명</code>)<br />
@@ -815,7 +814,7 @@ $ create-react-app my-app
 ├── public
 │   ├── index.html
 │   └── manifest.json
-│   
+│
 ├── src
 │   ├── App.css
 │   ├── App.js
@@ -854,24 +853,27 @@ ReactDOM.render(
 );
 reportWebVitals();
 </code></pre>
+
 <p>blablabal…</p>
 
 <p><br />
 그런데 익숙한 명령어 하나가 있다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
+
 <p>이 명령어는 html에서 root id를 가진 dom객체를 가져온다.<br />
 그러면</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
-<span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">StrictMode</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">StrictMode</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="sr">/React.StrictMode&gt;</span><span class="err">,
-</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
-<span class="p">)</span>
+</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">);</span>
 </code></pre></div></div>
-<p>이 명렁어의 대략적 의미는, React 문법을 통해 <br />
+
+<p>이 명렁어의 대략적 의미는, React 문법을 통해<br />
 <code class="language-plaintext highlighter-rouge">root라는 id를 가진 dom 객체에 &lt;App /&gt;을 넣는다</code> 정도 일 것이다.<br />
 이 App이란 녀석은 <code class="language-plaintext highlighter-rouge">import App from './App';</code> 여기서 import되었고, 사용자 정의태그이다.<br />
 App.js에서 App이라는 함수,모듈,변수 등을 넣으라는 것이다.</p>
@@ -931,6 +933,7 @@ App.css에서 body 태그에 css를 적용할수도 있다.</p>
 <h1 id="배포">배포</h1>
 
 <h2 id="build하는-이유">build하는 이유</h2>
+
 <p>새로고침버튼을 오른쪽 클릭하면 Empty Cashe and Hard Reload를 할 수 있다.<br />
 이 버튼을 누르면 캐시를 모두 삭제할 수 있다.</p>
 
@@ -946,6 +949,7 @@ App.css에서 body 태그에 css를 적용할수도 있다.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
 </code></pre></div></div>
+
 <p>를 해준다.</p>
 
 <p>![빌드폴더]](https://user-images.githubusercontent.com/76278794/141817402-17007134-e8a9-4bdd-b270-ca37a24278d7.png)</p>
@@ -967,14 +971,17 @@ App.css에서 body 태그에 css를 적용할수도 있다.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> serve
 </code></pre></div></div>
+
 <p>이 컴퓨터 어디에서든 serve로 웹서버 설치</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx serve
 </code></pre></div></div>
+
 <p>웹서버를 다운해 1번만 실행</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx serve <span class="nt">-s</span> build
 </code></pre></div></div>
+
 <p>웹서버를 다운해 실행시킬때, build라는 document root로 하여 생성한다.</p>
 
 <p><br /><br /></p>
@@ -1009,7 +1016,7 @@ App.css에서 body 태그에 css를 적용할수도 있다.</p>
       <a href="#" class="pagination_prev_next--pager disabled">첫 번째 글입니다</a>
     
     
-      <a href="/reactegoing/react2/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[React Native][생활코딩]컴포넌트 ~ State와 props</a>
+      <a href="/reactegoing/react2/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[React][생활코딩]컴포넌트 ~ State와 props</a>
     
   </nav>
 
@@ -1023,6 +1030,43 @@ App.css에서 body 태그에 css를 적용할수도 있다.</p>
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/react/" rel="permalink">[React]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-12-06T00:00:00+09:00">December 6, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">공부한거 요약
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1120,43 +1164,6 @@ App.css에서 body 태그에 css를 적용할수도 있다.</p>
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
         <time datetime="2021-12-01T00:00:00+09:00">December 1, 2021</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
       </span>
     
 

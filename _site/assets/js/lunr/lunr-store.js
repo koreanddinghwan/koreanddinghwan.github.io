@@ -5,6 +5,12 @@ var store = [{
         "url": "/mylogs/2021-11-07-first/",
         "teaser": "/assets/mylog/first-1.jpeg"
       },{
+        "title": "11월 회고록",
+        "excerpt":"의식의 흐름기법 뭐 했더라… 발리문 연남동 발리문에서 나시고랭, 발리 새우 커리 먹었는데 진짜 맛있었음… 강추 나중에는 미고랭까지 추가해서 2명이서 3인분 먹었음 살바도르 달리전 DDP에서 열리는 살바도르 달리전에 다녀왔다. 전 생애에 걸친 작품들이 전시되었는데, 회화뿐만아니라 디자인이나 광고, 영화 등등 여러 분야에서 큰 영향을 준 예술가였다. 볼거리 매우 많음 강추 장발 멈춰…...","categories": [],
+        "tags": [],
+        "url": "/mylogs/2021-12-06-2021dec/",
+        "teaser": "/assets/mylog/2021dec.jpeg"
+      },{
         "title": "[Frontend] 인프런css",
         "excerpt":"CSS란 정의-Cascading Style Sheets:HTML 웹문서의 스타일을 표현하는 언어로 html코드로 작성된 웹 요소들이 어떻게 표시되어야하는지 정의한다. 특징-선택자(selecter)와 속성, 속성값으로 이루어진다. body { font-size: 9px; } CSS 화면상 html로 이루어진 요소들에 대응해 스타일 세트를 각각 적용한다. {}중괄호로 이루어진 속성세트를 각 태그, 클래스, id에 적용할 수 있다. 적용된 속성세트들을 css파일로 저장해 html파일들에 import를...","categories": ["css"],
         "tags": ["css","frontend","inlearn"],
@@ -257,33 +263,33 @@ var store = [{
         "url": "/datastructurepy/hashtable/",
         "teaser": null
       },{
-        "title": "[React Native 자습서] ",
+        "title": "[React 자습서] ",
         "excerpt":"출처 리액트 공식문서 개요 리액트란 사용자 UI를 구축하기위한 효율적이고 유연한 Javascript 라이브러리이다. 특히, component라는 코드의 파편을 이용해 복잡한 UI구성을 돕는다. 리액트 컴포넌트 class ShoppingList extends React.Component { render() { return ( &lt;div className=\"shopping-list\"&gt; &lt;h1&gt;Shopping List for {this.props.name}&lt;/h1&gt; &lt;ul&gt; &lt;li&gt;Instagram&lt;/li&gt; &lt;li&gt;WhatsApp&lt;/li&gt; &lt;li&gt;Oculus&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; ); } } 위 코드는 JSX방식으로 작성되었는데,...","categories": ["React"],
-        "tags": ["React Native","tutorial"],
+        "tags": ["React"],
         "url": "/react/tutorial/",
         "teaser": null
       },{
-        "title": "[React Native][생활코딩]리액트 설치 ~ 배포",
+        "title": "[React][생활코딩]리액트 설치 ~ 배포",
         "excerpt":"설치 npm 다운로드 이후 npm install -g create-react-app 이렇게 전역공간에 npm을 설치한다. 터미널에서 설치하고자하는 폴더로 들어가서 (cd 파일명) npm create-react-app 실행 새로운 폴더에서 npm create-react-app 안되는 경우 새로운 폴더에서 안되는 경우도 있다. 이때는 전역공간에 create-react-app이 만들어지지 않았기때문이다. $ npm config set prefix /usr/local $ sudo npm install -g create-react-app $...","categories": ["Reactegoing"],
-        "tags": ["React Native","생활코딩"],
+        "tags": ["React 생활코딩"],
         "url": "/reactegoing/reactstart/",
         "teaser": null
       },{
-        "title": "[React Native][생활코딩]컴포넌트 ~ State와 props",
+        "title": "[React][생활코딩]컴포넌트 ~ State와 props",
         "excerpt":"리액트가 없다면 public이라는 디렉토리는 npm run start 할때 파일을 찾는 곳이다. 만약, 리액트가 없다면 index.html a태그로 연결된 모든 페이지를 각각 만들어하므로 html의 구조를 한눈에 보기가 어렵지만, 리액트는 필요한 기능을 가진 컴포넌트를 만들고, 그것을 논리적으로 삽입하고, 삭제하는 등의 과정을 거치기때문에 유지보수,개발에 훨씬 용이하다. 리액트는 html파일에 직접적으로 태그를 작성하는게 아닌, 태그를 넣는...","categories": ["Reactegoing"],
-        "tags": ["React Native","생활코딩"],
+        "tags": ["React","생활코딩"],
         "url": "/reactegoing/react2/",
         "teaser": null
       },{
-        "title": "[React Native][생활코딩]이벤트 state props ~ 컴포넌트 이벤트 만들기",
+        "title": "[React][생활코딩]이벤트 state props ~ 컴포넌트 이벤트 만들기",
         "excerpt":"state,props,render 어플리케이션을 역동적으로 만들어주는 이벤트 props, state, event가 서로 상호작용하면서 어플리케이션을 역동적으로 만들어준다. Content 컴포넌트가 현재 웹페이지가 어느 사이트인지에 따라 웹페이지의 새로고침 없이 화면이 그려지도록 할 수 있다. 💡state 수정 링크를 클릭하면 해당 동작에 따라 웹페이지가 변경되게해야한다. 리액트에서 현재 페이지가 어느 페이지인지 알려주는 요소로 mode라는 state를 생성한다. mode의 state를 welcome과...","categories": ["Reactegoing"],
-        "tags": ["React Native","생활코딩"],
+        "tags": ["React","생활코딩"],
         "url": "/reactegoing/reactegoing/",
         "teaser": null
       },{
-        "title": "[React Native][생활코딩] CRUD",
-        "excerpt":"CRUD 소개 모든 정보기술은 기본적으로 create, read, update, delete의 기능을 가진다. sql에서도 쿼리에 대해 처음 배울때, CRUD로 입문했었다. 컴포넌트 구성 CRUD에 해당하는 각 버튼을 페이지의 컴포넌트로 만들자. read는 현재 mode:read에서 구현되어있다. delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다. import React, { Component } from 'react'; class Control extends Component...","categories": ["Reactegoing"],
-        "tags": ["React Native","생활코딩"],
+        "title": "[React][생활코딩] CRUD",
+        "excerpt":"CRUD 소개 모든 정보기술은 기본적으로 create, read, update, delete의 기능을 가진다. sql에서도 쿼리에 대해 처음 배울때, CRUD로 입문했었다. 컴포넌트 구성 CRUD에 해당하는 각 버튼을 페이지의 컴포넌트로 만들자. read는 현재 mode:read에서 구현되어있다. delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다. import React, { Component } from \"react\"; class Control extends Component...","categories": ["Reactegoing"],
+        "tags": ["React","생활코딩"],
         "url": "/reactegoing/reactegoingcrud/",
         "teaser": null
       },{
@@ -293,9 +299,9 @@ var store = [{
         "url": "/boj/boh-5430/",
         "teaser": null
       },{
-        "title": "[React Native][생활코딩] Update",
+        "title": "[React][생활코딩] Update",
         "excerpt":"Update 기능 자신이 수정하고싶은 데이터를 수정하는 기능 현재 렌더링하고 있는 컨텐츠에서, control 컴포넌트로 App 컴포넌트의 state가 mode:'update'로 바뀔 때, 렌더링 중인 컨텐츠를 가져와야한다. 함수구분 getReadContent() 읽어올 데이터를 구분한다. Toc 컴포넌트는 유저가 Toc에서 렌더링하는 각 컨텐츠를 클릭하면 해당 컨텐츠의 id를 selectedcontentid로 수정한다. 현재 state에 저장된 각 컨텐츠의 id값을 비교해가면서 같으면 해당...","categories": ["Reactegoing"],
-        "tags": ["React Native","생활코딩"],
+        "tags": ["React","생활코딩"],
         "url": "/reactegoing/reactegoingupdate/",
         "teaser": null
       },{
@@ -339,5 +345,11 @@ var store = [{
         "excerpt":"블로그 화면이 좁아요 jekyll mmistakes로 블로그를 만들었는데, post를 조회했을때, 내용이 너무 좁아서 답답해보이는 느낌이 있다. _sass 폴더의 _variables.scss를 확인해보면 scss상에서 사용하는 변수들이 $변수명: 값이렇게 선언되어 있는 것을 볼 수 있는데, 화면의 max-width값을 선언하고 있는 부분이 small: 600px !default; $medium: 768px !default; $medium-wide: 900px !default; $large: 1024px !default; $x-large: 1280px !default;...","categories": ["blog"],
         "tags": ["blog","jekyll","github","git","liquid"],
         "url": "/blog/screenwidth/",
+        "teaser": null
+      },{
+        "title": "[React] ",
+        "excerpt":" ","categories": ["React"],
+        "tags": ["React"],
+        "url": "/react/react/",
         "teaser": null
       }]

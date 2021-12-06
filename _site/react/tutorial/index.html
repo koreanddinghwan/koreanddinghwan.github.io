@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[React Native 자습서]  - LightBig</title>
+<!-- begin _includes/seo.html --><title>[React 자습서]  - LightBig</title>
 <meta name="description" content="자습서로 공부하기">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="LightBig">
-<meta property="og:title" content="[React Native 자습서]">
+<meta property="og:title" content="[React 자습서]">
 <meta property="og:url" content="http://localhost:4000/react/tutorial/">
 
 
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">[React Native 자습서] </li>
+        <li class="current">[React 자습서] </li>
       
     
   </ol>
@@ -323,7 +323,7 @@
     <ul class="nav__items" id="category_tag_menu">
         <li>
             📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span
-                    style="font-family:'-apple-system;">56</style> <span style="font-family:'-apple-system;">개
+                    style="font-family:'-apple-system;">57</style> <span style="font-family:'-apple-system;">개
                         </style>
         </li>
         <li>
@@ -438,7 +438,7 @@
                 
                 
                 
-                <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                <li><a href="/categories/React" class="">React 공식문서(2)</a></li>
                 
                 
                 
@@ -704,7 +704,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[React Native 자습서]">
+    <meta itemprop="headline" content="[React 자습서]">
     <meta itemprop="description" content="자습서로 공부하기">
     <meta itemprop="datePublished" content="2021-11-12T00:00:00+09:00">
     <meta itemprop="dateModified" content="2021-11-25T00:00:00+09:00">
@@ -713,7 +713,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/react/tutorial/" class="u-url" itemprop="url">[React Native 자습서]
+            <a href="http://localhost:4000/react/tutorial/" class="u-url" itemprop="url">[React 자습서]
 </a>
           </h1>
           <div class="page__meta">
@@ -732,9 +732,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#react-native" class="page__taxonomy-item p-category" rel="tag">React Native</a><span class="sep">, </span>
-    
-      <a href="/tags/#tutorial" class="page__taxonomy-item p-category" rel="tag">tutorial</a>
+      <a href="/tags/#react" class="page__taxonomy-item p-category" rel="tag">React</a>
     
     </span>
   </p>
@@ -778,6 +776,7 @@
 <h1 id="개요">개요</h1>
 
 <h2 id="리액트란">리액트란</h2>
+
 <p>사용자 UI를 구축하기위한 효율적이고 유연한 Javascript 라이브러리이다.<br />
 특히, component라는 코드의 파편을 이용해 복잡한 UI구성을 돕는다.</p>
 
@@ -799,7 +798,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>위 코드는 <code class="language-plaintext highlighter-rouge">JSX방식</code>으로 작성되었는데, JSX 내부의 중괄호 안에 javascript 표현식을 작성함으로써 
+<p>위 코드는 <code class="language-plaintext highlighter-rouge">JSX방식</code>으로 작성되었는데, JSX 내부의 중괄호 안에 javascript 표현식을 작성함으로써
 <code class="language-plaintext highlighter-rouge">React Element</code>로 자바스크립트 객체를 만든다.</p>
 
 <p>여기서 ShoppingList는 <code class="language-plaintext highlighter-rouge">React Component class</code> 또는 <code class="language-plaintext highlighter-rouge">React Component Type</code>이라고 불린다.<br />
@@ -819,14 +818,18 @@
 많은 개발자들이 JSX라는 특수한 문법을 사용해 React의 구조를 쉽게 작성한다고 한다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*#__PURE__*/</span>
-<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">className</span><span class="p">:</span> <span class="dl">"</span><span class="s2">shopping-list</span><span class="dl">"</span><span class="p">},</span> 
+<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
+  <span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">{</span> <span class="na">className</span><span class="p">:</span> <span class="dl">"</span><span class="s2">shopping-list</span><span class="dl">"</span> <span class="p">},</span>
 
-<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h1</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Shopping List for </span><span class="dl">"</span><span class="p">,</span> <span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">),</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h1</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Shopping List for </span><span class="dl">"</span><span class="p">,</span> <span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">),</span>
 
-<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
-<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Instagram</span><span class="dl">"</span><span class="p">),</span> 
-<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">WhatsApp</span><span class="dl">"</span><span class="p">),</span> 
-<span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Oculus</span><span class="dl">"</span><span class="p">)</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">,</span>
+    <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Instagram</span><span class="dl">"</span><span class="p">),</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">WhatsApp</span><span class="dl">"</span><span class="p">),</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Oculus</span><span class="dl">"</span><span class="p">)</span>
   <span class="p">)</span>
 <span class="p">);</span>
 </code></pre></div></div>
@@ -845,14 +848,11 @@
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">square</span><span class="dl">"</span><span class="o">&gt;</span>
-        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
-      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
-</span>    <span class="p">);</span>
-  <span class="p">}</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">square</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/button&gt;</span><span class="err">;
+</span>  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
 <p>버튼을 리턴한다.
 여기서 <code class="language-plaintext highlighter-rouge">{this.props.value}</code>의 props는 임의의 입력이다.<br />
 위를 예시로 들면, Square라는 리액트 컴포넌트를 생성할때,<br />
@@ -860,14 +860,13 @@
 
 <h3 id="board">Board</h3>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kd">class</span> <span class="nx">Board</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Board</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="nx">renderSquare</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
-</span><span class="p">}</span>
+</span>  <span class="p">}</span>
 
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Next player: X</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Next player: X</span><span class="dl">"</span><span class="p">;</span>
 
     <span class="k">return</span> <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
@@ -892,6 +891,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
 <p>Board 컴포넌트는 <code class="language-plaintext highlighter-rouge">renderSquare</code>와 <code class="language-plaintext highlighter-rouge">render</code>함수로 이루어져있다.<br />
 쉽게 이해하기 위해서는 밑의 render부터 봐야하는데,</p>
 
@@ -929,12 +929,12 @@ Square컴포넌트를 자식 컴포넌트라고 부른다.<br />
 </code></pre></div></div>
 
 <p>사용자와 상호작용하기 위해서는 버튼에 이벤트리스너를 달아주어야한다.<br />
-  <code class="language-plaintext highlighter-rouge">{() =&gt; 함수}</code>에서 =&gt;를 자주 까먹는다. 잊지말자.</p>
+ <code class="language-plaintext highlighter-rouge">{() =&gt; 함수}</code>에서 =&gt;를 자주 까먹는다. 잊지말자.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">button</span>
-      <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">square</span><span class="dl">"</span> 
+      <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">square</span><span class="dl">"</span>
       <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span><span class="p">})}</span><span class="o">&gt;</span>
         <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
       <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
@@ -985,6 +985,7 @@ Square컴포넌트를 자식 컴포넌트라고 부른다.<br />
   <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
 </span><span class="p">}</span>
 </code></pre></div></div>
+
 <p>이제 Board의 state에서 squares가 배열의 형태로 9개 칸의 정보를 담는다.<br />
 이제 Board 컴포넌트에서 Square 자식 컴포넌트에게 정보를 전달해야한다.</p>
 
@@ -998,6 +999,7 @@ Square 자식 컴포넌트에게 Board state의 정보를 전달하기 위해 i�
   <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Square</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span> <span class="sr">/&gt;</span><span class="err">;
 </span><span class="p">}</span>
 </code></pre></div></div>
+
 <p>바꿔준다.</p>
 
 <h3 id="중간정리">중간정리</h3>
@@ -1026,6 +1028,7 @@ Square 자식 컴포넌트에게 Board state의 정보를 전달하기 위해 i�
 
 <p>이제 각 Square에서 생기는 변화는 Board의 renderSquare함수에서 props의 형태로 전달되고, 관리된다.<br />
 따라서</p>
+
 <ol>
   <li>Square 컴포넌트는 state를 유지할 필요가 없으므로 생성자 제거</li>
   <li>Sqaure 컴포넌트의 state가 제거되고, value는 props로 받으므로 this.state.value를 this.props.value로 변경</li>
@@ -1052,6 +1055,7 @@ Square 자식 컴포넌트에게 Board state의 정보를 전달하기 위해 i�
   <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span><span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
 <ol>
   <li>Square의 button 에서 Onclick()을 감지하면 Onclick 이벤트 핸들러가 this.props.onClick() 호출</li>
   <li>Square의 props는 renderSquare함수에서 정의되었다.</li>
@@ -1073,7 +1077,7 @@ Square 자식 컴포넌트에게 Board state의 정보를 전달하기 위해 i�
 <p>로 새로운 const변수(이름만 같은 새로운 변수)에 board의 state squares를 복사해 할당했다.<br />
 그리고 이를</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span><span class="p">});</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">squares</span><span class="p">:</span> <span class="nx">squares</span> <span class="p">});</span>
 </code></pre></div></div>
 
 <p>board 컴포넌트의 state를 업데이트하는데, 앞의 squares는 state를,<br />
@@ -1113,11 +1117,10 @@ Square 자식 컴포넌트에게 Board state의 정보를 전달하기 위해 i�
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Square</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">'</span><span class="s1">square</span><span class="dl">'</span> <span class="nx">onClick</span><span class="o">=</span>
-    <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">square</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span>
       <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span>
     <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
-</span>  <span class="p">)</span>
+</span>  <span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1176,23 +1179,23 @@ state의 xIsNext에 저장되어있으므로</p>
 <p>이제 승자를 확인해야한다.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">calculateWinner</span><span class="p">(</span><span class="nx">squares</span><span class="p">)</span> <span class="p">{}</span>
-  <span class="kd">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-  <span class="p">];</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">b</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">c</span><span class="p">])</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">];</span>
-    <span class="p">}</span>
+<span class="kd">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">b</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">]</span> <span class="o">===</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">c</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">squares</span><span class="p">[</span><span class="nx">a</span><span class="p">];</span>
   <span class="p">}</span>
-  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>승자가 발생하는 모든 경우의 수를 만들어 놓고, 각각의 경우에 대해 현재 squares에 입력되어 있는 값들을 비교해 모두 같다면 true가 되며, 승자를 리턴한다.<br />
@@ -1201,7 +1204,7 @@ state의 xIsNext에 저장되어있으므로</p>
 <p>그리고</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">winner</span> <span class="o">=</span> 
+    <span class="kd">const</span> <span class="nx">winner</span> <span class="o">=</span>
   <span class="nx">calculateWinner</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">squares</span><span class="p">);</span>
     <span class="kd">let</span> <span class="nx">status</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">winner</span><span class="p">)</span> <span class="p">{</span>
@@ -1211,6 +1214,7 @@ state의 xIsNext에 저장되어있으므로</p>
       <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">xIsNext</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">O</span><span class="dl">'</span><span class="p">)</span>
     <span class="p">}</span>
 </code></pre></div></div>
+
 <p>winner변수에 calculateWinner를 저장하는데, 이는 ‘X’,’O’,’null’ 중 하나이다.</p>
 
 <p>if문에서 winner가 ‘X’ 나 ‘O’ 중 하나라면 true로 인식되며 코드가 실행되고,<br />
@@ -1253,11 +1257,13 @@ handleClick 함수가 무시되도록 변경한다.</p>
   <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">history</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
-      <span class="p">}],</span>
+      <span class="na">history</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
       <span class="na">xIsNext</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="p">}</span>
+    <span class="p">};</span>
   <span class="p">}</span>
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span>
@@ -1338,8 +1344,8 @@ handleClick 함수가 무시되도록 변경한다.</p>
 
 <p>Javascript의 map() 함수는 배열을 다른 데이터와 함께 매핑이 가능하다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
-<span class="kd">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span> 
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">doubled</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
 <span class="c1">//doubled = [2,4,6]</span>
 </code></pre></div></div>
 
@@ -1367,23 +1373,22 @@ handleClick 함수가 무시되도록 변경한다.</p>
 <p>리액트는 이걸 결정할 때, <code class="language-plaintext highlighter-rouge">key</code>값을 기준으로 렌더링한다.</p>
 
 <p>이전에 없던 <code class="language-plaintext highlighter-rouge">key</code>값이 생겼다? -&gt; 리엑트가 해당 키를 가진 컴포넌트를 생성한다.<br />
-  있던 <code class="language-plaintext highlighter-rouge">key</code>값이 사라졌다? -&gt; 리엑트가 해당 키를 가진 컴포넌트를 삭제한다.</p>
+ 있던 <code class="language-plaintext highlighter-rouge">key</code>값이 사라졌다? -&gt; 리엑트가 해당 키를 가진 컴포넌트를 삭제한다.</p>
 
 <p><code class="language-plaintext highlighter-rouge">key</code>값을 li 태그에 만드는 것은 리엑트가 효율적으로 컴포넌트를 삭제하고, 추가하는 것에 큰 도움을 준다.</p>
 
 <p><br /></p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">moves</span> <span class="o">=</span> <span class="nx">history</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">step</span><span class="p">,</span><span class="nx">move</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">desc</span> <span class="o">=</span> <span class="nx">move</span> <span class="p">?</span>
-    <span class="dl">'</span><span class="s1">Go to move #</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">move</span> <span class="p">:</span>
-    <span class="dl">'</span><span class="s1">Go to game start</span><span class="dl">'</span><span class="p">;</span>
-  <span class="k">return</span><span class="p">(</span>
-   <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">move</span><span class="p">}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">jumpTo</span><span class="p">(</span><span class="nx">move</span><span class="p">)}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">desc</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
-</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">moves</span> <span class="o">=</span> <span class="nx">history</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">step</span><span class="p">,</span> <span class="nx">move</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">desc</span> <span class="o">=</span> <span class="nx">move</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">Go to move #</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">move</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Go to game start</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">move</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">jumpTo</span><span class="p">(</span><span class="nx">move</span><span class="p">)}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">desc</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div></div>
+
 <p>각 li 태그에 key 값으로 move를 주자.</p>
 
 <p><br /><br /></p>
@@ -1396,9 +1401,11 @@ handleClick 함수가 무시되도록 변경한다.</p>
   <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">history</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
-      <span class="p">}],</span>
+      <span class="na">history</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">squares</span><span class="p">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">9</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
       <span class="na">stepNumber</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
       <span class="na">xIsNext</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="p">};</span>
@@ -1410,6 +1417,7 @@ handleClick 함수가 무시되도록 변경한다.</p>
 
 <p>Game의 stepNumber state를 업데이트하기위한 jumpTo 함수를 정의한다.<br />
 이 함수에서 stepNumber가 짝수일 때 마다 xIsNext를 true로 설정한다.</p>
+
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">jumpTo</span><span class="p">(</span><span class="nx">step</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
     <span class="na">stepNumber</span><span class="p">:</span> <span class="nx">step</span><span class="p">,</span>
@@ -1460,7 +1468,6 @@ stepNumber state를 수정하도록 해야한다.</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
-
         
       </section>
 
@@ -1471,12 +1478,23 @@ stepNumber state를 수정하도록 해야한다.</p>
 
 
   
+
+  
   	
   	
   	
   	
   	
 
+
+  <nav class="pagination_prev_next">
+    
+      <a href="#" class="pagination_prev_next--pager disabled">첫 번째 글입니다</a>
+    
+    
+      <a href="/react/react/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[React] </a>
+    
+  </nav>
 
     </div>
 
@@ -1488,6 +1506,43 @@ stepNumber state를 수정하도록 해야한다.</p>
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/react/" rel="permalink">[React]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-12-06T00:00:00+09:00">December 6, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">공부한거 요약
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1585,43 +1640,6 @@ stepNumber state를 수정하도록 해야한다.</p>
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
         <time datetime="2021-12-01T00:00:00+09:00">December 1, 2021</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
       </span>
     
 

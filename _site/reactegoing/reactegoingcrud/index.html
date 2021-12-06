@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[React Native][생활코딩] CRUD - LightBig</title>
+<!-- begin _includes/seo.html --><title>[React][생활코딩] CRUD - LightBig</title>
 <meta name="description" content="28강 ~ 40강">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="LightBig">
-<meta property="og:title" content="[React Native][생활코딩] CRUD">
+<meta property="og:title" content="[React][생활코딩] CRUD">
 <meta property="og:url" content="http://localhost:4000/reactegoing/reactegoingcrud/">
 
 
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">[React Native][생활코딩] CRUD</li>
+        <li class="current">[React][생활코딩] CRUD</li>
       
     
   </ol>
@@ -323,7 +323,7 @@
     <ul class="nav__items" id="category_tag_menu">
         <li>
             📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span
-                    style="font-family:'-apple-system;">56</style> <span style="font-family:'-apple-system;">개
+                    style="font-family:'-apple-system;">57</style> <span style="font-family:'-apple-system;">개
                         </style>
         </li>
         <li>
@@ -438,7 +438,7 @@
                 
                 
                 
-                <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                <li><a href="/categories/React" class="">React 공식문서(2)</a></li>
                 
                 
                 
@@ -704,7 +704,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[React Native][생활코딩] CRUD">
+    <meta itemprop="headline" content="[React][생활코딩] CRUD">
     <meta itemprop="description" content="28강 ~ 40강">
     <meta itemprop="datePublished" content="2021-11-21T00:00:00+09:00">
     <meta itemprop="dateModified" content="2021-11-22T00:00:00+09:00">
@@ -713,7 +713,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/reactegoing/reactegoingcrud/" class="u-url" itemprop="url">[React Native][생활코딩] CRUD
+            <a href="http://localhost:4000/reactegoing/reactegoingcrud/" class="u-url" itemprop="url">[React][생활코딩] CRUD
 </a>
           </h1>
           <div class="page__meta">
@@ -732,7 +732,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#react-native" class="page__taxonomy-item p-category" rel="tag">React Native</a><span class="sep">, </span>
+      <a href="/tags/#react" class="page__taxonomy-item p-category" rel="tag">React</a><span class="sep">, </span>
     
       <a href="/tags/#%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9" class="page__taxonomy-item p-category" rel="tag">생활코딩</a>
     
@@ -784,31 +784,25 @@ sql에서도 쿼리에 대해 처음 배울때, CRUD로 입문했었다.</p>
 read는 현재 mode:read에서 구현되어있다.<br />
 delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">Control</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
-    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">(</span>
-        <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/create</span><span class="dl">"</span><span class="o">&gt;</span>
-              <span class="nx">create</span>
-            <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/update</span><span class="dl">"</span><span class="o">&gt;</span>
-              <span class="nx">update</span>
-            <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span> <span class="nx">value</span><span class="o">=</span><span class="dl">'</span><span class="s1">delete</span><span class="dl">'</span><span class="o">&gt;</span>
-
-            <span class="o">&lt;</span><span class="sr">/input</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
-</span>      <span class="p">)</span>
-    <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/create</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">create</span><span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/update</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">update</span><span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span> <span class="nx">value</span><span class="o">=</span><span class="dl">"</span><span class="s2">delete</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>    <span class="p">);</span>
   <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="nx">Control</span><span class="p">;</span>
 </code></pre></div></div>
@@ -830,43 +824,48 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
 
 <p>그리고 각 태그별로 props로 부모컴포넌트에게서 함수를 전달받고, 여기에 매개변수로 현재 mode를 전달한다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">Control</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
-    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">(</span>
-        <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/create</span><span class="dl">"</span> <span class="nx">onClick</span> <span class="o">=</span> <span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">a</span>
+            <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/create</span><span class="dl">"</span>
+            <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
               <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-              <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangeMode</span><span class="p">(</span><span class="dl">'</span><span class="s1">Create</span><span class="dl">'</span><span class="p">);</span>
-
-            <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">&gt;</span>
-              <span class="nx">create</span>
-            <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/update</span><span class="dl">"</span> <span class="nx">onClick</span> <span class="o">=</span> <span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangeMode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Create</span><span class="dl">"</span><span class="p">);</span>
+            <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+          <span class="o">&gt;</span>
+            <span class="nx">create</span>
+          <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">a</span>
+            <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/update</span><span class="dl">"</span>
+            <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
               <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-              <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangeMode</span><span class="p">(</span><span class="dl">'</span><span class="s1">Update</span><span class="dl">'</span><span class="p">);</span>
-
-            <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">&gt;</span>
-              <span class="nx">update</span>
-            <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span> <span class="nx">value</span><span class="o">=</span><span class="dl">'</span><span class="s1">delete</span><span class="dl">'</span> <span class="nx">onClick</span> <span class="o">=</span> <span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangeMode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Update</span><span class="dl">"</span><span class="p">);</span>
+            <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+          <span class="o">&gt;</span>
+            <span class="nx">update</span>
+          <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">input</span>
+            <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span>
+            <span class="nx">value</span><span class="o">=</span><span class="dl">"</span><span class="s2">delete</span><span class="dl">"</span>
+            <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
               <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-              <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangeMode</span><span class="p">(</span><span class="dl">'</span><span class="s1">Delete</span><span class="dl">'</span><span class="p">);</span>
-
-            <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">&gt;</span>
-
-            <span class="o">&lt;</span><span class="sr">/input</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
-</span>      <span class="p">)</span>
-    <span class="p">}</span>
+              <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onChangeMode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Delete</span><span class="dl">"</span><span class="p">);</span>
+            <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+          <span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>    <span class="p">);</span>
   <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="nx">Control</span><span class="p">;</span>
 </code></pre></div></div>
@@ -879,14 +878,13 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
 
 <p>이 함수는 부모컴포넌트의 state를 변경하는데, 이 함수는 자식컴포넌트로부터 매개변수로 현재 mode를 전달받는다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">Control</span> 
-<span class="nx">onChangeMode</span> <span class="o">=</span> <span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">_mode</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">Control</span>
+  <span class="nx">onChangeMode</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
-    <span class="na">mode</span> <span class="p">:</span> <span class="nx">_mode</span>
-<span class="p">})</span>
-
-<span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-    <span class="sr">/</span><span class="err">&gt;
+      <span class="na">mode</span><span class="p">:</span> <span class="nx">_mode</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+<span class="sr">/</span><span class="err">&gt;
 </span></code></pre></div></div>
 
 <p><br /><br /></p>
@@ -927,7 +925,7 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
         <span class="o">&lt;</span><span class="nx">article</span><span class="o">&gt;</span>
           <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Create</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
 </span>          <span class="o">&lt;</span><span class="nx">form</span><span class="o">&gt;&lt;</span><span class="sr">/form</span><span class="err">&gt;
-</span>          
+</span>
         <span class="o">&lt;</span><span class="sr">/article</span><span class="err">&gt;
 </span>      <span class="p">)</span>
     <span class="p">}</span>
@@ -976,7 +974,7 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
       <span class="nx">_title</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">welcome</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
       <span class="nx">_desc</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">welcome</span><span class="p">.</span><span class="nx">desc</span><span class="p">;</span>
       <span class="nx">_article</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">ReadContent</span> <span class="nx">title</span><span class="o">=</span><span class="p">{</span><span class="nx">_title</span><span class="p">}</span> <span class="nx">desc</span><span class="o">=</span><span class="p">{</span><span class="nx">_desc</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
-</span>    
+</span>
     <span class="c1">//state의 mode가 read일때</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">mode</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">read</span><span class="dl">'</span><span class="p">){</span>
       <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -998,7 +996,7 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
 </code></pre></div></div>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">--</span><span class="nx">App</span><span class="p">.</span><span class="nx">js</span><span class="p">,</span> <span class="k">return</span><span class="o">--</span>
-    <span class="o">&lt;</span><span class="nx">Control</span> 
+    <span class="o">&lt;</span><span class="nx">Control</span>
     <span class="nx">onChangeMode</span> <span class="o">=</span> <span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">_mode</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
         <span class="na">mode</span> <span class="p">:</span> <span class="nx">_mode</span>
@@ -1006,7 +1004,7 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
 
     <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
       <span class="sr">/</span><span class="err">&gt;
-</span>    
+</span>
     <span class="p">{</span><span class="nx">_article</span><span class="p">}</span>
   <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span><span class="p">);</span>
@@ -1018,39 +1016,38 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
 
 <p>form 태그 구현</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="kd">class</span>  <span class="nx">CreateContent</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
-    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">(</span>
-        <span class="o">&lt;</span><span class="nx">article</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Create</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+<span class="kd">class</span> <span class="nx">CreateContent</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">article</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Create</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
 </span>
-          <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="dl">'</span><span class="s1">/create_process</span><span class="dl">'</span> <span class="nx">method</span><span class="o">=</span><span class="dl">'</span><span class="s1">post</span><span class="dl">'</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+        <span class="o">&lt;</span><span class="nx">form</span>
+          <span class="nx">action</span><span class="o">=</span><span class="dl">"</span><span class="s2">/create_process</span><span class="dl">"</span>
+          <span class="nx">method</span><span class="o">=</span><span class="dl">"</span><span class="s2">post</span><span class="dl">"</span>
+          <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span><span class="p">)</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">submit</span><span class="dl">"</span><span class="p">);</span>
           <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-          <span class="o">&gt;</span>
-
-            <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span> <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
-</span>            <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
-</span>            <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-              <span class="o">&lt;</span><span class="nx">textarea</span> <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">desc</span><span class="dl">'</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">description</span><span class="dl">'</span><span class="o">&gt;</span>
-
-              <span class="o">&lt;</span><span class="sr">/textarea</span><span class="err">&gt;
-</span>            <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
-</span>            <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-              <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
-</span>            <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
-</span>          
-        <span class="o">&lt;</span><span class="sr">/article</span><span class="err">&gt;
-</span>      <span class="p">)</span>
-    <span class="p">}</span>
+        <span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">textarea</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">desc</span><span class="dl">"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/textarea</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">submit</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/article</span><span class="err">&gt;
+</span>    <span class="p">);</span>
   <span class="p">}</span>
+<span class="p">}</span>
 
-  <span class="k">export</span> <span class="k">default</span> <span class="nx">CreateContent</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">CreateContent</span><span class="p">;</span>
 </code></pre></div></div>
 
 <ol>
@@ -1104,18 +1101,18 @@ delete의 경우, 링크를 클릭하는 것이 아닌 button으로 구현한다
 <h2 id="받은-정보로-state값-변경">받은 정보로 state값 변경</h2>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">mode</span><span class="p">:</span><span class="dl">'</span><span class="s1">welcome</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">subject</span><span class="p">:</span> <span class="p">{</span><span class="na">title</span><span class="p">:</span><span class="dl">'</span><span class="s1">WEB</span><span class="dl">'</span><span class="p">,</span> <span class="na">sub</span><span class="p">:</span><span class="dl">'</span><span class="s1">World wide web!</span><span class="dl">'</span><span class="p">},</span>
-      <span class="na">welcome</span><span class="p">:{</span><span class="na">title</span><span class="p">:</span><span class="dl">'</span><span class="s1">Welcome</span><span class="dl">'</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span><span class="dl">'</span><span class="s1">Hello, React!!</span><span class="dl">'</span><span class="p">},</span>
-      <span class="na">contents</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="na">id</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span><span class="dl">'</span><span class="s1">REACT</span><span class="dl">'</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span><span class="dl">'</span><span class="s1">HTML is a programming laguage ^^</span><span class="dl">'</span><span class="p">},</span>
-        <span class="p">{</span><span class="na">id</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Vue</span><span class="dl">'</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span><span class="dl">'</span><span class="s1">vue is vue</span><span class="dl">'</span><span class="p">},</span>
-        <span class="p">{</span><span class="na">id</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">angular</span><span class="dl">'</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span><span class="dl">'</span><span class="s1">hello angular</span><span class="dl">'</span><span class="p">}</span>
-      <span class="p">],</span>
-      <span class="na">selectedcontentid</span><span class="p">:</span> <span class="kc">null</span>
-    <span class="p">}</span>
-
+  <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">welcome</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">subject</span><span class="p">:</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">WEB</span><span class="dl">"</span><span class="p">,</span> <span class="na">sub</span><span class="p">:</span> <span class="dl">"</span><span class="s2">World wide web!</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="na">welcome</span><span class="p">:</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome</span><span class="dl">"</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Hello, React!!</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="na">contents</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">REACT</span><span class="dl">"</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span> <span class="dl">"</span><span class="s2">HTML is a programming laguage ^^</span><span class="dl">"</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Vue</span><span class="dl">"</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span> <span class="dl">"</span><span class="s2">vue is vue</span><span class="dl">"</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">angular</span><span class="dl">"</span><span class="p">,</span> <span class="na">desc</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello angular</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="na">selectedcontentid</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+<span class="p">};</span>
 </code></pre></div></div>
+
 <p>부모 컴포넌트의 this.state.contents는 리스트로 정의되어있다.</p>
 
 <p>우리는 제출받은 정보를 이 리스트의 끝에 추가해야한다.</p>
@@ -1174,7 +1171,7 @@ setState함수를 통해 변경사항을 렌더링한다.</p>
 
 <p><br /></p>
 
-<p>이해하기가 살짝 어려웠는데, 
+<p>이해하기가 살짝 어려웠는데,
 만약 contents의 1000만개 +1개의 값이 추가되었다고 생각해보자.</p>
 
 <p>원본 데이터를 변경했으면 현재 데이터와 1000만개를 다 비교하면서 true,false를 따져가면서 1000만 1개째에서<br />
@@ -1191,12 +1188,14 @@ setState함수를 통해 변경사항을 렌더링한다.</p>
 현재 state : 새우깡포장지에 들어있는 새우깡들
 바뀐 state : 새우깡포장지에 들어있는 새우깡들 + 새로운 데이터 고구마깡 1개
 </code></pre></div></div>
+
 <p>바뀐 고구마깡 1개를 찾기위해 state안에 들어있는 모든 새우깡을 살펴가면서 고구마깡을 찾는다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--원본데이터를 복사해 바뀐 데이터를 반영--
 현재 state : 새우깡포장지에 들어있는 새우깡들
 바뀐 state : 홈런볼포장지에 들어있는 새우깡들  + 새로운 데이터 고구마깡 1개
 </code></pre></div></div>
+
 <p>포장지(참조하는 메모리값)부터 다르니까, 내용물을 볼 필요도 없이 다시 렌더링한다.</p>
 
 <p><code class="language-plaintext highlighter-rouge">즉, 깊은 복사를 했다는 것은 개발자가 리액트에게 현재 렌더링할 데이터가 변경되었다는 것을 알리는 것이다.</code></p>
@@ -1208,13 +1207,12 @@ setState함수를 통해 변경사항을 렌더링한다.</p>
 
 <p><code>shouldComponentUpdate(nextProps, nextState)</code></p>
 
-<p>state 변화 -&gt; setState호출 -&gt; 리렌더링 <br />
+<p>state 변화 -&gt; setState호출 -&gt; 리렌더링<br />
 이 시점에서 이 메서드가 호출된다.</p>
 
 <p>따로 설정하지 않는다면, 기본동작은 True를 반환하는 것.</p>
 
 <p>성능 최적화를 위해 설정하고 싶다면, this.props와 nextprops를 비교하는 명령문을 작성해 변화가 없다면(===) false를 리턴해 불필요한 렌더링을 방지할 수 있다.</p>
-
 
         
       </section>
@@ -1237,10 +1235,10 @@ setState함수를 통해 변경사항을 렌더링한다.</p>
 
   <nav class="pagination_prev_next">
     
-      <a href="/reactegoing/reactegoing/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[React Native][생활코딩]이벤트 state props ~ 컴포넌트 이벤트 만들기</a>
+      <a href="/reactegoing/reactegoing/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[React][생활코딩]이벤트 state props ~ 컴포넌트 이벤트 만들기</a>
     
     
-      <a href="/reactegoing/reactegoingupdate/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[React Native][생활코딩] Update</a>
+      <a href="/reactegoing/reactegoingupdate/" class="pagination_prev_next--pager"><span class="prev_next">다음 글  &nbsp  </span>[React][생활코딩] Update</a>
     
   </nav>
 
@@ -1254,6 +1252,43 @@ setState함수를 통해 변경사항을 렌더링한다.</p>
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/react/" rel="permalink">[React]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-12-06T00:00:00+09:00">December 6, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">공부한거 요약
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1351,43 +1386,6 @@ setState함수를 통해 변경사항을 렌더링한다.</p>
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
         <time datetime="2021-12-01T00:00:00+09:00">December 1, 2021</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
       </span>
     
 

@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[React Native][생활코딩] Update - LightBig</title>
+<!-- begin _includes/seo.html --><title>[React][생활코딩] Update - LightBig</title>
 <meta name="description" content="36강 ~ 40강">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="LightBig">
-<meta property="og:title" content="[React Native][생활코딩] Update">
+<meta property="og:title" content="[React][생활코딩] Update">
 <meta property="og:url" content="http://localhost:4000/reactegoing/reactegoingupdate/">
 
 
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">[React Native][생활코딩] Update</li>
+        <li class="current">[React][생활코딩] Update</li>
       
     
   </ol>
@@ -323,7 +323,7 @@
     <ul class="nav__items" id="category_tag_menu">
         <li>
             📂 <span style="font-family:'-apple-system';">전체 글 수</style> <span
-                    style="font-family:'-apple-system;">56</style> <span style="font-family:'-apple-system;">개
+                    style="font-family:'-apple-system;">57</style> <span style="font-family:'-apple-system;">개
                         </style>
         </li>
         <li>
@@ -438,7 +438,7 @@
                 
                 
                 
-                <li><a href="/categories/React" class="">React 공식문서(1)</a></li>
+                <li><a href="/categories/React" class="">React 공식문서(2)</a></li>
                 
                 
                 
@@ -704,7 +704,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[React Native][생활코딩] Update">
+    <meta itemprop="headline" content="[React][생활코딩] Update">
     <meta itemprop="description" content="36강 ~ 40강">
     <meta itemprop="datePublished" content="2021-11-23T00:00:00+09:00">
     <meta itemprop="dateModified" content="2021-11-23T00:00:00+09:00">
@@ -713,7 +713,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/reactegoing/reactegoingupdate/" class="u-url" itemprop="url">[React Native][생활코딩] Update
+            <a href="http://localhost:4000/reactegoing/reactegoingupdate/" class="u-url" itemprop="url">[React][생활코딩] Update
 </a>
           </h1>
           <div class="page__meta">
@@ -732,7 +732,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#react-native" class="page__taxonomy-item p-category" rel="tag">React Native</a><span class="sep">, </span>
+      <a href="/tags/#react" class="page__taxonomy-item p-category" rel="tag">React</a><span class="sep">, </span>
     
       <a href="/tags/#%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9" class="page__taxonomy-item p-category" rel="tag">생활코딩</a>
     
@@ -841,16 +841,16 @@
 props에 전달된 값들을 출력할 수 있다.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">input</span> 
-    <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> 
-    <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span> 
+    <span class="o">&lt;</span><span class="nx">input</span>
+    <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span>
+    <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span>
     <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span>
     <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
 </span>
 <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">textarea</span> 
-    <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">desc</span><span class="dl">'</span> 
+    <span class="o">&lt;</span><span class="nx">textarea</span>
+    <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">desc</span><span class="dl">'</span>
     <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">description</span><span class="dl">'</span>
     <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">desc</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/textarea</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
@@ -872,7 +872,7 @@ props에 전달된 값들을 출력할 수 있다.</p>
 
 <h2 id="자식-컴포넌트에-state-생성">자식 컴포넌트에 state 생성</h2>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">UpdateContent</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>  
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">UpdateContent</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
   <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
@@ -883,14 +883,15 @@ props에 전달된 값들을 출력할 수 있다.</p>
 </code></pre></div></div>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">input</span> 
-<span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> 
-<span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span> 
-<span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span>
-<span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
-<span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">title</span><span class="p">:</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">})</span>
-<span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
+  <span class="o">&lt;</span><span class="nx">input</span>
+    <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
+    <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span>
+    <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span>
+    <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
+    <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">title</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span> <span class="p">});</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+  <span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
 </span></code></pre></div></div>
 
@@ -901,23 +902,23 @@ props에 전달된 값들을 출력할 수 있다.</p>
 <p>동일하게 textarea도 onChange 속성을 달아주자.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">textarea</span> 
-        <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">desc</span><span class="dl">'</span> 
-        <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">description</span><span class="dl">'</span>
-        <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">desc</span><span class="p">}</span>
-        <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">desc</span><span class="p">:</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">})</span>
-        <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="sr">/textarea</span><span class="err">&gt;
+  <span class="o">&lt;</span><span class="nx">textarea</span>
+    <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">desc</span><span class="dl">"</span>
+    <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">description</span><span class="dl">"</span>
+    <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">desc</span><span class="p">}</span>
+    <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">desc</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span> <span class="p">});</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+  <span class="o">&gt;&lt;</span><span class="sr">/textarea</span><span class="err">&gt;
 </span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
 </span></code></pre></div></div>
 
 <p><br /></p>
 
-<p>업데이트 하기위해서는 어떤 컨텐츠를 수정할 것인가에 대한 정보도 필요하다. <br />
+<p>업데이트 하기위해서는 어떤 컨텐츠를 수정할 것인가에 대한 정보도 필요하다.<br />
 식별자로써, 현재 업데이트 하고있는 내용이 어떤 것인지에 대한 정보를 담는 태그를 만들자.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">hidden</span><span class="dl">"</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
 </span></code></pre></div></div>
 
 <p><br /><br /></p>
@@ -932,32 +933,35 @@ props에 전달된 값들을 출력할 수 있다.</p>
     <span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
 <p>대괄호 문법은 자바스크립트 최신 문법이다.</p>
 
 <p><br /></p>
 
 <p>그리고 이 함수에 무조건 달리는 <code class="language-plaintext highlighter-rouge">.bind(this)</code>를 생성자에서 정의하자</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><br /></p>
 
 <p>이제 태그들의 이벤트 리스너 함수들을 다시 작성해주자</p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">textarea</span> 
-        <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">desc</span><span class="dl">'</span> 
-        <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">description</span><span class="dl">'</span>
-        <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">desc</span><span class="p">}</span>
-        <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span><span class="p">}</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="sr">/textarea</span><span class="err">&gt;
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">textarea</span>
+  <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">desc</span><span class="dl">"</span>
+  <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">description</span><span class="dl">"</span>
+  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">desc</span><span class="p">}</span>
+  <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span><span class="p">}</span>
+<span class="o">&gt;&lt;</span><span class="sr">/textarea</span><span class="err">&gt;
 </span></code></pre></div></div>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">input</span> 
-    <span class="nx">type</span><span class="o">=</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> 
-    <span class="nx">placeholder</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span> 
-    <span class="nx">name</span><span class="o">=</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span>
-    <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
-    <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span><span class="p">}</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="sr">/input</span><span class="err">&gt;
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">input</span>
+  <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
+  <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span>
+  <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span>
+  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
+  <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">inputFormHandler</span><span class="p">}</span>
+<span class="o">&gt;&lt;</span><span class="sr">/input</span><span class="err">&gt;
 </span></code></pre></div></div>
 
 <p><br /></p>
@@ -967,8 +971,8 @@ props에 전달된 값들을 출력할 수 있다.</p>
 <p>updatecontent컴포넌트의 폼 제출시 form 태그의 onSubmit 함수가 실행된다. 이 함수는 부모 컴포넌트에게 현재 자식컴포넌트의 state를<br />
 전달할 수 있다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="dl">'</span><span class="s1">/Update_process</span><span class="dl">'</span> 
-        <span class="nx">method</span><span class="o">=</span><span class="dl">'</span><span class="s1">post</span><span class="dl">'</span> 
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="dl">'</span><span class="s1">/Update_process</span><span class="dl">'</span>
+        <span class="nx">method</span><span class="o">=</span><span class="dl">'</span><span class="s1">post</span><span class="dl">'</span>
         <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
             <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onSubmit</span><span class="p">(</span>
@@ -980,28 +984,31 @@ props에 전달된 값들을 출력할 수 있다.</p>
           <span class="o">&gt;</span>
 </code></pre></div></div>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_article</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">UpdateContent</span> 
-      <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">_content</span><span class="p">}</span>
-      <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">_id</span><span class="p">,</span><span class="nx">_title</span><span class="p">,</span><span class="nx">_desc</span><span class="p">){</span> <span class="c1">//UpdateContent의 form태그가 id,title,desc제출함</span>
-        <span class="c1">//과거 컨텐츠 완전복사(원본을 완전 복사한 다른 객체를 만든다., 깊은복사)</span>
-        <span class="kd">const</span> <span class="nx">_contents</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">contents</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">_article</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">UpdateContent</span>
+    <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">_content</span><span class="p">}</span>
+    <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">_id</span><span class="p">,</span> <span class="nx">_title</span><span class="p">,</span> <span class="nx">_desc</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">//UpdateContent의 form태그가 id,title,desc제출함</span>
+      <span class="c1">//과거 컨텐츠 완전복사(원본을 완전 복사한 다른 객체를 만든다., 깊은복사)</span>
+      <span class="kd">const</span> <span class="nx">_contents</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">contents</span><span class="p">);</span>
 
-        <span class="c1">//submit된 contents의 id와 같은 content를 _content에서 찾는다.</span>
-        <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">_contents</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">_id</span> <span class="o">===</span> <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">_title</span>
-            <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">desc</span> <span class="o">=</span> <span class="nx">_desc</span>
-            <span class="k">break</span><span class="p">;</span>
-          <span class="p">}</span>
-          <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="c1">//submit된 contents의 id와 같은 content를 _content에서 찾는다.</span>
+      <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">_contents</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">_id</span> <span class="o">===</span> <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">_title</span><span class="p">;</span>
+          <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">desc</span> <span class="o">=</span> <span class="nx">_desc</span><span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
+        <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
 
-        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
-          <span class="na">contents</span><span class="p">:</span><span class="nx">_contents</span>
-        <span class="p">})</span>
-      <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="sr">/</span><span class="err">&gt;
-</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+        <span class="na">contents</span><span class="p">:</span> <span class="nx">_contents</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+  <span class="sr">/</span><span class="err">&gt;
+</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>자식 컴포넌트로부터 _id, _title, _desc 정보가 오면 부모 컴포넌트의 onSubmit 함수가 연산을 실행한다.</p>
@@ -1030,37 +1037,38 @@ props에 전달된 값들을 출력할 수 있다.</p>
 
 <p>그리고 setState함수를 통해 부모컴포넌트의 state값을 변경한다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">Control</span> 
-        <span class="nx">onChangeMode</span> <span class="o">=</span> <span class="p">{</span><span class="kd">function</span><span class="p">(</span><span class="nx">_mode</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">_mode</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Delete</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//만약 클릭된 control이 delete라면</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">delete?</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span> <span class="c1">//사용자가 삭제 확인 버튼을 누른다면</span>
-              <span class="c1">//완전복사</span>
-              <span class="kd">const</span> <span class="nx">_contents</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">contents</span><span class="p">)</span>
-              <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-              <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">_contents</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">selectedcontentid</span> <span class="o">===</span> <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//만약 찾으면</span>
-                  <span class="nx">_contents</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">Control</span>
+  <span class="nx">onChangeMode</span><span class="o">=</span><span class="p">{</span><span class="kd">function</span> <span class="p">(</span><span class="nx">_mode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">_mode</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">Delete</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">//만약 클릭된 control이 delete라면</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">"</span><span class="s2">delete?</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">//사용자가 삭제 확인 버튼을 누른다면</span>
+        <span class="c1">//완전복사</span>
+        <span class="kd">const</span> <span class="nx">_contents</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">contents</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">_contents</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">selectedcontentid</span> <span class="o">===</span> <span class="nx">_contents</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//만약 찾으면</span>
+            <span class="nx">_contents</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
-                  <span class="k">break</span>
-                <span class="p">}</span>
-                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span>
-              <span class="p">}</span>
-
-              <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
-                <span class="na">mode</span><span class="p">:</span><span class="dl">'</span><span class="s1">welcome</span><span class="dl">'</span><span class="p">,</span>
-                <span class="na">contents</span><span class="p">:</span> <span class="nx">_contents</span><span class="p">,</span>
-              <span class="p">})</span>
-            <span class="p">}</span>
-          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
-            <span class="na">mode</span> <span class="p">:</span> <span class="nx">_mode</span>
-            <span class="p">})</span>
+            <span class="k">break</span><span class="p">;</span>
           <span class="p">}</span>
-        <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-        <span class="sr">/</span><span class="err">&gt;
-</span>
-</code></pre></div></div>
+          <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
 
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">welcome</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">contents</span><span class="p">:</span> <span class="nx">_contents</span><span class="p">,</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+        <span class="na">mode</span><span class="p">:</span> <span class="nx">_mode</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+<span class="sr">/</span><span class="err">&gt;
+</span></code></pre></div></div>
 
         
       </section>
@@ -1081,7 +1089,7 @@ props에 전달된 값들을 출력할 수 있다.</p>
 
   <nav class="pagination_prev_next">
     
-      <a href="/reactegoing/reactegoingcrud/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[React Native][생활코딩] CRUD</a>
+      <a href="/reactegoing/reactegoingcrud/" class="pagination_prev_next--pager"><span class="prev_next">이전 글  &nbsp</span>[React][생활코딩] CRUD</a>
     
     
       <a href="#" class="pagination_prev_next--pager disabled">가장 최근 글입니다</a>
@@ -1098,6 +1106,43 @@ props에 전달된 값들을 출력할 수 있다.</p>
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/react/" rel="permalink">[React]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2021-12-06T00:00:00+09:00">December 6, 2021</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">공부한거 요약
+</p>
+  </article>
+</div>
+
         
           
 
@@ -1195,43 +1240,6 @@ props에 전달된 값들을 출력할 수 있다.</p>
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
         <time datetime="2021-12-01T00:00:00+09:00">December 1, 2021</time>
-      </span>
-    
-
-    
-
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">파이썬 자료구조
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/datastructurepy/balancedBST/" rel="permalink">[Datastructure] 균형이진탐색트리
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2021-11-30T00:00:00+09:00">November 30, 2021</time>
       </span>
     
 
