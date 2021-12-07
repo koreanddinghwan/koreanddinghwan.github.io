@@ -347,9 +347,15 @@ var store = [{
         "url": "/blog/screenwidth/",
         "teaser": null
       },{
-        "title": "[React] ",
-        "excerpt":" ","categories": ["React"],
+        "title": "[React] 리액트 시작",
+        "excerpt":"책 Velopert 왜 리액트를 배워야 할까? 자바스크립트는 웹 어플리케이션의 핵심. 규모가 큰 어플리케이션을 만들 수 있다. Angular, Vue, Backbone 등등 수많은 웹 프레임워크는 각각 다른 관점에서 어플리케이션 구조를 바라본다. 이 관점이란 M, V, C를 의미하는데, M : model, 어플리케이션에서 사용하는 데이터를 관리하는 영역 V : vue, 사용자에게 보이는 부분 C...","categories": ["React"],
         "tags": ["React"],
         "url": "/react/react/",
+        "teaser": null
+      },{
+        "title": "[React] JSX문법",
+        "excerpt":"책 Velopert 기본적인 코드 이해 src/App.js import logo from \"./logo.svg\"; import \"./App.css\"; import react from \"react\"; function App() { return ( &lt;div className=\"App\"&gt; &lt;header className=\"App-header\"&gt; &lt;img src={logo} className=\"App-logo\" alt=\"logo\" /&gt; &lt;p&gt; Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload. &lt;/p&gt; &lt;a className=\"App-link\" href=\"https://reactjs.org\" target=\"_blank\" rel=\"noopener noreferrer\" &gt; Learn React &lt;/a&gt; &lt;/header&gt; &lt;/div&gt;...","categories": ["React"],
+        "tags": ["React","JSX"],
+        "url": "/react/JSX/",
         "teaser": null
       }]
