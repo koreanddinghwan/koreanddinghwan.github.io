@@ -332,3 +332,417 @@ MyComponent.propTypes = {
 (npmjs package설명)[https://www.npmjs.com/package/prop-types]
 
 <br><br>
+
+## 클래스형 컴포넌트에서 props 사용
+
+함수형 컴포넌트를 클래스형 컴포넌트로 바꾸면 다음과 같다.
+
+```jsx
+import React from "react";
+import propTypes from "prop-types";
+import { Component } from "react";
+
+class MyComponent extends Component {
+  render() {
+    const { name, favoritenumber, children } = this.props;
+    return (
+      <div>
+        hello, my name is {name}
+        children value is {children}
+        my favnumber is {favoritenumber}
+      </div>
+    );
+  }
+}
+
+MyComponent.defaultProps = {
+  name: "기본이름",
+};
+
+MyComponent.propTypes = {
+  name: propTypes.string,
+  favoritenumber: propTypes.number.isRequired,
+};
+export default MyComponent;
+```
+
+클래스형 컴포넌트 내부에서 defaulProps나 propTypes를 지정할수도 있다.
+
+```jsx
+import React from "react";
+import propTypes from "prop-types";
+import { Component } from "react";
+
+class MyComponent extends Component {
+  static defaultProps = {
+    name: "기본이름",
+  };
+  static propTypes = {
+    name: propTypes.string,
+    favoritenumber: propTypes.number.isRequired,
+  };
+
+  render() {
+    const { name, favoritenumber, children } = this.props;
+    return (
+      <div>
+        hello, my name is {name}
+        children value is {children}
+        my favnumber is {favoritenumber}
+      </div>
+    );
+  }
+}
+
+export default MyComponent;
+```
+
+<br><br>
+
+# state
+
+리액트에서 state는 컴포넌트 내부에서 바뀔 수 있는 값을 의미한다.  
+props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하는 값, 컴포넌트 자신은 전달받은 props를 읽기 전용으로만 사용할 수 있다.
+
+이 props를 수정하기 위해서는 부모컴포넌트에서 바꿔주어야한다.
+
+## 클래스형 컴포넌트에서 state
+
+```jsx
+import {Component} from 'react';
+
+class Counter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            number : 0;
+        }
+    }
+    render() {
+        const {number} = this.state
+        return (
+            <div>
+        <h1>{number}</h1>
+        <button
+          onClick={() => {
+            this.setState({ number: number + 1 });
+          }}
+        >
+          Click!
+        </button>
+      </div>
+        )
+    }
+}
+
+export default Counter
+```
+
+JS기본 문법으로 생각하면, `class Child extends Parent`는 부모클래스를 확장하는 문법이다.  
+따라서 클래스형 컴포넌트는 `Component라는 부모클래스`를 `확장`하는 Counter 클래스를 정의하는 것이다.
+
+클래스형 컴포넌트에서 state를 정의하기 위해선 constructor 메서드를 작성한다.  
+이때, super(props)는 부모클래스의 생성자함수를 호출하는데, `Component`의 생성자함수를 호출한다.
+
+<br><br>
+
+### state 객체 안에 여러 값이 있을 때
+
+```js
+<button
+  onClick={() => {
+    this.setState({ number: number + 1 });
+  }}
+>
+  Click!
+</button>
+```
+
+setState함수는 인자로 전달된 객체 안에 있는 값만 바꿔준다.
+
+<br><br>
+
+### constructor 없이 state 선언
+
+```js
+state = {
+  number: 0,
+  fixedNumber: 0,
+};
+```
+
+직접적으로 state를 표현하면 constructor 없이도 state 초기값 설정가능
+
+<br><br>
+
+### setState의 비동기성
+
+리액트는 setState함수로 state를 업데이트할때 비동기적으로 업데이트한다.  
+state가 변경될때마다 렌더링하는 것은 비효율적이기 때문.
+
+```jsx
+import { Component } from "react";
+
+class Counter extends Component {
+  state = {
+    number: 0,
+    fixedNumber: 0,
+  };
+
+  render() {
+    const { number, fixedNumber } = this.state;
+    return (
+      <div>
+        <h1>바뀌는 값{number}</h1>
+        <h2>바뀌지 않는 값{fixedNumber}</h2>
+        <button
+          onClick={() => {
+            this.setState({ number: number + 2 });
+            console.log("+2", number);
+            this.setState({ number: number + 1 });
+            console.log("+1", number);
+          }}
+        >
+          Click!
+        </button>
+      </div>
+    );
+  }
+}
+export default Counter;
+```
+
+<img src="https://user-images.githubusercontent.com/76278794/144974071-0fdc3a57-9dc3-4c58-a5bf-14770d08369f.png">
+
+`setState로 state를 변경했음에도 console.log로 state를 출력해보면 state에 아무런 변화가 생기지 않았음을 알 수 있다.`
+
+리액트 공식문서에서는 react가 성능을 위해 여러 setState()호출을 단일 업데이트로 한꺼번에 처리할 수 있다고 명시했다.  
+이걸 `비동기적`업데이트라고 한다.  
+여러개의 setState호출을 이렇게 비동기적으로 업데이트하는 걸 `batching`이라고도하는데, onClick함수가 시작되고 종료된 시점이 batching의 단위이다.
+
+이렇게 batching이 되면, 마지막에 호출된 setState만이 적용되는 것을 볼 수 있는데,
+
+동일 이벤트 리스너에서 `setState 여러번 처리할 때, 동일한 state에 대해 setState를 실행하고 싶다면`,
+
+해결책으로 책에서는 this.setState를 사용할때 객체 대신, 함수를 인수로 넣어준다고한다.  
+함수를 인자로 넣을때, prevState를 매개변수로 넣어 이전 state를 바탕으로 setState가 연산되고, 새로운 state를 리턴하게된다.
+
+```js
+this.setState((prevState, props) => {
+  return {
+    업데이트내용,
+  };
+});
+```
+
+prevState는 기존상태, props는 현재 갖고있는 props를 의미, 업데이트 과정에서 props 필요없으면 생략가능
+
+```jsx
+import { Component } from "react";
+
+class Counter extends Component {
+  state = {
+    number: 0,
+    fixedNumber: 0,
+  };
+
+  render() {
+    const { number, fixedNumber } = this.state;
+    return (
+      <div>
+        <h1>바뀌는 값{number}</h1>
+        <h2>바뀌지 않는 값{fixedNumber}</h2>
+        <button
+          onClick={() => {
+            this.setState((prevState) => {
+              return {
+                number: prevState.number + 1,
+              };
+            });
+            this.setState((prevState) => ({
+              number: prevState.number + 1,
+            }));
+          }}
+        >
+          Click!
+        </button>
+      </div>
+    );
+  }
+}
+export default Counter;
+```
+
+1. onClick 이벤트 발생
+2. react가 setState 감지, 업데이트 목록에 setState를 넣어둠
+3. 각각의 setState가 이전 state를 기준으로 업데이트하므로 최종 state.number는 +2가된다.
+
+<br><br>
+
+### setState이후 특정작업 실행
+
+setState의 첫번째 인자로 함수를 주었는데, setState로 값을 업데이트하고 특정 작업을 하고싶다면 setState의 두번째 인자로 콜백함수를 등록해 작업을 처리할 수 있다. (setState완료 후, 작업)
+
+```jsx
+<button
+onClock={() => {
+  this.setState({
+    number : number + 1
+  }, () => {console.log('setState호출')})
+}}>
+```
+
+그런데, 문득 setState가 여러개 호출될때, 각각에 대해 후속작업이 명시되면 어떻게 될까가 궁금했다.
+
+```jsx
+<button
+  onClick={() => {
+    this.setState(
+      (prevState) => {
+        return {
+          number: prevState.number + 2,
+        };
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+    this.setState(
+      (prevState) => ({
+        number: prevState.number + 1,
+      }),
+      () => console.log(this.state)
+    );
+  }}
+>
+  Click!
+</button>
+```
+
+<img src = "https://user-images.githubusercontent.com/76278794/144985621-ee625537-94ac-423a-9c4c-0657e0cfcd4f.png">
+이렇게 setState가 종료된 이후의 값을 기준으로 console이 출력되는 것을 볼 수 있다.
+
+그렇다면 만약 다른 state가 껴있다면?
+
+```jsx
+<button
+  onClick={() => {
+    this.setState(
+      (prevState) => {
+        return {
+          number: prevState.number + 2,
+        };
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+    this.setState(
+      (prevState) => ({
+        number: prevState.number + 1,
+      }),
+      () => console.log(this.state)
+    );
+    this.setState(
+      {
+        testnumber: testnumber + 1,
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  }}
+>
+  Click!
+</button>
+```
+
+<img src="https://user-images.githubusercontent.com/76278794/144986159-c8a58400-5118-47e5-9eb0-7dddc673f315.png">
+
+역시 setState가 모두 종료된 이후, console이 출력되는 것을 볼 수 있다.
+
+setState는 batching되어 state를 일괄적으로 업데이트하는데, 그 이후 console.log의 연산은 setState가 끝나고 순차적으로 실행된다.
+
+```jsx
+<button
+  onClick={() => {
+    this.setState(
+      (prevState) => {
+        return {
+          number: prevState.number + 2,
+        };
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+    this.setState(
+      {
+        testnumber: testnumber + 1,
+      },
+      () => {
+        console.log(this.state.testnumber);
+      }
+    );
+    this.setState(
+      (prevState) => ({
+        number: prevState.number + 1,
+      }),
+      () => console.log(this.state)
+    );
+  }}
+>
+  Click!
+</button>
+```
+
+<img src="https://user-images.githubusercontent.com/76278794/144986585-fa8c4155-4d89-4e7f-a579-8d770137e759.png">
+
+이렇게 순서가 바뀐 것을 볼 수 있다.
+
+1. setState로 state에 대한 업데이트 실행
+2. 이후 각 setState에 대한 콜백함수를 위에서부터 순차적으로 실행
+   이 순서이다.
+
+<br><br>
+
+## 함수형 컴포넌트에서 state
+
+함수형 컴포넌트에서는 useState라는 함수로 state를 선언한다.  
+이 과정에서 Hooks를 사용한다.
+
+```jsx
+import React, { useState } from "react";
+
+const Say = () => {
+  const [message, setMessage] = useState("");
+  const onClickEnter = () => setMessage("안녕하세요");
+  const onClickLeave = () => setMessage("안녕하 가세요!");
+
+  return (
+    <div>
+      <button onClick={onClickEnter}>입장</button>
+      <button onClick={onClickLeave}>퇴장</button>
+      <h1>{message}</h1>
+    </div>
+  );
+};
+
+export default Say;
+```
+
+useState함수의 인자에는 state의 `초기값`을 넣어줄 수 있는데, 클래스형 컴포넌트에서 state에 객체 형태를 넣어준것과 달리 useState의 인자에는 무엇이든 올 수 있다.  
+이 useState함수를 호출하면 배열이 리턴되는데,  
+첫 번째 원소로는 `현재 상태`,  
+두 번째 원소로는 이 `상태를 바꿔주는 함수`가 리턴된다.  
+이 상태를 바꿔주는 함수를 `새터(setter)함수`라고한다. 클래스형 컴포넌트의 setState()함수가 새터함수였다.
+
+<br><br>
+
+## state를 update할때 주의사항
+
+state를 사용할때는 setState를 사용하거나 useState로 받은 세터함수를 사용해야한다.
+
+그리고 state를 업데이트할때는 사본을 만들고, 사본에 값을 업데이트하고 사본을 세터함수로 업데이트한다.
+
+객체에 대한 사본을 만들때는 `...`으로 사용하는 spread연산자를 사용하고, 배열에 대한 사본은 slice()같은 내장함수를 사용한다.
