@@ -10,103 +10,102 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-  # theme                  : "minimal-mistakes-jekyll"
+# theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dark"
+minimal_mistakes_skin: "dark"
 
 # Site Settings
-locale                   : "ko-KR"
-title                    : "LightBig"
-title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Dding-Hwan"
-description              : "띵동콜링"
-url                      : "https://koreanddinghwan.github.io"
-baseurl                  : ""
-asset_url                : /assets
-repository               : koreanddinghwan/koreanddinghwan.github.io
-teaser                   : # /assets/images/avatar.png
-logo                     : /assets/images/avatar.png
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-breadcrumbs            : true   #, false (default)
-words_per_minute         : 200
+locale: "ko-KR"
+title: "LightBig"
+title_separator: "-"
+subtitle: # site tagline that appears below site title in masthead
+name: "Dding-Hwan"
+description: "띵동콜링"
+url: "https://koreanddinghwan.github.io"
+baseurl: ""
+asset_url: /assets
+repository: koreanddinghwan/koreanddinghwan.github.io
+teaser: # /assets/images/avatar.png
+logo: /assets/images/avatar.png
+masthead_title: # overrides the website title displayed in the masthead, use " " for no title
+breadcrumbs: true #, false (default)
+words_per_minute: 200
 comments:
-  provider               : "disqus" #"utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "giscus", "custom"
+  provider: "disqus" #"utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "giscus", "custom"
   disqus:
-    shortname            : "https-koreanddinghwan-github-io" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname: "https-koreanddinghwan-github-io" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+    server: # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
+    appid:
+    num_posts: # 5 (default)
+    colorscheme: # "light" (default), "dark"
   utterances:
-    theme                : # "github-dark" # "github-light" (default), "github-dark"
-    issue_term           : # "pathname"
+    theme: # "github-dark" # "github-light" (default), "github-dark"
+    issue_term: # "pathname"
   giscus:
-    repo_id              : # Shown during giscus setup at https://giscus.app
-    category_name        : # Full text name of the category
-    category_id          : # Shown during giscus setup at https://giscus.app
-    discussion_term      : # "pathname" (default), "url", "title", "og:title"
-    reactions_enabled    : # '1' for enabled (default), '0' for disabled
-    theme                : # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
+    repo_id: # Shown during giscus setup at https://giscus.app
+    category_name: # Full text name of the category
+    category_id: # Shown during giscus setup at https://giscus.app
+    discussion_term: # "pathname" (default), "url", "title", "og:title"
+    reactions_enabled: # '1' for enabled (default), '0' for disabled
+    theme: # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
   staticman:
-    branch               : # "master"
-    endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
+    branch: # "master"
+    endpoint: # "https://{your Staticman v3 API}/v3/entry/github/"
 reCaptcha:
-  siteKey                :
-  secret                 :
+  siteKey:
+  secret:
 atom_feed:
-  path                   : # blank (default) uses feed.xml
-  hide                   : # true, false (default)
-search                   : # true, false (default) #사이트 내에서 검색기능활성화
-search_full_content      : # true, false (default)
-search_provider          : # google
+  path: # blank (default) uses feed.xml
+  hide: # true, false (default)
+search: # true, false (default) #사이트 내에서 검색기능활성화
+search_full_content: # true, false (default)
+search_provider: # google
 algolia:
-  application_id         : # YOUR_APPLICATION_ID
-  index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : # true (default), false
+  application_id: # YOUR_APPLICATION_ID
+  index_name: # YOUR_INDEX_NAME
+  search_only_api_key: # YOUR_SEARCH_ONLY_API_KEY
+  powered_by: # true (default), false
 google:
-  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
-  instant_search         : # false (default), true
+  search_engine_id: # YOUR_SEARCH_ENGINE_ID
+  instant_search: # false (default), true
 # SEO Related
-google_site_verification : 
-bing_site_verification   :
-yandex_site_verification :
-naver_site_verification  :
+google_site_verification:
+bing_site_verification:
+yandex_site_verification:
+naver_site_verification:
 
 # Social Sharing
 twitter:
-  username               :
+  username:
 facebook:
-  username               :
-  app_id                 :
-  publisher              :
-og_image                 : # Open Graph/Twitter default site image
+  username:
+  app_id:
+  publisher:
+og_image: # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
+  type: # Person or Organization (defaults to Person)
+  name: # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider: false # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          :
-    anonymize_ip         : # true, false (default)
-
+    tracking_id:
+    anonymize_ip: # true, false (default)
 
 # Site Author
 author:
-  name             : "엘비"
-  avatar           : "/assets/images/avatar.png"
-  bio              : "밝고 큰"
-  location         : "Korea, South"
-  email            : "myunghwan0421@gmail.com"
+  name: "엘비"
+  avatar: "/assets/images/avatar.png"
+  bio: "밝고 큰"
+  location: "Korea, South"
+  email: "myunghwan0421@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -149,7 +148,6 @@ footer:
       icon: "fab fa-fw fa-instagram"
       # url: "https://www.instagram.com/ddingddililiddingdong/"
 
-
 # Reading Files
 include:
   - .htaccess
@@ -187,14 +185,12 @@ keep_files:
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-
 # Conversion
 markdown: kramdown
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
 
 # Markdown Processing
 kramdown:
@@ -207,19 +203,16 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-
 # Sass/SCSS
 sass:
   sass_dir: _sass
   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
 
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
 
 # Plugins (previously gems:)
 plugins:
@@ -236,7 +229,6 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
-
 
 # Archives
 #  Type
@@ -265,7 +257,6 @@ tag_archive:
 #   permalinks:
 #     category: /categories/:name/
 #     tag: /tags/:name/
-
 
 # HTML Compression
 # - https://jch.penibelst.de/

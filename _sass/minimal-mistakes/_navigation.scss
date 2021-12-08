@@ -1,9 +1,9 @@
 /* ==========================================================================
-   NAVIGATION
+  NAVIGATION
    ========================================================================== */
 
 /*
-   Breadcrumb navigation links
+  Breadcrumb navigation links
    ========================================================================== */
 
 .breadcrumbs {
@@ -46,7 +46,7 @@
 }
 
 /*
-     Post pagination navigation links
+    Post pagination navigation links
      ========================================================================== */
 
 .pagination {
@@ -164,7 +164,7 @@
 }
 
 /*
-     Priority plus navigation
+    Priority plus navigation
      ========================================================================== */
 
 .greedy-nav {
@@ -176,7 +176,6 @@
   -ms-flex-align: center;
   align-items: center;
   min-height: $nav-height;
-  background: $background-color;
 
   a {
     display: block;
@@ -351,7 +350,7 @@
       display: inline-block;
       padding: 0.4em 2em 0.4em 0.7em;
       color: $gray;
-      font-size: 20px;
+      font-size: $type-size-7;
       font-weight: bold;
       border: 1px solid $light-gray;
       border-radius: $border-radius;
@@ -567,10 +566,9 @@
   }
 
   li ul li ul li ul li ul li ul > li a {
-    padding-left: 3.25rem
+    padding-left: 3.25rem;
   }
 }
-
 
 .pagination_prev_next {
   @include clearfix();
@@ -595,7 +593,7 @@
     border-radius: $border-radius;
 
     .prev_next {
-      color:#fff;
+      color: #fff;
     }
   }
 }
