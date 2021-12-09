@@ -5,13 +5,13 @@ excerpt: "공부한거 요약"
 categories:
   - React
 tags:
-  - [React, JSX]
+  - [React]
 
 toc: true
 toc_sticky: true
 
-date: 2021-12-07
-last_modified_at: 2021-12-07
+date: 2021-12-08
+last_modified_at: 2021-12-08
 ---
 
 <br><br>
