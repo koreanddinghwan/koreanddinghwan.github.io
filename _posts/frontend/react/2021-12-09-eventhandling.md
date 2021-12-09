@@ -30,9 +30,11 @@ last_modified_at: 2021-12-09
 2. 이벤트에 실행할 자바스크립트 코드를 전달하는 것이 아니라, 함수형태의 값을 전달한다.
 3. DOM요소에만 이벤트를 설정할 수 있다, 컴포넌트에는 이벤트리스너를 달아줄 수 없다.
 
+<br><br>
+
 # 예제로 이벤트핸들링 익히기
 
-### 4.2.1 컴포넌트 생성 및 불러오기
+## 컴포넌트 생성 및 불러오기
 
 ```jsx
 import React, { Component } from "react";
@@ -64,6 +66,8 @@ SyntheticEvent는 이벤트가 끝나면 이벤트가 초기화되기때문에 �
 입력되는 각각의 값이 바로바로 사라지기때문에 onChange만 달아준다고 값을 변경할 수는 없다.
 이 이벤트 객체를 참조할 일이 있다면, e.persist()함수를 호출해 값을 유지해야한다. 또는 state에 따로 값을 유지해야한다.
 
+<br><br>
+
 ```jsx
 import React, { Component } from "react";
 
@@ -89,7 +93,9 @@ export default EventPractice;
 
 input 안의 내용이 바뀔때마다 바뀐 값을 콘솔에서 출력한다.
 
-#### 4.2.2.2 state에 input값 담기
+<br><br>
+
+## state에 input값 담기
 
 ```jsx
 import React, { Component } from "react";
@@ -124,7 +130,9 @@ state에서 message state의 초기값을 설정,
 input에서 onChange이벤트가 일어나면, setState가 message state를 업데이트한다.  
 input에서 변화가 생기면 setState함수가 state를 계속 갱신할 것이다.
 
-#### 4.2.2.3 메시지창 띄우고 초기화
+<br><br>
+
+## 메시지창 띄우고 초기화
 
 ```jsx
 <button
@@ -141,7 +149,9 @@ input에서 변화가 생기면 setState함수가 state를 계속 갱신할 것�
 
 버튼이 클릭되면 onClick함수 호출, alert로 현재 state의 message를 창으로 띄우고, setState로 message를 초기화한다.
 
-### 4.2.3 임의 메서드 만들기
+<br><br>
+
+## 임의 메서드 만들기
 
 리액트에서 이벤트 리스너를 달아줄때, 코드를 전달하기보다는 함수를 전달하라고 배웠다.  
 가독성이 훨씬 좋다.
@@ -217,7 +227,9 @@ handleClick = (e) => {
 };
 ```
 
-### 4.2.4. input 여러개 다루기
+<br><br>
+
+## input 여러개 다루기
 
 input이 여러개일때는 어떻게 다루어야할까?
 쉽게 생각하면 input마다 새로운 메서드를 정의하고, 달아줄수도있는데, 더 쉽게 처리하기위해서는 이벤트 객체를 이용해야한다.
@@ -253,7 +265,9 @@ this.setState({
 });
 ```
 
-### 4.2.5 onKeyPress 이벤트 핸들링
+<br><br>
+
+## onKeyPress 이벤트 핸들링
 
 name="message" 인 input에서 엔터가 눌리면 handleClick메서드를 호출하기위해서는
 
@@ -280,7 +294,9 @@ handleKeyPress = (e) => {
 
 이벤트 객체의 key가 Enter면 handleClick함수를 호출하도록 하면된다.
 
-## 4.3 함수형 컴포넌트로 교체
+<br><br>
+
+## 함수형 컴포넌트로 교체
 
 ```jsx
 import { useState } from "react";
