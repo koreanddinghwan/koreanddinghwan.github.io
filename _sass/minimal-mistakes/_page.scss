@@ -88,7 +88,18 @@ body {
 }
 
 .page__content {
+  h1 {
+    text-indent: 0%;
+    padding-bottom: 0.5em;
+    border-bottom: 3px solid $border-color;
+  }
   h2 {
+    text-indent: 1rem;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid $border-color;
+  }
+  h3 {
+    text-indent: 2rem;
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
   }
