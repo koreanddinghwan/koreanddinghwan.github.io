@@ -40,9 +40,61 @@ Web API에서 처리된 작업들은 `call Stack이 비어있을 때만` call st
 
 이걸 해결하기위한게 promise이며, promise를 쉽게 이용할 수 있는게 `async await`문법이다.
 
+# 콜백함수
+
+```js
+function increase(number, callback) {
+  setTimeout(() => {
+    const result = number + 10;
+    if (callback) {
+      callback(result);
+    }
+  }, 1000);
+}
+increase(0, (result) => {
+  console.log(result);
+});
+```
+
+`increase`라는 함수는 number파라미터를 받아 1초뒤에 10을 더하고, 콜백함수에 그 값을 넣어서 실행하는 함수.
+
+해당 함수가 실행된 `직후`, 어떤 작업을 하고 싶다면, 콜백함수를 파라미터로 넣어주면된다.
+
+## 콜백지옥
+
+그런데, `함수를 작업하고나서, 연쇄적인 작업을 정의`하기위해선? 어떻게해야할까
+
+가령 어떤 API를 fetch한다고 생각하면, 데이터를 받아오고 -> json형태로 파싱하고 -> 현재 서버의 DB와 비교해 달라진 부분을 패치하고 -> ....
+
+복잡한 과정에 대해 생각하기보단, `단순한 과정`을 정의하고 복잡한 과정으로 치환해서 생각해보자.
+
+단순한과정으로 생각해보면 위의 함수를 4번 실행해 10, 20, 30, 40을 출력하도록해보자.
+
+```js
+increse(0, (result) => {
+  console.log(result); //여기서 result는 10
+  increase(result, (result) => {
+    console.log(result); //20
+    increase(result, (result) => {
+      console.log(result); //30
+      increase(result, (result) => {
+        console.log(result); //40
+      });
+    });
+  });
+});
+```
+
+`wow`  
+매우 단순화해서 생각했는데도, 이렇게 더러운 코드가 나온다.
+
+result 값을 전역 필드에 정의하면 되는거 아니냐고? -> 실제 JS로 프로젝트 코딩할때는, 전역필드에 변수를 선언하는 일이 거~의 없다.
+
+이런 콜백지옥에서 구원해줄 방안으로 도입된 것이 `promise`이다.
+
 # promise
 
-async와 await을 이해하기 위해선 promise를 먼저 알아야한다.
+`promise`는 ES6에서 도입되었다.
 
 promise 객체는 다음과 같이 만들 수 있다.
 
@@ -53,7 +105,7 @@ let promise = new Promise(funciton (resolve, reject) {
 ```
 
 `Promise`를 선언할때 전달되는 함수를 `executor`라고 하고, 이에 전달되는 인수를 `resolve, reject`라고 한다.  
-executor는 promise가 만들어질때 자동으로 실행되고, 인수 resolve와 reject는 자바스크립트가 자체적으로 제공하는 콜백이다.
+executor는 promise가 만들어질때 자동으로 실행되고, 인수 resolve와 reject는 `자바스크립트가 자체적으로 제공하는 콜백`이다.
 
 Promise 객체는 `state`와 `result`라는 내부 프로퍼티를 기본적으로 가진다.  
 resolve나 reject에 의해 이 내부 프로퍼티가 변화한다.
@@ -61,25 +113,97 @@ resolve나 reject에 의해 이 내부 프로퍼티가 변화한다.
 - state: 기본값은 `pending`, resolve가 호출되면 `fufilled`, reject가 호출되면 `rejected`
 - result: 기본값은 `undefined`, resolve(value)가 호출되면 `value`, reject(error)가 호출되면 `error`
 
+위의 코드를 promise로 나타내보자.
+
 ```js
-let promise = new Promise(function (resolve, reject) {
-  setTimeout(() => resolve("done"), 3000);
-  alert("resolved!");
-});
+function incease(number) {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const result = number + 10; //인수로 받은 파라미터에 10을 넣는다.
+
+      if (result > 50) {
+        //에러체크
+        //만약 50보다 커지면
+        const error = new Error("numberistoobig"); //error 만들고,
+        return reject(error); //reject(error)로 promise 객체의 내부 프로퍼티의 result값은 error가 되고, state값도 rejected가된다.
+      }
+
+      return resolve(result); //에러가 안나면, resolve호출되면서 내부 프로퍼티로 state는 fulfilled, result는 계산된 result값이 된다.
+    }, 1000);
+  });
+
+  return promise;
+}
+
+increase(0)
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .then((number) => {
+    console.log(number);
+    return increase(number);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 ```
+
+`.then`은 `resolve`된 result 값을 받아올 수 있다.  
+`.then`을 사용하면 콜백함수 속에 콜백함수를 넣지 않아도되기 때문에 코드의 가독성이 높다.
 
 # async,await
 
+ES8에서 도입된 문법.  
 `async`와 `await` 이 둘을 사용하면 위의 promise 객체를 더 쉽게 사용할 수 있다.
 
 ```js
-async function fetchData () => {
-    try {
-        let response = await fetch("데이터를 요청할 서버의 URL주소");
-        let json = await response.json();
-    } catch (error) {
-        console.log('error')
-    }
+function incease(number) {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const result = number + 10; //인수로 받은 파라미터에 10을 넣는다.
+
+      if (result > 50) {
+        //에러체크
+        //만약 50보다 커지면
+        const error = new Error("numberistoobig"); //error 만들고,
+        return reject(error); //reject(error)로 promise 객체의 내부 프로퍼티의 result값은 error가 되고, state값도 rejected가된다.
+      }
+
+      return resolve(result); //에러가 안나면, resolve호출되면서 내부 프로퍼티로 state는 fulfilled, result는 계산된 result값이 된다.
+    }, 1000);
+  });
+
+  return promise;
+}
+
+async function example() {
+  try {
+    let result = await increase(0);
+    console.log(result);
+    let result = await increase(result);
+    console.log(result);
+    let result = await increase(result);
+    console.log(result);
+    let result = await increase(result);
+    console.log(result);
+    let result = await increase(result);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
 }
 ```
 
@@ -87,3 +211,4 @@ async function fetchData () => {
 2. await은 promise객체를 리턴하는 함수에만 선언할 수 있다.
 3. await은 async가 선언된 함수 내부에서만 선언이 가능하다.
 4. await은 promise가 처리될때까지 기다린다는 의미인데, 기다리는동안 자바스크립트엔진이 다른 일을 할 수 있다.
+5. try~ catch 구문으로 try할때 발생한 error를 처리할 수 있다.
