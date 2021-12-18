@@ -1,3 +1,21 @@
+---
+title: "[javascript] Promise, async, await"
+excerpt: "자바스크립트의 비동기작업을 효율적으로 처리하자"
+
+categories:
+  - javascript
+tags:
+  - [javascript, promise, async, await]
+
+toc: true
+toc_sticky: true
+
+date: 2021-12-18
+last_modified_at: 2021-12-18
+---
+
+<br><br>
+
 <br><br>
 
 # 자바스크립트 동작원리
