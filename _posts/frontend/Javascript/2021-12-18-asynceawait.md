@@ -7,6 +7,21 @@
 
 hoisting이란 `변수선언, 함수선언`이 가장 먼저 실행되고, 코드가 나타나는 순서로 실행된다는 것.
 
+![browser-structure](https://user-images.githubusercontent.com/76278794/146628244-903ede34-8a2f-4129-bcd2-62d68298e96d.png)
+
+그리고 자바스크립트 엔진은 `싱글 스레드`이다.  
+기본적으로 단 하나의 작업을 할 수 있는데, 이 작업을 하는 곳을 `call stack`이라고 부른다.
+
+비동기적으로 이벤트를 처리하거나 Promise, setTimeout같은 작업은 Web API에서 처리된다.
+
+Web API에서 처리된 작업들은 `call Stack이 비어있을 때만` call stack으로 불러와져 처리된다.
+
+이런 동작원리로 인해 개발자가 눈으로 읽어 내려가면서 생각하는 작업순서와 자바스크립트엔진이 실제로 처리하는 작업순서가 달라진다.
+
+또, 무수히 많은 콜백함수들이 서로 물고 늘어지면서 코드의 로직도 이해하기 어려워진다.
+
+이걸 해결하기위한게 promise이며, promise를 쉽게 이용할 수 있는게 `async await`문법이다.
+
 # promise
 
 async와 await을 이해하기 위해선 promise를 먼저 알아야한다.
@@ -37,9 +52,7 @@ let promise = new Promise(function (resolve, reject) {
 
 # async,await
 
-ES6에서 놀라울정도로 자주 만나는 문법이 `async`와 `await`이다.
-
-이 둘을 사용하면 위의 promise 객체를 더 쉽게 사용할 수 있다.
+`async`와 `await` 이 둘을 사용하면 위의 promise 객체를 더 쉽게 사용할 수 있다.
 
 ```js
 async function fetchData () => {
@@ -52,17 +65,7 @@ async function fetchData () => {
 }
 ```
 
-이런 식으로 처리가 가능한데, async와 await을 이해하기위해서는 자바스크립트가 비동기처리를 어떻게 하는지 알아야한다.
-
-기본적으로 콜백함수들은 가장 마지막에 실행된다.(비동기식 처리됨)  
-그런데 이런 비동기식 처리가 계속되면 콜백지옥에 걸리게된다.
-
-콜백지옥이란, 간단히 말하면 콜백함수 속에 콜백함수 속에 콜백함수를 호출하는 방식이다.
-
-자바스크립트의 동작원리가 비동기식 처리를 해야하는 코드들은 queue에 저장해두고, 나머지 동기식 처리 코드들이 Stack에서 모두 실행되고 나서야  
-비동기코드들을 처리하기 때문에, 개발자의 입장에서 보는 코드와 자바스크립트가 보는 코드가 다르다. => 작업이 꼬인다.
-
-이걸 해결하기위한게 promise이며, promise를 쉽게 이용할 수 있는게 `async await`문법이다.
-
-async ~ await을 하게되면, async로 선언된 함수 내부에서, await으로 실행되는 명령어들은  
-해당 명령어의 처리가 끝나기 전까지 실행되지 않아 위에서부터 순서대로 작성된다.
+1. async가 붙은 함수는 반드시 promise를 반환하고, promise가 아닌건 promise로 감싸서 반환한다.
+2. await은 promise객체를 리턴하는 함수에만 선언할 수 있다.
+3. await은 async가 선언된 함수 내부에서만 선언이 가능하다.
+4. await은 promise가 처리될때까지 기다린다는 의미인데, 기다리는동안 자바스크립트엔진이 다른 일을 할 수 있다.
