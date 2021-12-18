@@ -212,3 +212,73 @@ async function example() {
 3. await은 async가 선언된 함수 내부에서만 선언이 가능하다.
 4. await은 promise가 처리될때까지 기다린다는 의미인데, 기다리는동안 자바스크립트엔진이 다른 일을 할 수 있다.
 5. try~ catch 구문으로 try할때 발생한 error를 처리할 수 있다.
+
+# 리액트에서 사용해보기
+
+`promise`나 `async`, `await`은 `API`로 데이터를 받아와야할때 정~말 많이 사용한다.
+
+현재 필자가 공부하고있는 리액트에서 사용해볼건데, 리액트의 `axios`라는 라이브러리를 사용할 것이다.
+
+`axios`는 promise기반으로 HTTP요청을 처리하기때문에, 좋은 예시가 될 수 있다고 생각한다.
+
+```js
+npm i axios
+```
+
+그리고 App 컴포넌트에서 `데이터를 요청하고` 동시에 `렌더링`을 해볼건데,
+
+```js
+import React, { useState } from "react";
+import axios from "axios";
+
+function App() {
+  const [data, setData] = useState(null); //초기값 null인 데이터 state
+  const onClick = () => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => {
+        setData(response);
+      });
+  };
+  return (
+    <div>
+      <div>
+        <button onClick={onClick}>불러오기</button>
+      </div>
+      <div>
+        {data && (
+          <textarea
+            rows={7}
+            value={JSON.stringify(data, null, 2)}
+            readOnly={true}
+          ></textarea>
+        )}
+      </div>
+    </div>
+  );
+}
+export default App;
+```
+
+axios.get()은 파라미터로 전달된 주소에 get요청을 한다.  
+프로미스 객체를 리턴하므로, `.then`을 사용함녀 `resolve된 value값`을 파마미터로 전달한다.  
+그리고 이 `response`는 `JSON`이 기본형태이므로, 문자열화해서 textarea에 value값으로 전달하면된다.
+
+위 코드를 `async, await`을 적용하면
+
+```js
+const onClick = async () => {
+  try {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/todos/2"
+    );
+    setData(response);
+  } catch (error) {
+    setData(error);
+  }
+};
+```
+
+.then으로 resolve된 값을 가져올땐 error체킹을 안했는데, 여기선 try~catch로 에러를 처리했다.
+
+`async`가 `onClick` 화살표 함수 선언부분 앞에 작성되어있고, `response`를 가져올때 `axios.get`으로 값을 가져올때까지 기다리고, setData로 리렌더링일어난다.
