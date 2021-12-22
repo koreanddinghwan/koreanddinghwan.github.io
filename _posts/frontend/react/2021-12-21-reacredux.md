@@ -745,3 +745,5 @@ const [onChangeInput, onInsert, onToggle, onRemove] = useActions(
   []
 );
 ```
+
+이렇게 actionCreator를 dispatch함수로 변환할 수 있다.
