@@ -20,7 +20,7 @@ title: "LightBig"
 title_separator: "-"
 subtitle: # site tagline that appears below site title in masthead
 name: "Dding-Hwan"
-description: "띵동콜링"
+description: "1차 가공공간"
 url: "https://koreanddinghwan.github.io"
 baseurl: ""
 asset_url: /assets
@@ -103,7 +103,7 @@ analytics:
 author:
   name: "엘비"
   avatar: "/assets/images/avatar.png"
-  bio: "밝고 큰"
+  bio: "1차 가공중입니다"
   location: "Korea, South"
   email: "myunghwan0421@gmail.com"
   links:
