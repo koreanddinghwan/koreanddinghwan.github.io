@@ -74,7 +74,7 @@ a라는 변수에 int형의 자료를 보관하는 메모리를 할당하겠다�
 
 <br>
 
-### sizeof함수
+### sizeof연산자
 
 ```c++
 #include <stdio.h>
