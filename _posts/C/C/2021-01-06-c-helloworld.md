@@ -1,5 +1,5 @@
 ---
-title: "[C] Hello world!"
+title: "[C 문법공부] Hello world!"
 excerpt: "C언어 맛보기"
 
 categories:

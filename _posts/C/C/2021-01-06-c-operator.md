@@ -1,5 +1,5 @@
 ---
-title: "[C] 연산자 종류"
+title: "[C 문법공부] 연산자 종류"
 excerpt: "C언어 연산자"
 
 categories:

@@ -1,5 +1,5 @@
 ---
-title: "[C] C언어 변수의 종류"
+title: "[C 문법공부] C언어 변수의 종류"
 excerpt: "C언어 자료형태"
 
 categories:
