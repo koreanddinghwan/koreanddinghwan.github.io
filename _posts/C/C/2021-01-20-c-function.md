@@ -219,12 +219,105 @@ main num : 17
 
 이런 편리함이 있지만, 지나치게 많이 선언된 전역변수는 `스파게티 코드`로 이어져 프로그램이 복잡해질 수 있다.
 
+❗️전역변수와 동일한 이름의 지역변수가 선언되면, 해당 지역에서는 지역 변수로 접근이 이뤄진다.
+
+```c++
+#include <stdio.h>
+void Add(int val);
+int num; //전역변수는 선언시 기본적으로 0으로 초기화.
+
+int main(void)
+{
+  printf("num: %d \n", num);
+  Add(3);//전역변수 num 3증가
+  printf("num: %d \n", num);
+  num++;//전역변수 num 1증가
+  printf("num: %d \n", num);
+  return 0;
+}
+
+void Add(int val)
+{
+  num += val;
+}
+```
+
 <br>
 
 ## static변수
 
-지역변수의
+지역변수에 static 선언이 추가되면 전역변수의 성격이 추가된다.
+
+► 선언된 함수 내에서만 접근이 가능하다. (지역변수 특성)
+► 선언시 1회 초기화되며 프로그램 종료 시까지 메모리 공간에 존재한다. (전역변수 특성)
+
+❗️ static으로 선언된 지역변수는 위치에 따라 선언되는 것이 아닌, `전역변수와 동일한 시기에 할당되고 소멸`된다.  
+❗️ 단지, 접근 가능함 범위를 한정하기 위해 중괄호 내에 위치하는 것이다.
+
+```c++
+#include <stdio.h>
+
+void SimpleFunc(void)
+{
+  static int num1 = 0; //static 변수 num1
+  int num2 = 0;//지역변수 num2, 함수호출할때마다 0으로 초기화됨.
+  num1++, num2++; //num2 는 지역변수, 항상 1값이 된다. static변수 num1은 함수호출할때마다 초기화되지않고, 1씩증가됨.
+  printf("static : %d, local: %d \n", num1, num2);
+}
+
+int main(void)
+{
+  int i;
+  for(i=0;i<3;i++)
+    SimpleFunc();
+  return 0;
+}
+```
 
 <br>
 
 ## register변수
+
+레지스터는 CPU에 존재하는 작은 메모리인데, CPU내에 존재하기에 연산 속도가 매우 `빠르다.`
+
+이런 레지스터의 활용에 대해 컴파일러에게 힌트를 주는 선언이 register선언이다.
+
+하지만, `레지스터 선언을 한다고 하더라도 반드시 컴파일러가 레지스터를 활용하는 것은 아니다.`
+
+컴파일러는 이 레지스터 선언을 힌트로 해당 변수를 레지스터에 저장할지 말지 결정한다.
+
+<br>
+<br>
+
+# 재귀함수
+
+► `함수 내에서 자기 자신을 다시 호출하는 함수`
+
+► `함수를 실행하는 도중, 자기 자신이 다시 호출되면, 자신의 복사본을 하나 더 만들어서 복사본을 실행하게 된다.`
+
+어려운 문제를 단순화 하는데 사용되는 중요한 무기이기에 자료구조나 알고리즘에서 많이 사용된다.
+
+팩토리얼과 같은 수학적 수식을 쉽게 코드로 옮길 수 있다.
+
+```c++
+#include <stdio.h>
+
+int Factorial(int num)
+{
+	if (num == 0)
+		return 1;
+
+	if (num == 1)
+		return 1;
+
+	return num*Factorial(num-1);
+}
+
+
+int main()
+{
+	printf("%d\n", Factorial(5));
+
+	return 0;
+}
+```
