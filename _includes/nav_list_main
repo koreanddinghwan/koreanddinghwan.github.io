@@ -19,6 +19,27 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+			<ul>
+                {% for category in site.categories %}
+                {% if category[0] == "printf" %}
+                <li><a href="/categories/printf" class="">ft_printf ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+			<ul>
+                {% for category in site.categories %}
+                {% if category[0] == "getnextline" %}
+                <li><a href="/categories/getnextline" class="">Get Next Line ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+			<ul>
+                {% for category in site.categories %}
+                {% if category[0] == "born2beroot" %}
+                <li><a href="/categories/born2beroot" class="">Born2beroot ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
 
             <span class="nav__sub-title">Frontend</span>
             <ul>
