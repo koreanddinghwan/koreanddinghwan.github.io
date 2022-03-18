@@ -1,7 +1,7 @@
 ---
-title: "[Ft_printf] ft_printf"
+title: "[GetNextLine] Get Next Line"
 layout: archive
-permalink: categories/printf
+permalink: categories/getnextline
 author_profile: true
 sidebar_main: true
 ---
@@ -10,5 +10,5 @@ sidebar_main: true
 
 ***
 
-{% assign posts = site.categories.printf %}
+{% assign posts = site.categories.getnextline %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
