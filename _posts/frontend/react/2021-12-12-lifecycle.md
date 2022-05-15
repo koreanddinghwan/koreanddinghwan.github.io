@@ -24,15 +24,22 @@ last_modified_at: 2021-12-11
 
 # 라이프사이클 메서드
 
-컴포넌트의 수명주기는 렌더링 되기전에서 시작해 페이지에서 사라질때 끝난다.  
-컴포넌트를 업데이트하기 전후로, 혹은 렌더링할때 작업을 처리해야할수도 있고, 불필요한 없데이트를 방지해야할때도 있다.  
+- 컴포넌트의 수명주기는 렌더링 되기전에서 시작해 페이지에서 사라질때 끝난다.  
+  - 컴포넌트를 업데이트하기 전후로, 
+  - 혹은 렌더링할때 작업을 처리해야할수도 있고, 
+  - 불필요한 업데이트를 방지해야할때도 있다.  
+
 이때 라이프사이클 메서드를 사용한다.  
-이 라이프사이클 메서드는 클래스형 컴포넌트에서만 사용한다. 함수형 컴포넌트에서는 Hooks를 사용해야한다.
+
+- 이 라이프사이클 메서드는 클래스형 컴포넌트에서만 사용한다. 
+- 함수형 컴포넌트에서는 Hooks를 사용해야한다.
 <br><br>
 
 ## 라이프사이클 분류
 
-will이 붙은 메서드는 특정 작업 이전, did가 붙은 메서드는 특정 작업 이후에 실행되는 메서드이다.
+- will이 붙은 메서드는 특정 작업 이전, 
+- did가 붙은 메서드는 특정 작업 이후에 실행되는 메서드이다.
+
 컴포넌트 클래스에서 덮어 씌워 사용한다.  
 크게 3 카테고리로 나뉜다.
 <br><br>
@@ -56,12 +63,14 @@ will이 붙은 메서드는 특정 작업 이전, did가 붙은 메서드는 특
 - 부모 컴포넌트가 넘겨주는 props 변경
 - 자신의 state 변경
 - 부모 컴포넌트의 리렌더링
-- forceUpdate로 강제로 렌더링\
+- forceUpdate로 강제로 렌더링
 
 -업데이트 인식 이후
 
 1. getDerivedStateFromProps
 2. shouldComponentUpdate
+  - true면 render호출 o
+  - false면 render호출 x
 3. render
 4. getSnapshotBeforeUpdate
 5. 웹 브라우저 상의 실제 DOM변화
@@ -83,8 +92,8 @@ will이 붙은 메서드는 특정 작업 이전, did가 붙은 메서드는 특
 
 ### 1.constructor
 
-컴포넌트의 `생성자` 메서드, 컴포넌트를 만들때 가장 처음으로 실행된다.  
-이 메서드에서 초기 state 설정가능
+- 컴포넌트의 `생성자` 메서드, 컴포넌트를 만들때 가장 처음으로 실행된다.  
+- 이 메서드에서 초기 state 설정가능
 
 <br><br>
 
@@ -99,22 +108,26 @@ static getDerivedStateFromProps(nextProps, prevState) {
 }
 ```
 
-Props로 받아온 값과 state를 동기화한다.
+- Props로 받아온 값과 state를 동기화한다.
+- 컴포넌트가 마운트될 때, 업데이트 될 때 호출된다.
 
 <br><br>
 
 ### 3. render
 
-이 메서드 안에서 this.props나 this.state에 접근.  
-주의할 사항으로 이 메서드 안에서는 이벤트 설정이 아닌 곳에서 setState를 사용해선 안되고, 브라우저의 DOM에 접근해선 안된다.  
-위 작업을 하기 위해선 componentDidMount에서 처리해야한다.
+- 이 메서드 안에서 this.props나 this.state에 접근.  
+- 주의할 사항으로 
+  - 이 메서드 안에서는 이벤트 설정이 아닌 곳에서 setState를 사용해선 안되고, 
+  - 브라우저의 DOM에 접근해선 안된다.  
+  - 위 작업을 하기 위해선 componentDidMount에서 처리해야한다.
 
 <br><br>
 
 ### 4. componentDidMount
 
-컴포넌트를 만들고, 첫 렌더링이 끝나면 호출된다.  
-다른 라이브러리, 프레임워크 함수를 호출하거나, 이벤트 등록, setTimeout, setInterval, 네트워크 요청과 같은 ``비동기작업`을 처리한다.
+- 컴포넌트를 만들고, 첫 렌더링이 끝나면 호출된다.  
+- 다른 라이브러리, 프레임워크 함수를 호출하거나,
+- 이벤트 등록, setTimeout, setInterval, 네트워크 요청과 같은 ``비동기작업`을 처리한다.
 
 <br><br>
 
@@ -132,15 +145,15 @@ Props로 받아온 값과 state를 동기화한다.
 shouldComponentUpdate(nextProps, nextState) {...}
 ```
 
-props나 state가 변경되었을때, 리렌더링 여부를 결정하는 메서드이다.
+- props나 state가 변경되었을때, 리렌더링 여부를 결정하는 메서드이다.
 
-인자로 들어온 nextProps와 nextState가 새로 설정될 props와 state이며,  
-이를 현재 state와 props, this.state와 this.props로 비교한다.
+- 인자로 들어온 `nextProps와 nextState가 새로 설정될 props와 state`이며,  
+- 이를 현재 state와 props, this.state와 this.props로 비교한다.
 
-이 메서드는 true나 false를 리턴해 이에따라 리렌더링을 실시한다.  
-따로 설정하지 않는다면 기본값으로 true가 리턴된다.
+- 이 메서드는 `true나 false를 리턴해 이에따라 리렌더링을 실시`한다.  
+- 따로 설정하지 않는다면 기본값으로 true가 리턴된다.
 
-프로젝트의 성능을 최적화할때, 리렌더링을 방지함으로써 불필요한 렌더링을 막을 수 있다.
+- `프로젝트의 성능을 최적화할때`, 리렌더링을 방지함으로써 불필요한 렌더링을 막을 수 있다.
 
 <br><br>
 
@@ -161,9 +174,9 @@ getSnapshotBeforeUpdate(prevProps, prevState) {
 }
 ```
 
-브라우저상에 DOM이 실제로 변하기 전에 호출된다.  
-여기서의 리턴값은 componentDidUpdate에서 파라미터로 활용된다
-업데이트하기 직전의 값을 참고할 일이 있을때 활용한다.(스크롤바의 위치같은..)
+- 브라우저상에 DOM이 실제로 변하기 전에 호출된다.  
+- 여기서의 리턴값은 componentDidUpdate에서 파라미터로 활용된다
+- 업데이트하기 직전의 값을 참고할 일이 있을때 활용한다.(스크롤바의 위치같은..)
 
 <br><br>
 
@@ -177,9 +190,9 @@ getSnapshotBeforeUpdate(prevProps, prevState) {
 componentDidUpdate(prevProps, prevState, snapshot){...}
 ```
 
-리렌더링을 완료한 후 실행, 업데이트가 끝난 시점에 실행된다.  
-DOM관련 처리를 해도 무방하며, prevProps나 prevState같이 이전 데이터에 접근할 수 있다.  
-또한 위의 getSnapshotBeforeUpdate에서 리턴값을 3번째 인자 snapshot으로 전달받는다.
+- 리렌더링을 완료한 후 실행, 업데이트가 끝난 시점에 실행된다.  
+- DOM관련 처리를 해도 무방하며, prevProps나 prevState같이 이전 데이터에 접근할 수 있다.  
+- 또한 위의 getSnapshotBeforeUpdate에서 리턴값을 3번째 인자 snapshot으로 전달받는다.
 
 <br><br>
 
@@ -187,7 +200,8 @@ DOM관련 처리를 해도 무방하며, prevProps나 prevState같이 이전 데
 
 ### 1. componentWillUnmount
 
-컴포넌트를 DOM에서 제거할때 실행. componentDidMount에서 등록한 이벤트, 타이머, 직접 생성한 DOM 등을 여기서 제거한다.
+- 컴포넌트를 DOM에서 제거할때 실행.
+- componentDidMount에서 등록한 이벤트, 타이머, 직접 생성한 DOM 등을 여기서 제거한다.
 
 <br><br>
 
@@ -195,7 +209,7 @@ DOM관련 처리를 해도 무방하며, prevProps나 prevState같이 이전 데
 
 ### 1. componentDidCatch
 
-컴포넌트 렌더링 도중에 에러발생 시, 오류 UI를 보여 줄 수 있게 해준다.
+- 컴포넌트 렌더링 도중에 에러발생 시, 오류 UI를 보여 줄 수 있게 해준다.
 
 ```js
 componentDidCatch(error, info) {
@@ -207,8 +221,10 @@ componentDidCatch(error, info) {
 }
 ```
 
-이 메서드는 자신에게 발생하는 에러가 아닌, `this.props.children`으로 전달되는 컴포넌트에서 발생하는 에러를 잡아낸다.  
-`error`는 파라미터에 어떤 에러가 발생했는지 알려주고, `info` 파라미터는 어디 있는 코드에서 오류가 발생했는지 알려준다.
+- 이 메서드는 자신에게 발생하는 에러가 아닌, 
+  - `this.props.children`으로 전달되는 컴포넌트에서 발생하는 에러를 잡아낸다.  
+- `error`는 파라미터에 어떤 에러가 발생했는지 알려주고,
+- `info` 파라미터는 어디 있는 코드에서 오류가 발생했는지 알려준다.
 
 <br><br>
 
