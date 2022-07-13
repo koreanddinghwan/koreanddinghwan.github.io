@@ -183,6 +183,14 @@ float자료형에서 fractional bits가 8개일때
 
 <br><br>
 
+따라서 -118.625는   
+부동소수점하에서  
+1|10000101|11011010100000000000000
+
+고정소수점하에서  
+1|00000000000000001110110|10100000
+
+
 [Fixed-Point Number](https://www.sciencedirect.com/topics/computer-science/fixed-point-number)
 [컴퓨터에서 실수 표현](https://gsmesie692.tistory.com/94)
 [소수점을 이진수로](https://m.blog.naver.com/winzone/70175202044)
