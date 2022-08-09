@@ -89,20 +89,21 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 
 ### routing table
 
-<img width="925" alt="Screen Shot 2022-08-08 at 2 03 37 PM" src="https://user-images.githubusercontent.com/76278794/183342991-432d49d3-eaeb-4db5-892a-b010b3abf278.png">
 
 - 모든 네트워크 라우터의 핵심적인 요소는 `routing table`이다.
 - 라우터는 전달받은 패킷의 헤더의 1개이상의 필드의 값을 분석해 이 헤더값들을 인덱스로 사용해 포워딩 테이블의 넣는다.
 - 포워딩 테이블에 저장된 값들은 패킷이 포워딩될 라우터의 outgoing link를 의미하게된다.
 
   - 예를들어, 헤더필드의 값이 `0110`이라면, 라우터는 포워딩테이블에서 이를 key로 사용해 output link interface가 2임을 결정하게된다.
-  - 그리고 라우터는 내부적으로 해당패킷을 interface 2fh vhdnjeldgkrpehlsek.
+  - 그리고 라우터는 내부적으로 해당패킷을 interface 2로 포워딩한다.
 
 - 포워딩은 data-plane에서 일어나는 네트워크 계층의 핵심적인 기능이다.
 
 <br>
 
 ### Control Plane:The Traditional Approach
+
+<img width="925" alt="Screen Shot 2022-08-08 at 2 03 37 PM" src="https://user-images.githubusercontent.com/76278794/183342991-432d49d3-eaeb-4db5-892a-b010b3abf278.png">
 
 - 라우팅 테이블이 어떻게 미리 설정되어있을까?
 - 이에대한 고민은 라우팅과 포워딩의 중요한 상호작용을 나타낸다.
@@ -118,4 +119,69 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 
 ### Control Plane:The SDN Approach
 
+<img width="800" alt="Screen Shot 2022-08-09 at 12 37 56 PM" src="https://user-images.githubusercontent.com/76278794/183558753-020e1ce0-48f3-492a-b05b-70daf8a867d1.png">
 
+- 각각의 라우터가 다른 라우터의 라우팅 요소와 통신하는 전통적인 접근은 최근까지도 자주 사용되었다.
+- 위의 그림은 물리적으로 분리된 `remote controller`가 각각의 라우터에서 사용될 포워딩 테이블을 연산하고 배분한다.
+- Traditional Approach와 똑같은 data plane 요소를 가지지만, control-plane 라우팅 기능은 물리적인 라우터로부터 분리되어있다.
+  - SDN Approach에서 라우터는 오직 포워딩 기능만하고, remote controller가 포워딩 테이블을 연산하고 분배하게된다.
+
+<br>
+
+- `Remote Controller`
+  - remote controller는 높은 안정성과 중복성을 갖춘 data center에서 구현되어 있을 수 있으며, ISP나 써드파티에 의해 관리될 수 있다.
+  - 라우터와 remote controller가 통신하는 방식은 포워딩테이블과 라우팅에 필요한 정보를 담은 message를 교환함으로써 일어난다.
+  - 이런 remote controller는 소프트웨어로 구현되는데, 오픈소스로 공개되고 있다.
+
+<br>
+
+## 4.1.2 Network Service Model
+
+- 네트워크 계층이 제공하는 몇가지 형태의 서비스를 먼저 살펴보자.
+- 전송계층이 패킷을 네트워크에 보내면, 전송계층은 패킷을 목적지에 전달할 수 있을까?
+- 복수의 패킷이 보내지면, 보내진 순서대로 전송계층에 도달할까?
+- 2개의 연속된 패킷을 보낼때 이 사이의 시간이 받을때의 시간차이와 동일할까?
+- 네트워크가 혼잡성에 대해 피드백을 제공할까?
+
+위와 같은 질문들은 네트워크 계층이 제공하는 서비스 모델에 의해 결정된다.
+- `network service model`은 송신측과 수신측의 패킷 전달의 특성을 결정한다.
+
+<br>
+
+- 네트워크 계층이 제공하는 서비스들
+  1. `Guaranteed delivery`
+    - 소스 호스트가 전달하는 패킷이 목적지 호스트에게 전달될 것이라는 것을 보장.
+  2. `Guaranteed delivery with bounded delay`
+    - 패킷 전달의 보장뿐만아니라, 지정된 host-to-host 지연 범위 내에 전달될 것이라는 것을 보장
+  3. `In-order packet delivery`
+    - 패킷이 전송된 순서대로 도착한다는 것을 보장
+  4. `Guaranteed minimal bandwidth`
+    - 지정된 비트 전송 속도로 작동한다는 것을 보장.
+    - 송신측 호스트가 지정된 속도로 비트를 보내면 모든 패킷이 목적지 호스트로 전달된다는 것을 보장한다.
+  5. `Security`
+    - 네트워크 계층이 모든 datagram을 암호화해 전송계층 segment들의 비밀을 보장한다.
+  
+이것들은 네트워크 계층이 제공하는 서비스의 일부분이다.
+
+<br>
+
+- `best-effort service`
+  - 인터넷의 네트워크 계층이 제공하는 단일한 서비스.
+  - Guaranteed delivery, Guaranteed delivery with bounded delay, Guaranteed minimal bandwidth를 보장하지 않는다.
+  - 마치, 제공하는 서비스가 전혀 없다는 것을 의미하고, 또는 대상에 패킷을 전달하지 않는 네트워크도 이 정의를 충족한다.
+
+다른 네트워크 아키텍쳐들은 이를 뛰어넘는 서비스 모델을 정의하고 구현했다.  
+
+- `ATM(Asynchronous Transfer Model) network architecture`는 inorder delay, bounded delay, minimal bandwidth를 제공한다.
+
+- `Interserv architecture`는 end-end delay와 congestion-free 통신을 제공한다.
+
+흥미로운 점은, 이렇게 많은 대안들이 있음에도 불구하고, `적절한 대역폭`을 제공하는 `best-effort service`는 넷플릭스, 스카이프 페이스타임 등의 넓은 범위의 어플리케이션을 구동할 수 있을 정도로 충분히 좋다는 것이 증명되었다.  
+
+
+<br>
+<br>
+
+## What's Inside a Router?
+
+<img width="886" alt="Screen Shot 2022-08-09 at 8 05 25 PM" src="https://user-images.githubusercontent.com/76278794/183632832-899e10ec-a078-4699-8fe8-fec2a2c530ce.png">
