@@ -182,6 +182,110 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 <br>
 <br>
 
-## What's Inside a Router?
+## 4.2 What's Inside a Router?
 
 <img width="886" alt="Screen Shot 2022-08-09 at 8 05 25 PM" src="https://user-images.githubusercontent.com/76278794/183632832-899e10ec-a078-4699-8fe8-fec2a2c530ce.png">
+
+- `router's four components`
+
+  1. `input ports`
+    - 라우터에서 들어오는 물리적 링크를 종료하는 `물리적 계층의 기능`을 한다.(`line termination`)
+      - 이는 input port의 가장 왼쪽 박스와 output port의 가장 오른쪽 박스로 나타낸다.
+    - `링크계층의 기능`도 수행한다.(`Data link processing`)
+      - 들어오는 링크의 링크 계층과 상호운용되어야한다.
+      - 이는 input port와 output port의 중간 박스로 나타낸다.
+    - `lookup function`
+      - 도착한 패킷이 switching fabric을 통해 어느 output port로 나가야하는지 결정하기 위해 포워딩 테이블을 참조한다.
+      - input port의 가장 오른쪽 박스에서 일어난다.
+    - 프로토콜 정보를 담는 `Control packet`들이 input port에서 routing processor로 전달된다.
+    - 이 input port와 output port들은 물리적인 input interface와 output interface이다.
+
+  <br>
+
+  2. `switching fabric`
+    - 라우터의 input port와 output port를 연결한다.
+    - <img src="https://user-images.githubusercontent.com/76278794/183713563-0b967388-deb9-4148-81ea-7c33498276aa.png" width="600">
+
+  <br>
+
+  3. `output ports`
+    - switching fabric이 전달한 패킷을 저장하며, 이 패킷들을 link layer, physical layer기능을 수행해 outgoing link로 전송한다.
+    - 링크가 양방향일때, output port는 일반적으로 동일한 line card에 있는 해당 링크의 input port와 쌍을 이룬다.
+
+  <br>
+
+  4. `routing processor`
+    - 라우팅 프로세서는 `control-plane`의 기능을 한다.
+    - `traditional` 라우터는 라우팅 프로토콜을 수행하고, 라우팅 테이블을 유지하며, 링크의 상태 정보를 붙이고, 라우터를 의한 포워딩 테이블을 구성하낟.
+    - `SDN` 라우터는 라우팅 프로세서는 `remote controller`가 연산한 포워딩 테이블 목록을 받기위해 remote controller와 통신하는 책임만 있다.
+    - 라우팅 프로세서는 네트워크 관리 기능도 수행한다.
+
+<br>
+
+- input port, output port, switching fabric같은 data-plane 하드웨어가 `나노초`단위로 작업을 수행하는데 반해,  
+- 라우팅 프로토콜을 수행하고, 올라가거나 내려가는 연결된 링크에 응답하고, SDN에서 remote controller와 통신하고, 네트워크 관리를 하는 기능들은 `밀리초 ~ 초`단위로 수행된다.  
+  - 이런 `control plane` 기능들은 소프트웨어에 구현되어있으며, 라우팅 프로세서에 의해 실행된다.  
+
+<br>
+
+### 4.2.1 Input Port Processing and Destination-Based Forwarding
+
+<img src="https://user-images.githubusercontent.com/76278794/183710999-84b9f26d-51fc-4dfa-8ee8-dffd31adb75a.png" width="800">
+
+- 위의 4.2의 처음 그림에서 input port의 3개의 박스는 이렇게 정리할 수 있다.
+  - `Line termination`
+    - 위에서 언급했듯, 물리적 계층의 기능을 구현한다.  
+
+  <br>
+
+  - `Data link processing(protocol, decapsulation)`
+    - 마찬가지로, 링크계층의 기능을 수행한다.
+
+  <br>
+
+  - `lookup`
+    - 라우터의 작업중 가장 중요한 요소.
+    - `도착한 패킷을 forwarding table을 참조해 switching fabric을 통해 어떤 output port로 나가야하는지를 정한다.`
+      - 물론, 이 포워딩 테이블은 라우팅 프로토콜을 사용하거나, 다른 네트워크의 라우팅 프로세서를 사용하거나, SDN remote controller를 통해 받는다.
+    - 포워딩 테이블은 4.2의 첫 그림에서 `라우팅 프로세서 -> input port`로 이어진 점선으로 표시된 별도의 `BUS(PCI 버스)`를 통해 `line card`로 복사된다.  
+    - 각각의 input port마다의 line card로 복사되기 때문에 패킷마다 중앙집중된 라우팅 프로세서를 호출하지 않고 포워딩 결정을 지역적으로 할 수 있으므로, 중앙 처리 병목현상을 방지할 수 있다.  
+
+<br>
+
+- `Destination Based Forwarding`
+  - <img src="https://user-images.githubusercontent.com/76278794/183714295-3f49fc4e-9294-45fa-bf24-e253be1068e3.png" width="800">
+  - 정말 간단한 `Destination Based Forwarding`에 대해 언급한다.
+  - 32비트 IP 주소에서, 가능한 모든 경우의 수에 대해서 포워딩 테이블을 브루트포스 방식으로 구현하면 42억개정도가 나온다.
+  - 이렇게 구현할 필요 없이, 포워딩 테이블을 4개의 목록으로 나눠서 구현할 수 있다.
+  - <img src="https://user-images.githubusercontent.com/76278794/183715280-0c852f41-f748-4a0d-9ca9-52508f02b088.png" width="600">
+  - 이 방법이 `longest prefix matching` 방법이다.
+
+<br>
+
+- `Longest prefix matching`
+  - 두가지의 예시로 설명한다.
+  - <img src="https://user-images.githubusercontent.com/76278794/183724527-3d3e9e21-77eb-41cf-b99b-d9d672e592a2.png" width="500">  
+
+    - 첫번째 DA는 포워딩 테이블의 첫번째 목록과 첫 21bit가 일치하므로, 라우터는 패킷을 interface 0으로 포워딩한다.
+    - 두번째 DA는 포워딩 테이블의 두번째 목록과 24bit, 세번째 목록과 21bit가 일치하는데, 이처럼 복수의 목록과 bit가 일치할 경우, 라우터는 `Longest prefix matching rule`을 적용해 가장 긴 bit가 일치하는 두번째 목록으로 포워딩한다.
+    - 좀 더 자세한것은 4.3에서 설명한다.
+
+<br>
+
+- 하드웨어 로직이 포워딩 테이블에서 logest prefix match만을 찾기때문에 lookup자체는 굉장히 쉽다.
+- 다만, 기가바이트 단위의 큰 전송시간에서, lookup은 나노초 단위에서 일어나야하므로, 큰 테이블에서 선형적인 탐색이 요구되는데, fast lookup algorithm을 찾아볼 수 있다.
+- 메모리 접근시간에 특별한 주의를 기울여야하기에, DRAM과 SRAM 메모리를 사용할 수 있다ㅏ.
+- 특히 `TCAM(Ternary Content Addressable Memory)`가 lookup에 자주 사용된다.
+  - TCAM을 사용하면 32bit IP 주소가 메모리에 표현되어 상수시간 안에 해당 주소에 대한 포워딩 테이블의 목록을 반환한다.
+
+<br>
+
+- 패킷의 ouput port가 lookup에 의해 정해지면, 해당 패킷은 switching fabric을 통해 전달된다.
+- 몇몇 디자인에서, 패킷이 switching fabric에 전달되기전에 일시적으로 `block`될 수 있는데, block된 패킷은 input port의 queue에 들어가게되며, 스케쥴화된다. 
+- lookup에 대해 많이 알아봤지만, 물리적 계층과 링크 계층 프로세싱이 반드시 일어나야하고, 패킷의 버전이 확인되어야하며, checksum과 time-to-live 필드는 확인뿐만아니라 재작성되어야한다. 또한, 네트워크 관리에 사용되는 카운터또한 업데이트 되어야한다.
+
+<br>
+
+= `match plus action`
+  - 패킷이 destination IP address를 찾는 (match), 그리고 패킷을 switching fabric으로 전송하는(action)을 일컫는 말.
+  - 위의 예시는 라우터뿐만 아니라 네트워크 기기들에서 수행되는 것들의 예시 중 하나일 뿐이다.
