@@ -7,19 +7,21 @@ categories:
 tags:
   - computer science
   - Network
-  - Ip Protocol
   - Network Layer
+  - control plane
+  - data plane
+  - routing table
 
 toc: true
 toc_sticky: true
 
 date: 2022-08-07
-last_modified_at: 2022-08-08
+last_modified_at: 2022-08-10
 ---
 
 Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)
 
-# 네트워크 계층 : data plane
+# 4 네트워크 계층 : data plane
 
 - 전송계층은 네트워크 계층의 호스트간 통신 서비스를 이용해 다양한 프로세스간 통신 서비스를 제공한다.
 - 전송계층은 네트워크 계층에서 구현된게 뭔지 알 수 없는데, 네트워크 계층에서 일어나는 호스트간 통신 서비스는 어떻게 일어날까?
@@ -32,15 +34,14 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 
 - 네트워크 계층을 공부할때는 2가지로 나눠서 공부하게되는데,
   - `data plane`
-    data plane은 라우터에 도착한 input link의 datagra이 어떻게 output link로 포워딩되는지 결정하는 역할을 한다.
+    data plane은 라우터에 도착한 input link의 datagram이 어떻게 output link로 포워딩되는지 결정하는 역할을 한다.
 
     - `전통적인 IP 포워딩`(datagram의 destination 주소에 의존해 포워딩하는 방법)과 
     - `generalized 포워딩`(포워딩뿐만아니라, datagram의 헤더의 다른 필드를 사용해 작동한다.)
     - 또한 IPv4 와 IPv6를 공부하게된다.  
 
   - `control plane` 
-    control plane은 soure host로부터 destination host로 datagram이 라우터를 타고 전달될때 어떻게 이를 제어하는지 로직에 대해 공부한다.
-  으로 나누어서 공부하게된다.
+    control plane은 soure host로부터 destination host로 datagram이 라우터를 타고 전달될때 어떻게 이를 제어하는지 로직에 대해 공부한다..
     - `OSPF`, `BGP`같은 라우팅 알고리즘에 공부하게된다.
   
 - 전통적으로 control-plane 라우팅 프로토콜과 data-plane 포워딩은 융통성없이 라우터에 함께 구현되어왔다.  
@@ -182,7 +183,7 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 <br>
 <br>
 
-## 4.2 What's Inside a Router?
+# 4.2 What's Inside a Router?
 
 <img width="886" alt="Screen Shot 2022-08-09 at 8 05 25 PM" src="https://user-images.githubusercontent.com/76278794/183632832-899e10ec-a078-4699-8fe8-fec2a2c530ce.png">
 
@@ -228,7 +229,7 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 
 <br>
 
-### 4.2.1 Input Port Processing and Destination-Based Forwarding
+## 4.2.1 Input Port Processing and Destination-Based Forwarding
 
 <img src="https://user-images.githubusercontent.com/76278794/183710999-84b9f26d-51fc-4dfa-8ee8-dffd31adb75a.png" width="800">
 
@@ -286,6 +287,129 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 
 <br>
 
-= `match plus action`
+- `match plus action`
   - 패킷이 destination IP address를 찾는 (match), 그리고 패킷을 switching fabric으로 전송하는(action)을 일컫는 말.
   - 위의 예시는 라우터뿐만 아니라 네트워크 기기들에서 수행되는 것들의 예시 중 하나일 뿐이다.
+
+<br>
+
+## 4.2.2 Switching
+
+- 패킷이 실제로 input port로부터 output port로 포워딩되는 곳은 switching fabric이다.
+- 이러한 Switching은 다양한 방식으로 구현된다.
+
+1. Switching via memory
+  - <img src="https://user-images.githubusercontent.com/76278794/183809478-1c14a176-0329-4c13-80b0-9b6d298a4f4c.png" width="600">
+  - 오래전 라우터와 전통적인 컴퓨터는 Switching을 CPU의 직접적인 제어(routing processor)로 구현했다.
+  - input port와 output port가 전통적인 컴퓨터의 `I/O device`처럼 작동했다.
+  - 패킷이 도착한 input port는 routing processor에 `interrupt`를 보내고, 해당 패킷은 routing processor로 복사됬다.
+  - routing processor는 패킷의 헤더에서 도착지 주소를 추출하고, look up을 수행하고, 다시 해당 패킷을 output port의 버퍼로 복사한다.
+  - 초당 최대 B의 패킷이 쓰이거나 읽힐 수 있을 때, input port에서 output port로 패킷이 전달되는 전체 속도(포워딩 처리량)은 B/2보다 작아야한다.
+  - shared system bus를 통해 한번에 하나의 읽기/쓰기 작업만 할 수 있으므로, 두 패킷이 다른 output port를 가지더라도 동시에 전달될 수 없다.
+  - 이러한 방법은 공유 메모리 멀티 프로세서와 매우 유사한데, line card에서 프로세싱되어 패킷이 적절한 output port의 메모리로 전달되는게 비슷하다.
+
+<br>
+
+2. Switching via a bus
+  - <img src="https://user-images.githubusercontent.com/76278794/183815939-25870f5e-43a6-48c3-bf97-135ca2794982.png" width="600">
+  - `라우팅 프로세서의 개입 없이` input port는 패킷을 output port에 공유 버스를 사용해 직접 패킷을 전달한다.
+  - input port가 패킷에 스위치 내부 라벨(헤더)를 미리 넣고, 패킷이 어디로 전송될지 local output port를 표시하고 패킷을 버스로 전송한다.
+  - 모든 output port가 패킷을 수신하지만, 미리 넣어놓은 라벨과 일치하는 포트만 패킷을 유지한다.
+  - 동시에 목적지가 다른 여러 패킷이 도착했을때는 하나의 패킷만 버스에 유지될 수 있으므로, 스위칭 속도는 버스의 스피드로 한정된다.
+
+<br>
+
+3. Switching via interconnection network
+  - <img src="https://user-images.githubusercontent.com/76278794/183816019-3cd38532-587a-4cc0-ae77-e8d5328e0e35.png" width="400" height="500">
+  - bus를 통해 패킷을 전달하는 것은 한번에 하나의 패킷만 bus에 담을 수 있다는 단점이 있다.
+  - 따라서, 멀티프로세서 컴퓨터 아키텍처의 프로세서를 연결하는 것처럼 상호연결 네트워크를 사용하는 것이다.
+
+<br>
+
+## 4.2.3 Output Port Processing
+
+- <img src="https://user-images.githubusercontent.com/76278794/183821279-84bd78cd-9b3a-4ff7-bf9c-bd950fb4bf73.png">
+- output port processing은 output port의 메모리에 저장된 패킷을 output link로 전송한다.
+- 이는 전송을 위한 패킷을 선택하고, dequeuing하고, 필요한 링크계층, 물리적계층 전송 기능을 수행하는 것을 포함한다.
+
+
+<br>
+
+## 4.2.4 Where Does Queuing Occur?
+
+- 패킷의 queue는 input port와 output port 모두에서 형성된다.
+- 이런 큐들은 메모리가 부족해 고갈될 수 있어서 `packet loss`가 발생하게된다.
+- N개의 input port와 N개의 output port가 있을때, input line과 output line의 속도가 Rline의 속도로 패킷을 전달한다 가정
+- 패킷을 어떤 링크로 전달하든, 동일한 시간이 걸린다고 가정하자.
+- Rswitch를 input port에서 output port로 switching fabric의 전송속도를 정의한다고 할때,
+  - 만약 Rswitch가 Rline보다 N배 빠르다면, 최악의 상황에서도 큐는 거의 비어있을 것이다.
+
+<br>
+
+- `input queuing`
+  - <img src="https://user-images.githubusercontent.com/76278794/183824607-9fc8bdf6-9d5e-49cf-a0f5-b0951d419dc2.png"> 
+  - 그런데, 만약 Rswitch가 충분히 빠르지 않다면, 어떻게 될까?
+  - `switching fabric은 한 번에 하나의 패킷만 전달할 수 있다 가정하에`, 2개의 패킷 중 하나는 block상태로 input queue에 있을 것이다.
+  - 이 예시에서, 좌측 하단 Line의 뒤쪽 패킷은 output port가 비어있어서 경합이 발생하지 않음에도 앞쪽 패킷이 좌측 상단의 패킷과 경합이 생겼기에 block되어버린다.
+  - 이런 현상은 `head-of-the-line(HOL) blocking`현상이라고도하는데, block된 다른 패킷이 존재할 경우, output port가 아무런 일을 하지 않더라도 input queue의 패킷이 기다려야하는 것을 의미한다.
+  - HOL현상으로 인해 Input queue는 기하급수적으로 증가할 것이고, 이에따라 packet loss가 발생할 가능성이 커질 것이다.
+  - 이런 HOL현상을 해결하는 방법에는 `virtual output queues`라는 해결책 등이 존재한다.
+
+<br>
+
+- `output queuing`
+  - <img src="https://user-images.githubusercontent.com/76278794/183824920-662c4cf9-bfcc-491a-9132-a53850dbd349.png">
+  - Rswitch가 Rline보다 N배 빠르고, N개 포트 모두 동시에 같은 output port로 방향이 정해졌다고 생각해보자.
+  - 동시에 여러개의 패킷을 전송할 수 있기에 1개의 패킷을 전송하는 단위 시간에 3개의 패킷 모두 output port의 queue에 전송되게된다.
+  - 이에따라 output port의 queue에서도 packet loss가 발생할수도 있다.
+
+  - 다음 단위시간에 2개의 패킷이 도달하는데, 하나의 패킷이 아까랑 똑같은 output port로 향하는 것을 볼 수 있다.
+  - 여기서 `packet scheduler`가 output port에서 어떤 패킷을 먼저 outgoing link로 전송할지 결정하게된다.
+
+<br>
+
+## 4.2.5 packet scheduling
+
+- 큐에 있는 패킷을 어떤 순서로 보낼것인지 결정한다.
+
+- `FIFO`
+  - <img width="885" alt="스크린샷 2022-08-10 오후 4 19 00" src="https://user-images.githubusercontent.com/76278794/183839309-1368c065-2d07-499f-b61c-81f0617c2816.png">
+
+  - 선입선출 방식의 스케쥴링은 도착한 순서대로 패킷을 보낸다.
+   - <img width="1038" alt="스크린샷 2022-08-10 오후 4 22 31" src="https://user-images.githubusercontent.com/76278794/183839956-0017412e-8662-4ca6-929d-78b34beb24df.png">
+
+<br>
+
+- `Priority queuing`
+
+  - <img width="814" alt="스크린샷 2022-08-10 오후 4 23 48" src="https://user-images.githubusercontent.com/76278794/183840183-f9a24c4c-e464-44bf-941c-e640867d2a64.png">
+
+  - 패킷이 도착하는 즉시 우선순위를 파악해 우선순위 클래스로 분류한다.
+  - 각각의 우선순위 클래스는 자신만의 큐를 가지고 있으며 전달될 패킷을 결정할때, 높은 우선순위의 큐부터 전송을 시작한다.
+  - <img width="1034" alt="스크린샷 2022-08-10 오후 4 27 25" src="https://user-images.githubusercontent.com/76278794/183840894-52398e2e-c130-40ca-a01d-b3b6ee515306.png">
+  - 1과 3이 높은 우선순위의 패킷이라 가정할때, 2가 3보다 먼저 도착했음에도 불구하고 3의 전송을 먼저 처리한다.
+  - 또한 패킷4를 보면 낮은 우선순위의 패킷이 처리되는 도중에 도착했는데, 이때는 처리되고있는 패킷의 처리를 완료한 후에 처리한다.
+    - 이를 `non-preemptive packet queuing`이라고 하며, 비선점 패킷 큐이다
+
+- `Round Robin and Weighted Fair Queuing`
+
+  - 라운드로빈 큐를 사용하면 패킷은 우선순위 큐를 사용하는 것처럼 클래스별로 정렬된다.
+  - 하지만, 라운드로빈은 우선순위를 빡세게 적용하지는 않는다.
+  - 라운드로빈 스케쥴링은 클래스 1패킷이 전송되면, 클래스2 패킷을 전송하고, 이어서 클래스 1패킷, 클래스 2 패킷을 계속 전송한다.
+    - 이런 방식을 `work-conserving queuing`이라고 하며, 전송 대기중인 패킷이 있을때 link가 idle상태에 있는 것을 방지한다.
+    - 지정된 클래스의 패킷을 먼저 찾지만, 찾을 수 없으면 다음 클래스의 패킷을 찾는다.
+    - <img width="1036" alt="스크린샷 2022-08-10 오후 6 27 48" src="https://user-images.githubusercontent.com/76278794/183866745-205fa85e-9fa1-4964-938f-d8dd813cec58.png">
+    - 패킷 1,2,4가 클래스1, 3,5가 클래스2에 속한다.
+    - 패킷 1은 output queue에 오자마자 전송이 시작되고, 이 와중에 패킷 2와 3이 도착한다.
+    - 패킷 1의 전송이 끝나면 link 스케쥴러는 클래스2의 패킷을 찾기때문에 패킷3가 전송된다.
+    - 패킷 3의 전송이 끝나면 다시 클래스1의 패킷을 찾기에 패킷2가 전송된다.
+
+  - 라운드 로빈 큐의 일반화된 형태는 `weighted fair queuing(WFQ)`이다.
+    - <img width="865" alt="스크린샷 2022-08-10 오후 6 20 59" src="https://user-images.githubusercontent.com/76278794/183865217-403556a2-697a-48f9-8eaf-0a449d71f6ce.png">
+
+    - WFQ는 도착한 패킷을 클래스별로 큐로 유지하되, 라운드로빈 스케쥴링을 통해 클래스 1,2,3 을 순환하면서 전송하게된다.
+    - WFQ는 `work-conserving queuing`이기때문에 클래스 큐가 비어있으면 즉각 다음 클래스로 이동한다.
+
+<br>
+<br>
+
