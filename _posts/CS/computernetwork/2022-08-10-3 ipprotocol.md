@@ -19,7 +19,6 @@ date: 2022-08-10
 last_modified_at: 2022-08-11
 ---
 
-Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)
 
 # The Internet Protocol(IP) : IPv4, Addressing, IPv6...
 
@@ -221,8 +220,19 @@ Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kuro
 
 - `Classful addressing`
 	- <img src="https://user-images.githubusercontent.com/76278794/184111617-abc885cc-6bfc-449b-ae69-605f77973456.png">
+	- <img src="https://user-images.githubusercontent.com/76278794/184407333-1c47605f-9d1b-4bc4-ba7f-26dcb3ed53ea.jpg">
 	- CIDR이전에는 IP addressing에서 Classful addressing을 사용했다.
 	- 클래스별로 분류해서 네트워크를 구분하는 방식이다.
-	- 여기서 네트워크의 첫번째와 마지막 주소는 default와 broadcast IP로 지정되어 있어서 개수에서 2개를 빼야한다.
-	- `Class A`
-		- netID의 leftmost 1bit는 항상 0으로 고정되어
+	- Class D와 E는 특별한 용도로 사용된다.
+	- 또한 각 클래스별 주소의 `Start address(== NET ID bit)는 각 디바이스가 자신이 어디에 연결되어있는지 인식하는 용도로 사용`되고, `End address(== 다음 클래스의 NET ID bit - 1)은 broadcast 주소로 사용되어 해당 네트워크에 연결된 기기가 broadcast주소로 패킷을 보내게되면, 네트워크에 연결된 모든 기기가 그 패킷을 받게된다.`
+	- Classful addressing은 8, 16, 24bit(class A, B C)의 네트워크 part가 고정된 탓에, 불필요한 주소를 너무 많이 허용한다던가, 너무 적에 허용하는 문제가 있다.
+
+
+
+
+
+
+
+Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)  
+	[StackOverFlow:Why can't I use the first or last address in a subnet?](https://superuser.com/questions/1111437/why-cant-i-use-the-first-or-last-address-in-a-subnet)  
+	[geeks for geeks Classfull IP addressing](https://www.geeksforgeeks.org/introduction-of-classful-ip-addressing/)
