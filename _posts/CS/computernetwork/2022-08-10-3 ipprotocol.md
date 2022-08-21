@@ -228,8 +228,126 @@ last_modified_at: 2022-08-11
 	- Classful addressing은 8, 16, 24bit(class A, B C)의 네트워크 part가 고정된 탓에, 불필요한 주소를 너무 많이 허용한다던가, 너무 적에 허용하는 문제가 있다.
 
 
+<br>
+
+- `Address aggregation(route aggregation, route summarization)`
+
+	<img width="717" alt="스크린샷 2022-08-18 오후 3 05 22" src="https://user-images.githubusercontent.com/76278794/185306000-41e2464e-1e21-43e4-8c21-a8d90b2499cc.png">
+
+	- 8개의 조직이 `CIDR`을 통해 인터넷에 연결되는 방법에 대해 묘사한다.
+	- `Fly-By-Night-ISP`는 `200.23.16.0/20`과 첫 20bit가 일치하는 datagram을 전송하라고 외부에 표현한다.
+	- 인터넷의 입장에서는 ISP가 던져주는 datagram의 첫 20bit에만 관심이 있을 뿐, 실제로 8개의 조직과 ISP가 구성하는 subnet들을 알 필요는 없다.
+	- 이런 방법을 `Address aggregation`이라고 한다.
+
+<br>
+
+- 하지만, 주소가 계층적구조로 되어있지 않다면 어떻게될까?
+- `Fly-By-Night-ISP`가 `ISPs-R-Us`기업을 인수하고, 조직1이 `ISPs-R-Us`로 연결되어야한다면?
+	- 조직1의 주소블록은 ISPs-R-Us의 주소블록 바깥에 있으므로, 
+		- `ISPs-R-Us`의 주소블록`(199.31.0.0/16)`으로 조직1의 모든 라우터와 호스트의 주소를 이에 속하게 수정해줘야하지만, 이는 비용이 매우 크다.
+	- 이에대한 해결책으로, `조직1의 주소를 유지하고, ISPs-R-Us가 조직 1의 주소블록을 제공하면된다.`
+	- <img width="746" alt="스크린샷 2022-08-18 오후 3 26 35" src="https://user-images.githubusercontent.com/76278794/185309220-c9e9cb50-05cb-465b-8288-99da888fa9d9.png">
 
 
+<br>
+
+- `주소블록을 얻는 방법`
+	- 어떻게 조직이 각 장치에 주소블록을 얻고, 어떻게 장치들이 조직의 주소블록으로부터 주소가 할당되는지 알아보자.
+
+	- 네트워크 관리자가 조직의 서브넷에서 사용될 IP주소 블록을 얻기위해서 ISP에 이미 할당된 더 큰 주소블록을 제공하는 ISP에 접근해야한다.
+	- 예를들어, ISP에는 이미 주소블록 `200.23.16.20/20`이 할당되어있고, 이 주소블록이 8개의 조직을 위한 동일한 크기의 주소블록으로 나뉠 수 있다.
+	- <img src="https://user-images.githubusercontent.com/76278794/185417834-27240063-ffed-4672-a0cb-81a9ada8145f.jpeg" width="1200">
+
+
+<br>
+<br>
+
+### DHCP
+
+- Dynamic Host Configuration Protocol
+
+<img src="https://user-images.githubusercontent.com/76278794/185758763-338b109a-12da-46bd-9fed-faff21a24f66.png">
+
+- 위에서 말한 조직이 주소블록을 얻었다면, 이를 통해 각각의 호스트와 라우터 인터페이스에 아이피를 할당할 수 있다.
+- `수작업`으로 모든 아이피를 할당할수도 있지만, 일반적으로 `DHCP`를 이용한다.
+- 응용계층에 속한 프로토콜로써, 4절차(연결 했던적이 있다면 선행 2개 절차는 생략가능, RFC2131)로 DHCP server로부터 주소를 할당받는다.
+- DHCP는 호스트가 주소를 자동으로 얻을 수 있게한다.
+- DHCP는 호스트의 아이피를 주는 것 뿐만아니라, 서브넷 마스크, default gateway, local DNS server에 대한 정보를 호스트에게 제공한다.
+
+<br>
+
+- DHCP는 이렇게 자동화된 측면이 있어서 `plug-and-play` 혹은 `zeroconf` 프로토콜이라고도 불린다.
+
+
+## NAT
+
+- network address translation
+
+- 오늘날 인터넷 공유기에는 NAT 기능이 탑재되어있다.
+- 패킷의 소스와 목적지의 IP주소를 NAT translation table을 통해 재기록해준다.
+
+<img src="https://user-images.githubusercontent.com/76278794/185757300-100300ba-7df7-4fa4-9070-ab5ec064f566.png">
+
+- 로컬 네트웨크 내에 있는 모든 호스트들은 private ip(사설 IP)를 가진다.
+	- (10/8, 172.16/12, 192.168/16)
+- 장점
+	1. 호스트에 IP를 주기위해서는 router에 1개의 IP주소만 주면된다.
+	2. 로컬 네트워크 내의 호스트의 주소를 라우터 밖의 네트워크에 상관없이 변경이 가능하다.
+	3. 로컬 네트워크 내의 주소와 상관없이, ISP의 주소를 바꿀 수 있다.
+	4. 로컬 네트워크의 IP주소가 직접적으로 표현되지 않는다.
+
+- 작동
+	- `outgoing datagram replace`
+		- source의 IP주소와 포트를 NAT IP adderss와 새로운 port로 변환한다
+	- `remember`
+		- 위 두개가 어떻게 변환되는지 기억하고 있어야한다.
+	- `incoming datagram replace`
+		- NAT table에서 destination의 IP주소와 포트를 source의 IP주소와 포트로 변환한다.
+
+- 논쟁
+	- 주소의 부족은 IPv6로 해소되었다.
+	- 라우터는 layer 3까지만 처리해야하는데, 포트번호(응용계층)까지 수정해버린다.
+	- 클라이언트가 NAT건너의 서버에 접속하고싶을때는 어떡하는가?
+
+<br>
+<br>
+
+## IPv6
+
+- 인터넷의 유래는 원래 국방부에서만들어진 ARPANET이다.
+- 1970년대에는 인터넷이 이렇게 발달할 줄 몰랐기에, IP주소를 43억개 가량(4byte)로하면 충분할 줄 알았으나, 오늘날에는 이로는 부족하게 되었다.
+- <img width="594" alt="스크린샷 2022-08-21 오후 2 47 01" src="https://user-images.githubusercontent.com/76278794/185777454-53deb98d-84a3-417b-aacd-c31498ffe505.png">
+
+### 형식
+
+- 고정된 헤더크기 : IPv4에서는 optional 포맷이 존재해서 가변크기의 헤더를 가지지만, IPv6는 40byte의 고정된 헤더크기를 가진다.
+
+- 버전 : 데이터그램이 IPv4인지 IPv6인지
+- 트래픽 클래스 : 특정 데이터그램들에게 흐름 내에서 우선순위를 줄 수도 있다.
+- 확장된 주소 : IPv4에서는 주소가 32bit였으나, IPv6에서는 IP 주소의 크기를 128bit까지 확장한다.
+- Flow label : IP가 비연결성이나, 흐름 라벨을 통해 연결지향성을 가질 수 있게 할 수 있다.
+	- 라우터가 흐름 라벨 테이블을 유지하는데, 각 흐름별 요구사항을 만족시켜 특정한 처리가 가능하다.
+- Payload length : 데이터그램 헤더를 포함해 데이터그램의 총 길이를 바이트단위로 표현한다.
+- Next header : 이 데이터그램이 어느 프로토콜에 전달될지를 나타낸다, 전송계층에 전달된다면 TCP나 UDP가 될 것.
+- Hop limit : 패킷이 이동할 수 있는 최대 횟수를 나타낸다. 0이되면 패킷이 삭제된다.
+
+<br>
+
+### IPv4 -> IPv6(터널링)
+
+- IPv4 기반 시스템과 IPv6기반 시스템간 통신이 불가능할까? 
+- 이는 일반적으로 `터널링`을 통해 IPv4패킷을 IPv6로 변환해서 해결한다.
+- 터널링은 IPv6의 데이터그램을 IPv4의 payload로 옮기는 것을 의미한다.
+- <img width="735" alt="스크린샷 2022-08-21 오후 3 22 35" src="https://user-images.githubusercontent.com/76278794/185778422-64411689-9730-48a3-ae86-a940f76c0725.png">
+
+<br>
+
+- IPv4 라우터를 모두 IPv6로 대체하는 것은 시간이 오래걸리기에, IPv6 라우터 사이에 IPv4라우터 네트워크가 존재할 수 있다.
+- <img width="656" alt="스크린샷 2022-08-21 오후 3 30 57" src="https://user-images.githubusercontent.com/76278794/185778677-d4775e13-acc3-4a9c-8ad5-7b44cfb99185.png">
+- 이 경우, 일반적으로 B와 E 라우터는 IPv6, IPv4를 모두 사용할 수 있는 듀얼 스택 라우터이다.
+- IPv4 네트워크 망으로 들어가는 라우터인 B에서 C라우터에 IPv6 데이터그램을 캡슐화해 IPv4 데이터그램화시키고, 이 데이터그램이 IPv4 네트워크 망을 빠져나올 시점인 E에서는 F에 캡슐화를 해제해서 IPv6 데이터그램화 시켜 F에 전달한다.
+
+<br><br>
 
 
 
