@@ -6,7 +6,6 @@ categories:
   - computernetwork
 tags:
   - computer science
-  - network
   - Application Layer
   - TCP
   - UDP
