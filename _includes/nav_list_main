@@ -131,8 +131,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "computernetwork" %}
-                <li><a href="/categories/database" class="">컴퓨터 네트워크 ({{category[1].size}})</a></li>
+                {% if category[0] == "database" %}
+                <li><a href="/categories/database" class="">데이터베이스 ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
