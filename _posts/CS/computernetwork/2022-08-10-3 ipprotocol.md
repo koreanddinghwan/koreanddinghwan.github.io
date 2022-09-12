@@ -230,9 +230,6 @@ last_modified_at: 2022-08-11
 
 
 
-
-
-
 Ref : [컴퓨터 네트워크 - 하향식 접근](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)  
 	[StackOverFlow:Why can't I use the first or last address in a subnet?](https://superuser.com/questions/1111437/why-cant-i-use-the-first-or-last-address-in-a-subnet)  
 	[geeks for geeks Classfull IP addressing](https://www.geeksforgeeks.org/introduction-of-classful-ip-addressing/)
