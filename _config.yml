@@ -20,7 +20,7 @@ title: "LightBig"
 title_separator: "-"
 subtitle: # site tagline that appears below site title in masthead
 name: "Dding-Hwan"
-description: "1차 가공공간"
+description: "2차 저장 공간"
 url: "https://koreanddinghwan.github.io"
 baseurl: ""
 asset_url: /assets
@@ -103,16 +103,16 @@ analytics:
 author:
   name: "엘비"
   avatar: "/assets/images/avatar.png"
-  bio: "1차 가공중입니다"
-  location: "Korea, South"
+  bio: "2차 저장 공간"
+  location: "Seoul, Korea"
   email: "myunghwan0421@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "myunghwan0421@gmail.com"
+      url: "myunghwan0421@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://koreanddinghwan.github.io//"
+      url: "https://koreanddinghwan.github.io/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
@@ -137,7 +137,7 @@ footer:
       # url: "https://facebook.com/dding.h.k"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/koreanddinghwan/"
+      url: "https://github.com/koreanddinghwan/"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
     #   # url:
