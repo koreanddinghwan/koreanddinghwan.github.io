@@ -39,7 +39,7 @@ last_modified_at: 2022-12-11
 
 # 2.OLAP
 
-## 정의
+### 정의
 
 <img width="954" alt="Screen Shot 2022-12-11 at 8 20 29 PM" src="https://user-images.githubusercontent.com/76278794/206900556-d21a4a37-bba9-4844-867e-4223c6ccc59d.png">
 
@@ -50,7 +50,7 @@ last_modified_at: 2022-12-11
 
 <br><br>
 
-## 특징
+### 특징
 
 <img width="576" alt="Screen Shot 2022-12-11 at 8 21 54 PM" src="https://user-images.githubusercontent.com/76278794/206900616-632f933e-88e9-4f49-9d39-a7f30ba057b1.png">
 
@@ -68,7 +68,7 @@ last_modified_at: 2022-12-11
 
 <br><br>
 
-## 3D OLAP CUBE
+### 3D OLAP CUBE
 
 <img width="952" alt="Screen Shot 2022-12-11 at 8 27 15 PM" src="https://user-images.githubusercontent.com/76278794/206900841-3d760418-2d8a-4871-8032-2529a5f0a4ab.png">
 
@@ -87,7 +87,7 @@ last_modified_at: 2022-12-11
 <br>
 <br>
 
-## Star Schema
+### Star Schema
 
 - 운영계 DB에서 스키마와는 다르게, 분석계 DB는 Universal 스키마에 가깝다.
 - 다만, 차원속성과 측정속성의 추가와 삭제를 자유롭게 하기 위해서 table을 분리해뒀다.
@@ -175,11 +175,10 @@ last_modified_at: 2022-12-11
 	- `Non-trivial, implicit, previously unknown, potentially useful`한 정보나, 패턴을 찾아낸다.
 
 <br>
-<br>
 
-## DM의 역사
+### DM의 역사
 
-### 1. `Statistics`
+1. `Statistics`
 	- 1850~1950년대 컴퓨터 나오기 이전시점까지 인간은 통계를 사용했다.
 	- 컴퓨터가 없었기에, `손`으로 일일히 데이터를 작성하고, 수집했어야만했기에 시간이 오래걸렸다.
 	- `데이터의 양은 물론 작았을 것`이며,
@@ -196,7 +195,7 @@ last_modified_at: 2022-12-11
 
 <br>
 
-### 2. `Machine Learning`
+2. `Machine Learning`
 	- 통계학이 컴퓨터에서 사용되기 시작했다.
 		- 100 ~ 100,000 레코드, 5 ~ 250 차원이 사용될 수 있었다.
 		- 다만, 초기 컴퓨터는 메모리의 크기가 작아 작은 메모리에 한정되어 사용되었다.
@@ -214,7 +213,7 @@ last_modified_at: 2022-12-11
 
 <br>
 
-### 3. `Data Mining`
+3. `Data Mining`
 	- 컴퓨터 성능이 이전보다 빨라졌다.(1995 ~ 2006)
 		- 최소 45개 속성
 		- 100 ~ 1000개의 공통 속성
@@ -225,130 +224,47 @@ last_modified_at: 2022-12-11
 	- 더욱 복잡한 데이터 모델이 사용된다.
 
 
-<br>
-<br>
-
-## 데이터마이닝이 생겨난 이유
-
-- 데이터가 너무 많아졌다.
-	1. 데이터 수집의 자동화
-	2. DB 기술의 발전으로 DW와 다른 저장소에 수많은 데이터가 저장될 수 있다.
-
-- 많은 데이터 속에서 내포된 지식을 찾아내는 것이 중요해졌다.
-
-<br>
-<br>
-
-## DM 종류
-
-### Predictive mining
-
-- 지도학습
-	- 데이터와 분석을 기반으로 데이터베이스의 모델을 구성하고
-	- 알려지지 않은 데이터의 특성과 트렌드를 예측한다.
-	- 종류
-		- Classification
-		- Regression
-		- Time Series Analysis
-		- Prediction
-
-<br>
-
-- `선형 회귀분석(regreesion)`
-	- 알려진 데이터를 기반으로 모델의 계수를 예측한다.
-	<img width="988" alt="스크린샷 2022-12-13 18 51 52" src="https://user-images.githubusercontent.com/76278794/207285243-3019cd21-f02f-43d9-87c7-3ed8355c9990.png">
-	- 위 데이터를 기반으로 `y = x + 1`이라는 데이터가 만들어진다.
 
 
-<br>
-
-- `Classification`
-	- `decision tree`를 구성한다.
-	<img width="1009" alt="스크린샷 2022-12-13 18 54 00" src="https://user-images.githubusercontent.com/76278794/207285784-8db1c184-6f74-4d7d-99ba-2b38d130bbf8.png">
-
-<br>
-
-### Descriptive mining
-
-- 비지도학습
-	- `concise(간결), summarative(요약적), informative(유익한), discriminative(구별적인)` 형태로 
-	- 업무 관련 데이어 셋이나 개념을 묘사한다.
-	- 종류
-		- 클러스터링
-		- Summarization
-		- Association Rules
-		- Sequence Discovery
-	- 알려진 데이터 내에서 `연관규칙, 패턴규칙, 분류화, 군집과 비군집, 트렌드와 진화분석`을 확인한다.
 
 
-<br>
-
-- `Association Mining`
-	- 트랜젝션 DB, 관계형 DB, 정보 저장소의 데이터들로부터 `빈발하는 패턴, 연관, 상관, 원인 구조를 파악`한다.
-
-- `X(body) -> Y(head)` 의 연관 패턴이 있다고 가정할때, `지지도(suppoert)`와 `신뢰도(confidence)`로 표현한다.
-	- `support` : X,Y가 함께 나타나는 트랜젝션 개수(`#{head,body}`) / 전체 트랜젝션 개수(`#t`)
-	- `confidence` : X,Y가 함께 나타나는 트랜젝션 개수(`#{head,body}`) / X만 나타나는 트랜젝션 개수(`#head`)
 
 
-<img width="403" alt="스크린샷 2022-12-13 19 31 48" src="https://user-images.githubusercontent.com/76278794/207294249-734d4e96-9290-4736-a335-54fca3c0d39b.png">
-- 위와같은 트래젝션이 있을때 `{Milk, Diaper} -> { Beer }`의 연관규칙을 찾는다고 생각해보자.
-	- #body : 3
-	- #{head, body} : : 2
-	- #T : 5
-
-- 지지도(support) = `#{head, body} / #T` = 2 / 5 = 0.4
-- 신뢰도(confidence) = `#{head, body} / #body` = 2 / 3 = 0.67
 
 
-<br>
 
 
-- `Apriori Algorithm`
-	- 단계별로 후보군을 생성하고 테스트하는 것을 반복한다.
-	- 최소 지지도를 지정하고, 그 아래 숫자의 후보군은 없애고 다음 단계로 넘어간다.
-	- 1단계  
-	<img width="716" alt="스크린샷 2022-12-13 19 38 15" src="https://user-images.githubusercontent.com/76278794/207295594-7b90d77e-5c09-455d-82af-9693c2f104aa.png">
-	- 2단계 : 1단계에서 min_sup 미만인 후보군 삭제한 후보군의 2레벨 후보군  
-	<img src="https://user-images.githubusercontent.com/76278794/207296594-1e5fa1f6-d9b1-4952-a695-1e3c1236823d.jpeg">
-	- 3단계  
-	<img width="315" alt="스크린샷 2022-12-13 19 45 47" src="https://user-images.githubusercontent.com/76278794/207297218-63e3f871-8dad-4599-8560-20879bc45055.png">
 
-<br>
-<br>
 
-- `Cluster 분석`
-	- 데이터 집합을 군집으로 나눈다.
-	- cluster : 데이터의 집합.
-	- 군집 내부 유사도는 높지만
-	- 군집간 유사도는 낮춘다.
 
-- 용어
-	<img width="590" alt="스크린샷 2022-12-13 19 50 29" src="https://user-images.githubusercontent.com/76278794/207298209-ee880fab-ac21-4fab-aee2-423dc46a8613.png">
-	- cluster : 데이터의 집합.
-	- Outliers : 어느 군집에도 속하지 않는다.
 
-- 유사도 측정
-	- 두 데이터가 얼마나 유사한지 나타내는 수치 측정
-	- 데이터끼리 비슷할수록 높다.
-	- 종종 [0, 1]까지 떨어진다.
 
-<br>
 
-- 점들 간, 거리계산을 위해서는 `Euclidean Distance(유클리드 거리)`를 사용한다.
 
-<br>
 
-- `K-Means Clustering Method`
-	- 처음에 모든 데이터는 하나의 클러스터에 속한다.
-	- 클러스터링할때 클러스터링의 기준
-	- `K는 클러스터의 개수를 의미한다.`
-		- 일반적으로 N개의 군집을 찾는다고하면, K는 3배정도 잡는다.
-		- 그 이유는 군집을 세세하게 나눈 후, 그루핑하는 방법이 더 편하기때문이다.
-	- 프로세스
-		1. K를 정한다.(N개 군집 찾을때 N * 3정도)
-		2. 맨 처음에는 랜덤하게, 혹은 수동으로 K개의 mean값을 하나 정한다.
-		3. 각 값별로 가장 거리가 가까운 mean값의 군집으로 넣는다.
-		4. 모든 값이 군집에 속하게되면 군집마다 중앙값을 다시 계산하고, 3을 반복한다.
-		<img width="1680" alt="스크린샷 2022-12-08 17 11 00" src="https://user-images.githubusercontent.com/76278794/207322234-d036080c-acd9-458e-996b-dcb14c8211dd.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
