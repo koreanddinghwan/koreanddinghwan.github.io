@@ -1,14 +1,17 @@
 ---
-title: "[42Seoul] Born2beroot"
+title: "[linux] born2BeRoot로 시작한 linux"
 layout: archive
-permalink: categories/born2beroot
+permalink: categories/linux
 author_profile: true
 sidebar_main: true
 ---
 
+
 <!-- 공백이 포함되어 있는 카테고리 이름의 경우 site.categories['a b c'] 이런식으로! -->
 
----
+***
 
-{% assign posts = site.categories.born2beroot %}
+
+
+{% assign posts = site.categories.linux %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
