@@ -13,48 +13,27 @@
                         </style>
         </li>
         <li>
-            <span class="nav__sub-title">42Seoul</span>
-            <ul>
-                {% for category in site.categories %}
-                {% if category[0] == "libft" %}
-                <li><a href="/categories/libft" class="">libft ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                {% if category[0] == "printf" %}
-                <li><a href="/categories/printf" class="">ft_printf ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                {% if category[0] == "getnextline" %}
-                <li><a href="/categories/getnextline" class="">Get Next Line ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                {% if category[0] == "born2beroot" %}
-                <li><a href="/categories/born2beroot" class="">Born2beroot ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                {% if category[0] == "fdf" %}
-                <li><a href="/categories/fdf" class="">Fils De Fer ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-
             <span class="nav__sub-title">Backend</span>
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "nodejs" %}
                 <li><a href="/categories/nodejs" class="">nodejs ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "nestjs" %}
+                <li><a href="/categories/nestjs" class="">nestjs ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">DevOps</span>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "devops" %}
+                <li><a href="/categories/devops" class="">devops ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
